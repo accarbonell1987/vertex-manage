@@ -8,10 +8,17 @@ import { createWeek } from "@/services/weeks";
 import { endOfWeek, startOfWeek } from "date-fns";
 import { useEffect, useState } from "react";
 
-const ModalAddWeek = ({ weeks, open, setOpen }: { weeks: Week[]; open: boolean; setOpen: (open: boolean) => void }) => {
+interface Props {
+	weeks: Week[];
+	open: boolean;
+	onClose: () => void;
+	setOpen: (open: boolean) => void;
+}
+
+const ModalAddWeek = ({ weeks, open, onClose, setOpen }: Props) => {
 	const today = new Date();
-	const defaultStartDate = startOfWeek(today, { weekStartsOn: 1 }); // lunes
-	const defaultEndDate = endOfWeek(today, { weekStartsOn: 1 }); // domingo
+	const defaultStartDate = startOfWeek(today, { weekStartsOn: 1 });
+	const defaultEndDate = endOfWeek(today, { weekStartsOn: 1 });
 
 	const [startDate, setStartDate] = useState<Date | undefined>(defaultStartDate);
 	const [endDate, setEndDate] = useState<Date | undefined>(defaultEndDate);
@@ -44,7 +51,7 @@ const ModalAddWeek = ({ weeks, open, setOpen }: { weeks: Week[]; open: boolean; 
 				observation: notes,
 				date: endDate,
 			});
-			setOpen(false);
+			onClose();
 		} catch (err) {
 			console.error(err);
 			setError("Hubo un error al guardar la semana");
