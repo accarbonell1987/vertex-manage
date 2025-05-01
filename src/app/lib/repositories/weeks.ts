@@ -1,0 +1,13 @@
+// lib/repositories/weeks.ts
+import { CreateWeekPayload } from "@/types/weeks.types";
+import { prisma } from "../../lib/prisma";
+
+export const findAllWeeks = () => prisma.week.findMany({ orderBy: { date: "desc" } });
+
+export const findWeekById = (id: string) => prisma.week.findUnique({ where: { id } });
+
+export const createWeek = (data: CreateWeekPayload) => prisma.week.create({ data });
+
+export const closeOpenWeeks = () => prisma.week.updateMany({ where: { closed: false }, data: { closed: true } });
+
+export const deleteWeek = (id: string) => prisma.week.delete({ where: { id } });

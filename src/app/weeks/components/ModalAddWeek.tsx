@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Week } from "@/generated/prisma";
+import { createWeek } from "@/services/weeks";
 import { endOfWeek, startOfWeek } from "date-fns";
 import { useEffect, useState } from "react";
 
@@ -29,15 +30,25 @@ const ModalAddWeek = ({ weeks, open, setOpen }: { weeks: Week[]; open: boolean; 
 		}
 	}, [open, weeks.length]);
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		if (!name.trim()) return setError("El nombre es obligatorio");
 		if (!startDate || !endDate) return setError("Debe seleccionar ambas fechas");
 		if (startDate > endDate) return setError("La fecha de inicio debe ser anterior o igual a la de fin");
 
-		// TODO: lógica para guardar
-		setError("");
-		setOpen(false);
+		try {
+			await createWeek({
+				name,
+				startDate,
+				endDate,
+				observation: notes,
+				date: endDate,
+			});
+			setOpen(false);
+		} catch (err) {
+			console.error(err);
+			setError("Hubo un error al guardar la semana");
+		}
 	};
 
 	return (
