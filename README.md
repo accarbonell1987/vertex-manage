@@ -2,6 +2,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Docker Create DB
+
+docker run --name postgres-streamers -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres
+
 First, run the development server:
 
 ```bash

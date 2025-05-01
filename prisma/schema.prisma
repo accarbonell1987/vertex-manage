@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Streamer {
+  id           String       @id @default(cuid())
+  name         String
+  phoneNumber  String
+  bankAccount  String
+  createdAt    DateTime     @default(now())
+
+  referals     Referal[]    @relation("StreamerReferals")
+  referredBy   Referal[]    @relation("ReferredStreamer")
+
+  streamingData StreamingData[]
+}
+
+model Week {
+  id        String          @id @default(cuid())
+  date      DateTime
+  data      StreamingData[]
+}
+
+model StreamingData {
+  id          String    @id @default(cuid())
+  diamonds    Int
+  points      Int
+  penalties   Int
+  bonus       Int
+  money       Float
+  agency      String
+
+  streamer    Streamer  @relation(fields: [streamerId], references: [id])
+  streamerId  String
+
+  week        Week      @relation(fields: [weekId], references: [id])
+  weekId      String
+}
+
+model Referal {
+  id             String     @id @default(cuid())
+  streamer       Streamer   @relation("StreamerReferals", fields: [streamerId], references: [id])
+  streamerId     String
+
+  referred       Streamer   @relation("ReferredStreamer", fields: [referredId], references: [id])
+  referredId     String
+
+  createdAt      DateTime   @default(now())
+}
