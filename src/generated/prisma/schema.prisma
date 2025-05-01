@@ -28,9 +28,14 @@ model Streamer {
 }
 
 model Week {
-  id   String          @id @default(cuid())
-  date DateTime
-  data StreamingData[]
+  id          String          @id @default(cuid())
+  name        String
+  date        DateTime
+  startDate   DateTime
+  endDate     DateTime
+  closed      Boolean         @default(false)
+  observation String?
+  data        StreamingData[]
 }
 
 model StreamingData {

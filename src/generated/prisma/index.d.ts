@@ -2359,34 +2359,64 @@ export namespace Prisma {
 
   export type WeekMinAggregateOutputType = {
     id: string | null
+    name: string | null
     date: Date | null
+    startDate: Date | null
+    endDate: Date | null
+    closed: boolean | null
+    observation: string | null
   }
 
   export type WeekMaxAggregateOutputType = {
     id: string | null
+    name: string | null
     date: Date | null
+    startDate: Date | null
+    endDate: Date | null
+    closed: boolean | null
+    observation: string | null
   }
 
   export type WeekCountAggregateOutputType = {
     id: number
+    name: number
     date: number
+    startDate: number
+    endDate: number
+    closed: number
+    observation: number
     _all: number
   }
 
 
   export type WeekMinAggregateInputType = {
     id?: true
+    name?: true
     date?: true
+    startDate?: true
+    endDate?: true
+    closed?: true
+    observation?: true
   }
 
   export type WeekMaxAggregateInputType = {
     id?: true
+    name?: true
     date?: true
+    startDate?: true
+    endDate?: true
+    closed?: true
+    observation?: true
   }
 
   export type WeekCountAggregateInputType = {
     id?: true
+    name?: true
     date?: true
+    startDate?: true
+    endDate?: true
+    closed?: true
+    observation?: true
     _all?: true
   }
 
@@ -2464,7 +2494,12 @@ export namespace Prisma {
 
   export type WeekGroupByOutputType = {
     id: string
+    name: string
     date: Date
+    startDate: Date
+    endDate: Date
+    closed: boolean
+    observation: string | null
     _count: WeekCountAggregateOutputType | null
     _min: WeekMinAggregateOutputType | null
     _max: WeekMaxAggregateOutputType | null
@@ -2486,27 +2521,47 @@ export namespace Prisma {
 
   export type WeekSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     date?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    closed?: boolean
+    observation?: boolean
     data?: boolean | Week$dataArgs<ExtArgs>
     _count?: boolean | WeekCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["week"]>
 
   export type WeekSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     date?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    closed?: boolean
+    observation?: boolean
   }, ExtArgs["result"]["week"]>
 
   export type WeekSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     date?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    closed?: boolean
+    observation?: boolean
   }, ExtArgs["result"]["week"]>
 
   export type WeekSelectScalar = {
     id?: boolean
+    name?: boolean
     date?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    closed?: boolean
+    observation?: boolean
   }
 
-  export type WeekOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date", ExtArgs["result"]["week"]>
+  export type WeekOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date" | "startDate" | "endDate" | "closed" | "observation", ExtArgs["result"]["week"]>
   export type WeekInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     data?: boolean | Week$dataArgs<ExtArgs>
     _count?: boolean | WeekCountOutputTypeDefaultArgs<ExtArgs>
@@ -2521,7 +2576,12 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      name: string
       date: Date
+      startDate: Date
+      endDate: Date
+      closed: boolean
+      observation: string | null
     }, ExtArgs["result"]["week"]>
     composites: {}
   }
@@ -2947,7 +3007,12 @@ export namespace Prisma {
    */
   interface WeekFieldRefs {
     readonly id: FieldRef<"Week", 'String'>
+    readonly name: FieldRef<"Week", 'String'>
     readonly date: FieldRef<"Week", 'DateTime'>
+    readonly startDate: FieldRef<"Week", 'DateTime'>
+    readonly endDate: FieldRef<"Week", 'DateTime'>
+    readonly closed: FieldRef<"Week", 'Boolean'>
+    readonly observation: FieldRef<"Week", 'String'>
   }
     
 
@@ -5626,7 +5691,12 @@ export namespace Prisma {
 
   export const WeekScalarFieldEnum: {
     id: 'id',
-    date: 'date'
+    name: 'name',
+    date: 'date',
+    startDate: 'startDate',
+    endDate: 'endDate',
+    closed: 'closed',
+    observation: 'observation'
   };
 
   export type WeekScalarFieldEnum = (typeof WeekScalarFieldEnum)[keyof typeof WeekScalarFieldEnum]
@@ -5673,6 +5743,14 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Field references
    */
@@ -5703,6 +5781,13 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -5803,13 +5888,23 @@ export namespace Prisma {
     OR?: WeekWhereInput[]
     NOT?: WeekWhereInput | WeekWhereInput[]
     id?: StringFilter<"Week"> | string
+    name?: StringFilter<"Week"> | string
     date?: DateTimeFilter<"Week"> | Date | string
+    startDate?: DateTimeFilter<"Week"> | Date | string
+    endDate?: DateTimeFilter<"Week"> | Date | string
+    closed?: BoolFilter<"Week"> | boolean
+    observation?: StringNullableFilter<"Week"> | string | null
     data?: StreamingDataListRelationFilter
   }
 
   export type WeekOrderByWithRelationInput = {
     id?: SortOrder
+    name?: SortOrder
     date?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    closed?: SortOrder
+    observation?: SortOrderInput | SortOrder
     data?: StreamingDataOrderByRelationAggregateInput
   }
 
@@ -5818,13 +5913,23 @@ export namespace Prisma {
     AND?: WeekWhereInput | WeekWhereInput[]
     OR?: WeekWhereInput[]
     NOT?: WeekWhereInput | WeekWhereInput[]
+    name?: StringFilter<"Week"> | string
     date?: DateTimeFilter<"Week"> | Date | string
+    startDate?: DateTimeFilter<"Week"> | Date | string
+    endDate?: DateTimeFilter<"Week"> | Date | string
+    closed?: BoolFilter<"Week"> | boolean
+    observation?: StringNullableFilter<"Week"> | string | null
     data?: StreamingDataListRelationFilter
   }, "id">
 
   export type WeekOrderByWithAggregationInput = {
     id?: SortOrder
+    name?: SortOrder
     date?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    closed?: SortOrder
+    observation?: SortOrderInput | SortOrder
     _count?: WeekCountOrderByAggregateInput
     _max?: WeekMaxOrderByAggregateInput
     _min?: WeekMinOrderByAggregateInput
@@ -5835,7 +5940,12 @@ export namespace Prisma {
     OR?: WeekScalarWhereWithAggregatesInput[]
     NOT?: WeekScalarWhereWithAggregatesInput | WeekScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Week"> | string
+    name?: StringWithAggregatesFilter<"Week"> | string
     date?: DateTimeWithAggregatesFilter<"Week"> | Date | string
+    startDate?: DateTimeWithAggregatesFilter<"Week"> | Date | string
+    endDate?: DateTimeWithAggregatesFilter<"Week"> | Date | string
+    closed?: BoolWithAggregatesFilter<"Week"> | boolean
+    observation?: StringNullableWithAggregatesFilter<"Week"> | string | null
   }
 
   export type StreamingDataWhereInput = {
@@ -6041,41 +6151,76 @@ export namespace Prisma {
 
   export type WeekCreateInput = {
     id?: string
+    name: string
     date: Date | string
+    startDate: Date | string
+    endDate: Date | string
+    closed?: boolean
+    observation?: string | null
     data?: StreamingDataCreateNestedManyWithoutWeekInput
   }
 
   export type WeekUncheckedCreateInput = {
     id?: string
+    name: string
     date: Date | string
+    startDate: Date | string
+    endDate: Date | string
+    closed?: boolean
+    observation?: string | null
     data?: StreamingDataUncheckedCreateNestedManyWithoutWeekInput
   }
 
   export type WeekUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    closed?: BoolFieldUpdateOperationsInput | boolean
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     data?: StreamingDataUpdateManyWithoutWeekNestedInput
   }
 
   export type WeekUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    closed?: BoolFieldUpdateOperationsInput | boolean
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     data?: StreamingDataUncheckedUpdateManyWithoutWeekNestedInput
   }
 
   export type WeekCreateManyInput = {
     id?: string
+    name: string
     date: Date | string
+    startDate: Date | string
+    endDate: Date | string
+    closed?: boolean
+    observation?: string | null
   }
 
   export type WeekUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    closed?: BoolFieldUpdateOperationsInput | boolean
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WeekUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    closed?: BoolFieldUpdateOperationsInput | boolean
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StreamingDataCreateInput = {
@@ -6309,19 +6454,85 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type WeekCountOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     date?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    closed?: SortOrder
+    observation?: SortOrder
   }
 
   export type WeekMaxOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     date?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    closed?: SortOrder
+    observation?: SortOrder
   }
 
   export type WeekMinOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     date?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    closed?: SortOrder
+    observation?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6609,6 +6820,14 @@ export namespace Prisma {
     connect?: StreamingDataWhereUniqueInput | StreamingDataWhereUniqueInput[]
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type StreamingDataUpdateManyWithoutWeekNestedInput = {
     create?: XOR<StreamingDataCreateWithoutWeekInput, StreamingDataUncheckedCreateWithoutWeekInput> | StreamingDataCreateWithoutWeekInput[] | StreamingDataUncheckedCreateWithoutWeekInput[]
     connectOrCreate?: StreamingDataCreateOrConnectWithoutWeekInput | StreamingDataCreateOrConnectWithoutWeekInput[]
@@ -6774,6 +6993,61 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -7043,12 +7317,22 @@ export namespace Prisma {
 
   export type WeekCreateWithoutDataInput = {
     id?: string
+    name: string
     date: Date | string
+    startDate: Date | string
+    endDate: Date | string
+    closed?: boolean
+    observation?: string | null
   }
 
   export type WeekUncheckedCreateWithoutDataInput = {
     id?: string
+    name: string
     date: Date | string
+    startDate: Date | string
+    endDate: Date | string
+    closed?: boolean
+    observation?: string | null
   }
 
   export type WeekCreateOrConnectWithoutDataInput = {
@@ -7100,12 +7384,22 @@ export namespace Prisma {
 
   export type WeekUpdateWithoutDataInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    closed?: BoolFieldUpdateOperationsInput | boolean
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WeekUncheckedUpdateWithoutDataInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    closed?: BoolFieldUpdateOperationsInput | boolean
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StreamerCreateWithoutReferalsInput = {

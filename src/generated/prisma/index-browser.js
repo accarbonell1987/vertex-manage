@@ -130,7 +130,12 @@ exports.Prisma.StreamerScalarFieldEnum = {
 
 exports.Prisma.WeekScalarFieldEnum = {
   id: 'id',
-  date: 'date'
+  name: 'name',
+  date: 'date',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  closed: 'closed',
+  observation: 'observation'
 };
 
 exports.Prisma.StreamingDataScalarFieldEnum = {
@@ -160,6 +165,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
