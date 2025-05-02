@@ -1,4 +1,5 @@
 import { fetchWithToast } from "@/app/lib/fetchWithToast";
+import { Week } from "@/generated/prisma";
 import { CreateWeekPayload } from "@/types/weeks.types";
 
 export async function createWeek(payload: CreateWeekPayload): Promise<void> {
@@ -17,8 +18,8 @@ export async function createWeek(payload: CreateWeekPayload): Promise<void> {
 	);
 }
 
-export async function getWeeks() {
-	const response = await fetchWithToast(
+export async function getWeeks(): Promise<Week[]> {
+	return await fetchWithToast(
 		"/api/weeks",
 		{
 			method: "GET",
@@ -29,11 +30,10 @@ export async function getWeeks() {
 			error: "No se pudieron obtener las semanas.",
 		}
 	);
-	return response.json();
 }
 
-export async function getWeek(id: string) {
-	const response = await fetchWithToast(
+export async function getWeek(id: string): Promise<Week> {
+	return await fetchWithToast(
 		`/api/weeks/${id}`,
 		{
 			method: "GET",
@@ -44,11 +44,10 @@ export async function getWeek(id: string) {
 			error: "No se pudo obtener la semana.",
 		}
 	);
-	return response.json();
 }
 
-export async function deleteWeek(id: string) {
-	const response = await fetchWithToast(
+export async function deleteWeek(id: string): Promise<void> {
+	await fetchWithToast(
 		`/api/weeks/${id}`,
 		{
 			method: "DELETE",
