@@ -20,6 +20,7 @@ export async function GET(_: Request, { params }: Params) {
 
 export async function DELETE(_: Request, { params }: Params) {
 	try {
+		console.log("🚀 ~ DELETE ~ params:", params);
 		await deleteWeek(params.id);
 		return NextResponse.json({ message: "Semana eliminada" });
 	} catch (error) {

@@ -1,8 +1,8 @@
 import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
-import { deleteWeek } from "@/services/weeks";
-import { CircleX, Eye, Trash2 } from "lucide-react";
+import { CircleX, Eye } from "lucide-react";
 import { FormattedWeek } from "../../../types/weeks.types";
+import DeleteWeekDialog from "./DeleteWeekDialog";
 
 interface Props {
 	week: FormattedWeek;
@@ -25,14 +25,7 @@ export function CardWeek({ week }: Readonly<Props>) {
 						</Button>
 					</ToolTip>
 					<ToolTip content="Eliminar">
-						<Button
-							className="cursor-pointer bg-red-600 hover:bg-red-700"
-							variant="destructive"
-							size="icon"
-							onClick={() => deleteWeek(week.id)}
-						>
-							<Trash2 />
-						</Button>
+						<DeleteWeekDialog week={week} />
 					</ToolTip>
 				</div>
 			</div>

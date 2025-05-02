@@ -25,7 +25,7 @@ export default function WeeksClientPage({ weeks }: Readonly<Props>) {
 	return (
 		<div>
 			<div className="flex justify-end mb-4 border p-2 rounded-lg">
-				<Button className="cursor-pointer" onClick={() => setOpen(true)}>
+				<Button className="cursor-pointer w-full sm:w-auto" onClick={() => setOpen(true)}>
 					<Plus />
 					Crear semana
 				</Button>
