@@ -8,17 +8,23 @@ import { useState } from "react";
 
 interface Props {
 	week: FormattedWeek;
+	onRefresh: () => void;
 }
 
-const DeleteWeekDialog = ({ week }: Readonly<Props>) => {
+const DeleteWeekDialog = ({ week, onRefresh }: Readonly<Props>) => {
 	const [weekName, setWeekName] = useState("");
+
+	const handleDeleteWeek = async () => {
+		await deleteWeek(week.id);
+		onRefresh();
+	};
 
 	return (
 		<DialogComponent
 			title="Eliminar semana"
 			description="¿Estás seguro de eliminar la semana?"
 			trigger={
-				<Button className="cursor-pointer bg-red-600 hover:bg-red-700" variant="destructive" size="icon">
+				<Button className="cursor-pointer bg-red-600 hover:bg-red-700" variant="destructive" size="icon" disabled={week.closed}>
 					<Trash2 />
 				</Button>
 			}
@@ -27,7 +33,7 @@ const DeleteWeekDialog = ({ week }: Readonly<Props>) => {
 					className="cursor-pointer bg-red-600 hover:bg-red-700"
 					variant="destructive"
 					disabled={weekName !== week.name}
-					onClick={() => deleteWeek(week.id)}
+					onClick={handleDeleteWeek}
 				>
 					<Trash2 /> Eliminar
 				</Button>

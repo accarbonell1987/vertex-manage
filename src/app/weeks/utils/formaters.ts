@@ -3,7 +3,9 @@ import { FormattedWeek } from "@/types/weeks.types";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
-export const getFormatedWeeks = (weeks: Week[]): FormattedWeek[] => {
+export const getFormatedWeeks = (weeks: Week[] | null): FormattedWeek[] => {
+	if (!weeks) return [];
+
 	return weeks.map((week) => ({
 		...week,
 		formattedStart: format(new Date(week.startDate), "PPPP", { locale: es }),

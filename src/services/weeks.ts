@@ -1,9 +1,9 @@
-import { fetchWithToast } from "@/app/lib/fetchWithToast";
+import { doFetchWithToast } from "@/app/lib/fetch";
 import { Week } from "@/generated/prisma";
 import { CreateWeekPayload } from "@/types/weeks.types";
 
 export async function createWeek(payload: CreateWeekPayload): Promise<void> {
-	return fetchWithToast(
+	await doFetchWithToast(
 		"/api/weeks",
 		{
 			method: "POST",
@@ -11,15 +11,15 @@ export async function createWeek(payload: CreateWeekPayload): Promise<void> {
 			body: JSON.stringify(payload),
 		},
 		{
-			loading: "Creando semana...",
-			success: "Semana creada con éxito",
-			error: "No se pudo crear la semana",
+			loading: "Cargando semanas...",
+			success: "Semana creada",
+			error: "No se pudo crear la semana.",
 		}
 	);
 }
 
-export async function getWeeks(): Promise<Week[]> {
-	return await fetchWithToast(
+export async function getWeeks(): Promise<Week[] | null> {
+	return await doFetchWithToast<Week[] | null>(
 		"/api/weeks",
 		{
 			method: "GET",
@@ -32,8 +32,8 @@ export async function getWeeks(): Promise<Week[]> {
 	);
 }
 
-export async function getWeek(id: string): Promise<Week> {
-	return await fetchWithToast(
+export async function getWeek(id: string): Promise<Week | null> {
+	return await doFetchWithToast(
 		`/api/weeks/${id}`,
 		{
 			method: "GET",
@@ -47,7 +47,7 @@ export async function getWeek(id: string): Promise<Week> {
 }
 
 export async function deleteWeek(id: string): Promise<void> {
-	await fetchWithToast(
+	await doFetchWithToast(
 		`/api/weeks/${id}`,
 		{
 			method: "DELETE",

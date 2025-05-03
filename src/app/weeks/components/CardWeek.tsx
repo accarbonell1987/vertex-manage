@@ -1,42 +1,55 @@
 import ToolTip from "@/components/ToolTip";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CircleX, Eye } from "lucide-react";
 import { FormattedWeek } from "../../../types/weeks.types";
 import DeleteWeekDialog from "./DeleteWeekDialog";
 
 interface Props {
 	week: FormattedWeek;
+	onRefresh: () => void;
 }
 
-export function CardWeek({ week }: Readonly<Props>) {
+export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 	return (
-		<div className="flex flex-col gap-2 rounded-lg border p-4 bg-white shadow-sm hover:shadow-md transition-all">
-			<div className="flex justify-between items-center">
-				<h2 className="text-lg font-semibold text-gray-800">{week.name}</h2>
-				<div className="flex gap-2">
-					<ToolTip content="Detalles">
-						<Button className="cursor-pointer bg-blue-200 hover:bg-blue-300" variant="secondary" size="icon">
-							<Eye />
-						</Button>
-					</ToolTip>
-					<ToolTip content="Cerrar">
-						<Button className="cursor-pointer bg-amber-200 hover:bg-amber-300" variant="secondary" size="icon">
-							<CircleX />
-						</Button>
-					</ToolTip>
-					<ToolTip content="Eliminar">
-						<DeleteWeekDialog week={week} />
-					</ToolTip>
+		<Card className={`flex flex-col gap-2 ${week.closed ? "bg-gray-100" : ""}`}>
+			<CardHeader>
+				<div className="flex flex-col justify-between items-center gap-2 sm:flex-row">
+					<CardTitle>{week.name}</CardTitle>
+					<div className="flex gap-2">
+						<ToolTip content="Detalles">
+							<Button className="cursor-pointer bg-blue-200 hover:bg-blue-300" variant="secondary" size="icon">
+								<Eye />
+							</Button>
+						</ToolTip>
+						<ToolTip content="Cerrar">
+							<Button className="cursor-pointer bg-amber-200 hover:bg-amber-300" variant="secondary" size="icon" disabled={week.closed}>
+								<CircleX />
+							</Button>
+						</ToolTip>
+						<ToolTip content="Eliminar">
+							<DeleteWeekDialog week={week} onRefresh={onRefresh} />
+						</ToolTip>
+					</div>
 				</div>
-			</div>
-			<div className="flex gap-2 border p-2 rounded-lg">
-				<span className="text-sm text-gray-600">
-					<b>Desde:</b> {week.formattedStart}
-				</span>
-				<span className="text-sm text-gray-600">
-					<b>Hasta:</b> {week.formattedEnd}
-				</span>
-			</div>
-		</div>
+			</CardHeader>
+			<CardContent className="flex flex-col gap-2">
+				<div className="flex flex-col gap-2 border p-2 rounded-lg sm:flex-row">
+					<span className="text-sm text-gray-600">
+						<b>Desde:</b> {week.formattedStart}
+					</span>
+					<span className="text-sm text-gray-600">
+						<b>Hasta:</b> {week.formattedEnd}
+					</span>
+				</div>
+				<div className="flex flex-col gap-2 border p-2 rounded-lg sm:flex-row">
+					<span className="flex items-center gap-2 text-sm text-gray-600">
+						<b>Estado:</b>
+						<Badge variant={week.closed ? "destructive" : "default"}>{week.closed ? "Cerrada" : "Abierta"}</Badge>
+					</span>
+				</div>
+			</CardContent>
+		</Card>
 	);
 }

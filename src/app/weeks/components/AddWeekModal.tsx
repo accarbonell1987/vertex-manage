@@ -15,7 +15,7 @@ interface Props {
 	setOpen: (open: boolean) => void;
 }
 
-const ModalAddWeek = ({ weeks, open, onClose, setOpen }: Props) => {
+const AddWeekModal = ({ weeks, open, onClose, setOpen }: Props) => {
 	const today = new Date();
 	const defaultStartDate = startOfWeek(today, { weekStartsOn: 1 });
 	const defaultEndDate = endOfWeek(today, { weekStartsOn: 1 });
@@ -49,7 +49,7 @@ const ModalAddWeek = ({ weeks, open, onClose, setOpen }: Props) => {
 				startDate,
 				endDate,
 				observation: notes,
-				date: endDate,
+				date: new Date(),
 			});
 			onClose();
 		} catch (err) {
@@ -87,4 +87,4 @@ const ModalAddWeek = ({ weeks, open, onClose, setOpen }: Props) => {
 	);
 };
 
-export default ModalAddWeek;
+export default AddWeekModal;

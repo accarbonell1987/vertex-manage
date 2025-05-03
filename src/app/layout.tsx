@@ -12,7 +12,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 			<body className="min-h-screen bg-gray-50">
 				<NavBar />
 				<main className="p-6">{children}</main>
-				<Toaster richColors position="bottom-right" />
+				<Toaster richColors position="top-center" />
 			</body>
 		</html>
 	);
