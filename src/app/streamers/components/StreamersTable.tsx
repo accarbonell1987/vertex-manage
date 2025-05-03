@@ -2,17 +2,11 @@ import CopyToClipboard from "@/components/CopyToClipboard";
 import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { deleteStreamer } from "@/services/streamers";
 import { StreamerWithReferals } from "@/types/streamers.types";
 import { Edit, Link } from "lucide-react";
 import DeleteStreamerAlert from "./DeleteStreamerAlert";
 
 const StreamersTable = ({ streamers, onRefresh }: Readonly<{ streamers: StreamerWithReferals[]; onRefresh: () => void }>) => {
-	const handleOnDelete = async (streamer: StreamerWithReferals) => {
-		await deleteStreamer(streamer.id);
-		onRefresh();
-	};
-
 	return (
 		<Table>
 			<TableHeader>
