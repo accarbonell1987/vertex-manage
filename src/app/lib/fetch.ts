@@ -14,7 +14,7 @@ export async function doFetch<T = unknown>(url: string, options: RequestInit): P
 	return res.json();
 }
 
-export async function doFetchWithToast<T = unknown>(url: string, options: RequestInit, toastMessages?: ToastMessage): Promise<T | null> {
+export async function doFetchWithToast<T = unknown>(url: string, options: RequestInit, toastMessages?: ToastMessage): Promise<T> {
 	const show = {
 		success: (message?: string) => ToastSonner.showSuccess(message ?? "Operación Exitosa"),
 		error: (message?: string) => ToastSonner.showError(message ?? "Error en la Operación"),
@@ -34,9 +34,12 @@ export async function doFetchWithToast<T = unknown>(url: string, options: Reques
 
 		return result;
 	} catch (error) {
-		if (toastMessages?.loading && toastId) show.update(toastId, toastMessages.error ?? "Error", "error");
-		if (toastMessages?.error) show.error(toastMessages.error);
 		console.error(error);
-		return null;
+		if (toastMessages?.loading && toastId) {
+			show.update(toastId, toastMessages.error ?? "Error", "error");
+			throw error;
+		}
+		if (toastMessages?.error) show.error(toastMessages.error);
+		throw error;
 	}
 }

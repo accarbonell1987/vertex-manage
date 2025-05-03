@@ -8,17 +8,20 @@ import { StreamerWithReferals } from "@/types/streamers.types";
 import { Plus, Sheet } from "lucide-react";
 import { useState } from "react";
 import { exportStreamersToExcel } from "../lib/exportExcel";
-import AddStreamerModal from "./components/AddStreamerModal";
 import FindStreamers from "./components/FindStreamers";
+import StreamerModal from "./components/StreamerModal";
 import StreamersTable from "./components/StreamersTable";
 import useStreamer from "./hooks/useStreamer";
 
 const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 	const [open, setOpen] = useState(false);
+	const [selectedStreamer, setSelectedStreamer] = useState<StreamerWithReferals | null>(null);
+
 	const { streamers, handleFindByCriteria, handleChangeStreamers, handleOnRefresh } = useStreamer({ init });
 
 	const handleOnClose = async () => {
 		setOpen(false);
+		setSelectedStreamer(null);
 		const updatedStreamers = await getStreamers();
 		if (!updatedStreamers) return;
 
@@ -31,7 +34,7 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 
 	return (
 		<>
-			<AddStreamerModal open={open} onClose={handleOnClose} setOpen={setOpen} />
+			<StreamerModal open={open} onClose={handleOnClose} setOpen={setOpen} streamer={selectedStreamer} />
 			<Card className="flex justify-end gap-4">
 				<CardHeader>
 					<CardTitle>
@@ -60,7 +63,14 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 							</CardTitle>
 						</CardHeader>
 						<CardContent>
-							<StreamersTable streamers={streamers} onRefresh={handleOnRefresh} />
+							<StreamersTable
+								streamers={streamers}
+								onRefresh={handleOnRefresh}
+								onEdit={(streamer) => {
+									setSelectedStreamer(streamer);
+									setOpen(true);
+								}}
+							/>
 						</CardContent>
 					</Card>
 				</CardContent>

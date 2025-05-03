@@ -6,7 +6,11 @@ import { StreamerWithReferals } from "@/types/streamers.types";
 import { Edit, Link } from "lucide-react";
 import DeleteStreamerAlert from "./DeleteStreamerAlert";
 
-const StreamersTable = ({ streamers, onRefresh }: Readonly<{ streamers: StreamerWithReferals[]; onRefresh: () => void }>) => {
+const StreamersTable = ({
+	streamers,
+	onRefresh,
+	onEdit,
+}: Readonly<{ streamers: StreamerWithReferals[]; onRefresh: () => void; onEdit: (streamer: StreamerWithReferals) => void }>) => {
 	return (
 		<Table>
 			<TableHeader>
@@ -45,7 +49,7 @@ const StreamersTable = ({ streamers, onRefresh }: Readonly<{ streamers: Streamer
 						</TableCell>
 						<TableCell className="flex gap-2 justify-center">
 							<ToolTip content="Editar">
-								<Button className="cursor-pointer bg-orange-200 hover:bg-orange-300" variant="secondary">
+								<Button onClick={() => onEdit(streamer)} className="cursor-pointer bg-orange-200 hover:bg-orange-300" variant="secondary">
 									<Edit />
 								</Button>
 							</ToolTip>

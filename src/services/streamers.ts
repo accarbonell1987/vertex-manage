@@ -17,8 +17,8 @@ export async function createStreamer(payload: CreateStreamerPayload): Promise<vo
 	);
 }
 
-export async function getStreamers(): Promise<StreamerWithReferals[] | null> {
-	return await doFetchWithToast<StreamerWithReferals[] | null>(
+export async function getStreamers(): Promise<StreamerWithReferals[]> {
+	return await doFetchWithToast<StreamerWithReferals[]>(
 		"/api/streamers",
 		{
 			method: "GET",
@@ -31,8 +31,8 @@ export async function getStreamers(): Promise<StreamerWithReferals[] | null> {
 	);
 }
 
-export async function getStreamer(id: string): Promise<StreamerWithReferals | null> {
-	return await doFetchWithToast(
+export async function getStreamer(id: string): Promise<StreamerWithReferals> {
+	return await doFetchWithToast<StreamerWithReferals>(
 		`/api/streamers/${id}`,
 		{
 			method: "GET",
@@ -46,7 +46,7 @@ export async function getStreamer(id: string): Promise<StreamerWithReferals | nu
 }
 
 export async function deleteStreamer(id: string): Promise<void> {
-	await doFetchWithToast(
+	await doFetchWithToast<void>(
 		`/api/streamers/${id}`,
 		{
 			method: "DELETE",
@@ -59,14 +59,33 @@ export async function deleteStreamer(id: string): Promise<void> {
 	);
 }
 
+export async function updateStreamer(
+	id: string,
+	data: { name: string; phoneNumber?: string; bankAccount?: string; wahaID?: string; wahaName?: string }
+): Promise<void> {
+	await doFetchWithToast<void>(
+		`/api/streamers/${id}`,
+		{
+			method: "PATCH",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(data),
+		},
+		{
+			success: "Streamer actualizado",
+			loading: "Actualizando streamer...",
+			error: "No se pudo actualizar el streamer.",
+		}
+	);
+}
+
 export async function getStreamersByCriteria(criteria: {
 	wahaID?: string;
 	wahaName?: string;
 	name?: string;
 	phoneNumber?: string;
 	bankAccount?: string;
-}): Promise<StreamerWithReferals[] | null> {
-	return await doFetchWithToast<StreamerWithReferals[] | null>(
+}): Promise<StreamerWithReferals[]> {
+	return await doFetchWithToast<StreamerWithReferals[]>(
 		`/api/streamers?${new URLSearchParams(criteria).toString()}`,
 		{
 			method: "GET",

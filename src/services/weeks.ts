@@ -3,7 +3,7 @@ import { Week } from "@/generated/prisma";
 import { CreateWeekPayload } from "@/types/weeks.types";
 
 export async function createWeek(payload: CreateWeekPayload): Promise<void> {
-	await doFetchWithToast(
+	await doFetchWithToast<void>(
 		"/api/weeks",
 		{
 			method: "POST",
@@ -18,8 +18,8 @@ export async function createWeek(payload: CreateWeekPayload): Promise<void> {
 	);
 }
 
-export async function getWeeks(): Promise<Week[] | null> {
-	return await doFetchWithToast<Week[] | null>(
+export async function getWeeks(): Promise<Week[]> {
+	return await doFetchWithToast<Week[]>(
 		"/api/weeks",
 		{
 			method: "GET",
@@ -32,8 +32,8 @@ export async function getWeeks(): Promise<Week[] | null> {
 	);
 }
 
-export async function getWeek(id: string): Promise<Week | null> {
-	return await doFetchWithToast(
+export async function getWeek(id: string): Promise<Week> {
+	return await doFetchWithToast<Week>(
 		`/api/weeks/${id}`,
 		{
 			method: "GET",
@@ -47,7 +47,7 @@ export async function getWeek(id: string): Promise<Week | null> {
 }
 
 export async function deleteWeek(id: string): Promise<void> {
-	await doFetchWithToast(
+	await doFetchWithToast<void>(
 		`/api/weeks/${id}`,
 		{
 			method: "DELETE",
@@ -61,7 +61,7 @@ export async function deleteWeek(id: string): Promise<void> {
 }
 
 export async function closeWeek(id: string): Promise<void> {
-	await doFetchWithToast(
+	await doFetchWithToast<void>(
 		`/api/weeks/${id}`,
 		{
 			method: "PATCH",

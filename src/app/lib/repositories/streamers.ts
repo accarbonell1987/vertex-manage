@@ -28,7 +28,11 @@ export const deleteStreamer = async (id: string) => {
 export const updateStreamer = (
 	id: string,
 	data: { name: string; phoneNumber?: string; bankAccount?: string; wahaID?: string; wahaName?: string }
-) => prisma.streamer.update({ where: { id }, data });
+) => {
+	console.log(id, data);
+	const updatedStreamer = prisma.streamer.update({ where: { id }, data });
+	return updatedStreamer;
+};
 
 export const findStreamersByCriteria = (criteria: {
 	wahaID?: string;

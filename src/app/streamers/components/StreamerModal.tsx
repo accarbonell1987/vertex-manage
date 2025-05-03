@@ -3,7 +3,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { createStreamer } from "@/services/streamers";
+import { createStreamer, updateStreamer } from "@/services/streamers";
+import { StreamerWithReferals } from "@/types/streamers.types";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 
@@ -11,9 +12,17 @@ interface Props {
 	open: boolean;
 	onClose: () => void;
 	setOpen: (open: boolean) => void;
+	streamer?: StreamerWithReferals | null;
 }
 
-const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
+interface Props {
+	open: boolean;
+	onClose: () => void;
+	setOpen: (open: boolean) => void;
+	streamer?: StreamerWithReferals | null;
+}
+
+const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 	const [name, setName] = useState("");
 	const [wahaID, setWahaID] = useState("");
 	const [wahaName, setWahaName] = useState("");
@@ -23,14 +32,22 @@ const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
 
 	useEffect(() => {
 		if (open) {
-			setName("");
-			setWahaID("");
-			setWahaName("");
-			setPhoneNumber("");
-			setBankAccount("");
+			if (streamer) {
+				setName(streamer.name ?? "");
+				setWahaID(streamer.wahaID ?? "");
+				setWahaName(streamer.wahaName ?? "");
+				setPhoneNumber(streamer.phoneNumber ?? "");
+				setBankAccount(streamer.bankAccount ?? "");
+			} else {
+				setName("");
+				setWahaID("");
+				setWahaName("");
+				setPhoneNumber("");
+				setBankAccount("");
+			}
 			setError("");
 		}
-	}, [open]);
+	}, [open, streamer]);
 
 	const validateForm = () => {
 		if (!name.trim()) return "El nombre es obligatorio";
@@ -54,20 +71,32 @@ const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
 		e.preventDefault();
 
 		const validationError = validateForm();
-		if (validationError) return setError(validationError);
+		if (validationError) {
+			setError(validationError);
+			return;
+		}
 
 		try {
-			await createStreamer({
-				name,
-				wahaID,
-				wahaName,
-				phoneNumber,
-				bankAccount,
-			});
+			if (streamer) {
+				await updateStreamer(streamer.id, {
+					name,
+					wahaID,
+					wahaName,
+					phoneNumber,
+					bankAccount,
+				});
+			} else {
+				await createStreamer({
+					name,
+					wahaID,
+					wahaName,
+					phoneNumber,
+					bankAccount,
+				});
+			}
 			onClose();
 		} catch (err) {
-			console.error(err);
-			setError("Hubo un error al guardar el streamer");
+			setError("Hubo un error al guardar el streamer" + err);
 		}
 	};
 
@@ -75,7 +104,7 @@ const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Adicionar Nuevo Streamer</DialogTitle>
+					<DialogTitle>{streamer ? "Editar Streamer" : "Adicionar Nuevo Streamer"}</DialogTitle>
 					<DialogDescription>
 						Por favor, completa los campos obligatorios. <b className="text-red-500">*</b>
 					</DialogDescription>
@@ -112,7 +141,7 @@ const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
 						<Button type="button" variant="secondary" onClick={() => setOpen(false)}>
 							Cancelar
 						</Button>
-						<Button type="submit">Guardar</Button>
+						<Button type="submit">{streamer ? "Actualizar" : "Guardar"}</Button>
 					</div>
 				</form>
 			</DialogContent>
@@ -120,4 +149,4 @@ const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
 	);
 };
 
-export default AddStreamerModal;
+export default StreamerModal;
