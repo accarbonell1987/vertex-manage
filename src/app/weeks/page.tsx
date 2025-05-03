@@ -1,8 +1,10 @@
-import WeeksClientPage from "./WeeksClientPage";
+import { findAllWeeks } from "../lib/repositories/weeks";
+import { getFormatedWeeks } from "./utils/formaters";
+import Weeks from "./Weeks";
 
 export default async function WeeksPage() {
-	// const weeks = await prisma.week.findMany({ orderBy: { date: "desc" } });
-	// const weeksFormatted = getFormatedWeeks(weeks);
+	const weeks = await findAllWeeks();
+	const weeksFormatted = getFormatedWeeks(weeks);
 
-	return <WeeksClientPage />;
+	return <Weeks weeks={weeksFormatted} />;
 }

@@ -1233,6 +1233,7 @@ export namespace Prisma {
 
   export type StreamerMinAggregateOutputType = {
     id: string | null
+    wahaID: string | null
     name: string | null
     phoneNumber: string | null
     bankAccount: string | null
@@ -1241,6 +1242,7 @@ export namespace Prisma {
 
   export type StreamerMaxAggregateOutputType = {
     id: string | null
+    wahaID: string | null
     name: string | null
     phoneNumber: string | null
     bankAccount: string | null
@@ -1249,6 +1251,7 @@ export namespace Prisma {
 
   export type StreamerCountAggregateOutputType = {
     id: number
+    wahaID: number
     name: number
     phoneNumber: number
     bankAccount: number
@@ -1259,6 +1262,7 @@ export namespace Prisma {
 
   export type StreamerMinAggregateInputType = {
     id?: true
+    wahaID?: true
     name?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1267,6 +1271,7 @@ export namespace Prisma {
 
   export type StreamerMaxAggregateInputType = {
     id?: true
+    wahaID?: true
     name?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1275,6 +1280,7 @@ export namespace Prisma {
 
   export type StreamerCountAggregateInputType = {
     id?: true
+    wahaID?: true
     name?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1356,6 +1362,7 @@ export namespace Prisma {
 
   export type StreamerGroupByOutputType = {
     id: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -1381,6 +1388,7 @@ export namespace Prisma {
 
   export type StreamerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    wahaID?: boolean
     name?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1393,6 +1401,7 @@ export namespace Prisma {
 
   export type StreamerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    wahaID?: boolean
     name?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1401,6 +1410,7 @@ export namespace Prisma {
 
   export type StreamerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    wahaID?: boolean
     name?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1409,13 +1419,14 @@ export namespace Prisma {
 
   export type StreamerSelectScalar = {
     id?: boolean
+    wahaID?: boolean
     name?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
     createdAt?: boolean
   }
 
-  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
+  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "name" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
   export type StreamerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     referals?: boolean | Streamer$referalsArgs<ExtArgs>
     referredBy?: boolean | Streamer$referredByArgs<ExtArgs>
@@ -1434,6 +1445,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      wahaID: string
       name: string
       phoneNumber: string
       bankAccount: string
@@ -1865,6 +1877,7 @@ export namespace Prisma {
    */
   interface StreamerFieldRefs {
     readonly id: FieldRef<"Streamer", 'String'>
+    readonly wahaID: FieldRef<"Streamer", 'String'>
     readonly name: FieldRef<"Streamer", 'String'>
     readonly phoneNumber: FieldRef<"Streamer", 'String'>
     readonly bankAccount: FieldRef<"Streamer", 'String'>
@@ -5680,6 +5693,7 @@ export namespace Prisma {
 
   export const StreamerScalarFieldEnum: {
     id: 'id',
+    wahaID: 'wahaID',
     name: 'name',
     phoneNumber: 'phoneNumber',
     bankAccount: 'bankAccount',
@@ -5827,6 +5841,7 @@ export namespace Prisma {
     OR?: StreamerWhereInput[]
     NOT?: StreamerWhereInput | StreamerWhereInput[]
     id?: StringFilter<"Streamer"> | string
+    wahaID?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
     phoneNumber?: StringFilter<"Streamer"> | string
     bankAccount?: StringFilter<"Streamer"> | string
@@ -5838,6 +5853,7 @@ export namespace Prisma {
 
   export type StreamerOrderByWithRelationInput = {
     id?: SortOrder
+    wahaID?: SortOrder
     name?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -5852,6 +5868,7 @@ export namespace Prisma {
     AND?: StreamerWhereInput | StreamerWhereInput[]
     OR?: StreamerWhereInput[]
     NOT?: StreamerWhereInput | StreamerWhereInput[]
+    wahaID?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
     phoneNumber?: StringFilter<"Streamer"> | string
     bankAccount?: StringFilter<"Streamer"> | string
@@ -5863,6 +5880,7 @@ export namespace Prisma {
 
   export type StreamerOrderByWithAggregationInput = {
     id?: SortOrder
+    wahaID?: SortOrder
     name?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -5877,6 +5895,7 @@ export namespace Prisma {
     OR?: StreamerScalarWhereWithAggregatesInput[]
     NOT?: StreamerScalarWhereWithAggregatesInput | StreamerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Streamer"> | string
+    wahaID?: StringWithAggregatesFilter<"Streamer"> | string
     name?: StringWithAggregatesFilter<"Streamer"> | string
     phoneNumber?: StringWithAggregatesFilter<"Streamer"> | string
     bankAccount?: StringWithAggregatesFilter<"Streamer"> | string
@@ -6083,6 +6102,7 @@ export namespace Prisma {
 
   export type StreamerCreateInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -6094,6 +6114,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedCreateInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -6105,6 +6126,7 @@ export namespace Prisma {
 
   export type StreamerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -6116,6 +6138,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -6127,6 +6150,7 @@ export namespace Prisma {
 
   export type StreamerCreateManyInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -6135,6 +6159,7 @@ export namespace Prisma {
 
   export type StreamerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -6143,6 +6168,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -6400,6 +6426,7 @@ export namespace Prisma {
 
   export type StreamerCountOrderByAggregateInput = {
     id?: SortOrder
+    wahaID?: SortOrder
     name?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -6408,6 +6435,7 @@ export namespace Prisma {
 
   export type StreamerMaxOrderByAggregateInput = {
     id?: SortOrder
+    wahaID?: SortOrder
     name?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -6416,6 +6444,7 @@ export namespace Prisma {
 
   export type StreamerMinOrderByAggregateInput = {
     id?: SortOrder
+    wahaID?: SortOrder
     name?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -7292,6 +7321,7 @@ export namespace Prisma {
 
   export type StreamerCreateWithoutStreamingDataInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -7302,6 +7332,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedCreateWithoutStreamingDataInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -7353,6 +7384,7 @@ export namespace Prisma {
 
   export type StreamerUpdateWithoutStreamingDataInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -7363,6 +7395,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedUpdateWithoutStreamingDataInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -7404,6 +7437,7 @@ export namespace Prisma {
 
   export type StreamerCreateWithoutReferalsInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -7414,6 +7448,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedCreateWithoutReferalsInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -7429,6 +7464,7 @@ export namespace Prisma {
 
   export type StreamerCreateWithoutReferredByInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -7439,6 +7475,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedCreateWithoutReferredByInput = {
     id?: string
+    wahaID: string
     name: string
     phoneNumber: string
     bankAccount: string
@@ -7465,6 +7502,7 @@ export namespace Prisma {
 
   export type StreamerUpdateWithoutReferalsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -7475,6 +7513,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedUpdateWithoutReferalsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -7496,6 +7535,7 @@ export namespace Prisma {
 
   export type StreamerUpdateWithoutReferredByInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string
@@ -7506,6 +7546,7 @@ export namespace Prisma {
 
   export type StreamerUncheckedUpdateWithoutReferredByInput = {
     id?: StringFieldUpdateOperationsInput | string
+    wahaID?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     bankAccount?: StringFieldUpdateOperationsInput | string

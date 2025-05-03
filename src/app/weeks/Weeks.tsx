@@ -1,27 +1,27 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWeeks } from "@/services/weeks";
 import { FormattedWeek } from "@/types/weeks.types";
 import { Plus } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddWeekModal from "./components/AddWeekModal";
 import { CardWeek } from "./components/CardWeek";
 import { getFormatedWeeks } from "./utils/formaters";
 
-export default function WeeksClientPage() {
+export default function Weeks({ weeks }: Readonly<{ weeks: FormattedWeek[] }>) {
 	const [open, setOpen] = useState(false);
-	const [weekList, setWeekList] = useState<FormattedWeek[]>([]);
+	const [weekList, setWeekList] = useState<FormattedWeek[]>(weeks);
 
 	//! cargar semanas
-	useEffect(() => {
-		const fetchWeeks = async () => {
-			const weeks = await getWeeks();
-			setWeekList(getFormatedWeeks(weeks));
-		};
-		fetchWeeks();
-	}, []);
+	// useEffect(() => {
+	// 	const fetchWeeks = async () => {
+	// 		const weeks = await getWeeks();
+	// 		setWeekList(getFormatedWeeks(weeks));
+	// 	};
+	// 	fetchWeeks();
+	// }, []);
 
 	const handleOnClose = async () => {
 		setOpen(false);
@@ -34,14 +34,17 @@ export default function WeeksClientPage() {
 	return (
 		<>
 			<AddWeekModal weeks={weekList} open={open} onClose={handleOnClose} setOpen={setOpen} />
-			<Card className="flex justify-end">
+			<Card className="flex justify-end gap-4">
 				<CardHeader>
-					<CardTitle>Semanas</CardTitle>
-					<CardDescription>Lista de semanas disponibles</CardDescription>
-					<Button className="cursor-pointer w-full sm:w-max-[200px]" onClick={() => setOpen(true)} disabled={hasOpenWeek}>
-						<Plus />
-						Crear semana
-					</Button>
+					<CardTitle>
+						<div className="flex items-center gap-2">
+							Gestión de Semanas
+							<Button className="cursor-pointer ml-auto" onClick={() => setOpen(true)} disabled={hasOpenWeek}>
+								<Plus />
+								Crear semana
+							</Button>
+						</div>
+					</CardTitle>
 				</CardHeader>
 				<CardContent className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 					{weekList.map((week) => (

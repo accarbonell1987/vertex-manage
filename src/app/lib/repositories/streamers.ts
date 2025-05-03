@@ -10,7 +10,7 @@ export const findStreamerById = (id: string) =>
 		where: { id },
 	});
 
-export const createStreamer = (data: { name: string; phoneNumber: string; bankAccount: string }) =>
+export const createStreamer = (data: { name: string; phoneNumber: string; bankAccount: string; wahaID: string }) =>
 	prisma.streamer.create({
 		data,
 	});
@@ -25,3 +25,14 @@ export const deleteStreamer = async (id: string) => {
 
 export const updateStreamer = (id: string, data: { name: string; phoneNumber: string; bankAccount: string }) =>
 	prisma.streamer.update({ where: { id }, data });
+
+export const findStreamersByCriteria = (criteria: { wahaID?: string; name?: string; phoneNumber?: string; bankAccount?: string }) =>
+	prisma.streamer.findMany({
+		where: {
+			...(criteria.wahaID && { wahaID: { contains: criteria.wahaID, mode: "insensitive" } }),
+			...(criteria.name && { name: { contains: criteria.name, mode: "insensitive" } }),
+			...(criteria.phoneNumber && { phoneNumber: { contains: criteria.phoneNumber, mode: "insensitive" } }),
+			...(criteria.bankAccount && { bankAccount: { contains: criteria.bankAccount, mode: "insensitive" } }),
+		},
+		orderBy: { name: "asc" },
+	});

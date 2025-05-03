@@ -16,6 +16,7 @@ datasource db {
 
 model Streamer {
   id          String   @id @default(cuid())
+  wahaID      String
   name        String
   phoneNumber String
   bankAccount String
