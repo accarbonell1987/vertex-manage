@@ -1,3 +1,4 @@
+import CopyToClipboard from "@/components/CopyToClipboard";
 import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -28,11 +29,17 @@ const StreamersTable = ({ streamers, onRefresh }: Readonly<{ streamers: Streamer
 			<TableBody>
 				{streamers.map((streamer) => (
 					<TableRow key={streamer.id}>
-						<TableCell className="font-medium">{streamer.wahaID}</TableCell>
-						<TableCell>{streamer.wahaName}</TableCell>
-						<TableCell>{streamer.name}</TableCell>
-						<TableCell className="text-center">{streamer.phoneNumber ?? "-"}</TableCell>
-						<TableCell className="text-center">{streamer.bankAccount ?? "-"}</TableCell>
+						<TableCell className="font-medium">
+							<CopyToClipboard text={streamer.wahaID} />
+						</TableCell>
+						<TableCell>
+							<CopyToClipboard text={streamer.wahaName} />
+						</TableCell>
+						<TableCell>
+							<CopyToClipboard text={streamer.name} />
+						</TableCell>
+						<TableCell className="text-center">{streamer.phoneNumber ? <CopyToClipboard text={streamer.phoneNumber} /> : "-"}</TableCell>
+						<TableCell className="text-center">{streamer.bankAccount ? <CopyToClipboard text={streamer.bankAccount} /> : "-"}</TableCell>
 						<TableCell className="text-center">
 							<Button
 								className={`${streamer.referals.length > 0 ? "bg-green-200 hover:bg-green-300 cursor-pointer" : ""}`}
