@@ -42,10 +42,10 @@ const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
 		if (!wahaName.trim()) return "El nombre de waha es obligatorio";
 
 		// if (!phoneNumber.trim()) return "El teléfono es obligatorio";
-		// if (!/^\d{8}$/.test(phoneNumber)) return "El teléfono debe tener exactamente 8 dígitos";
+		if (phoneNumber && !/^\d{8}$/.test(phoneNumber)) return "El teléfono debe tener exactamente 8 dígitos";
 
 		// if (!bankAccount.trim()) return "La cuenta bancaria es obligatoria";
-		// if (!/^\d{16}$/.test(bankAccount)) return "La cuenta bancaria debe tener exactamente 16 dígitos";
+		if (bankAccount && !/^\d{16}$/.test(bankAccount)) return "La cuenta bancaria debe tener exactamente 16 dígitos";
 
 		return "";
 	};
@@ -101,11 +101,11 @@ const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
 					</div>
 					<div className="flex flex-col gap-2">
 						<Label htmlFor="phoneNumber">Teléfono</Label>
-						<Input id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+						<Input id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} type="number" />
 					</div>
 					<div className="flex flex-col gap-2">
 						<Label htmlFor="bankAccount">Cuenta Bancaria</Label>
-						<Input id="bankAccount" value={bankAccount} onChange={(e) => setBankAccount(e.target.value)} />
+						<Input id="bankAccount" value={bankAccount} onChange={(e) => setBankAccount(e.target.value)} type="number" />
 					</div>
 					{error && <p className="text-sm text-red-500">{error}</p>}
 					<div className="flex justify-end gap-2 w-full">
