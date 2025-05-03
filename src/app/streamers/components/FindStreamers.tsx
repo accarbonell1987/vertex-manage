@@ -5,17 +5,27 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useState } from "react";
 
 interface FindStreamersProps {
 	onFind: (criteria: { wahaID?: string; name?: string; phoneNumber?: string; bankAccount?: string }) => void;
 }
 
 const FindStreamers = ({ onFind }: FindStreamersProps) => {
+	const [findValue, setFindValue] = useState("");
+	const [criteria, setCriteria] = useState("");
+
 	const handleFind = (e: React.FormEvent) => {
 		e.preventDefault();
-		const find = (e.target as HTMLFormElement).find.value;
-		const criteria = (e.target as HTMLFormElement).criteria.value;
-		onFind({ [criteria]: find });
+		if (criteria) {
+			onFind({ [criteria]: findValue });
+		}
+	};
+
+	const handleClear = () => {
+		setFindValue("");
+		setCriteria("");
+		onFind({});
 	};
 
 	return (
@@ -24,11 +34,11 @@ const FindStreamers = ({ onFind }: FindStreamersProps) => {
 				<form className="flex flex-col gap-4 w-full sm:flex-row sm:items-end" onSubmit={handleFind}>
 					<div className="flex flex-col gap-2 w-full">
 						<Label htmlFor="find">Datos a Buscar</Label>
-						<Input name="find" placeholder="Buscar" />
+						<Input name="find" placeholder="Buscar" value={findValue} onChange={(e) => setFindValue(e.target.value)} />
 					</div>
 					<div className="flex flex-col gap-2 w-full">
 						<Label htmlFor="criteria">Criterio</Label>
-						<Select name="criteria">
+						<Select value={criteria} onValueChange={setCriteria}>
 							<SelectTrigger className="w-full">
 								<SelectValue placeholder="Criterio" />
 							</SelectTrigger>
@@ -53,9 +63,14 @@ const FindStreamers = ({ onFind }: FindStreamersProps) => {
 							</SelectContent>
 						</Select>
 					</div>
-					<Button className="w-full sm:w-auto cursor-pointer" type="submit">
-						Buscar
-					</Button>
+					<div className="flex gap-2 w-full sm:w-auto">
+						<Button className="w-full sm:w-auto cursor-pointer" type="submit">
+							Buscar
+						</Button>
+						<Button className="w-full sm:w-auto cursor-pointer" type="button" variant="outline" onClick={handleClear}>
+							Limpiar
+						</Button>
+					</div>
 				</form>
 			</CardContent>
 		</Card>
