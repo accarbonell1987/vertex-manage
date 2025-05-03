@@ -15,7 +15,7 @@ import useStreamer from "./hooks/useStreamer";
 
 const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 	const [open, setOpen] = useState(false);
-	const { streamers, handleFindByCriteria, handleChangeStreamers } = useStreamer({ init });
+	const { streamers, handleFindByCriteria, handleChangeStreamers, handleOnRefresh } = useStreamer({ init });
 
 	const handleOnClose = async () => {
 		setOpen(false);
@@ -60,7 +60,7 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 							</CardTitle>
 						</CardHeader>
 						<CardContent>
-							<StreamersTable streamers={streamers} />
+							<StreamersTable streamers={streamers} onRefresh={handleOnRefresh} />
 						</CardContent>
 					</Card>
 				</CardContent>

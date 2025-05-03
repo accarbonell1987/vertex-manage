@@ -1,10 +1,17 @@
 import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { deleteStreamer } from "@/services/streamers";
 import { StreamerWithReferals } from "@/types/streamers.types";
-import { Edit, Link, Trash } from "lucide-react";
+import { Edit, Link } from "lucide-react";
+import DeleteStreamerAlert from "./DeleteStreamerAlert";
 
-const StreamersTable = ({ streamers }: Readonly<{ streamers: StreamerWithReferals[] }>) => {
+const StreamersTable = ({ streamers, onRefresh }: Readonly<{ streamers: StreamerWithReferals[]; onRefresh: () => void }>) => {
+	const handleOnDelete = async (streamer: StreamerWithReferals) => {
+		await deleteStreamer(streamer.id);
+		onRefresh();
+	};
+
 	return (
 		<Table>
 			<TableHeader>
@@ -24,8 +31,8 @@ const StreamersTable = ({ streamers }: Readonly<{ streamers: StreamerWithReferal
 						<TableCell className="font-medium">{streamer.wahaID}</TableCell>
 						<TableCell>{streamer.wahaName}</TableCell>
 						<TableCell>{streamer.name}</TableCell>
-						<TableCell className="text-center">{streamer.phoneNumber || "-"}</TableCell>
-						<TableCell className="text-center">{streamer.bankAccount || "-"}</TableCell>
+						<TableCell className="text-center">{streamer.phoneNumber ?? "-"}</TableCell>
+						<TableCell className="text-center">{streamer.bankAccount ?? "-"}</TableCell>
 						<TableCell className="text-center">
 							<Button
 								className={`${streamer.referals.length > 0 ? "bg-green-200 hover:bg-green-300 cursor-pointer" : ""}`}
@@ -42,9 +49,7 @@ const StreamersTable = ({ streamers }: Readonly<{ streamers: StreamerWithReferal
 								</Button>
 							</ToolTip>
 							<ToolTip content="Eliminar">
-								<Button className="cursor-pointer bg-red-200 hover:bg-red-300" variant="secondary">
-									<Trash />
-								</Button>
+								<DeleteStreamerAlert streamer={streamer} onRefresh={onRefresh} />
 							</ToolTip>
 						</TableCell>
 					</TableRow>

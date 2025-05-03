@@ -1,4 +1,4 @@
-import { getStreamersByCriteria } from "@/services/streamers";
+import { getStreamers, getStreamersByCriteria } from "@/services/streamers";
 import { StreamerWithReferals } from "@/types/streamers.types";
 import { useState } from "react";
 
@@ -16,10 +16,18 @@ const useStreamer = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 		handleChangeStreamers(streamers);
 	};
 
+	const handleOnRefresh = async () => {
+		const updatedStreamers = await getStreamers();
+		if (!updatedStreamers) return;
+
+		handleChangeStreamers(updatedStreamers);
+	};
+
 	return {
 		streamers,
 		handleChangeStreamers,
 		handleFindByCriteria,
+		handleOnRefresh,
 	};
 };
 
