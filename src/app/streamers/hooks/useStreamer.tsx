@@ -1,11 +1,11 @@
-import { Streamer } from "@/generated/prisma";
 import { getStreamersByCriteria } from "@/services/streamers";
+import { StreamerWithReferals } from "@/types/streamers.types";
 import { useState } from "react";
 
-const useStreamer = ({ init }: Readonly<{ init: Streamer[] }>) => {
+const useStreamer = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 	const [streamers, setStreamers] = useState(init);
 
-	const handleChangeStreamers = (streamers: Streamer[]) => {
+	const handleChangeStreamers = (streamers: StreamerWithReferals[]) => {
 		setStreamers(streamers);
 	};
 

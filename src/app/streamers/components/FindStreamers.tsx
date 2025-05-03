@@ -34,10 +34,21 @@ const FindStreamers = ({ onFind }: FindStreamersProps) => {
 							</SelectTrigger>
 							<SelectContent>
 								<SelectGroup>
-									<SelectItem value="wahaID">Waha ID</SelectItem>
-									<SelectItem value="name">Nombre</SelectItem>
-									<SelectItem value="phoneNumber">Teléfono</SelectItem>
-									<SelectItem value="bankAccount">Cuenta Bancaria</SelectItem>
+									<SelectItem value="wahaID" className="cursor-pointer">
+										Waha ID
+									</SelectItem>
+									<SelectItem value="wahaName" className="cursor-pointer">
+										Waha Name
+									</SelectItem>
+									<SelectItem value="name" className="cursor-pointer">
+										Nombre
+									</SelectItem>
+									<SelectItem value="phoneNumber" className="cursor-pointer">
+										Teléfono
+									</SelectItem>
+									<SelectItem value="bankAccount" className="cursor-pointer">
+										Cuenta Bancaria
+									</SelectItem>
 								</SelectGroup>
 							</SelectContent>
 						</Select>

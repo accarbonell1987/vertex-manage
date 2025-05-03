@@ -1,16 +1,19 @@
 "use client";
 
+import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Streamer } from "@/generated/prisma";
 import { getStreamers } from "@/services/streamers";
-import { Plus } from "lucide-react";
+import { StreamerWithReferals } from "@/types/streamers.types";
+import { Plus, Sheet } from "lucide-react";
 import { useState } from "react";
+import { exportStreamersToExcel } from "../lib/exportExcel";
 import AddStreamerModal from "./components/AddStreamerModal";
 import FindStreamers from "./components/FindStreamers";
+import StreamersTable from "./components/StreamersTable";
 import useStreamer from "./hooks/useStreamer";
 
-const Streamers = ({ init }: Readonly<{ init: Streamer[] }>) => {
+const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 	const [open, setOpen] = useState(false);
 	const { streamers, handleFindByCriteria, handleChangeStreamers } = useStreamer({ init });
 
@@ -20,6 +23,10 @@ const Streamers = ({ init }: Readonly<{ init: Streamer[] }>) => {
 		if (!updatedStreamers) return;
 
 		handleChangeStreamers(updatedStreamers);
+	};
+
+	const handleExport = () => {
+		exportStreamersToExcel(streamers);
 	};
 
 	return (
@@ -39,11 +46,22 @@ const Streamers = ({ init }: Readonly<{ init: Streamer[] }>) => {
 				</CardHeader>
 				<CardContent className="flex flex-col gap-4">
 					<FindStreamers onFind={handleFindByCriteria} />
-					<Card className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+					<Card className="w-full gap-4">
 						<CardHeader>
-							<CardTitle>Streamers</CardTitle>
+							<CardTitle>
+								<div className="flex items-center gap-2">
+									Streamers
+									<ToolTip content="Exportar como Excel">
+										<Button className="cursor-pointer ml-auto bg-indigo-400 hover:bg-indigo-500" onClick={handleExport}>
+											<Sheet />
+										</Button>
+									</ToolTip>
+								</div>
+							</CardTitle>
 						</CardHeader>
-						<CardContent>{streamers?.length || "No hay streamers"}</CardContent>
+						<CardContent>
+							<StreamersTable streamers={streamers} />
+						</CardContent>
 					</Card>
 				</CardContent>
 			</Card>

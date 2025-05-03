@@ -1,3 +1,5 @@
+import { Referal, Streamer } from "@/generated/prisma";
+
 export interface CreateStreamerPayload {
 	name: string;
 	wahaID: string;
@@ -5,3 +7,7 @@ export interface CreateStreamerPayload {
 	phoneNumber?: string;
 	bankAccount?: string;
 }
+
+export type StreamerWithReferals = Streamer & {
+	referals: Referal[];
+};

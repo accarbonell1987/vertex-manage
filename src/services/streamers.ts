@@ -1,6 +1,5 @@
 import { doFetchWithToast } from "@/app/lib/fetch";
-import { Streamer } from "@/generated/prisma";
-import { CreateStreamerPayload } from "@/types/streamers.types";
+import { CreateStreamerPayload, StreamerWithReferals } from "@/types/streamers.types";
 
 export async function createStreamer(payload: CreateStreamerPayload): Promise<void> {
 	await doFetchWithToast(
@@ -18,8 +17,8 @@ export async function createStreamer(payload: CreateStreamerPayload): Promise<vo
 	);
 }
 
-export async function getStreamers(): Promise<Streamer[] | null> {
-	return await doFetchWithToast<Streamer[] | null>(
+export async function getStreamers(): Promise<StreamerWithReferals[] | null> {
+	return await doFetchWithToast<StreamerWithReferals[] | null>(
 		"/api/streamers",
 		{
 			method: "GET",
@@ -32,7 +31,7 @@ export async function getStreamers(): Promise<Streamer[] | null> {
 	);
 }
 
-export async function getStreamer(id: string): Promise<Streamer | null> {
+export async function getStreamer(id: string): Promise<StreamerWithReferals | null> {
 	return await doFetchWithToast(
 		`/api/streamers/${id}`,
 		{
@@ -62,11 +61,12 @@ export async function deleteStreamer(id: string): Promise<void> {
 
 export async function getStreamersByCriteria(criteria: {
 	wahaID?: string;
+	wahaName?: string;
 	name?: string;
 	phoneNumber?: string;
 	bankAccount?: string;
-}): Promise<Streamer[] | null> {
-	return await doFetchWithToast<Streamer[] | null>(
+}): Promise<StreamerWithReferals[] | null> {
+	return await doFetchWithToast<StreamerWithReferals[] | null>(
 		`/api/streamers?${new URLSearchParams(criteria).toString()}`,
 		{
 			method: "GET",

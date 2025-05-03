@@ -20,6 +20,12 @@ export function NavBar() {
 				>
 					Streamers
 				</Link>
+				<Link
+					href="/requests"
+					className={clsx("text-sm font-medium hover:underline", pathname === "/requests" && "text-blue-600 underline")}
+				>
+					Solicitudes
+				</Link>
 			</div>
 		</nav>
 	);

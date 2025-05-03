@@ -39,6 +39,8 @@ const AddStreamerModal = ({ open, onClose, setOpen }: Props) => {
 		if (!wahaID.trim()) return "El waha ID es obligatorio";
 		if (!/^\d+$/.test(wahaID)) return "El waha ID debe contener solo números";
 
+		if (!wahaName.trim()) return "El nombre de waha es obligatorio";
+
 		// if (!phoneNumber.trim()) return "El teléfono es obligatorio";
 		// if (!/^\d{8}$/.test(phoneNumber)) return "El teléfono debe tener exactamente 8 dígitos";
 
