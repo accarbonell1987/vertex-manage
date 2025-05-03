@@ -29,6 +29,8 @@ export default function WeeksClientPage() {
 		setWeekList(getFormatedWeeks(updatedWeeks));
 	};
 
+	const hasOpenWeek = weekList.some((week) => !week.closed);
+
 	return (
 		<>
 			<AddWeekModal weeks={weekList} open={open} onClose={handleOnClose} setOpen={setOpen} />
@@ -36,7 +38,7 @@ export default function WeeksClientPage() {
 				<CardHeader>
 					<CardTitle>Semanas</CardTitle>
 					<CardDescription>Lista de semanas disponibles</CardDescription>
-					<Button className="cursor-pointer w-full sm:w-max-[200px]" onClick={() => setOpen(true)}>
+					<Button className="cursor-pointer w-full sm:w-max-[200px]" onClick={() => setOpen(true)} disabled={hasOpenWeek}>
 						<Plus />
 						Crear semana
 					</Button>
