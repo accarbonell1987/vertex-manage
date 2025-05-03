@@ -1234,6 +1234,7 @@ export namespace Prisma {
   export type StreamerMinAggregateOutputType = {
     id: string | null
     wahaID: string | null
+    wahaName: string | null
     name: string | null
     phoneNumber: string | null
     bankAccount: string | null
@@ -1243,6 +1244,7 @@ export namespace Prisma {
   export type StreamerMaxAggregateOutputType = {
     id: string | null
     wahaID: string | null
+    wahaName: string | null
     name: string | null
     phoneNumber: string | null
     bankAccount: string | null
@@ -1252,6 +1254,7 @@ export namespace Prisma {
   export type StreamerCountAggregateOutputType = {
     id: number
     wahaID: number
+    wahaName: number
     name: number
     phoneNumber: number
     bankAccount: number
@@ -1263,6 +1266,7 @@ export namespace Prisma {
   export type StreamerMinAggregateInputType = {
     id?: true
     wahaID?: true
+    wahaName?: true
     name?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1272,6 +1276,7 @@ export namespace Prisma {
   export type StreamerMaxAggregateInputType = {
     id?: true
     wahaID?: true
+    wahaName?: true
     name?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1281,6 +1286,7 @@ export namespace Prisma {
   export type StreamerCountAggregateInputType = {
     id?: true
     wahaID?: true
+    wahaName?: true
     name?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1363,9 +1369,10 @@ export namespace Prisma {
   export type StreamerGroupByOutputType = {
     id: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber: string | null
+    bankAccount: string | null
     createdAt: Date
     _count: StreamerCountAggregateOutputType | null
     _min: StreamerMinAggregateOutputType | null
@@ -1389,6 +1396,7 @@ export namespace Prisma {
   export type StreamerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     wahaID?: boolean
+    wahaName?: boolean
     name?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1402,6 +1410,7 @@ export namespace Prisma {
   export type StreamerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     wahaID?: boolean
+    wahaName?: boolean
     name?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1411,6 +1420,7 @@ export namespace Prisma {
   export type StreamerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     wahaID?: boolean
+    wahaName?: boolean
     name?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1420,13 +1430,14 @@ export namespace Prisma {
   export type StreamerSelectScalar = {
     id?: boolean
     wahaID?: boolean
+    wahaName?: boolean
     name?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
     createdAt?: boolean
   }
 
-  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "name" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
+  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "wahaName" | "name" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
   export type StreamerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     referals?: boolean | Streamer$referalsArgs<ExtArgs>
     referredBy?: boolean | Streamer$referredByArgs<ExtArgs>
@@ -1446,9 +1457,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       wahaID: string
+      wahaName: string
       name: string
-      phoneNumber: string
-      bankAccount: string
+      phoneNumber: string | null
+      bankAccount: string | null
       createdAt: Date
     }, ExtArgs["result"]["streamer"]>
     composites: {}
@@ -1878,6 +1890,7 @@ export namespace Prisma {
   interface StreamerFieldRefs {
     readonly id: FieldRef<"Streamer", 'String'>
     readonly wahaID: FieldRef<"Streamer", 'String'>
+    readonly wahaName: FieldRef<"Streamer", 'String'>
     readonly name: FieldRef<"Streamer", 'String'>
     readonly phoneNumber: FieldRef<"Streamer", 'String'>
     readonly bankAccount: FieldRef<"Streamer", 'String'>
@@ -5694,6 +5707,7 @@ export namespace Prisma {
   export const StreamerScalarFieldEnum: {
     id: 'id',
     wahaID: 'wahaID',
+    wahaName: 'wahaName',
     name: 'name',
     phoneNumber: 'phoneNumber',
     bankAccount: 'bankAccount',
@@ -5842,9 +5856,10 @@ export namespace Prisma {
     NOT?: StreamerWhereInput | StreamerWhereInput[]
     id?: StringFilter<"Streamer"> | string
     wahaID?: StringFilter<"Streamer"> | string
+    wahaName?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
-    phoneNumber?: StringFilter<"Streamer"> | string
-    bankAccount?: StringFilter<"Streamer"> | string
+    phoneNumber?: StringNullableFilter<"Streamer"> | string | null
+    bankAccount?: StringNullableFilter<"Streamer"> | string | null
     createdAt?: DateTimeFilter<"Streamer"> | Date | string
     referals?: ReferalListRelationFilter
     referredBy?: ReferalListRelationFilter
@@ -5854,9 +5869,10 @@ export namespace Prisma {
   export type StreamerOrderByWithRelationInput = {
     id?: SortOrder
     wahaID?: SortOrder
+    wahaName?: SortOrder
     name?: SortOrder
-    phoneNumber?: SortOrder
-    bankAccount?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    bankAccount?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     referals?: ReferalOrderByRelationAggregateInput
     referredBy?: ReferalOrderByRelationAggregateInput
@@ -5865,25 +5881,27 @@ export namespace Prisma {
 
   export type StreamerWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    wahaID?: string
     AND?: StreamerWhereInput | StreamerWhereInput[]
     OR?: StreamerWhereInput[]
     NOT?: StreamerWhereInput | StreamerWhereInput[]
-    wahaID?: StringFilter<"Streamer"> | string
+    wahaName?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
-    phoneNumber?: StringFilter<"Streamer"> | string
-    bankAccount?: StringFilter<"Streamer"> | string
+    phoneNumber?: StringNullableFilter<"Streamer"> | string | null
+    bankAccount?: StringNullableFilter<"Streamer"> | string | null
     createdAt?: DateTimeFilter<"Streamer"> | Date | string
     referals?: ReferalListRelationFilter
     referredBy?: ReferalListRelationFilter
     streamingData?: StreamingDataListRelationFilter
-  }, "id">
+  }, "id" | "wahaID">
 
   export type StreamerOrderByWithAggregationInput = {
     id?: SortOrder
     wahaID?: SortOrder
+    wahaName?: SortOrder
     name?: SortOrder
-    phoneNumber?: SortOrder
-    bankAccount?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    bankAccount?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: StreamerCountOrderByAggregateInput
     _max?: StreamerMaxOrderByAggregateInput
@@ -5896,9 +5914,10 @@ export namespace Prisma {
     NOT?: StreamerScalarWhereWithAggregatesInput | StreamerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Streamer"> | string
     wahaID?: StringWithAggregatesFilter<"Streamer"> | string
+    wahaName?: StringWithAggregatesFilter<"Streamer"> | string
     name?: StringWithAggregatesFilter<"Streamer"> | string
-    phoneNumber?: StringWithAggregatesFilter<"Streamer"> | string
-    bankAccount?: StringWithAggregatesFilter<"Streamer"> | string
+    phoneNumber?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
+    bankAccount?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Streamer"> | Date | string
   }
 
@@ -6103,9 +6122,10 @@ export namespace Prisma {
   export type StreamerCreateInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
     referals?: ReferalCreateNestedManyWithoutStreamerInput
     referredBy?: ReferalCreateNestedManyWithoutReferredInput
@@ -6115,9 +6135,10 @@ export namespace Prisma {
   export type StreamerUncheckedCreateInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
     referals?: ReferalUncheckedCreateNestedManyWithoutStreamerInput
     referredBy?: ReferalUncheckedCreateNestedManyWithoutReferredInput
@@ -6127,9 +6148,10 @@ export namespace Prisma {
   export type StreamerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUpdateManyWithoutStreamerNestedInput
     referredBy?: ReferalUpdateManyWithoutReferredNestedInput
@@ -6139,9 +6161,10 @@ export namespace Prisma {
   export type StreamerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUncheckedUpdateManyWithoutStreamerNestedInput
     referredBy?: ReferalUncheckedUpdateManyWithoutReferredNestedInput
@@ -6151,27 +6174,30 @@ export namespace Prisma {
   export type StreamerCreateManyInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
   }
 
   export type StreamerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StreamerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6393,6 +6419,21 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -6416,6 +6457,11 @@ export namespace Prisma {
     none?: StreamingDataWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type ReferalOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -6427,6 +6473,7 @@ export namespace Prisma {
   export type StreamerCountOrderByAggregateInput = {
     id?: SortOrder
     wahaID?: SortOrder
+    wahaName?: SortOrder
     name?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -6436,6 +6483,7 @@ export namespace Prisma {
   export type StreamerMaxOrderByAggregateInput = {
     id?: SortOrder
     wahaID?: SortOrder
+    wahaName?: SortOrder
     name?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -6445,6 +6493,7 @@ export namespace Prisma {
   export type StreamerMinOrderByAggregateInput = {
     id?: SortOrder
     wahaID?: SortOrder
+    wahaName?: SortOrder
     name?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -6469,6 +6518,24 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -6486,26 +6553,6 @@ export namespace Prisma {
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type WeekCountOrderByAggregateInput = {
@@ -6544,24 +6591,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6747,6 +6776,10 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -6851,10 +6884,6 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type StreamingDataUpdateManyWithoutWeekNestedInput = {
@@ -6971,6 +7000,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -7010,47 +7053,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -7077,6 +7079,33 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -7322,9 +7351,10 @@ export namespace Prisma {
   export type StreamerCreateWithoutStreamingDataInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
     referals?: ReferalCreateNestedManyWithoutStreamerInput
     referredBy?: ReferalCreateNestedManyWithoutReferredInput
@@ -7333,9 +7363,10 @@ export namespace Prisma {
   export type StreamerUncheckedCreateWithoutStreamingDataInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
     referals?: ReferalUncheckedCreateNestedManyWithoutStreamerInput
     referredBy?: ReferalUncheckedCreateNestedManyWithoutReferredInput
@@ -7385,9 +7416,10 @@ export namespace Prisma {
   export type StreamerUpdateWithoutStreamingDataInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUpdateManyWithoutStreamerNestedInput
     referredBy?: ReferalUpdateManyWithoutReferredNestedInput
@@ -7396,9 +7428,10 @@ export namespace Prisma {
   export type StreamerUncheckedUpdateWithoutStreamingDataInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUncheckedUpdateManyWithoutStreamerNestedInput
     referredBy?: ReferalUncheckedUpdateManyWithoutReferredNestedInput
@@ -7438,9 +7471,10 @@ export namespace Prisma {
   export type StreamerCreateWithoutReferalsInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
     referredBy?: ReferalCreateNestedManyWithoutReferredInput
     streamingData?: StreamingDataCreateNestedManyWithoutStreamerInput
@@ -7449,9 +7483,10 @@ export namespace Prisma {
   export type StreamerUncheckedCreateWithoutReferalsInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
     referredBy?: ReferalUncheckedCreateNestedManyWithoutReferredInput
     streamingData?: StreamingDataUncheckedCreateNestedManyWithoutStreamerInput
@@ -7465,9 +7500,10 @@ export namespace Prisma {
   export type StreamerCreateWithoutReferredByInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
     referals?: ReferalCreateNestedManyWithoutStreamerInput
     streamingData?: StreamingDataCreateNestedManyWithoutStreamerInput
@@ -7476,9 +7512,10 @@ export namespace Prisma {
   export type StreamerUncheckedCreateWithoutReferredByInput = {
     id?: string
     wahaID: string
+    wahaName: string
     name: string
-    phoneNumber: string
-    bankAccount: string
+    phoneNumber?: string | null
+    bankAccount?: string | null
     createdAt?: Date | string
     referals?: ReferalUncheckedCreateNestedManyWithoutStreamerInput
     streamingData?: StreamingDataUncheckedCreateNestedManyWithoutStreamerInput
@@ -7503,9 +7540,10 @@ export namespace Prisma {
   export type StreamerUpdateWithoutReferalsInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referredBy?: ReferalUpdateManyWithoutReferredNestedInput
     streamingData?: StreamingDataUpdateManyWithoutStreamerNestedInput
@@ -7514,9 +7552,10 @@ export namespace Prisma {
   export type StreamerUncheckedUpdateWithoutReferalsInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referredBy?: ReferalUncheckedUpdateManyWithoutReferredNestedInput
     streamingData?: StreamingDataUncheckedUpdateManyWithoutStreamerNestedInput
@@ -7536,9 +7575,10 @@ export namespace Prisma {
   export type StreamerUpdateWithoutReferredByInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUpdateManyWithoutStreamerNestedInput
     streamingData?: StreamingDataUpdateManyWithoutStreamerNestedInput
@@ -7547,9 +7587,10 @@ export namespace Prisma {
   export type StreamerUncheckedUpdateWithoutReferredByInput = {
     id?: StringFieldUpdateOperationsInput | string
     wahaID?: StringFieldUpdateOperationsInput | string
+    wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    bankAccount?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUncheckedUpdateManyWithoutStreamerNestedInput
     streamingData?: StreamingDataUncheckedUpdateManyWithoutStreamerNestedInput

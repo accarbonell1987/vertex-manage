@@ -16,15 +16,15 @@ datasource db {
 
 model Streamer {
   id           String       @id @default(cuid())
-  wahaID       String
+  wahaID       String       @unique
+  wahaName     String
   name         String
-  phoneNumber  String
-  bankAccount  String
+  phoneNumber  String?
+  bankAccount  String?
   createdAt    DateTime     @default(now())
 
-  referals     Referal[]    @relation("StreamerReferals")
-  referredBy   Referal[]    @relation("ReferredStreamer")
-
+  referals     Referal[]   @relation("StreamerReferals")
+  referredBy   Referal[]   @relation("ReferredStreamer")
   streamingData StreamingData[]
 }
 
