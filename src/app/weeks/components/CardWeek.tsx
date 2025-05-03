@@ -2,8 +2,9 @@ import ToolTip from "@/components/ToolTip";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CircleX, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
 import { FormattedWeek } from "../../../types/weeks.types";
+import CloseWeekAlert from "./CloseWeekAlert";
 import DeleteWeekDialog from "./DeleteWeekDialog";
 
 interface Props {
@@ -24,9 +25,7 @@ export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 							</Button>
 						</ToolTip>
 						<ToolTip content="Cerrar">
-							<Button className="cursor-pointer bg-amber-200 hover:bg-amber-300" variant="secondary" size="icon" disabled={week.closed}>
-								<CircleX />
-							</Button>
+							<CloseWeekAlert week={week} onRefresh={onRefresh} />
 						</ToolTip>
 						<ToolTip content="Eliminar">
 							<DeleteWeekDialog week={week} onRefresh={onRefresh} />

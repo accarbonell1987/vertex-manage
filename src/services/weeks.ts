@@ -59,3 +59,17 @@ export async function deleteWeek(id: string): Promise<void> {
 		}
 	);
 }
+
+export async function closeWeek(id: string): Promise<void> {
+	await doFetchWithToast(
+		`/api/weeks/${id}`,
+		{
+			method: "PATCH",
+		},
+		{
+			success: "Semana cerrada",
+			loading: "Cerrando semana...",
+			error: "No se pudo cerrar la semana.",
+		}
+	);
+}

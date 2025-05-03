@@ -11,3 +11,5 @@ export const createWeek = (data: CreateWeekPayload) => prisma.week.create({ data
 export const closeOpenWeeks = () => prisma.week.updateMany({ where: { closed: false }, data: { closed: true } });
 
 export const deleteWeek = (id: string) => prisma.week.delete({ where: { id } });
+
+export const closeWeek = (id: string) => prisma.week.update({ where: { id }, data: { closed: true } });

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { deleteWeek, findWeekById } from "../../../lib/repositories/weeks";
+import { closeWeek, deleteWeek, findWeekById } from "../../../lib/repositories/weeks";
 
 type Params = {
 	params: { id: string };
@@ -20,11 +20,20 @@ export async function GET(_: Request, { params }: Params) {
 
 export async function DELETE(_: Request, { params }: Params) {
 	try {
-		console.log("🚀 ~ DELETE ~ params:", params);
 		await deleteWeek(params.id);
 		return NextResponse.json({ message: "Semana eliminada" });
 	} catch (error) {
 		console.error("DELETE /api/weeks error:", error);
 		return NextResponse.json({ error: "No se pudo eliminar la semana" }, { status: 500 });
+	}
+}
+
+export async function PATCH(_: Request, { params }: Params) {
+	try {
+		await closeWeek(params.id);
+		return NextResponse.json({ message: "Semana cerrada" });
+	} catch (error) {
+		console.error("PATCH /api/weeks error:", error);
+		return NextResponse.json({ error: "No se pudo cerrar la semana" }, { status: 500 });
 	}
 }
