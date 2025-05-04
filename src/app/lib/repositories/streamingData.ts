@@ -8,7 +8,6 @@ export async function bulkImportStreamingData(weekId: string, data: ImportedStre
 		});
 
 		if (!streamer) {
-			console.log("Streamer no encontrado", entry.wahaID);
 			//! crear streamer
 			const newStreamer = await prisma.streamer.create({
 				data: {
@@ -59,6 +58,7 @@ export const findStreamingDataByStreamerAndWeek = (streamerId: string, weekId: s
 			streamerId,
 			weekId,
 		},
+		include: { streamer: true },
 	});
 
 export const createStreamingData = (data: Omit<ImportedStreamingData, "wahaID"> & { streamerId: string; weekId: string }) =>

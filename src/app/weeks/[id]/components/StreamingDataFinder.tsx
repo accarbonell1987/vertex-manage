@@ -54,7 +54,7 @@ const StreamingDataFinder = ({ onFind }: FindStreamersProps) => {
 							</SelectContent>
 						</Select>
 					</div>
-					<div className="flex gap-2 w-full sm:w-auto">
+					<div className="flex flex-col gap-2 w-full sm:w-auto sm:flex-row">
 						<Button className="w-full sm:w-auto cursor-pointer" type="submit">
 							Buscar
 						</Button>

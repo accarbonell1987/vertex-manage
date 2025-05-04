@@ -57,8 +57,8 @@ export function parseStreamingExcel(file: File): Promise<ImportedStreamingData[]
 					dailyBonusOfSuperStreamer: Number(row[15]),
 					roomBonus: Number(row[16]),
 					enchantingGoddessBonus: Number(row[17]),
-					streamerSalary: Number(row[18]),
-					agencySalary: Number(row[19]),
+					streamerSalary: Number(row[19]),
+					agencySalary: Number(row[20]),
 				});
 			}
 

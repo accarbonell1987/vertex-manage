@@ -12,6 +12,7 @@ import { Import } from "lucide-react";
 import { useState } from "react";
 import useStreamingData from "../../hooks/useStreamingData";
 import StreamingDataFinder from "./StreamingDataFinder";
+import StreamingDataTable from "./StreamingDataTable";
 import StreamingWeekActions from "./StreamingWeekActions";
 import StreamingWeekDetails from "./StreamingWeekDetails";
 
@@ -41,6 +42,7 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 			setActionLoading(true);
 			await bulkImportStreamingEntries(week.id, parsedFileAsExcel);
 			handleOnClose();
+			handleOnRefresh();
 		} catch (error) {
 			console.error(error);
 		} finally {
@@ -53,7 +55,7 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 			<ImportExcelModal open={open} setOpen={setOpen} actionLoading={actionLoading} onSubmit={onSubmit} />
 			<Card className="flex justify-end gap-4">
 				<CardContent className="flex flex-col gap-4 sm:flex-row">
-					<Card className="w-full">
+					<Card className="w-full sm:w-3/4">
 						<CardContent className="flex flex-col gap-4">
 							<div className="flex items-center gap-2">
 								<h2 className="text-lg font-semibold">Datos de la semana</h2>
@@ -71,6 +73,7 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 							</div>
 							<div className="flex flex-col gap-4">
 								<StreamingDataFinder onFind={handleOnRefresh} />
+								<StreamingDataTable week={weekData} onRefresh={handleOnRefresh} />
 							</div>
 						</CardContent>
 					</Card>
