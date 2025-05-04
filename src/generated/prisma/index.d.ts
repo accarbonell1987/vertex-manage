@@ -3482,53 +3482,95 @@ export namespace Prisma {
   }
 
   export type StreamingDataAvgAggregateOutputType = {
-    diamonds: number | null
-    points: number | null
-    penalties: number | null
-    bonus: number | null
-    money: number | null
+    baseSalaryIM: number | null
+    baseSalaryRoom: number | null
+    diamondsIM: number | null
+    diamondsRoom: number | null
+    diamondsTotal: number | null
+    diamondsAndPoints: number | null
+    diamondsPenalties: number | null
+    diamondsComisions: number | null
+    rewardOfPoints: number | null
+    dailyBonusOfSuperStreamer: number | null
+    roomBonus: number | null
+    enchantingGodesBonus: number | null
+    streamerSalary: number | null
+    agencySalary: number | null
   }
 
   export type StreamingDataSumAggregateOutputType = {
-    diamonds: number | null
-    points: number | null
-    penalties: number | null
-    bonus: number | null
-    money: number | null
+    baseSalaryIM: number | null
+    baseSalaryRoom: number | null
+    diamondsIM: number | null
+    diamondsRoom: number | null
+    diamondsTotal: number | null
+    diamondsAndPoints: number | null
+    diamondsPenalties: number | null
+    diamondsComisions: number | null
+    rewardOfPoints: number | null
+    dailyBonusOfSuperStreamer: number | null
+    roomBonus: number | null
+    enchantingGodesBonus: number | null
+    streamerSalary: number | null
+    agencySalary: number | null
   }
 
   export type StreamingDataMinAggregateOutputType = {
     id: string | null
-    diamonds: number | null
-    points: number | null
-    penalties: number | null
-    bonus: number | null
-    money: number | null
-    agency: string | null
+    baseSalaryIM: number | null
+    baseSalaryRoom: number | null
+    diamondsIM: number | null
+    diamondsRoom: number | null
+    diamondsTotal: number | null
+    diamondsAndPoints: number | null
+    diamondsPenalties: number | null
+    diamondsComisions: number | null
+    rewardOfPoints: number | null
+    dailyBonusOfSuperStreamer: number | null
+    roomBonus: number | null
+    enchantingGodesBonus: number | null
+    streamerSalary: number | null
+    agencySalary: number | null
     streamerId: string | null
     weekId: string | null
   }
 
   export type StreamingDataMaxAggregateOutputType = {
     id: string | null
-    diamonds: number | null
-    points: number | null
-    penalties: number | null
-    bonus: number | null
-    money: number | null
-    agency: string | null
+    baseSalaryIM: number | null
+    baseSalaryRoom: number | null
+    diamondsIM: number | null
+    diamondsRoom: number | null
+    diamondsTotal: number | null
+    diamondsAndPoints: number | null
+    diamondsPenalties: number | null
+    diamondsComisions: number | null
+    rewardOfPoints: number | null
+    dailyBonusOfSuperStreamer: number | null
+    roomBonus: number | null
+    enchantingGodesBonus: number | null
+    streamerSalary: number | null
+    agencySalary: number | null
     streamerId: string | null
     weekId: string | null
   }
 
   export type StreamingDataCountAggregateOutputType = {
     id: number
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: number
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     streamerId: number
     weekId: number
     _all: number
@@ -3536,53 +3578,95 @@ export namespace Prisma {
 
 
   export type StreamingDataAvgAggregateInputType = {
-    diamonds?: true
-    points?: true
-    penalties?: true
-    bonus?: true
-    money?: true
+    baseSalaryIM?: true
+    baseSalaryRoom?: true
+    diamondsIM?: true
+    diamondsRoom?: true
+    diamondsTotal?: true
+    diamondsAndPoints?: true
+    diamondsPenalties?: true
+    diamondsComisions?: true
+    rewardOfPoints?: true
+    dailyBonusOfSuperStreamer?: true
+    roomBonus?: true
+    enchantingGodesBonus?: true
+    streamerSalary?: true
+    agencySalary?: true
   }
 
   export type StreamingDataSumAggregateInputType = {
-    diamonds?: true
-    points?: true
-    penalties?: true
-    bonus?: true
-    money?: true
+    baseSalaryIM?: true
+    baseSalaryRoom?: true
+    diamondsIM?: true
+    diamondsRoom?: true
+    diamondsTotal?: true
+    diamondsAndPoints?: true
+    diamondsPenalties?: true
+    diamondsComisions?: true
+    rewardOfPoints?: true
+    dailyBonusOfSuperStreamer?: true
+    roomBonus?: true
+    enchantingGodesBonus?: true
+    streamerSalary?: true
+    agencySalary?: true
   }
 
   export type StreamingDataMinAggregateInputType = {
     id?: true
-    diamonds?: true
-    points?: true
-    penalties?: true
-    bonus?: true
-    money?: true
-    agency?: true
+    baseSalaryIM?: true
+    baseSalaryRoom?: true
+    diamondsIM?: true
+    diamondsRoom?: true
+    diamondsTotal?: true
+    diamondsAndPoints?: true
+    diamondsPenalties?: true
+    diamondsComisions?: true
+    rewardOfPoints?: true
+    dailyBonusOfSuperStreamer?: true
+    roomBonus?: true
+    enchantingGodesBonus?: true
+    streamerSalary?: true
+    agencySalary?: true
     streamerId?: true
     weekId?: true
   }
 
   export type StreamingDataMaxAggregateInputType = {
     id?: true
-    diamonds?: true
-    points?: true
-    penalties?: true
-    bonus?: true
-    money?: true
-    agency?: true
+    baseSalaryIM?: true
+    baseSalaryRoom?: true
+    diamondsIM?: true
+    diamondsRoom?: true
+    diamondsTotal?: true
+    diamondsAndPoints?: true
+    diamondsPenalties?: true
+    diamondsComisions?: true
+    rewardOfPoints?: true
+    dailyBonusOfSuperStreamer?: true
+    roomBonus?: true
+    enchantingGodesBonus?: true
+    streamerSalary?: true
+    agencySalary?: true
     streamerId?: true
     weekId?: true
   }
 
   export type StreamingDataCountAggregateInputType = {
     id?: true
-    diamonds?: true
-    points?: true
-    penalties?: true
-    bonus?: true
-    money?: true
-    agency?: true
+    baseSalaryIM?: true
+    baseSalaryRoom?: true
+    diamondsIM?: true
+    diamondsRoom?: true
+    diamondsTotal?: true
+    diamondsAndPoints?: true
+    diamondsPenalties?: true
+    diamondsComisions?: true
+    rewardOfPoints?: true
+    dailyBonusOfSuperStreamer?: true
+    roomBonus?: true
+    enchantingGodesBonus?: true
+    streamerSalary?: true
+    agencySalary?: true
     streamerId?: true
     weekId?: true
     _all?: true
@@ -3676,12 +3760,20 @@ export namespace Prisma {
 
   export type StreamingDataGroupByOutputType = {
     id: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     streamerId: string
     weekId: string
     _count: StreamingDataCountAggregateOutputType | null
@@ -3707,12 +3799,20 @@ export namespace Prisma {
 
   export type StreamingDataSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    diamonds?: boolean
-    points?: boolean
-    penalties?: boolean
-    bonus?: boolean
-    money?: boolean
-    agency?: boolean
+    baseSalaryIM?: boolean
+    baseSalaryRoom?: boolean
+    diamondsIM?: boolean
+    diamondsRoom?: boolean
+    diamondsTotal?: boolean
+    diamondsAndPoints?: boolean
+    diamondsPenalties?: boolean
+    diamondsComisions?: boolean
+    rewardOfPoints?: boolean
+    dailyBonusOfSuperStreamer?: boolean
+    roomBonus?: boolean
+    enchantingGodesBonus?: boolean
+    streamerSalary?: boolean
+    agencySalary?: boolean
     streamerId?: boolean
     weekId?: boolean
     streamer?: boolean | StreamerDefaultArgs<ExtArgs>
@@ -3721,12 +3821,20 @@ export namespace Prisma {
 
   export type StreamingDataSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    diamonds?: boolean
-    points?: boolean
-    penalties?: boolean
-    bonus?: boolean
-    money?: boolean
-    agency?: boolean
+    baseSalaryIM?: boolean
+    baseSalaryRoom?: boolean
+    diamondsIM?: boolean
+    diamondsRoom?: boolean
+    diamondsTotal?: boolean
+    diamondsAndPoints?: boolean
+    diamondsPenalties?: boolean
+    diamondsComisions?: boolean
+    rewardOfPoints?: boolean
+    dailyBonusOfSuperStreamer?: boolean
+    roomBonus?: boolean
+    enchantingGodesBonus?: boolean
+    streamerSalary?: boolean
+    agencySalary?: boolean
     streamerId?: boolean
     weekId?: boolean
     streamer?: boolean | StreamerDefaultArgs<ExtArgs>
@@ -3735,12 +3843,20 @@ export namespace Prisma {
 
   export type StreamingDataSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    diamonds?: boolean
-    points?: boolean
-    penalties?: boolean
-    bonus?: boolean
-    money?: boolean
-    agency?: boolean
+    baseSalaryIM?: boolean
+    baseSalaryRoom?: boolean
+    diamondsIM?: boolean
+    diamondsRoom?: boolean
+    diamondsTotal?: boolean
+    diamondsAndPoints?: boolean
+    diamondsPenalties?: boolean
+    diamondsComisions?: boolean
+    rewardOfPoints?: boolean
+    dailyBonusOfSuperStreamer?: boolean
+    roomBonus?: boolean
+    enchantingGodesBonus?: boolean
+    streamerSalary?: boolean
+    agencySalary?: boolean
     streamerId?: boolean
     weekId?: boolean
     streamer?: boolean | StreamerDefaultArgs<ExtArgs>
@@ -3749,17 +3865,25 @@ export namespace Prisma {
 
   export type StreamingDataSelectScalar = {
     id?: boolean
-    diamonds?: boolean
-    points?: boolean
-    penalties?: boolean
-    bonus?: boolean
-    money?: boolean
-    agency?: boolean
+    baseSalaryIM?: boolean
+    baseSalaryRoom?: boolean
+    diamondsIM?: boolean
+    diamondsRoom?: boolean
+    diamondsTotal?: boolean
+    diamondsAndPoints?: boolean
+    diamondsPenalties?: boolean
+    diamondsComisions?: boolean
+    rewardOfPoints?: boolean
+    dailyBonusOfSuperStreamer?: boolean
+    roomBonus?: boolean
+    enchantingGodesBonus?: boolean
+    streamerSalary?: boolean
+    agencySalary?: boolean
     streamerId?: boolean
     weekId?: boolean
   }
 
-  export type StreamingDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "diamonds" | "points" | "penalties" | "bonus" | "money" | "agency" | "streamerId" | "weekId", ExtArgs["result"]["streamingData"]>
+  export type StreamingDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baseSalaryIM" | "baseSalaryRoom" | "diamondsIM" | "diamondsRoom" | "diamondsTotal" | "diamondsAndPoints" | "diamondsPenalties" | "diamondsComisions" | "rewardOfPoints" | "dailyBonusOfSuperStreamer" | "roomBonus" | "enchantingGodesBonus" | "streamerSalary" | "agencySalary" | "streamerId" | "weekId", ExtArgs["result"]["streamingData"]>
   export type StreamingDataInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     streamer?: boolean | StreamerDefaultArgs<ExtArgs>
     week?: boolean | WeekDefaultArgs<ExtArgs>
@@ -3781,12 +3905,20 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      diamonds: number
-      points: number
-      penalties: number
-      bonus: number
-      money: number
-      agency: string
+      baseSalaryIM: number
+      baseSalaryRoom: number
+      diamondsIM: number
+      diamondsRoom: number
+      diamondsTotal: number
+      diamondsAndPoints: number
+      diamondsPenalties: number
+      diamondsComisions: number
+      rewardOfPoints: number
+      dailyBonusOfSuperStreamer: number
+      roomBonus: number
+      enchantingGodesBonus: number
+      streamerSalary: number
+      agencySalary: number
       streamerId: string
       weekId: string
     }, ExtArgs["result"]["streamingData"]>
@@ -4215,12 +4347,20 @@ export namespace Prisma {
    */
   interface StreamingDataFieldRefs {
     readonly id: FieldRef<"StreamingData", 'String'>
-    readonly diamonds: FieldRef<"StreamingData", 'Int'>
-    readonly points: FieldRef<"StreamingData", 'Int'>
-    readonly penalties: FieldRef<"StreamingData", 'Int'>
-    readonly bonus: FieldRef<"StreamingData", 'Int'>
-    readonly money: FieldRef<"StreamingData", 'Float'>
-    readonly agency: FieldRef<"StreamingData", 'String'>
+    readonly baseSalaryIM: FieldRef<"StreamingData", 'Float'>
+    readonly baseSalaryRoom: FieldRef<"StreamingData", 'Float'>
+    readonly diamondsIM: FieldRef<"StreamingData", 'Int'>
+    readonly diamondsRoom: FieldRef<"StreamingData", 'Int'>
+    readonly diamondsTotal: FieldRef<"StreamingData", 'Int'>
+    readonly diamondsAndPoints: FieldRef<"StreamingData", 'Int'>
+    readonly diamondsPenalties: FieldRef<"StreamingData", 'Int'>
+    readonly diamondsComisions: FieldRef<"StreamingData", 'Float'>
+    readonly rewardOfPoints: FieldRef<"StreamingData", 'Float'>
+    readonly dailyBonusOfSuperStreamer: FieldRef<"StreamingData", 'Float'>
+    readonly roomBonus: FieldRef<"StreamingData", 'Float'>
+    readonly enchantingGodesBonus: FieldRef<"StreamingData", 'Float'>
+    readonly streamerSalary: FieldRef<"StreamingData", 'Float'>
+    readonly agencySalary: FieldRef<"StreamingData", 'Float'>
     readonly streamerId: FieldRef<"StreamingData", 'String'>
     readonly weekId: FieldRef<"StreamingData", 'String'>
   }
@@ -5732,12 +5872,20 @@ export namespace Prisma {
 
   export const StreamingDataScalarFieldEnum: {
     id: 'id',
-    diamonds: 'diamonds',
-    points: 'points',
-    penalties: 'penalties',
-    bonus: 'bonus',
-    money: 'money',
-    agency: 'agency',
+    baseSalaryIM: 'baseSalaryIM',
+    baseSalaryRoom: 'baseSalaryRoom',
+    diamondsIM: 'diamondsIM',
+    diamondsRoom: 'diamondsRoom',
+    diamondsTotal: 'diamondsTotal',
+    diamondsAndPoints: 'diamondsAndPoints',
+    diamondsPenalties: 'diamondsPenalties',
+    diamondsComisions: 'diamondsComisions',
+    rewardOfPoints: 'rewardOfPoints',
+    dailyBonusOfSuperStreamer: 'dailyBonusOfSuperStreamer',
+    roomBonus: 'roomBonus',
+    enchantingGodesBonus: 'enchantingGodesBonus',
+    streamerSalary: 'streamerSalary',
+    agencySalary: 'agencySalary',
     streamerId: 'streamerId',
     weekId: 'weekId'
   };
@@ -5820,20 +5968,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -5844,6 +5978,20 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
   /**
    * Deep Input Types
@@ -5991,12 +6139,20 @@ export namespace Prisma {
     OR?: StreamingDataWhereInput[]
     NOT?: StreamingDataWhereInput | StreamingDataWhereInput[]
     id?: StringFilter<"StreamingData"> | string
-    diamonds?: IntFilter<"StreamingData"> | number
-    points?: IntFilter<"StreamingData"> | number
-    penalties?: IntFilter<"StreamingData"> | number
-    bonus?: IntFilter<"StreamingData"> | number
-    money?: FloatFilter<"StreamingData"> | number
-    agency?: StringFilter<"StreamingData"> | string
+    baseSalaryIM?: FloatFilter<"StreamingData"> | number
+    baseSalaryRoom?: FloatFilter<"StreamingData"> | number
+    diamondsIM?: IntFilter<"StreamingData"> | number
+    diamondsRoom?: IntFilter<"StreamingData"> | number
+    diamondsTotal?: IntFilter<"StreamingData"> | number
+    diamondsAndPoints?: IntFilter<"StreamingData"> | number
+    diamondsPenalties?: IntFilter<"StreamingData"> | number
+    diamondsComisions?: FloatFilter<"StreamingData"> | number
+    rewardOfPoints?: FloatFilter<"StreamingData"> | number
+    dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
+    roomBonus?: FloatFilter<"StreamingData"> | number
+    enchantingGodesBonus?: FloatFilter<"StreamingData"> | number
+    streamerSalary?: FloatFilter<"StreamingData"> | number
+    agencySalary?: FloatFilter<"StreamingData"> | number
     streamerId?: StringFilter<"StreamingData"> | string
     weekId?: StringFilter<"StreamingData"> | string
     streamer?: XOR<StreamerScalarRelationFilter, StreamerWhereInput>
@@ -6005,12 +6161,20 @@ export namespace Prisma {
 
   export type StreamingDataOrderByWithRelationInput = {
     id?: SortOrder
-    diamonds?: SortOrder
-    points?: SortOrder
-    penalties?: SortOrder
-    bonus?: SortOrder
-    money?: SortOrder
-    agency?: SortOrder
+    baseSalaryIM?: SortOrder
+    baseSalaryRoom?: SortOrder
+    diamondsIM?: SortOrder
+    diamondsRoom?: SortOrder
+    diamondsTotal?: SortOrder
+    diamondsAndPoints?: SortOrder
+    diamondsPenalties?: SortOrder
+    diamondsComisions?: SortOrder
+    rewardOfPoints?: SortOrder
+    dailyBonusOfSuperStreamer?: SortOrder
+    roomBonus?: SortOrder
+    enchantingGodesBonus?: SortOrder
+    streamerSalary?: SortOrder
+    agencySalary?: SortOrder
     streamerId?: SortOrder
     weekId?: SortOrder
     streamer?: StreamerOrderByWithRelationInput
@@ -6022,12 +6186,20 @@ export namespace Prisma {
     AND?: StreamingDataWhereInput | StreamingDataWhereInput[]
     OR?: StreamingDataWhereInput[]
     NOT?: StreamingDataWhereInput | StreamingDataWhereInput[]
-    diamonds?: IntFilter<"StreamingData"> | number
-    points?: IntFilter<"StreamingData"> | number
-    penalties?: IntFilter<"StreamingData"> | number
-    bonus?: IntFilter<"StreamingData"> | number
-    money?: FloatFilter<"StreamingData"> | number
-    agency?: StringFilter<"StreamingData"> | string
+    baseSalaryIM?: FloatFilter<"StreamingData"> | number
+    baseSalaryRoom?: FloatFilter<"StreamingData"> | number
+    diamondsIM?: IntFilter<"StreamingData"> | number
+    diamondsRoom?: IntFilter<"StreamingData"> | number
+    diamondsTotal?: IntFilter<"StreamingData"> | number
+    diamondsAndPoints?: IntFilter<"StreamingData"> | number
+    diamondsPenalties?: IntFilter<"StreamingData"> | number
+    diamondsComisions?: FloatFilter<"StreamingData"> | number
+    rewardOfPoints?: FloatFilter<"StreamingData"> | number
+    dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
+    roomBonus?: FloatFilter<"StreamingData"> | number
+    enchantingGodesBonus?: FloatFilter<"StreamingData"> | number
+    streamerSalary?: FloatFilter<"StreamingData"> | number
+    agencySalary?: FloatFilter<"StreamingData"> | number
     streamerId?: StringFilter<"StreamingData"> | string
     weekId?: StringFilter<"StreamingData"> | string
     streamer?: XOR<StreamerScalarRelationFilter, StreamerWhereInput>
@@ -6036,12 +6208,20 @@ export namespace Prisma {
 
   export type StreamingDataOrderByWithAggregationInput = {
     id?: SortOrder
-    diamonds?: SortOrder
-    points?: SortOrder
-    penalties?: SortOrder
-    bonus?: SortOrder
-    money?: SortOrder
-    agency?: SortOrder
+    baseSalaryIM?: SortOrder
+    baseSalaryRoom?: SortOrder
+    diamondsIM?: SortOrder
+    diamondsRoom?: SortOrder
+    diamondsTotal?: SortOrder
+    diamondsAndPoints?: SortOrder
+    diamondsPenalties?: SortOrder
+    diamondsComisions?: SortOrder
+    rewardOfPoints?: SortOrder
+    dailyBonusOfSuperStreamer?: SortOrder
+    roomBonus?: SortOrder
+    enchantingGodesBonus?: SortOrder
+    streamerSalary?: SortOrder
+    agencySalary?: SortOrder
     streamerId?: SortOrder
     weekId?: SortOrder
     _count?: StreamingDataCountOrderByAggregateInput
@@ -6056,12 +6236,20 @@ export namespace Prisma {
     OR?: StreamingDataScalarWhereWithAggregatesInput[]
     NOT?: StreamingDataScalarWhereWithAggregatesInput | StreamingDataScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"StreamingData"> | string
-    diamonds?: IntWithAggregatesFilter<"StreamingData"> | number
-    points?: IntWithAggregatesFilter<"StreamingData"> | number
-    penalties?: IntWithAggregatesFilter<"StreamingData"> | number
-    bonus?: IntWithAggregatesFilter<"StreamingData"> | number
-    money?: FloatWithAggregatesFilter<"StreamingData"> | number
-    agency?: StringWithAggregatesFilter<"StreamingData"> | string
+    baseSalaryIM?: FloatWithAggregatesFilter<"StreamingData"> | number
+    baseSalaryRoom?: FloatWithAggregatesFilter<"StreamingData"> | number
+    diamondsIM?: IntWithAggregatesFilter<"StreamingData"> | number
+    diamondsRoom?: IntWithAggregatesFilter<"StreamingData"> | number
+    diamondsTotal?: IntWithAggregatesFilter<"StreamingData"> | number
+    diamondsAndPoints?: IntWithAggregatesFilter<"StreamingData"> | number
+    diamondsPenalties?: IntWithAggregatesFilter<"StreamingData"> | number
+    diamondsComisions?: FloatWithAggregatesFilter<"StreamingData"> | number
+    rewardOfPoints?: FloatWithAggregatesFilter<"StreamingData"> | number
+    dailyBonusOfSuperStreamer?: FloatWithAggregatesFilter<"StreamingData"> | number
+    roomBonus?: FloatWithAggregatesFilter<"StreamingData"> | number
+    enchantingGodesBonus?: FloatWithAggregatesFilter<"StreamingData"> | number
+    streamerSalary?: FloatWithAggregatesFilter<"StreamingData"> | number
+    agencySalary?: FloatWithAggregatesFilter<"StreamingData"> | number
     streamerId?: StringWithAggregatesFilter<"StreamingData"> | string
     weekId?: StringWithAggregatesFilter<"StreamingData"> | string
   }
@@ -6277,82 +6465,138 @@ export namespace Prisma {
 
   export type StreamingDataCreateInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     streamer: StreamerCreateNestedOneWithoutStreamingDataInput
     week: WeekCreateNestedOneWithoutDataInput
   }
 
   export type StreamingDataUncheckedCreateInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     streamerId: string
     weekId: string
   }
 
   export type StreamingDataUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     streamer?: StreamerUpdateOneRequiredWithoutStreamingDataNestedInput
     week?: WeekUpdateOneRequiredWithoutDataNestedInput
   }
 
   export type StreamingDataUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     streamerId?: StringFieldUpdateOperationsInput | string
     weekId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StreamingDataCreateManyInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     streamerId: string
     weekId: string
   }
 
   export type StreamingDataUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
   }
 
   export type StreamingDataUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     streamerId?: StringFieldUpdateOperationsInput | string
     weekId?: StringFieldUpdateOperationsInput | string
   }
@@ -6593,17 +6837,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -6613,6 +6846,17 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StreamerScalarRelationFilter = {
@@ -6627,70 +6871,96 @@ export namespace Prisma {
 
   export type StreamingDataCountOrderByAggregateInput = {
     id?: SortOrder
-    diamonds?: SortOrder
-    points?: SortOrder
-    penalties?: SortOrder
-    bonus?: SortOrder
-    money?: SortOrder
-    agency?: SortOrder
+    baseSalaryIM?: SortOrder
+    baseSalaryRoom?: SortOrder
+    diamondsIM?: SortOrder
+    diamondsRoom?: SortOrder
+    diamondsTotal?: SortOrder
+    diamondsAndPoints?: SortOrder
+    diamondsPenalties?: SortOrder
+    diamondsComisions?: SortOrder
+    rewardOfPoints?: SortOrder
+    dailyBonusOfSuperStreamer?: SortOrder
+    roomBonus?: SortOrder
+    enchantingGodesBonus?: SortOrder
+    streamerSalary?: SortOrder
+    agencySalary?: SortOrder
     streamerId?: SortOrder
     weekId?: SortOrder
   }
 
   export type StreamingDataAvgOrderByAggregateInput = {
-    diamonds?: SortOrder
-    points?: SortOrder
-    penalties?: SortOrder
-    bonus?: SortOrder
-    money?: SortOrder
+    baseSalaryIM?: SortOrder
+    baseSalaryRoom?: SortOrder
+    diamondsIM?: SortOrder
+    diamondsRoom?: SortOrder
+    diamondsTotal?: SortOrder
+    diamondsAndPoints?: SortOrder
+    diamondsPenalties?: SortOrder
+    diamondsComisions?: SortOrder
+    rewardOfPoints?: SortOrder
+    dailyBonusOfSuperStreamer?: SortOrder
+    roomBonus?: SortOrder
+    enchantingGodesBonus?: SortOrder
+    streamerSalary?: SortOrder
+    agencySalary?: SortOrder
   }
 
   export type StreamingDataMaxOrderByAggregateInput = {
     id?: SortOrder
-    diamonds?: SortOrder
-    points?: SortOrder
-    penalties?: SortOrder
-    bonus?: SortOrder
-    money?: SortOrder
-    agency?: SortOrder
+    baseSalaryIM?: SortOrder
+    baseSalaryRoom?: SortOrder
+    diamondsIM?: SortOrder
+    diamondsRoom?: SortOrder
+    diamondsTotal?: SortOrder
+    diamondsAndPoints?: SortOrder
+    diamondsPenalties?: SortOrder
+    diamondsComisions?: SortOrder
+    rewardOfPoints?: SortOrder
+    dailyBonusOfSuperStreamer?: SortOrder
+    roomBonus?: SortOrder
+    enchantingGodesBonus?: SortOrder
+    streamerSalary?: SortOrder
+    agencySalary?: SortOrder
     streamerId?: SortOrder
     weekId?: SortOrder
   }
 
   export type StreamingDataMinOrderByAggregateInput = {
     id?: SortOrder
-    diamonds?: SortOrder
-    points?: SortOrder
-    penalties?: SortOrder
-    bonus?: SortOrder
-    money?: SortOrder
-    agency?: SortOrder
+    baseSalaryIM?: SortOrder
+    baseSalaryRoom?: SortOrder
+    diamondsIM?: SortOrder
+    diamondsRoom?: SortOrder
+    diamondsTotal?: SortOrder
+    diamondsAndPoints?: SortOrder
+    diamondsPenalties?: SortOrder
+    diamondsComisions?: SortOrder
+    rewardOfPoints?: SortOrder
+    dailyBonusOfSuperStreamer?: SortOrder
+    roomBonus?: SortOrder
+    enchantingGodesBonus?: SortOrder
+    streamerSalary?: SortOrder
+    agencySalary?: SortOrder
     streamerId?: SortOrder
     weekId?: SortOrder
   }
 
   export type StreamingDataSumOrderByAggregateInput = {
-    diamonds?: SortOrder
-    points?: SortOrder
-    penalties?: SortOrder
-    bonus?: SortOrder
-    money?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    baseSalaryIM?: SortOrder
+    baseSalaryRoom?: SortOrder
+    diamondsIM?: SortOrder
+    diamondsRoom?: SortOrder
+    diamondsTotal?: SortOrder
+    diamondsAndPoints?: SortOrder
+    diamondsPenalties?: SortOrder
+    diamondsComisions?: SortOrder
+    rewardOfPoints?: SortOrder
+    dailyBonusOfSuperStreamer?: SortOrder
+    roomBonus?: SortOrder
+    enchantingGodesBonus?: SortOrder
+    streamerSalary?: SortOrder
+    agencySalary?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -6707,6 +6977,22 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type ReferalCountOrderByAggregateInput = {
@@ -6926,7 +7212,7 @@ export namespace Prisma {
     connect?: WeekWhereUniqueInput
   }
 
-  export type IntFieldUpdateOperationsInput = {
+  export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
@@ -6934,7 +7220,7 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type FloatFieldUpdateOperationsInput = {
+  export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
@@ -7119,22 +7405,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -7149,6 +7419,22 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type ReferalCreateWithoutStreamerInput = {
@@ -7197,23 +7483,39 @@ export namespace Prisma {
 
   export type StreamingDataCreateWithoutStreamerInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     week: WeekCreateNestedOneWithoutDataInput
   }
 
   export type StreamingDataUncheckedCreateWithoutStreamerInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     weekId: string
   }
 
@@ -7290,35 +7592,59 @@ export namespace Prisma {
     OR?: StreamingDataScalarWhereInput[]
     NOT?: StreamingDataScalarWhereInput | StreamingDataScalarWhereInput[]
     id?: StringFilter<"StreamingData"> | string
-    diamonds?: IntFilter<"StreamingData"> | number
-    points?: IntFilter<"StreamingData"> | number
-    penalties?: IntFilter<"StreamingData"> | number
-    bonus?: IntFilter<"StreamingData"> | number
-    money?: FloatFilter<"StreamingData"> | number
-    agency?: StringFilter<"StreamingData"> | string
+    baseSalaryIM?: FloatFilter<"StreamingData"> | number
+    baseSalaryRoom?: FloatFilter<"StreamingData"> | number
+    diamondsIM?: IntFilter<"StreamingData"> | number
+    diamondsRoom?: IntFilter<"StreamingData"> | number
+    diamondsTotal?: IntFilter<"StreamingData"> | number
+    diamondsAndPoints?: IntFilter<"StreamingData"> | number
+    diamondsPenalties?: IntFilter<"StreamingData"> | number
+    diamondsComisions?: FloatFilter<"StreamingData"> | number
+    rewardOfPoints?: FloatFilter<"StreamingData"> | number
+    dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
+    roomBonus?: FloatFilter<"StreamingData"> | number
+    enchantingGodesBonus?: FloatFilter<"StreamingData"> | number
+    streamerSalary?: FloatFilter<"StreamingData"> | number
+    agencySalary?: FloatFilter<"StreamingData"> | number
     streamerId?: StringFilter<"StreamingData"> | string
     weekId?: StringFilter<"StreamingData"> | string
   }
 
   export type StreamingDataCreateWithoutWeekInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     streamer: StreamerCreateNestedOneWithoutStreamingDataInput
   }
 
   export type StreamingDataUncheckedCreateWithoutWeekInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     streamerId: string
   }
 
@@ -7610,12 +7936,20 @@ export namespace Prisma {
 
   export type StreamingDataCreateManyStreamerInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     weekId: string
   }
 
@@ -7657,78 +7991,134 @@ export namespace Prisma {
 
   export type StreamingDataUpdateWithoutStreamerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     week?: WeekUpdateOneRequiredWithoutDataNestedInput
   }
 
   export type StreamingDataUncheckedUpdateWithoutStreamerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     weekId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StreamingDataUncheckedUpdateManyWithoutStreamerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     weekId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StreamingDataCreateManyWeekInput = {
     id?: string
-    diamonds: number
-    points: number
-    penalties: number
-    bonus: number
-    money: number
-    agency: string
+    baseSalaryIM: number
+    baseSalaryRoom: number
+    diamondsIM: number
+    diamondsRoom: number
+    diamondsTotal: number
+    diamondsAndPoints: number
+    diamondsPenalties: number
+    diamondsComisions: number
+    rewardOfPoints: number
+    dailyBonusOfSuperStreamer: number
+    roomBonus: number
+    enchantingGodesBonus: number
+    streamerSalary: number
+    agencySalary: number
     streamerId: string
   }
 
   export type StreamingDataUpdateWithoutWeekInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     streamer?: StreamerUpdateOneRequiredWithoutStreamingDataNestedInput
   }
 
   export type StreamingDataUncheckedUpdateWithoutWeekInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     streamerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StreamingDataUncheckedUpdateManyWithoutWeekInput = {
     id?: StringFieldUpdateOperationsInput | string
-    diamonds?: IntFieldUpdateOperationsInput | number
-    points?: IntFieldUpdateOperationsInput | number
-    penalties?: IntFieldUpdateOperationsInput | number
-    bonus?: IntFieldUpdateOperationsInput | number
-    money?: FloatFieldUpdateOperationsInput | number
-    agency?: StringFieldUpdateOperationsInput | string
+    baseSalaryIM?: FloatFieldUpdateOperationsInput | number
+    baseSalaryRoom?: FloatFieldUpdateOperationsInput | number
+    diamondsIM?: IntFieldUpdateOperationsInput | number
+    diamondsRoom?: IntFieldUpdateOperationsInput | number
+    diamondsTotal?: IntFieldUpdateOperationsInput | number
+    diamondsAndPoints?: IntFieldUpdateOperationsInput | number
+    diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    diamondsComisions?: FloatFieldUpdateOperationsInput | number
+    rewardOfPoints?: FloatFieldUpdateOperationsInput | number
+    dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
+    roomBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    streamerSalary?: FloatFieldUpdateOperationsInput | number
+    agencySalary?: FloatFieldUpdateOperationsInput | number
     streamerId?: StringFieldUpdateOperationsInput | string
   }
 

@@ -142,12 +142,20 @@ exports.Prisma.WeekScalarFieldEnum = {
 
 exports.Prisma.StreamingDataScalarFieldEnum = {
   id: 'id',
-  diamonds: 'diamonds',
-  points: 'points',
-  penalties: 'penalties',
-  bonus: 'bonus',
-  money: 'money',
-  agency: 'agency',
+  baseSalaryIM: 'baseSalaryIM',
+  baseSalaryRoom: 'baseSalaryRoom',
+  diamondsIM: 'diamondsIM',
+  diamondsRoom: 'diamondsRoom',
+  diamondsTotal: 'diamondsTotal',
+  diamondsAndPoints: 'diamondsAndPoints',
+  diamondsPenalties: 'diamondsPenalties',
+  diamondsComisions: 'diamondsComisions',
+  rewardOfPoints: 'rewardOfPoints',
+  dailyBonusOfSuperStreamer: 'dailyBonusOfSuperStreamer',
+  roomBonus: 'roomBonus',
+  enchantingGodesBonus: 'enchantingGodesBonus',
+  streamerSalary: 'streamerSalary',
+  agencySalary: 'agencySalary',
   streamerId: 'streamerId',
   weekId: 'weekId'
 };

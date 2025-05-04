@@ -7,7 +7,7 @@ import { getStreamers } from "@/services/streamers";
 import { StreamerWithReferals } from "@/types/streamers.types";
 import { Plus, Sheet } from "lucide-react";
 import { useState } from "react";
-import { exportStreamersToExcel } from "../lib/exportExcel";
+import { exportStreamersToExcel } from "../lib/excel";
 import FindStreamers from "./components/FindStreamers";
 import StreamerModal from "./components/StreamerModal";
 import StreamersTable from "./components/StreamersTable";

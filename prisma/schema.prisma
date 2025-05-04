@@ -40,13 +40,22 @@ model Week {
 }
 
 model StreamingData {
-  id          String    @id @default(cuid())
-  diamonds    Int
-  points      Int
-  penalties   Int
-  bonus       Int
-  money       Float
-  agency      String
+  id                        String    @id @default(cuid())
+
+  baseSalaryIM              Float
+  baseSalaryRoom            Float
+  diamondsIM                Int
+  diamondsRoom              Int
+  diamondsTotal             Int
+  diamondsAndPoints         Int
+  diamondsPenalties         Int
+  diamondsComisions         Float
+  rewardOfPoints            Float
+  dailyBonusOfSuperStreamer Float
+  roomBonus                 Float
+  enchantingGodesBonus      Float
+  streamerSalary            Float
+  agencySalary              Float
 
   streamer    Streamer  @relation(fields: [streamerId], references: [id])
   streamerId  String
