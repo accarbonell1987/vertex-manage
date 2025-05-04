@@ -32,7 +32,7 @@ export async function getWeeks(): Promise<Week[]> {
 	);
 }
 
-export async function getWeek(id: string): Promise<Week> {
+export async function getWeekById(id: string): Promise<Week> {
 	return await doFetchWithToast<Week>(
 		`/api/weeks/${id}`,
 		{

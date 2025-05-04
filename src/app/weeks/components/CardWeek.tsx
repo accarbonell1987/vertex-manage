@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { FormattedWeek } from "../../../types/weeks.types";
 import CloseWeekAlert from "./CloseWeekAlert";
 import DeleteWeekDialog from "./DeleteWeekDialog";
@@ -13,6 +14,12 @@ interface Props {
 }
 
 export function CardWeek({ week, onRefresh }: Readonly<Props>) {
+	const router = useRouter();
+
+	const handleOnClickOnDetails = () => {
+		router.push(`/weeks/${week.id}`);
+	};
+
 	return (
 		<Card className={`flex flex-col gap-2 ${week.closed ? "bg-gray-100" : ""}`}>
 			<CardHeader>
@@ -20,7 +27,12 @@ export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 					<CardTitle>{week.name}</CardTitle>
 					<div className="flex gap-2">
 						<ToolTip content="Detalles">
-							<Button className="cursor-pointer bg-blue-200 hover:bg-blue-300" variant="secondary" size="icon">
+							<Button
+								className="cursor-pointer bg-blue-200 hover:bg-blue-300"
+								variant="secondary"
+								size="icon"
+								onClick={handleOnClickOnDetails}
+							>
 								<Eye />
 							</Button>
 						</ToolTip>

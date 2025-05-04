@@ -3,7 +3,7 @@ import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StreamerWithReferals } from "@/types/streamers.types";
-import { Edit, Link } from "lucide-react";
+import { Edit, Eye, Link } from "lucide-react";
 import DeleteStreamerAlert from "./DeleteStreamerAlert";
 
 const StreamersTable = ({
@@ -48,6 +48,11 @@ const StreamersTable = ({
 							</Button>
 						</TableCell>
 						<TableCell className="flex gap-2 justify-center">
+							<ToolTip content="Detalles">
+								<Button className="cursor-pointer bg-blue-200 hover:bg-blue-300" variant="secondary" size="icon">
+									<Eye />
+								</Button>
+							</ToolTip>
 							<ToolTip content="Editar">
 								<Button onClick={() => onEdit(streamer)} className="cursor-pointer bg-orange-200 hover:bg-orange-300" variant="secondary">
 									<Edit />
