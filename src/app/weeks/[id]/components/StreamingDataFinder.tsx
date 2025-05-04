@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { useState } from "react";
 
 interface FindStreamersProps {
-	onFind: (criteria: { wahaID?: string; name?: string; phoneNumber?: string; bankAccount?: string }) => void;
+	onFind: (criteria: { wahaID?: string }) => void;
 }
 
 const StreamingDataFinder = ({ onFind }: FindStreamersProps) => {
@@ -49,15 +49,6 @@ const StreamingDataFinder = ({ onFind }: FindStreamersProps) => {
 									</SelectItem>
 									<SelectItem value="wahaName" className="cursor-pointer">
 										Waha Name
-									</SelectItem>
-									<SelectItem value="name" className="cursor-pointer">
-										Nombre
-									</SelectItem>
-									<SelectItem value="phoneNumber" className="cursor-pointer">
-										Teléfono
-									</SelectItem>
-									<SelectItem value="bankAccount" className="cursor-pointer">
-										Cuenta Bancaria
 									</SelectItem>
 								</SelectGroup>
 							</SelectContent>

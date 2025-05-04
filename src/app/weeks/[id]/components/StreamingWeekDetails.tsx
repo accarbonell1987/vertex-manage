@@ -24,7 +24,7 @@ const StreamingWeekDetails = ({ week }: StreamingWeekDetailsProps) => {
 					<b>Hasta:</b> {week.formattedEnd}
 				</p>
 				<p className="flex items-center gap-2">
-					<b>Estado:</b> <Badge className={week.closed ? "bg-gray-600" : "bg-green-600"}>{week.closed ? "Cerrada" : "Abierta"}</Badge>
+					<b>Estado:</b> <Badge className={week.closed ? "bg-gray-600" : "bg-green-600"}>{week.closed ? "CERRADA" : "ABIERTA"}</Badge>
 				</p>
 			</CardContent>
 		</Card>

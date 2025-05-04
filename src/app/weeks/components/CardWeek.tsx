@@ -57,7 +57,7 @@ export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 				<div className="flex flex-col gap-2 border p-2 rounded-lg sm:flex-row">
 					<span className="flex items-center gap-2 text-sm text-gray-600">
 						<b>Estado:</b>
-						<Badge className={week.closed ? "bg-gray-600" : "bg-green-600"}>{week.closed ? "Cerrada" : "Abierta"}</Badge>
+						<Badge className={week.closed ? "bg-gray-600" : "bg-green-600"}>{week.closed ? "CERRADA" : "ABIERTA"}</Badge>
 					</span>
 				</div>
 			</CardContent>

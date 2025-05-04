@@ -5,18 +5,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./
 import { Spinner } from "./ui/spinner";
 
 const defaults = {
-	files: `.xlsx, .xls, .docx, .doc, .pdf, .png, .jpg, .jpeg, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, image/png, image/jpeg`,
+	files: ".application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,.xls,.xlsx",
 };
 
 const defaultAllowedTypes = [
-	"application/msword", // .doc
-	"application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
-	"application/pdf", // .pdf
 	"application/vnd.ms-excel", // .xls
 	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xlsx
-	"text/plain", // .txt
-	"image/png", // .png
-	"image/jpeg", // .jpg y .jpeg
 ];
 
 const CUSTOM_TEXTS = {
@@ -70,6 +64,7 @@ interface DragAndDropProps {
 	texts?: TextsType;
 	isLoading?: boolean;
 	orientation?: "vertical" | "horizontal";
+	isDisabled?: boolean;
 }
 type TextsType = (typeof CUSTOM_TEXTS)["attachDocumentsModal"];
 
@@ -103,6 +98,7 @@ const DragAndDrop = ({
 	texts = CUSTOM_TEXTS.attachDocumentsModal,
 	orientation = "vertical",
 	isLoading = true,
+	isDisabled = false,
 }: DragAndDropProps) => {
 	const dropRef = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -190,12 +186,17 @@ const DragAndDrop = ({
 		<div className="w-full flex flex-col gap-1">
 			{isLoading && <Spinner size="small" show={isLoading} className="text-foreground mt-4" />}
 			{!isLoading ? (
-				<div className="w-full" ref={dropRef} role="button" onClick={() => inputRef.current?.click()}>
+				<div
+					className={`w-full cursor-pointer ${isDisabled ? "cursor-not-allowed bg-gray-300" : ""}`}
+					ref={dropRef}
+					role="button"
+					onClick={() => inputRef.current?.click()}
+				>
 					<IconForDragAndDrop icon={icon} text={text} size={size} orientation={orientation} />
 					<input
 						ref={inputRef}
 						type="file"
-						accept={accept || defaults.files}
+						accept={accept ?? defaults.files}
 						style={{ display: "none" }}
 						multiple
 						onChange={handleSelectFiles}
@@ -203,9 +204,9 @@ const DragAndDrop = ({
 				</div>
 			) : null}
 			{error.length > 0 ? (
-				<Accordion type="single" collapsible className="text-tiny border-1 bg-danger-50 rounded-lg solid-default-300">
+				<Accordion type="single" collapsible className="text-tiny border-1 bg-danger-50 rounded-lg solid-default-300 px-4">
 					<AccordionItem value="1">
-						<AccordionTrigger>Files</AccordionTrigger>
+						<AccordionTrigger>Archivos</AccordionTrigger>
 						<AccordionContent>
 							<ErrorsLabel title={texts.errors.title} amount={error.length} />
 							{error.map((error, index) => (
