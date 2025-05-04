@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const useStreamer = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 	const [streamers, setStreamers] = useState(init);
+	const [actionLoading, setActionLoading] = useState(false);
 
 	const handleChangeStreamers = (streamers: StreamerWithReferals[]) => {
 		setStreamers(streamers);
@@ -28,6 +29,8 @@ const useStreamer = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 		handleChangeStreamers,
 		handleFindByCriteria,
 		handleOnRefresh,
+		actionLoading,
+		setActionLoading,
 	};
 };
 

@@ -41,6 +41,7 @@ const useStreamingData = ({ init }: Readonly<{ init: WeekWithData }>) => {
 		handleOnRefresh,
 		handleFindByCriteria,
 		actionLoading,
+		setActionLoading,
 	};
 };
 

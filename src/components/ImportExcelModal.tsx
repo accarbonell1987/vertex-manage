@@ -1,29 +1,22 @@
+import { DocumentsTypeMapping } from "@/app/weeks/utils/statics";
 import DragAndDrop from "@/components/DragAndDrop";
 import FilesList from "@/components/FileList";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { FileType } from "@/types/common.types";
-import { WeekWithData } from "@/types/weeks.types";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { Upload } from "lucide-react";
 import { useState } from "react";
-import { DocumentsTypeMapping } from "../../utils/statics";
 
 interface Props {
-	week: WeekWithData;
 	open: boolean;
-	onClose: () => void;
 	setOpen: (open: boolean) => void;
 	actionLoading: boolean;
+	onSubmit: (e: React.FormEvent, files: FileType[]) => void;
 }
 
-const StreamingDataImportModal = ({ week, open, onClose, setOpen, actionLoading }: Props) => {
+const ImportExcelModal = ({ open, setOpen, actionLoading, onSubmit }: Props) => {
 	const [files, setFiles] = useState<FileType[] | []>();
-
-	const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-		onClose();
-	};
 
 	const handleAdd = async (files: File[]) => {
 		//! hacer la pegada aqui, si da respuesta lo adiciono, sino lo paso al error
@@ -56,6 +49,11 @@ const StreamingDataImportModal = ({ week, open, onClose, setOpen, actionLoading 
 		setFiles(files?.filter((f) => f.id !== file.id));
 	};
 
+	const handleOnSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		onSubmit(e, files ?? []);
+	};
+
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogContent>
@@ -63,10 +61,10 @@ const StreamingDataImportModal = ({ week, open, onClose, setOpen, actionLoading 
 					<DialogTitle>Importar datos</DialogTitle>
 					<DialogDescription>Selecciona los archivos que deseas importar</DialogDescription>
 				</DialogHeader>
-				<form className="space-y-4" onSubmit={handleSubmit}>
+				<form className="space-y-4" onSubmit={handleOnSubmit}>
 					<DragAndDrop icon={<Upload />} text="Arrastre los archivos aquí" onDrop={handleAdd} isLoading={actionLoading} maxFileSize={10} />
 					<FilesList files={files ?? []} onRemove={handleRemove} />
-					<Button className="w-full" type="submit" disabled={actionLoading || !files?.length}>
+					<Button className="w-full cursor-pointer" type="submit" disabled={actionLoading || !files?.length}>
 						{actionLoading ? "Cargando..." : "Importar"}
 					</Button>
 				</form>
@@ -75,4 +73,4 @@ const StreamingDataImportModal = ({ week, open, onClose, setOpen, actionLoading 
 	);
 };
 
-export default StreamingDataImportModal;
+export default ImportExcelModal;

@@ -1,5 +1,6 @@
+import { ImportedContactsData } from "@/types/streamers.types";
 import { NextResponse } from "next/server";
-import { createStreamer, findStreamersByCriteria } from "../../lib/repositories/streamers";
+import { bulkImportContactsEntries, createStreamer, findStreamersByCriteria } from "../../lib/repositories/streamers";
 
 export async function GET(req: Request) {
 	const { searchParams } = new URL(req.url);
@@ -19,8 +20,6 @@ export async function POST(req: Request) {
 	const body = await req.json();
 	const { name, phoneNumber, bankAccount, wahaID, wahaName } = body;
 
-	console.log(body);
-
 	const streamer = await createStreamer({
 		name,
 		phoneNumber,
@@ -30,4 +29,16 @@ export async function POST(req: Request) {
 	});
 
 	return NextResponse.json(streamer);
+}
+
+export async function PUT(req: Request) {
+	const body = await req.json();
+	const { data } = body as { data: ImportedContactsData[] };
+
+	if (!Array.isArray(data)) {
+		return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
+	}
+
+	await bulkImportContactsEntries(data);
+	return NextResponse.json({ ok: true });
 }

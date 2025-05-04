@@ -3,11 +3,25 @@ import { prisma } from "../../lib/prisma";
 
 export async function bulkImportStreamingData(weekId: string, data: ImportedStreamingData[]) {
 	for (const entry of data) {
-		const streamer = await prisma.streamer.findUnique({
+		let streamer = await prisma.streamer.findUnique({
 			where: { wahaID: entry.wahaID },
 		});
 
-		if (!streamer) continue;
+		if (!streamer) {
+			console.log("Streamer no encontrado", entry.wahaID);
+			//! crear streamer
+			const newStreamer = await prisma.streamer.create({
+				data: {
+					wahaID: entry.wahaID,
+					name: "Sin Nombre",
+					phoneNumber: "Sin Telefono",
+					bankAccount: "Sin Cuenta",
+					wahaName: entry.wahaName,
+				},
+			});
+
+			streamer = newStreamer;
+		}
 
 		await prisma.streamingData.create({
 			data: {
@@ -24,7 +38,7 @@ export async function bulkImportStreamingData(weekId: string, data: ImportedStre
 				rewardOfPoints: entry.rewardOfPoints,
 				dailyBonusOfSuperStreamer: entry.dailyBonusOfSuperStreamer,
 				roomBonus: entry.roomBonus,
-				enchantingGodesBonus: entry.enchantingGodesBonus,
+				enchantingGoddessBonus: entry.enchantingGoddessBonus,
 				streamerSalary: entry.streamerSalary,
 				agencySalary: entry.agencySalary,
 			},

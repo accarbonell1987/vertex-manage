@@ -3493,7 +3493,7 @@ export namespace Prisma {
     rewardOfPoints: number | null
     dailyBonusOfSuperStreamer: number | null
     roomBonus: number | null
-    enchantingGodesBonus: number | null
+    enchantingGoddessBonus: number | null
     streamerSalary: number | null
     agencySalary: number | null
   }
@@ -3510,7 +3510,7 @@ export namespace Prisma {
     rewardOfPoints: number | null
     dailyBonusOfSuperStreamer: number | null
     roomBonus: number | null
-    enchantingGodesBonus: number | null
+    enchantingGoddessBonus: number | null
     streamerSalary: number | null
     agencySalary: number | null
   }
@@ -3528,7 +3528,7 @@ export namespace Prisma {
     rewardOfPoints: number | null
     dailyBonusOfSuperStreamer: number | null
     roomBonus: number | null
-    enchantingGodesBonus: number | null
+    enchantingGoddessBonus: number | null
     streamerSalary: number | null
     agencySalary: number | null
     streamerId: string | null
@@ -3548,7 +3548,7 @@ export namespace Prisma {
     rewardOfPoints: number | null
     dailyBonusOfSuperStreamer: number | null
     roomBonus: number | null
-    enchantingGodesBonus: number | null
+    enchantingGoddessBonus: number | null
     streamerSalary: number | null
     agencySalary: number | null
     streamerId: string | null
@@ -3568,7 +3568,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     streamerId: number
@@ -3589,7 +3589,7 @@ export namespace Prisma {
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
     roomBonus?: true
-    enchantingGodesBonus?: true
+    enchantingGoddessBonus?: true
     streamerSalary?: true
     agencySalary?: true
   }
@@ -3606,7 +3606,7 @@ export namespace Prisma {
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
     roomBonus?: true
-    enchantingGodesBonus?: true
+    enchantingGoddessBonus?: true
     streamerSalary?: true
     agencySalary?: true
   }
@@ -3624,7 +3624,7 @@ export namespace Prisma {
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
     roomBonus?: true
-    enchantingGodesBonus?: true
+    enchantingGoddessBonus?: true
     streamerSalary?: true
     agencySalary?: true
     streamerId?: true
@@ -3644,7 +3644,7 @@ export namespace Prisma {
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
     roomBonus?: true
-    enchantingGodesBonus?: true
+    enchantingGoddessBonus?: true
     streamerSalary?: true
     agencySalary?: true
     streamerId?: true
@@ -3664,7 +3664,7 @@ export namespace Prisma {
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
     roomBonus?: true
-    enchantingGodesBonus?: true
+    enchantingGoddessBonus?: true
     streamerSalary?: true
     agencySalary?: true
     streamerId?: true
@@ -3771,7 +3771,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     streamerId: string
@@ -3810,7 +3810,7 @@ export namespace Prisma {
     rewardOfPoints?: boolean
     dailyBonusOfSuperStreamer?: boolean
     roomBonus?: boolean
-    enchantingGodesBonus?: boolean
+    enchantingGoddessBonus?: boolean
     streamerSalary?: boolean
     agencySalary?: boolean
     streamerId?: boolean
@@ -3832,7 +3832,7 @@ export namespace Prisma {
     rewardOfPoints?: boolean
     dailyBonusOfSuperStreamer?: boolean
     roomBonus?: boolean
-    enchantingGodesBonus?: boolean
+    enchantingGoddessBonus?: boolean
     streamerSalary?: boolean
     agencySalary?: boolean
     streamerId?: boolean
@@ -3854,7 +3854,7 @@ export namespace Prisma {
     rewardOfPoints?: boolean
     dailyBonusOfSuperStreamer?: boolean
     roomBonus?: boolean
-    enchantingGodesBonus?: boolean
+    enchantingGoddessBonus?: boolean
     streamerSalary?: boolean
     agencySalary?: boolean
     streamerId?: boolean
@@ -3876,14 +3876,14 @@ export namespace Prisma {
     rewardOfPoints?: boolean
     dailyBonusOfSuperStreamer?: boolean
     roomBonus?: boolean
-    enchantingGodesBonus?: boolean
+    enchantingGoddessBonus?: boolean
     streamerSalary?: boolean
     agencySalary?: boolean
     streamerId?: boolean
     weekId?: boolean
   }
 
-  export type StreamingDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baseSalaryIM" | "baseSalaryRoom" | "diamondsIM" | "diamondsRoom" | "diamondsTotal" | "diamondsAndPoints" | "diamondsPenalties" | "diamondsComisions" | "rewardOfPoints" | "dailyBonusOfSuperStreamer" | "roomBonus" | "enchantingGodesBonus" | "streamerSalary" | "agencySalary" | "streamerId" | "weekId", ExtArgs["result"]["streamingData"]>
+  export type StreamingDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baseSalaryIM" | "baseSalaryRoom" | "diamondsIM" | "diamondsRoom" | "diamondsTotal" | "diamondsAndPoints" | "diamondsPenalties" | "diamondsComisions" | "rewardOfPoints" | "dailyBonusOfSuperStreamer" | "roomBonus" | "enchantingGoddessBonus" | "streamerSalary" | "agencySalary" | "streamerId" | "weekId", ExtArgs["result"]["streamingData"]>
   export type StreamingDataInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     streamer?: boolean | StreamerDefaultArgs<ExtArgs>
     week?: boolean | WeekDefaultArgs<ExtArgs>
@@ -3916,7 +3916,7 @@ export namespace Prisma {
       rewardOfPoints: number
       dailyBonusOfSuperStreamer: number
       roomBonus: number
-      enchantingGodesBonus: number
+      enchantingGoddessBonus: number
       streamerSalary: number
       agencySalary: number
       streamerId: string
@@ -4358,7 +4358,7 @@ export namespace Prisma {
     readonly rewardOfPoints: FieldRef<"StreamingData", 'Float'>
     readonly dailyBonusOfSuperStreamer: FieldRef<"StreamingData", 'Float'>
     readonly roomBonus: FieldRef<"StreamingData", 'Float'>
-    readonly enchantingGodesBonus: FieldRef<"StreamingData", 'Float'>
+    readonly enchantingGoddessBonus: FieldRef<"StreamingData", 'Float'>
     readonly streamerSalary: FieldRef<"StreamingData", 'Float'>
     readonly agencySalary: FieldRef<"StreamingData", 'Float'>
     readonly streamerId: FieldRef<"StreamingData", 'String'>
@@ -5883,7 +5883,7 @@ export namespace Prisma {
     rewardOfPoints: 'rewardOfPoints',
     dailyBonusOfSuperStreamer: 'dailyBonusOfSuperStreamer',
     roomBonus: 'roomBonus',
-    enchantingGodesBonus: 'enchantingGodesBonus',
+    enchantingGoddessBonus: 'enchantingGoddessBonus',
     streamerSalary: 'streamerSalary',
     agencySalary: 'agencySalary',
     streamerId: 'streamerId',
@@ -6150,7 +6150,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFilter<"StreamingData"> | number
     dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
     roomBonus?: FloatFilter<"StreamingData"> | number
-    enchantingGodesBonus?: FloatFilter<"StreamingData"> | number
+    enchantingGoddessBonus?: FloatFilter<"StreamingData"> | number
     streamerSalary?: FloatFilter<"StreamingData"> | number
     agencySalary?: FloatFilter<"StreamingData"> | number
     streamerId?: StringFilter<"StreamingData"> | string
@@ -6172,7 +6172,7 @@ export namespace Prisma {
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
     roomBonus?: SortOrder
-    enchantingGodesBonus?: SortOrder
+    enchantingGoddessBonus?: SortOrder
     streamerSalary?: SortOrder
     agencySalary?: SortOrder
     streamerId?: SortOrder
@@ -6197,7 +6197,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFilter<"StreamingData"> | number
     dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
     roomBonus?: FloatFilter<"StreamingData"> | number
-    enchantingGodesBonus?: FloatFilter<"StreamingData"> | number
+    enchantingGoddessBonus?: FloatFilter<"StreamingData"> | number
     streamerSalary?: FloatFilter<"StreamingData"> | number
     agencySalary?: FloatFilter<"StreamingData"> | number
     streamerId?: StringFilter<"StreamingData"> | string
@@ -6219,7 +6219,7 @@ export namespace Prisma {
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
     roomBonus?: SortOrder
-    enchantingGodesBonus?: SortOrder
+    enchantingGoddessBonus?: SortOrder
     streamerSalary?: SortOrder
     agencySalary?: SortOrder
     streamerId?: SortOrder
@@ -6247,7 +6247,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatWithAggregatesFilter<"StreamingData"> | number
     dailyBonusOfSuperStreamer?: FloatWithAggregatesFilter<"StreamingData"> | number
     roomBonus?: FloatWithAggregatesFilter<"StreamingData"> | number
-    enchantingGodesBonus?: FloatWithAggregatesFilter<"StreamingData"> | number
+    enchantingGoddessBonus?: FloatWithAggregatesFilter<"StreamingData"> | number
     streamerSalary?: FloatWithAggregatesFilter<"StreamingData"> | number
     agencySalary?: FloatWithAggregatesFilter<"StreamingData"> | number
     streamerId?: StringWithAggregatesFilter<"StreamingData"> | string
@@ -6476,7 +6476,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     streamer: StreamerCreateNestedOneWithoutStreamingDataInput
@@ -6496,7 +6496,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     streamerId: string
@@ -6516,7 +6516,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     streamer?: StreamerUpdateOneRequiredWithoutStreamingDataNestedInput
@@ -6536,7 +6536,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     streamerId?: StringFieldUpdateOperationsInput | string
@@ -6556,7 +6556,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     streamerId: string
@@ -6576,7 +6576,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
   }
@@ -6594,7 +6594,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     streamerId?: StringFieldUpdateOperationsInput | string
@@ -6882,7 +6882,7 @@ export namespace Prisma {
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
     roomBonus?: SortOrder
-    enchantingGodesBonus?: SortOrder
+    enchantingGoddessBonus?: SortOrder
     streamerSalary?: SortOrder
     agencySalary?: SortOrder
     streamerId?: SortOrder
@@ -6901,7 +6901,7 @@ export namespace Prisma {
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
     roomBonus?: SortOrder
-    enchantingGodesBonus?: SortOrder
+    enchantingGoddessBonus?: SortOrder
     streamerSalary?: SortOrder
     agencySalary?: SortOrder
   }
@@ -6919,7 +6919,7 @@ export namespace Prisma {
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
     roomBonus?: SortOrder
-    enchantingGodesBonus?: SortOrder
+    enchantingGoddessBonus?: SortOrder
     streamerSalary?: SortOrder
     agencySalary?: SortOrder
     streamerId?: SortOrder
@@ -6939,7 +6939,7 @@ export namespace Prisma {
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
     roomBonus?: SortOrder
-    enchantingGodesBonus?: SortOrder
+    enchantingGoddessBonus?: SortOrder
     streamerSalary?: SortOrder
     agencySalary?: SortOrder
     streamerId?: SortOrder
@@ -6958,7 +6958,7 @@ export namespace Prisma {
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
     roomBonus?: SortOrder
-    enchantingGodesBonus?: SortOrder
+    enchantingGoddessBonus?: SortOrder
     streamerSalary?: SortOrder
     agencySalary?: SortOrder
   }
@@ -7494,7 +7494,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     week: WeekCreateNestedOneWithoutDataInput
@@ -7513,7 +7513,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     weekId: string
@@ -7603,7 +7603,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFilter<"StreamingData"> | number
     dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
     roomBonus?: FloatFilter<"StreamingData"> | number
-    enchantingGodesBonus?: FloatFilter<"StreamingData"> | number
+    enchantingGoddessBonus?: FloatFilter<"StreamingData"> | number
     streamerSalary?: FloatFilter<"StreamingData"> | number
     agencySalary?: FloatFilter<"StreamingData"> | number
     streamerId?: StringFilter<"StreamingData"> | string
@@ -7623,7 +7623,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     streamer: StreamerCreateNestedOneWithoutStreamingDataInput
@@ -7642,7 +7642,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     streamerId: string
@@ -7947,7 +7947,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     weekId: string
@@ -8002,7 +8002,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     week?: WeekUpdateOneRequiredWithoutDataNestedInput
@@ -8021,7 +8021,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     weekId?: StringFieldUpdateOperationsInput | string
@@ -8040,7 +8040,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     weekId?: StringFieldUpdateOperationsInput | string
@@ -8059,7 +8059,7 @@ export namespace Prisma {
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
     roomBonus: number
-    enchantingGodesBonus: number
+    enchantingGoddessBonus: number
     streamerSalary: number
     agencySalary: number
     streamerId: string
@@ -8078,7 +8078,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     streamer?: StreamerUpdateOneRequiredWithoutStreamingDataNestedInput
@@ -8097,7 +8097,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     streamerId?: StringFieldUpdateOperationsInput | string
@@ -8116,7 +8116,7 @@ export namespace Prisma {
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
     roomBonus?: FloatFieldUpdateOperationsInput | number
-    enchantingGodesBonus?: FloatFieldUpdateOperationsInput | number
+    enchantingGoddessBonus?: FloatFieldUpdateOperationsInput | number
     streamerSalary?: FloatFieldUpdateOperationsInput | number
     agencySalary?: FloatFieldUpdateOperationsInput | number
     streamerId?: StringFieldUpdateOperationsInput | string

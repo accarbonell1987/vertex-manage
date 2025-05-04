@@ -153,7 +153,7 @@ exports.Prisma.StreamingDataScalarFieldEnum = {
   rewardOfPoints: 'rewardOfPoints',
   dailyBonusOfSuperStreamer: 'dailyBonusOfSuperStreamer',
   roomBonus: 'roomBonus',
-  enchantingGodesBonus: 'enchantingGodesBonus',
+  enchantingGoddessBonus: 'enchantingGoddessBonus',
   streamerSalary: 'streamerSalary',
   agencySalary: 'agencySalary',
   streamerId: 'streamerId',

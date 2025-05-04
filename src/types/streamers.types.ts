@@ -14,6 +14,7 @@ export type StreamerWithReferals = Streamer & {
 
 export type ImportedStreamingData = {
 	wahaID: string;
+	wahaName: string;
 	baseSalaryIM: number;
 	baseSalaryRoom: number;
 	diamondsIM: number;
@@ -26,7 +27,14 @@ export type ImportedStreamingData = {
 	rewardOfPoints: number;
 	dailyBonusOfSuperStreamer: number;
 	roomBonus: number;
-	enchantingGodesBonus: number;
+	enchantingGoddessBonus: number;
 	streamerSalary: number;
 	agencySalary: number;
+};
+
+export type ImportedContactsData = {
+	wahaID: string;
+	name?: string;
+	phoneNumber?: string;
+	bankAccount?: string;
 };

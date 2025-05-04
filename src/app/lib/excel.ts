@@ -1,4 +1,4 @@
-import { ImportedStreamingData, StreamerWithReferals } from "@/types/streamers.types";
+import { ImportedContactsData, ImportedStreamingData, StreamerWithReferals } from "@/types/streamers.types";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
 
@@ -43,6 +43,7 @@ export function parseStreamingExcel(file: File): Promise<ImportedStreamingData[]
 
 				parsed.push({
 					wahaID,
+					wahaName: String(row[3])?.trim(),
 					baseSalaryIM: Number(row[5]),
 					baseSalaryRoom: Number(row[6]),
 					diamondsIM: Number(row[7]),
@@ -55,9 +56,44 @@ export function parseStreamingExcel(file: File): Promise<ImportedStreamingData[]
 					rewardOfPoints: Number(row[14]),
 					dailyBonusOfSuperStreamer: Number(row[15]),
 					roomBonus: Number(row[16]),
-					enchantingGodesBonus: Number(row[17]),
+					enchantingGoddessBonus: Number(row[17]),
 					streamerSalary: Number(row[18]),
 					agencySalary: Number(row[19]),
+				});
+			}
+
+			resolve(parsed);
+		};
+
+		reader.onerror = reject;
+
+		reader.readAsArrayBuffer(file);
+	});
+}
+
+export function parseContactsExcel(file: File): Promise<ImportedContactsData[]> {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+
+		reader.onload = (event) => {
+			const data = new Uint8Array(event.target?.result as ArrayBuffer);
+			const workbook = XLSX.read(data, { type: "array" });
+			const sheet = workbook.Sheets[workbook.SheetNames[0]];
+			const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 }) as unknown[][];
+
+			const parsed: ImportedContactsData[] = [];
+
+			for (let i = 1; i < rows.length; i++) {
+				const row = rows[i];
+				const wahaID = String(row[3])?.trim();
+
+				if (!wahaID || isNaN(Number(wahaID))) continue;
+
+				parsed.push({
+					wahaID,
+					name: String(row[1])?.trim(),
+					phoneNumber: String(row[2])?.trim(),
+					bankAccount: String(row[4])?.trim(),
 				});
 			}
 

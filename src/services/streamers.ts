@@ -1,5 +1,5 @@
 import { doFetchWithToast } from "@/app/lib/fetch";
-import { CreateStreamerPayload, StreamerWithReferals } from "@/types/streamers.types";
+import { CreateStreamerPayload, ImportedContactsData, StreamerWithReferals } from "@/types/streamers.types";
 
 export async function createStreamer(payload: CreateStreamerPayload): Promise<void> {
 	await doFetchWithToast(
@@ -94,6 +94,22 @@ export async function getStreamersByCriteria(criteria: {
 			success: "Streamers obtenidos",
 			loading: "Cargando streamers...",
 			error: "No se pudieron obtener los streamers.",
+		}
+	);
+}
+
+export async function bulkImportContactsEntries(data: ImportedContactsData[]): Promise<void> {
+	await doFetchWithToast<void>(
+		"/api/streamers",
+		{
+			method: "PUT",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ data }),
+		},
+		{
+			loading: "Importando datos...",
+			success: "Importación exitosa",
+			error: "No se pudieron importar los datos",
 		}
 	);
 }

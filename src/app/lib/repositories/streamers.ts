@@ -1,3 +1,4 @@
+import { ImportedContactsData } from "@/types/streamers.types";
 import { prisma } from "../../lib/prisma";
 
 export const findAllStreamers = () =>
@@ -52,3 +53,43 @@ export const findStreamersByCriteria = (criteria: {
 		orderBy: { name: "asc" },
 		include: { referals: true },
 	});
+
+export async function bulkImportContactsEntries(data: ImportedContactsData[]) {
+	for (const entry of data) {
+		const { wahaID, name, phoneNumber, bankAccount } = entry;
+
+		if (!wahaID) {
+			console.warn("Entrada sin wahaID, se ignora:", entry);
+			continue;
+		}
+
+		const existingStreamer = await prisma.streamer.findUnique({
+			where: { wahaID },
+		});
+
+		const cleanName = name ?? "Sin Nombre";
+		const cleanPhone = phoneNumber ?? "Sin Telefono";
+		const cleanBank = bankAccount ?? "Sin Cuenta";
+
+		if (existingStreamer) {
+			await prisma.streamer.update({
+				where: { wahaID },
+				data: {
+					name: cleanName,
+					phoneNumber: cleanPhone,
+					bankAccount: cleanBank,
+				},
+			});
+		} else {
+			await prisma.streamer.create({
+				data: {
+					wahaID,
+					name: cleanName,
+					phoneNumber: cleanPhone,
+					bankAccount: cleanBank,
+					wahaName: "Sin Nombre",
+				},
+			});
+		}
+	}
+}
