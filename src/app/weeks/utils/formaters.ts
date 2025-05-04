@@ -1,19 +1,19 @@
 import { Week } from "@/generated/prisma";
-import { FormattedWeek } from "@/types/weeks.types";
+import { WeekWithData } from "@/types/weeks.types";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
-export const formatWeek = (week: Week | null): FormattedWeek | null => {
+export const formatWeek = (week: Week | null, formater: string = "PPPP"): WeekWithData | null => {
 	if (!week) return null;
 	return {
 		...week,
-		formattedStart: format(new Date(week.startDate), "PPPP", { locale: es }),
-		formattedEnd: format(new Date(week.endDate), "PPPP", { locale: es }),
+		formattedStart: format(new Date(week.startDate), formater, { locale: es }),
+		formattedEnd: format(new Date(week.endDate), formater, { locale: es }),
 	};
 };
 
-export const getFormatedWeeks = (weeks: Week[] | null): FormattedWeek[] => {
+export const getFormatedWeeks = (weeks: Week[] | null): WeekWithData[] => {
 	if (!weeks) return [];
 
-	return weeks.map((week) => formatWeek(week) as FormattedWeek);
+	return weeks.map((week) => formatWeek(week, "PPPP") as WeekWithData);
 };

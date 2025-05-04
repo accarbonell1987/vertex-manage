@@ -4,7 +4,17 @@ import { prisma } from "../../lib/prisma";
 
 export const findAllWeeks = () => prisma.week.findMany({ orderBy: { date: "desc" } });
 
-export const findWeekById = (id: string) => prisma.week.findUnique({ where: { id } });
+export const findWeekById = (id: string) =>
+	prisma.week.findUnique({
+		where: { id },
+		include: {
+			data: {
+				include: {
+					streamer: true,
+				},
+			},
+		},
+	});
 
 export const createWeek = (data: CreateWeekPayload) => prisma.week.create({ data });
 

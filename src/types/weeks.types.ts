@@ -1,4 +1,4 @@
-import { Week } from "@/generated/prisma";
+import { Streamer, StreamingData, Week } from "@/generated/prisma";
 
 export interface CreateWeekPayload {
 	name: string;
@@ -8,7 +8,10 @@ export interface CreateWeekPayload {
 	observation: string;
 }
 
-export interface FormattedWeek extends Week {
+export interface WeekWithData extends Week {
 	formattedStart: string;
 	formattedEnd: string;
+	data: (StreamingData & {
+		streamer: Streamer;
+	})[];
 }

@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { FormattedWeek } from "../../../types/weeks.types";
+import { WeekWithData } from "../../../types/weeks.types";
 import CloseWeekAlert from "./CloseWeekAlert";
 import DeleteWeekDialog from "./DeleteWeekDialog";
 
 interface Props {
-	week: FormattedWeek;
+	week: WeekWithData;
 	onRefresh: () => void;
 }
 

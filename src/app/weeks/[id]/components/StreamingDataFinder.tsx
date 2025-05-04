@@ -11,7 +11,7 @@ interface FindStreamersProps {
 	onFind: (criteria: { wahaID?: string; name?: string; phoneNumber?: string; bankAccount?: string }) => void;
 }
 
-const FindStreamers = ({ onFind }: FindStreamersProps) => {
+const StreamingDataFinder = ({ onFind }: FindStreamersProps) => {
 	const [findValue, setFindValue] = useState("");
 	const [criteria, setCriteria] = useState("");
 
@@ -77,4 +77,4 @@ const FindStreamers = ({ onFind }: FindStreamersProps) => {
 	);
 };
 
-export default FindStreamers;
+export default StreamingDataFinder;

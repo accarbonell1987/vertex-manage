@@ -8,8 +8,8 @@ import { StreamerWithReferals } from "@/types/streamers.types";
 import { Plus, Sheet } from "lucide-react";
 import { useState } from "react";
 import { exportStreamersToExcel } from "../lib/excel";
-import FindStreamers from "./components/FindStreamers";
 import StreamerModal from "./components/StreamerModal";
+import StreamersFinder from "./components/StreamersFinder";
 import StreamersTable from "./components/StreamersTable";
 import useStreamer from "./hooks/useStreamer";
 
@@ -48,7 +48,7 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 					</CardTitle>
 				</CardHeader>
 				<CardContent className="flex flex-col gap-4">
-					<FindStreamers onFind={handleFindByCriteria} />
+					<StreamersFinder onFind={handleFindByCriteria} />
 					<Card className="w-full gap-4">
 						<CardHeader>
 							<CardTitle>

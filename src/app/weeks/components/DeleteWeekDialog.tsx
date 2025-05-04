@@ -2,21 +2,22 @@ import DialogComponent from "@/components/Dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { deleteWeek } from "@/services/weeks";
-import { FormattedWeek } from "@/types/weeks.types";
+import { WeekWithData } from "@/types/weeks.types";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
 
 interface Props {
-	week: FormattedWeek;
-	onRefresh: () => void;
+	week: WeekWithData;
+	onRefresh?: () => void;
+	actionLoading?: boolean;
 }
 
-const DeleteWeekDialog = ({ week, onRefresh }: Readonly<Props>) => {
+const DeleteWeekDialog = ({ week, onRefresh, actionLoading }: Readonly<Props>) => {
 	const [weekName, setWeekName] = useState("");
 
 	const handleDeleteWeek = async () => {
 		await deleteWeek(week.id);
-		onRefresh();
+		onRefresh?.();
 	};
 
 	return (
@@ -32,7 +33,7 @@ const DeleteWeekDialog = ({ week, onRefresh }: Readonly<Props>) => {
 				<Button
 					className="cursor-pointer bg-red-600 hover:bg-red-700"
 					variant="destructive"
-					disabled={weekName !== week.name}
+					disabled={weekName !== week.name || actionLoading}
 					onClick={handleDeleteWeek}
 				>
 					<Trash2 /> Eliminar

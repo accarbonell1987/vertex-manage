@@ -19,7 +19,7 @@ interface Props {
 	onRefresh: () => void;
 }
 
-const DeleteStreamerAlert = ({ streamer, onRefresh }: Readonly<Props>) => {
+const StreamerDeleteAlert = ({ streamer, onRefresh }: Readonly<Props>) => {
 	const handleDeleteStreamer = async () => {
 		await deleteStreamer(streamer.id);
 		onRefresh();
@@ -60,4 +60,4 @@ const DeleteStreamerAlert = ({ streamer, onRefresh }: Readonly<Props>) => {
 	);
 };
 
-export default DeleteStreamerAlert;
+export default StreamerDeleteAlert;

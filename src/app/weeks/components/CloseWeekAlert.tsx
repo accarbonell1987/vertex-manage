@@ -11,24 +11,30 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { closeWeek } from "@/services/weeks";
-import { FormattedWeek } from "@/types/weeks.types";
+import { WeekWithData } from "@/types/weeks.types";
 import { CircleX } from "lucide-react";
 
 interface Props {
-	week: FormattedWeek;
-	onRefresh: () => void;
+	week: WeekWithData;
+	onRefresh?: () => void;
+	actionLoading?: boolean;
 }
 
-const CloseWeekAlert = ({ week, onRefresh }: Readonly<Props>) => {
+const CloseWeekAlert = ({ week, onRefresh, actionLoading }: Readonly<Props>) => {
 	const handleCloseWeek = async () => {
 		await closeWeek(week.id);
-		onRefresh();
+		onRefresh?.();
 	};
 
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
-				<Button className="cursor-pointer bg-amber-200 hover:bg-amber-300" variant="secondary" size="icon" disabled={week.closed}>
+				<Button
+					className="cursor-pointer bg-amber-200 hover:bg-amber-300"
+					variant="secondary"
+					size="icon"
+					disabled={week.closed || actionLoading}
+				>
 					<CircleX />
 				</Button>
 			</AlertDialogTrigger>
@@ -47,7 +53,7 @@ const CloseWeekAlert = ({ week, onRefresh }: Readonly<Props>) => {
 				</AlertDialogHeader>
 				<AlertDialogFooter>
 					<AlertDialogCancel>Cancelar</AlertDialogCancel>
-					<AlertDialogAction className="cursor-pointer bg-red-500 hover:bg-red-600" onClick={handleCloseWeek}>
+					<AlertDialogAction className="cursor-pointer bg-red-500 hover:bg-red-600" onClick={handleCloseWeek} disabled={actionLoading}>
 						Cerrar Semana
 					</AlertDialogAction>
 				</AlertDialogFooter>

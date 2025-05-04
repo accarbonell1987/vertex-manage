@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StreamerWithReferals } from "@/types/streamers.types";
 import { Edit, Eye, Link } from "lucide-react";
-import DeleteStreamerAlert from "./DeleteStreamerAlert";
+import StreamerDeleteAlert from "./StreamerDeleteAlert";
 
 const StreamersTable = ({
 	streamers,
@@ -59,7 +59,7 @@ const StreamersTable = ({
 								</Button>
 							</ToolTip>
 							<ToolTip content="Eliminar">
-								<DeleteStreamerAlert streamer={streamer} onRefresh={onRefresh} />
+								<StreamerDeleteAlert streamer={streamer} onRefresh={onRefresh} />
 							</ToolTip>
 						</TableCell>
 					</TableRow>

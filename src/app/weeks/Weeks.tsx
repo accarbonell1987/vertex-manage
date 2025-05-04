@@ -3,16 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWeeks } from "@/services/weeks";
-import { FormattedWeek } from "@/types/weeks.types";
+import { WeekWithData } from "@/types/weeks.types";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import AddWeekModal from "./components/AddWeekModal";
 import { CardWeek } from "./components/CardWeek";
 import { getFormatedWeeks } from "./utils/formaters";
 
-export default function Weeks({ weeks }: Readonly<{ weeks: FormattedWeek[] }>) {
+export default function Weeks({ weeks }: Readonly<{ weeks: WeekWithData[] }>) {
 	const [open, setOpen] = useState(false);
-	const [weekList, setWeekList] = useState<FormattedWeek[]>(weeks);
+	const [weekList, setWeekList] = useState<WeekWithData[]>(weeks);
 
 	//! cargar semanas
 	// useEffect(() => {
