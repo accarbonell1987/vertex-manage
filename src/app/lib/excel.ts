@@ -1,4 +1,5 @@
 import { ImportedContactsData, ImportedStreamingData, StreamerWithReferals } from "@/types/streamers.types";
+import { StreamingDataWithStreamer } from "@/types/streamingData.types";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
 
@@ -20,6 +21,23 @@ export function exportStreamersToExcel(streamers: StreamerWithReferals[]) {
 	const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
 
 	saveAs(blob, `streamers-${new Date().toISOString().slice(0, 10)}.xlsx`);
+}
+
+export function exportWeekToExcel(streamers: StreamingDataWithStreamer[]) {
+	const data = streamers.map((s) => ({
+		WahaID: s.streamer.wahaID,
+		WahaName: s.streamer.wahaName,
+		Nombre: s.streamer.name,
+	}));
+
+	const worksheet = XLSX.utils.json_to_sheet(data);
+	const workbook = XLSX.utils.book_new();
+	XLSX.utils.book_append_sheet(workbook, worksheet, "Semana");
+
+	const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+	const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
+
+	saveAs(blob, `week-${new Date().toISOString().slice(0, 10)}.xlsx`);
 }
 
 export function parseStreamingExcel(file: File): Promise<ImportedStreamingData[]> {

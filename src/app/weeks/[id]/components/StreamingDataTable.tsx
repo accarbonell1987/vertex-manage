@@ -17,7 +17,7 @@ import {
 	PaginationPrevious,
 } from "@/components/ui/pagination";
 
-const DEFAULT_COLUMNS = [
+export const DEFAULT_COLUMNS = [
 	{
 		key: "wahaID",
 		title: "ID de Waha",
