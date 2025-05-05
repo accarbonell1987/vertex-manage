@@ -1,7 +1,6 @@
 import CopyToClipboard from "@/components/CopyToClipboard";
 import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StreamingDataWithStreamer } from "@/types/streamingData.types";
@@ -106,48 +105,46 @@ const StreamingDataTable = ({ week, onRefresh }: Readonly<{ week: WeekWithData; 
 
 	return (
 		<div className="flex flex-col gap-4">
-			<Card>
-				<CardContent className="flex flex-col gap-4 sm:flex-row">
-					<ToolTip content="Columnas Visibles">
-						<DropdownMenu>
-							<DropdownMenuTrigger asChild>
-								<Button variant="outline">Columnas Visibles</Button>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent>
-								{DEFAULT_COLUMNS.map((column) => (
-									<DropdownMenuCheckboxItem
-										key={column.key}
-										checked={visibleColumns.includes(column.key)}
-										onCheckedChange={() => toggleColumn(column.key)}
-									>
-										{column.title}
-									</DropdownMenuCheckboxItem>
-								))}
-							</DropdownMenuContent>
-						</DropdownMenu>
-					</ToolTip>
-					<div className="flex justify-end mb-2 sm:mb-0">
-						<Select
-							value={String(rowsPerPage)}
-							onValueChange={(value) => {
-								setRowsPerPage(Number(value));
-								setCurrentPage(1);
-							}}
-						>
-							<SelectTrigger className="w-full sm:w-36">
-								<SelectValue placeholder="Registros por página" />
-							</SelectTrigger>
-							<SelectContent>
-								{[10, 20, 50].map((num) => (
-									<SelectItem key={num} value={String(num)}>
-										{num} Registros
-									</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
-					</div>
-				</CardContent>
-			</Card>
+			<div className="flex flex-col gap-4 sm:flex-row">
+				<ToolTip content="Columnas Visibles">
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild>
+							<Button variant="outline">Columnas Visibles</Button>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent>
+							{DEFAULT_COLUMNS.map((column) => (
+								<DropdownMenuCheckboxItem
+									key={column.key}
+									checked={visibleColumns.includes(column.key)}
+									onCheckedChange={() => toggleColumn(column.key)}
+								>
+									{column.title}
+								</DropdownMenuCheckboxItem>
+							))}
+						</DropdownMenuContent>
+					</DropdownMenu>
+				</ToolTip>
+				<div className="flex justify-end mb-2 sm:mb-0">
+					<Select
+						value={String(rowsPerPage)}
+						onValueChange={(value) => {
+							setRowsPerPage(Number(value));
+							setCurrentPage(1);
+						}}
+					>
+						<SelectTrigger className="w-full sm:w-36">
+							<SelectValue placeholder="Registros por página" />
+						</SelectTrigger>
+						<SelectContent>
+							{[10, 20, 50].map((num) => (
+								<SelectItem key={num} value={String(num)}>
+									{num} Registros
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
+				</div>
+			</div>
 			<div className="overflow-auto w-full">
 				<Table className="min-w-max">
 					<TableHeader>

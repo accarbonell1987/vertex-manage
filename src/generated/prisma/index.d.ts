@@ -1236,6 +1236,7 @@ export namespace Prisma {
     wahaID: string | null
     wahaName: string | null
     name: string | null
+    allowInRoster: boolean | null
     phoneNumber: string | null
     bankAccount: string | null
     createdAt: Date | null
@@ -1246,6 +1247,7 @@ export namespace Prisma {
     wahaID: string | null
     wahaName: string | null
     name: string | null
+    allowInRoster: boolean | null
     phoneNumber: string | null
     bankAccount: string | null
     createdAt: Date | null
@@ -1256,6 +1258,7 @@ export namespace Prisma {
     wahaID: number
     wahaName: number
     name: number
+    allowInRoster: number
     phoneNumber: number
     bankAccount: number
     createdAt: number
@@ -1268,6 +1271,7 @@ export namespace Prisma {
     wahaID?: true
     wahaName?: true
     name?: true
+    allowInRoster?: true
     phoneNumber?: true
     bankAccount?: true
     createdAt?: true
@@ -1278,6 +1282,7 @@ export namespace Prisma {
     wahaID?: true
     wahaName?: true
     name?: true
+    allowInRoster?: true
     phoneNumber?: true
     bankAccount?: true
     createdAt?: true
@@ -1288,6 +1293,7 @@ export namespace Prisma {
     wahaID?: true
     wahaName?: true
     name?: true
+    allowInRoster?: true
     phoneNumber?: true
     bankAccount?: true
     createdAt?: true
@@ -1371,6 +1377,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster: boolean
     phoneNumber: string | null
     bankAccount: string | null
     createdAt: Date
@@ -1398,6 +1405,7 @@ export namespace Prisma {
     wahaID?: boolean
     wahaName?: boolean
     name?: boolean
+    allowInRoster?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
     createdAt?: boolean
@@ -1412,6 +1420,7 @@ export namespace Prisma {
     wahaID?: boolean
     wahaName?: boolean
     name?: boolean
+    allowInRoster?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
     createdAt?: boolean
@@ -1422,6 +1431,7 @@ export namespace Prisma {
     wahaID?: boolean
     wahaName?: boolean
     name?: boolean
+    allowInRoster?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
     createdAt?: boolean
@@ -1432,12 +1442,13 @@ export namespace Prisma {
     wahaID?: boolean
     wahaName?: boolean
     name?: boolean
+    allowInRoster?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
     createdAt?: boolean
   }
 
-  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "wahaName" | "name" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
+  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "wahaName" | "name" | "allowInRoster" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
   export type StreamerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     referals?: boolean | Streamer$referalsArgs<ExtArgs>
     referredBy?: boolean | Streamer$referredByArgs<ExtArgs>
@@ -1459,6 +1470,7 @@ export namespace Prisma {
       wahaID: string
       wahaName: string
       name: string
+      allowInRoster: boolean
       phoneNumber: string | null
       bankAccount: string | null
       createdAt: Date
@@ -1892,6 +1904,7 @@ export namespace Prisma {
     readonly wahaID: FieldRef<"Streamer", 'String'>
     readonly wahaName: FieldRef<"Streamer", 'String'>
     readonly name: FieldRef<"Streamer", 'String'>
+    readonly allowInRoster: FieldRef<"Streamer", 'Boolean'>
     readonly phoneNumber: FieldRef<"Streamer", 'String'>
     readonly bankAccount: FieldRef<"Streamer", 'String'>
     readonly createdAt: FieldRef<"Streamer", 'DateTime'>
@@ -5849,6 +5862,7 @@ export namespace Prisma {
     wahaID: 'wahaID',
     wahaName: 'wahaName',
     name: 'name',
+    allowInRoster: 'allowInRoster',
     phoneNumber: 'phoneNumber',
     bankAccount: 'bankAccount',
     createdAt: 'createdAt'
@@ -5947,6 +5961,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -5957,13 +5978,6 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -6006,6 +6020,7 @@ export namespace Prisma {
     wahaID?: StringFilter<"Streamer"> | string
     wahaName?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
+    allowInRoster?: BoolFilter<"Streamer"> | boolean
     phoneNumber?: StringNullableFilter<"Streamer"> | string | null
     bankAccount?: StringNullableFilter<"Streamer"> | string | null
     createdAt?: DateTimeFilter<"Streamer"> | Date | string
@@ -6019,6 +6034,7 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    allowInRoster?: SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     bankAccount?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -6035,6 +6051,7 @@ export namespace Prisma {
     NOT?: StreamerWhereInput | StreamerWhereInput[]
     wahaName?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
+    allowInRoster?: BoolFilter<"Streamer"> | boolean
     phoneNumber?: StringNullableFilter<"Streamer"> | string | null
     bankAccount?: StringNullableFilter<"Streamer"> | string | null
     createdAt?: DateTimeFilter<"Streamer"> | Date | string
@@ -6048,6 +6065,7 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    allowInRoster?: SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     bankAccount?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -6064,6 +6082,7 @@ export namespace Prisma {
     wahaID?: StringWithAggregatesFilter<"Streamer"> | string
     wahaName?: StringWithAggregatesFilter<"Streamer"> | string
     name?: StringWithAggregatesFilter<"Streamer"> | string
+    allowInRoster?: BoolWithAggregatesFilter<"Streamer"> | boolean
     phoneNumber?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
     bankAccount?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Streamer"> | Date | string
@@ -6312,6 +6331,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -6325,6 +6345,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -6338,6 +6359,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6351,6 +6373,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6364,6 +6387,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -6374,6 +6398,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6384,6 +6409,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6663,6 +6689,11 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6719,6 +6750,7 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    allowInRoster?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
     createdAt?: SortOrder
@@ -6729,6 +6761,7 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    allowInRoster?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
     createdAt?: SortOrder
@@ -6739,6 +6772,7 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    allowInRoster?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
     createdAt?: SortOrder
@@ -6760,6 +6794,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6794,11 +6836,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type WeekCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -6827,14 +6864,6 @@ export namespace Prisma {
     endDate?: SortOrder
     closed?: SortOrder
     observation?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -7062,6 +7091,10 @@ export namespace Prisma {
     set?: string
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -7166,10 +7199,6 @@ export namespace Prisma {
     connectOrCreate?: StreamingDataCreateOrConnectWithoutWeekInput | StreamingDataCreateOrConnectWithoutWeekInput[]
     createMany?: StreamingDataCreateManyWeekInputEnvelope
     connect?: StreamingDataWhereUniqueInput | StreamingDataWhereUniqueInput[]
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type StreamingDataUpdateManyWithoutWeekNestedInput = {
@@ -7286,6 +7315,11 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -7339,6 +7373,14 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -7379,19 +7421,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -7679,6 +7708,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -7691,6 +7721,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -7744,6 +7775,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7756,6 +7788,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7799,6 +7832,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -7811,6 +7845,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -7828,6 +7863,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -7840,6 +7876,7 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    allowInRoster?: boolean
     phoneNumber?: string | null
     bankAccount?: string | null
     createdAt?: Date | string
@@ -7868,6 +7905,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7880,6 +7918,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7903,6 +7942,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7915,6 +7955,7 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -23,9 +23,9 @@ const useStreamingData = ({ init }: Readonly<{ init: WeekWithData }>) => {
 		setActionLoading(false);
 	};
 
-	const handleFindByCriteria = async (criteria: { wahaID: string }) => {
+	const handleFindByCriteria = async (criteria: { wahaID?: string; name?: string }) => {
 		setActionLoading(true);
-		const week = await getWeekById(criteria.wahaID);
+		const week = await getWeekById(criteria.wahaID!);
 		if (!week) return;
 
 		const formattedWeek = formatWeek(week, "PPP");

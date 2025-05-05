@@ -6,6 +6,7 @@ export interface CreateStreamerPayload {
 	wahaName: string;
 	phoneNumber?: string;
 	bankAccount?: string;
+	allowInRoster?: boolean;
 }
 
 export type StreamerWithReferals = Streamer & {

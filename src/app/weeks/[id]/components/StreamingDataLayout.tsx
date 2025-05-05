@@ -21,7 +21,7 @@ interface StreamingDataLayoutProps {
 }
 
 const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
-	const { weekData, handleOnRefresh, actionLoading, setActionLoading } = useStreamingData({ init: week });
+	const { weekData, handleOnRefresh, actionLoading, setActionLoading, handleFindByCriteria } = useStreamingData({ init: week });
 	const [open, setOpen] = useState(false);
 
 	const handleOnClose = async () => {
@@ -53,41 +53,39 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 	return (
 		<>
 			<ImportExcelModal open={open} setOpen={setOpen} actionLoading={actionLoading} onSubmit={onSubmit} />
-			<Card className="flex justify-end gap-4">
-				<CardContent className="flex flex-col gap-4 sm:flex-row">
-					<Card className="w-full sm:w-3/4">
-						<CardContent className="flex flex-col gap-4">
-							<div className="flex items-center gap-2">
-								<h2 className="text-lg font-semibold">Datos de la semana</h2>
-								<ToolTip content="Importar">
-									<Button
-										className="cursor-pointer bg-blue-200 hover:bg-blue-300 ml-auto"
-										variant="secondary"
-										size="icon"
-										disabled={week.closed || actionLoading}
-										onClick={() => setOpen(true)}
-									>
-										<Import />
-									</Button>
-								</ToolTip>
-								<ToolTip content="Exportar como Excel">
-									<Button className="cursor-pointer bg-indigo-400 hover:bg-indigo-500" onClick={() => {}}>
-										<Sheet />
-									</Button>
-								</ToolTip>
-							</div>
-							<div className="flex flex-col gap-4">
-								<StreamingDataFinder onFind={handleOnRefresh} />
-								<StreamingDataTable week={weekData} onRefresh={handleOnRefresh} />
-							</div>
-						</CardContent>
-					</Card>
-					<div className="flex flex-col gap-4 sm:w-1/4">
-						<StreamingWeekDetails week={weekData} />
-						<StreamingWeekActions week={weekData} onRefresh={handleOnRefresh} actionLoading={actionLoading} />
-					</div>
-				</CardContent>
-			</Card>
+			<div className="flex flex-col gap-4 sm:flex-row">
+				<Card className="w-full sm:w-3/4">
+					<CardContent className="flex flex-col gap-4">
+						<div className="flex items-center gap-2">
+							<h2 className="text-lg font-semibold">Datos de la semana</h2>
+							<ToolTip content="Importar">
+								<Button
+									className="cursor-pointer bg-blue-200 hover:bg-blue-300 ml-auto"
+									variant="secondary"
+									size="icon"
+									disabled={week.closed || actionLoading}
+									onClick={() => setOpen(true)}
+								>
+									<Import />
+								</Button>
+							</ToolTip>
+							<ToolTip content="Exportar como Excel">
+								<Button className="cursor-pointer bg-indigo-400 hover:bg-indigo-500" onClick={() => {}}>
+									<Sheet />
+								</Button>
+							</ToolTip>
+						</div>
+						<div className="flex flex-col gap-4">
+							<StreamingDataFinder onFind={handleFindByCriteria} />
+							<StreamingDataTable week={weekData} onRefresh={handleOnRefresh} />
+						</div>
+					</CardContent>
+				</Card>
+				<div className="flex flex-col gap-4 sm:w-1/4">
+					<StreamingWeekDetails week={weekData} />
+					<StreamingWeekActions week={weekData} onRefresh={handleOnRefresh} actionLoading={actionLoading} />
+				</div>
+			</div>
 		</>
 	);
 };

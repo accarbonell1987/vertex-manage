@@ -15,13 +15,14 @@ datasource db {
 }
 
 model Streamer {
-  id          String   @id @default(cuid())
-  wahaID      String   @unique
-  wahaName    String
-  name        String
-  phoneNumber String?
-  bankAccount String?
-  createdAt   DateTime @default(now())
+  id            String   @id @default(cuid())
+  wahaID        String   @unique
+  wahaName      String
+  name          String
+  allowInRoster Boolean  @default(true)
+  phoneNumber   String?
+  bankAccount   String?
+  createdAt     DateTime @default(now())
 
   referals      Referal[]       @relation("StreamerReferals")
   referredBy    Referal[]       @relation("ReferredStreamer")

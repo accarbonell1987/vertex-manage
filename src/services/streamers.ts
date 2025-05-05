@@ -61,7 +61,7 @@ export async function deleteStreamer(id: string): Promise<void> {
 
 export async function updateStreamer(
 	id: string,
-	data: { name: string; phoneNumber?: string; bankAccount?: string; wahaID?: string; wahaName?: string }
+	data: { name: string; phoneNumber?: string; bankAccount?: string; wahaID?: string; wahaName?: string; allowInRoster?: boolean }
 ): Promise<void> {
 	await doFetchWithToast<void>(
 		`/api/streamers/${id}`,

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 import { createStreamer, updateStreamer } from "@/services/streamers";
 import { StreamerWithReferals } from "@/types/streamers.types";
@@ -28,6 +29,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 	const [wahaName, setWahaName] = useState("");
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [bankAccount, setBankAccount] = useState("");
+	const [allowInRoster, setAllowInRoster] = useState(true);
 	const [error, setError] = useState("");
 
 	useEffect(() => {
@@ -38,12 +40,14 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 				setWahaName(streamer.wahaName ?? "");
 				setPhoneNumber(streamer.phoneNumber ?? "");
 				setBankAccount(streamer.bankAccount ?? "");
+				setAllowInRoster(streamer.allowInRoster ?? true);
 			} else {
 				setName("");
 				setWahaID("");
 				setWahaName("");
 				setPhoneNumber("");
 				setBankAccount("");
+				setAllowInRoster(true);
 			}
 			setError("");
 		}
@@ -84,6 +88,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 					wahaName,
 					phoneNumber,
 					bankAccount,
+					allowInRoster,
 				});
 			} else {
 				await createStreamer({
@@ -92,6 +97,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 					wahaName,
 					phoneNumber,
 					bankAccount,
+					allowInRoster,
 				});
 			}
 			onClose();
@@ -110,27 +116,28 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 					</DialogDescription>
 				</DialogHeader>
 				<form className="space-y-4" onSubmit={handleSubmit}>
-					<div className="flex flex-col gap-2">
+					<div className="flex flex-col gap-2 sm:flex-row sm:items-center">
 						<Label htmlFor="wahaID">
 							Waha ID <b className="text-red-500">*</b>
 						</Label>
 						<Input id="wahaID" value={wahaID} onChange={(e) => setWahaID(e.target.value)} />
+						{/* <Input id="allowInRoster" value={allowInRoster} onChange={(e) => setAllowInRoster(e.target.value)} /> */}
+						<Switch id="allowInRoster" checked={allowInRoster} onCheckedChange={setAllowInRoster} />
+						<Label htmlFor="allowInRoster">Cotiza en Nómina</Label>
 					</div>
-					<div className="flex flex-col gap-2">
+					<div className="flex flex-col gap-2 sm:flex-row sm:items-center">
 						<Label htmlFor="wahaName">
 							Waha Nick <b className="text-red-500">*</b>
 						</Label>
 						<Input id="wahaName" value={wahaName} onChange={(e) => setWahaName(e.target.value)} />
+						<Label htmlFor="phoneNumber">Teléfono</Label>
+						<Input id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} type="number" />
 					</div>
 					<div className="flex flex-col gap-2">
 						<Label htmlFor="name">
 							Nombre <b className="text-red-500">*</b>
 						</Label>
 						<Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
-					</div>
-					<div className="flex flex-col gap-2">
-						<Label htmlFor="phoneNumber">Teléfono</Label>
-						<Input id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} type="number" />
 					</div>
 					<div className="flex flex-col gap-2">
 						<Label htmlFor="bankAccount">Cuenta Bancaria</Label>

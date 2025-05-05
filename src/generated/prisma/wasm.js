@@ -125,6 +125,7 @@ exports.Prisma.StreamerScalarFieldEnum = {
   wahaID: 'wahaID',
   wahaName: 'wahaName',
   name: 'name',
+  allowInRoster: 'allowInRoster',
   phoneNumber: 'phoneNumber',
   bankAccount: 'bankAccount',
   createdAt: 'createdAt'

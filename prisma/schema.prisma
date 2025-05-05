@@ -19,6 +19,7 @@ model Streamer {
   wahaID       String       @unique
   wahaName     String
   name         String
+  allowInRoster Boolean      @default(true)
   phoneNumber  String?
   bankAccount  String?
   createdAt    DateTime     @default(now())
