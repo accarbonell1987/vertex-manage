@@ -32,7 +32,14 @@ const DEFAULT_COLUMNS = [
 		visible: true,
 		render: (s: StreamerWithReferals) => (s.bankAccount ? <CopyToClipboard text={s.bankAccount} /> : "-"),
 	},
-	{ key: "allowInRoster", title: "Cotiza en Nómina", visible: true, render: (s: StreamerWithReferals) => (s.allowInRoster ? "Sí" : "No") },
+	{
+		key: "allowInRoster",
+		title: "Cotiza en Nómina",
+		visible: true,
+		render: (s: StreamerWithReferals) => (
+			<Badge variant={s.allowInRoster ? "default" : "destructive"}>{s.allowInRoster ? "SÍ" : "NO"}</Badge>
+		),
+	},
 	{
 		key: "referals",
 		title: "Referidos",
@@ -46,6 +53,7 @@ const DEFAULT_COLUMNS = [
 	},
 ];
 
+import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 
 const StreamersTable = ({
@@ -117,7 +125,7 @@ const StreamersTable = ({
 						{paginatedStreamers.map((streamer) => (
 							<TableRow key={streamer.id}>
 								{filteredColumns.map((col) => (
-									<TableCell key={col.key} className="text-center">
+									<TableCell key={col.key} className="text-start">
 										{col.render(streamer)}
 									</TableCell>
 								))}
