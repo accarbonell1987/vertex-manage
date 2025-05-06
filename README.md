@@ -4,6 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 npx shadcn@latest add component-name
 npx prisma migrate dev --name migration-name
+npx prisma migrate deploy
 
 ### Docker Create DB
 

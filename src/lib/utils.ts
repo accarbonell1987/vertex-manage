@@ -45,3 +45,10 @@ export const CUSTOM_TEXTS = {
 		delete: "Eliminar",
 	},
 };
+
+export function getFormatNumber(value: number): string {
+	return value.toLocaleString("de-DE", {
+		minimumFractionDigits: 0,
+		maximumFractionDigits: 2,
+	});
+}

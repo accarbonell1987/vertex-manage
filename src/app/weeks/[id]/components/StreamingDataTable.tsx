@@ -35,6 +35,18 @@ export const DEFAULT_COLUMNS = [
 		visible: true,
 		render: (data: StreamingDataWithStreamer) => <CopyToClipboard text={data.streamer.name} />,
 	},
+	{
+		key: "phoneNumber",
+		title: "Telefono",
+		visible: false,
+		render: (data: StreamingDataWithStreamer) => <CopyToClipboard text={data.streamer.phoneNumber || "-"} />,
+	},
+	{
+		key: "bankAccount",
+		title: "Cuenta Bancaria",
+		visible: false,
+		render: (data: StreamingDataWithStreamer) => <CopyToClipboard text={data.streamer.bankAccount || "-"} />,
+	},
 	{ key: "baseSalaryIM", title: "Salario Base (IM)", visible: false, render: (data: StreamingDataWithStreamer) => data.baseSalaryIM },
 	{
 		key: "baseSalaryRoom",
@@ -66,7 +78,7 @@ export const DEFAULT_COLUMNS = [
 	{
 		key: "rewardOfPoints",
 		title: "Recompensa por Puntos",
-		visible: true,
+		visible: false,
 		render: (data: StreamingDataWithStreamer) => data.rewardOfPoints,
 	},
 	{
@@ -75,7 +87,7 @@ export const DEFAULT_COLUMNS = [
 		visible: false,
 		render: (data: StreamingDataWithStreamer) => data.dailyBonusOfSuperStreamer,
 	},
-	{ key: "roomBonus", title: "Bono de Sala", visible: true, render: (data: StreamingDataWithStreamer) => data.roomBonus },
+	{ key: "roomBonus", title: "Bono de Sala", visible: false, render: (data: StreamingDataWithStreamer) => data.roomBonus },
 	{
 		key: "enchantingGoddessBonus",
 		title: "Bono Diosa Encantadora",

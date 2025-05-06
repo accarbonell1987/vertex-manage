@@ -20,6 +20,7 @@ model Streamer {
   wahaName     String
   name         String
   allowInRoster Boolean      @default(true)
+  penalties    Int          @default(0)
   phoneNumber  String?
   bankAccount  String?
   createdAt    DateTime     @default(now())
