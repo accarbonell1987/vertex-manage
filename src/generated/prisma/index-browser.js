@@ -126,6 +126,7 @@ exports.Prisma.StreamerScalarFieldEnum = {
   wahaName: 'wahaName',
   name: 'name',
   allowInRoster: 'allowInRoster',
+  penalties: 'penalties',
   phoneNumber: 'phoneNumber',
   bankAccount: 'bankAccount',
   createdAt: 'createdAt'
@@ -170,6 +171,15 @@ exports.Prisma.ReferalScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ConfigurationScalarFieldEnum = {
+  id: 'id',
+  agencyName: 'agencyName',
+  payAffiliateProgram: 'payAffiliateProgram',
+  payAffiliateProgramPercentage: 'payAffiliateProgramPercentage',
+  applyPenalties: 'applyPenalties',
+  penaltyPercentage: 'penaltyPercentage'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -190,7 +200,8 @@ exports.Prisma.ModelName = {
   Streamer: 'Streamer',
   Week: 'Week',
   StreamingData: 'StreamingData',
-  Referal: 'Referal'
+  Referal: 'Referal',
+  Configuration: 'Configuration'
 };
 
 /**

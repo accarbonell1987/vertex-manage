@@ -1,7 +1,8 @@
+import CopyToClipboard from "@/components/CopyToClipboard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getFormatNumber } from "@/lib/utils";
 import { WeekWithData } from "@/types/weeks.types";
-import { Diamond } from "lucide-react";
+import { Gem, Landmark, Speech } from "lucide-react";
 import { getPreRosterTotalsInWeekByColumn } from "../../utils/functions";
 
 interface StreamingWeekRosterProps {
@@ -20,17 +21,17 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
 				<CardDescription>Información previa de la nómina a pagar</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<div className="flex items-center gap-2">
-					<div className="w-2 h-2 bg-yellow-500 rounded-full" />
-					<b>Streamers:</b> $ {totalStreamersSalary}
+				<div className="flex items-center gap-2 text-yellow-600">
+					<Speech className="w-4 h-4" />
+					<b>Streamers:</b> <CopyToClipboard text={`$ ${totalStreamersSalary}`} />
 				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-2 h-2 bg-blue-500 rounded-full" />
-					<b>Diamantes y Puntos:</b> <Diamond className="w-4 h-4" /> {totalDiamondsAndPoints}
+				<div className="flex items-center gap-2 text-blue-600">
+					<Gem className="w-4 h-4" />
+					<b>Diamantes y Puntos:</b> <CopyToClipboard text={totalDiamondsAndPoints} />
 				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-2 h-2 bg-red-500 rounded-full" />
-					<b>Penalizaciones:</b> <Diamond className="w-4 h-4" /> {totalDiamondsAndPointsDiscounts}
+				<div className="flex items-center gap-2 text-red-600">
+					<Landmark className="w-4 h-4" />
+					<b>Penalizaciones:</b> <CopyToClipboard text={totalDiamondsAndPointsDiscounts} />
 				</div>
 			</CardContent>
 		</Card>

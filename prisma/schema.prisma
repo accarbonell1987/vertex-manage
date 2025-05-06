@@ -78,3 +78,12 @@ model Referal {
 
   createdAt      DateTime   @default(now())
 }
+
+model Configuration {
+  id String @id @default(cuid())
+  agencyName String
+  payAffiliateProgram Boolean
+  payAffiliateProgramPercentage Float
+  applyPenalties Boolean
+  penaltyPercentage Float
+}

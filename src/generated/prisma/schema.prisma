@@ -20,6 +20,7 @@ model Streamer {
   wahaName      String
   name          String
   allowInRoster Boolean  @default(true)
+  penalties     Int      @default(0)
   phoneNumber   String?
   bankAccount   String?
   createdAt     DateTime @default(now())
@@ -76,4 +77,13 @@ model Referal {
   referredId String
 
   createdAt DateTime @default(now())
+}
+
+model Configuration {
+  id                            String  @id @default(cuid())
+  agencyName                    String
+  payAffiliateProgram           Boolean
+  payAffiliateProgramPercentage Float
+  applyPenalties                Boolean
+  penaltyPercentage             Float
 }

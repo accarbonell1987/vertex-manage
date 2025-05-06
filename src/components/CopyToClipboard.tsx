@@ -20,7 +20,7 @@ const CopyToClipboard = ({ text }: CopyProps) => {
 	};
 
 	return (
-		<div className="inline-flex items-center group px-2 py-1 rounded transition-all duration-200 hover:border hover:border-gray-300 hover:bg-gray-50">
+		<div className="inline-flex items-center group px-2 rounded transition-all duration-200 hover:border hover:border-gray-300 hover:bg-gray-50">
 			<span className="text-sm">{text}</span>
 			<ToolTip content={copied ? "¡Copiado!" : "Copiar"}>
 				<span className="ml-2 text-gray-600 cursor-pointer transition-opacity duration-200 opacity-0 group-hover:opacity-100">

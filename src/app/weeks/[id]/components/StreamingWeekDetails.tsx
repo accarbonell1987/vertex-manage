@@ -4,6 +4,8 @@ import { getFormatNumber } from "@/lib/utils";
 import { WeekWithData } from "@/types/weeks.types";
 import { getTotalDoneInWeekByColumn } from "../../utils/functions";
 
+import CopyToClipboard from "@/components/CopyToClipboard";
+import { ChartColumnBig, Gem, Landmark, Speech, SquareDashedKanban } from "lucide-react";
 interface StreamingWeekDetailsProps {
 	week: WeekWithData;
 }
@@ -21,39 +23,39 @@ const StreamingWeekDetails = ({ week }: StreamingWeekDetailsProps) => {
 				<CardDescription>Información general de la semana</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<p className="flex items-center gap-2">
+				<div className="flex items-center gap-2">
 					<b>Nombre:</b> {week.name}
-				</p>
-				<p className="flex items-center gap-2">
+				</div>
+				<div className="flex items-center gap-2">
 					<b>Desde:</b> {week.formattedStart}
-				</p>
-				<p className="flex items-center gap-2">
+				</div>
+				<div className="flex items-center gap-2">
 					<b>Hasta:</b> {week.formattedEnd}
-				</p>
-				<p className="flex items-center gap-2">
+				</div>
+				<div className="flex items-center gap-2">
 					<b>Estado:</b> <Badge className={week.closed ? "bg-gray-600" : "bg-green-600"}>{week.closed ? "CERRADA" : "ABIERTA"}</Badge>
-				</p>
+				</div>
 				<br />
 				<b>Estadísticas: </b>
-				<div className="flex items-center gap-2">
-					<div className="w-2 h-2 bg-blue-500 rounded-full" />
-					<b>Diamantes y Puntos:</b> {totalDiamondsAndPoints}
+				<div className="flex items-center gap-2 text-blue-600">
+					<Gem className="w-4 h-4" />
+					<b>Diamantes y Puntos:</b> <CopyToClipboard text={totalDiamondsAndPoints} />
 				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-2 h-2 bg-red-500 rounded-full" />
-					<b>Penalizaciones:</b> {totalDiamondsAndPointsDiscounts}
+				<div className="flex items-center gap-2 text-red-600">
+					<SquareDashedKanban className="w-4 h-4" />
+					<b>Penalizaciones:</b> <CopyToClipboard text={`${totalDiamondsAndPointsDiscounts}`} />
 				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-2 h-2 bg-green-500 rounded-full" />
-					<b>Agencia:</b> $ {totalAgencySalary}
+				<div className="flex items-center gap-2 text-yellow-600">
+					<Speech className="w-4 h-4" />
+					<b>Agencia:</b> <CopyToClipboard text={`$ ${totalAgencySalary}`} />
 				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-2 h-2 bg-yellow-500 rounded-full" />
-					<b>Streamers:</b> $ {totalStreamersSalary}
+				<div className="flex items-center gap-2 text-green-600">
+					<Landmark className="w-4 h-4" />
+					<b>Streamers:</b> <CopyToClipboard text={`$ ${totalStreamersSalary}`} />
 				</div>
-				<div className="flex items-center gap-2 text-blue-500">
-					<div className="w-2 h-2 bg-sky-500 rounded-full" />
-					<b>Total:</b> $ {totalAgencySalary + totalStreamersSalary}
+				<div className="flex items-center gap-2 text-indigo-500">
+					<ChartColumnBig className="w-4 h-4" />
+					<b>Total:</b> <CopyToClipboard text={`$ ${totalAgencySalary + totalStreamersSalary}`} />
 				</div>
 			</CardContent>
 		</Card>

@@ -2,6 +2,7 @@ import CopyToClipboard from "@/components/CopyToClipboard";
 import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StreamingDataWithStreamer } from "@/types/streamingData.types";
 import { WeekWithData } from "@/types/weeks.types";
@@ -114,8 +115,6 @@ export const DEFAULT_COLUMNS = [
 		render: (data: StreamingDataWithStreamer) => `$ ${Number(data.agencySalary).toFixed(2)}`,
 	},
 ];
-
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const StreamingDataTable = ({ week, onRefresh }: Readonly<{ week: WeekWithData; onRefresh: () => void }>) => {
 	const [visibleColumns, setVisibleColumns] = useState(DEFAULT_COLUMNS.filter((col) => col.visible).map((col) => col.key));
