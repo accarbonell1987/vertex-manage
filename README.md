@@ -9,6 +9,9 @@ npx prisma migrate dev --name migration-name
 
 docker run --name postgres-streamers -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres
 
+docker exec -it postgres-streamers psql -U postgres
+CREATE DATABASE streamers;
+
 First, run the development server:
 
 ```bash

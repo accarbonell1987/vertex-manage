@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
+import { cn, CUSTOM_TEXTS } from "@/lib/utils";
 import { FileType } from "@/types/common.types";
 import { FileChartColumnIncreasing, Trash2 } from "lucide-react";
-import { CUSTOM_TEXTS } from "../../../../Alain/csj/liquidaciones-frontend/apps/mf-privates/src/utils/statics";
+
 import ToolTip from "./ToolTip";
 
 export const FileColorByType = {

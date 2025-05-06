@@ -1,5 +1,6 @@
 import { JSX, useCallback, useEffect, useRef, useState } from "react";
 
+import { CUSTOM_TEXTS } from "@/lib/utils";
 import { Upload } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Spinner } from "./ui/spinner";
@@ -12,47 +13,6 @@ const defaultAllowedTypes = [
 	"application/vnd.ms-excel", // .xls
 	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xlsx
 ];
-
-const CUSTOM_TEXTS = {
-	attachDocumentsModal: {
-		title: "Adjuntar archivos",
-		description:
-			"Selecciona los archivos que deseas adjuntar a esta tarea. Asegúrate de que sean relevantes y no superen el tamaño máximo permitido:",
-		inputs: {
-			users: {
-				label: "Suelte los archivos aquí o haga clic para cargarlos",
-			},
-		},
-		errors: {
-			title: "Errores",
-			sizeExceeds: "excede el tamaño permitido",
-			notAllowedFile: "Tipo de archivo no permitido",
-		},
-		buttons: {
-			assign: "Asignar",
-			cancel: "Cancelar",
-		},
-	},
-	fileList: {
-		title: "Archivos Adjuntos",
-		labels: {
-			size: "Tamaño de archivo",
-		},
-		buttons: {
-			delete: "Eliminar",
-		},
-	},
-	priority: {
-		high: "Alta",
-		medium: "Media",
-		low: "Baja",
-	},
-	actions: {
-		details: "Detalles",
-		edit: "Editar",
-		delete: "Eliminar",
-	},
-};
 
 interface DragAndDropProps {
 	icon?: JSX.Element;
