@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { bulkImportStreamingEntries } from "@/services/streamingData";
 import { FileType } from "@/types/common.types";
 import { WeekWithData } from "@/types/weeks.types";
-import { Import, Sheet } from "lucide-react";
+import { Download, Upload } from "lucide-react";
 import { useState } from "react";
 import useStreamingData from "../../hooks/useStreamingData";
 import StreamingDataFinder from "./StreamingDataFinder";
@@ -59,7 +59,7 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 					<CardContent className="flex flex-col gap-4">
 						<div className="flex items-center gap-2">
 							<h2 className="text-lg font-semibold">Datos de la semana</h2>
-							<ToolTip content="Importar">
+							<ToolTip content="Importar desde Excel">
 								<Button
 									className="cursor-pointer bg-blue-200 hover:bg-blue-300 ml-auto"
 									variant="secondary"
@@ -67,12 +67,12 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 									disabled={week.closed || actionLoading}
 									onClick={() => setOpen(true)}
 								>
-									<Import />
+									<Upload />
 								</Button>
 							</ToolTip>
 							<ToolTip content="Exportar como Excel">
 								<Button className="cursor-pointer bg-indigo-400 hover:bg-indigo-500" onClick={() => {}}>
-									<Sheet />
+									<Download />
 								</Button>
 							</ToolTip>
 						</div>

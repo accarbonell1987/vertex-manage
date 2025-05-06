@@ -17,7 +17,7 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
 		<Card className={week.closed ? "bg-gray-100" : ""}>
 			<CardHeader>
 				<CardTitle>Pre-Nómina</CardTitle>
-				<CardDescription>Información revia de la nómina a pagar</CardDescription>
+				<CardDescription>Información previa de la nómina a pagar</CardDescription>
 			</CardHeader>
 			<CardContent>
 				<div className="flex items-center gap-2">

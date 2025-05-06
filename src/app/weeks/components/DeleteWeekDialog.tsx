@@ -25,8 +25,8 @@ const DeleteWeekDialog = ({ week, onRefresh, actionLoading }: Readonly<Props>) =
 			title="Eliminar semana"
 			description="¿Estás seguro de eliminar la semana?"
 			trigger={
-				<Button className="cursor-pointer bg-red-600 hover:bg-red-700" variant="destructive" size="icon" disabled={week.closed}>
-					<Trash2 />
+				<Button className="cursor-pointer bg-red-600 hover:bg-red-700 flex-1" variant="destructive" disabled={week.closed}>
+					<Trash2 /> Eliminar
 				</Button>
 			}
 			actionButton={

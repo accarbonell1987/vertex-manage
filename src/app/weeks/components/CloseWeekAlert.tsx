@@ -30,12 +30,11 @@ const CloseWeekAlert = ({ week, onRefresh, actionLoading }: Readonly<Props>) => 
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
 				<Button
-					className="cursor-pointer bg-amber-200 hover:bg-amber-300"
+					className="cursor-pointer bg-amber-200 hover:bg-amber-300 flex-1"
 					variant="secondary"
-					size="icon"
 					disabled={week.closed || actionLoading}
 				>
-					<CircleX />
+					<CircleX /> Cerrar
 				</Button>
 			</AlertDialogTrigger>
 			<AlertDialogContent>
