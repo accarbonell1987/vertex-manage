@@ -15,18 +15,21 @@ interface FinderProps {
 const Finder = ({ onFind, criteriaOptions }: FinderProps) => {
 	const [findValue, setFindValue] = useState("");
 	const [criteria, setCriteria] = useState("");
+	const [showCleanButton, setShowCleanButton] = useState(false);
 
 	const handleFind = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (criteria) {
 			onFind({ [criteria]: findValue });
 		}
+		setShowCleanButton(true);
 	};
 
 	const handleClear = () => {
 		setFindValue("");
 		setCriteria("");
 		onFind({});
+		setShowCleanButton(false);
 	};
 
 	return (
@@ -35,7 +38,7 @@ const Finder = ({ onFind, criteriaOptions }: FinderProps) => {
 				<form className="flex flex-col gap-4 w-full sm:flex-row sm:items-end" onSubmit={handleFind}>
 					<div className="flex flex-col gap-2 w-full">
 						<Label htmlFor="find">Datos a Buscar</Label>
-						<Input name="find" placeholder="Buscar" value={findValue} onChange={(e) => setFindValue(e.target.value)} />
+						<Input name="find" placeholder="Buscar" value={findValue} onChange={(e) => setFindValue(e.target.value)} disabled={!criteria} />
 					</div>
 					<div className="flex flex-col gap-2 w-full">
 						<Label htmlFor="criteria">Criterio</Label>
@@ -58,9 +61,11 @@ const Finder = ({ onFind, criteriaOptions }: FinderProps) => {
 						<Button className="w-full sm:w-auto cursor-pointer" type="submit">
 							Buscar
 						</Button>
-						<Button className="w-full sm:w-auto cursor-pointer" type="button" variant="outline" onClick={handleClear}>
-							Limpiar
-						</Button>
+						{showCleanButton ? (
+							<Button className="w-full sm:w-auto cursor-pointer" type="button" variant="outline" onClick={handleClear}>
+								Limpiar
+							</Button>
+						) : null}
 					</div>
 				</form>
 			</CardContent>

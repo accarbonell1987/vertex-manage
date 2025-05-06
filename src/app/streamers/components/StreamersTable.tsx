@@ -13,7 +13,7 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StreamerWithReferals } from "@/types/streamers.types";
-import { Edit, Eye, Link } from "lucide-react";
+import { Edit, Link } from "lucide-react";
 import StreamerDeleteAlert from "./StreamerDeleteAlert";
 
 const DEFAULT_COLUMNS = [
@@ -23,21 +23,21 @@ const DEFAULT_COLUMNS = [
 	{
 		key: "phoneNumber",
 		title: "Teléfono",
-		visible: true,
+		visible: false,
 		render: (s: StreamerWithReferals) => (s.phoneNumber ? <CopyToClipboard text={s.phoneNumber} /> : "-"),
 	},
 	{
 		key: "bankAccount",
 		title: "Cuenta Bancaria",
-		visible: true,
+		visible: false,
 		render: (s: StreamerWithReferals) => (s.bankAccount ? <CopyToClipboard text={s.bankAccount} /> : "-"),
 	},
 	{
 		key: "allowInRoster",
 		title: "Cotiza en Nómina",
-		visible: true,
+		visible: false,
 		render: (s: StreamerWithReferals) => (
-			<Badge variant={s.allowInRoster ? "default" : "destructive"}>{s.allowInRoster ? "SÍ" : "NO"}</Badge>
+			<Badge className={s.allowInRoster ? "bg-green-600" : "bg-red-600"}>{s.allowInRoster ? "SÍ" : "NO"}</Badge>
 		),
 	},
 	{
@@ -58,9 +58,17 @@ import { useState } from "react";
 
 const StreamersTable = ({
 	streamers,
+	selectedStreamer,
 	onRefresh,
 	onEdit,
-}: Readonly<{ streamers: StreamerWithReferals[]; onRefresh: () => void; onEdit: (streamer: StreamerWithReferals) => void }>) => {
+	onSelect,
+}: Readonly<{
+	streamers: StreamerWithReferals[];
+	selectedStreamer: StreamerWithReferals | null;
+	onRefresh: () => void;
+	onEdit: (streamer: StreamerWithReferals) => void;
+	onSelect: (streamer: StreamerWithReferals) => void;
+}>) => {
 	const [visibleColumns, setVisibleColumns] = useState(DEFAULT_COLUMNS.filter((c) => c.visible).map((c) => c.key));
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -123,18 +131,22 @@ const StreamersTable = ({
 					</TableHeader>
 					<TableBody>
 						{paginatedStreamers.map((streamer) => (
-							<TableRow key={streamer.id}>
+							<TableRow
+								key={streamer.id}
+								onClick={() => onSelect(streamer)}
+								className={streamer.id === selectedStreamer?.id ? "bg-gray-100" : ""}
+							>
 								{filteredColumns.map((col) => (
 									<TableCell key={col.key} className="text-start">
 										{col.render(streamer)}
 									</TableCell>
 								))}
 								<TableCell className="flex gap-2 justify-center">
-									<ToolTip content="Detalles">
+									{/* <ToolTip content="Detalles">
 										<Button className="cursor-pointer bg-blue-200 hover:bg-blue-300" variant="secondary" size="icon">
 											<Eye />
 										</Button>
-									</ToolTip>
+									</ToolTip> */}
 									<ToolTip content="Editar">
 										<Button
 											onClick={() => onEdit(streamer)}
@@ -172,7 +184,6 @@ const StreamersTable = ({
 								</PaginationItem>
 							));
 						})()}
-
 						<PaginationItem>
 							<PaginationNext
 								onClick={() => setCurrentPage((p) => p + 1)}

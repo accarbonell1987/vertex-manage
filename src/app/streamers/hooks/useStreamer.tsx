@@ -14,6 +14,8 @@ const useStreamer = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 		const streamers = await getStreamersByCriteria(criteria);
 		if (!streamers) return;
 
+		console.log(streamers);
+
 		handleChangeStreamers(streamers);
 	};
 

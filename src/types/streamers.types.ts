@@ -1,4 +1,5 @@
-import { Referal, Streamer } from "@/generated/prisma";
+import { Streamer } from "@/generated/prisma";
+import { ReferalWithStreamer } from "./referal.types";
 
 export interface CreateStreamerPayload {
 	name: string;
@@ -10,7 +11,7 @@ export interface CreateStreamerPayload {
 }
 
 export type StreamerWithReferals = Streamer & {
-	referals: Referal[];
+	referals: ReferalWithStreamer[];
 };
 
 export type ImportedStreamingData = {

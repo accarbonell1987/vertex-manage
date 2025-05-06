@@ -10,7 +10,9 @@ import { StreamerWithReferals } from "@/types/streamers.types";
 import { Import, Plus, Sheet } from "lucide-react";
 import { useState } from "react";
 import { exportStreamersToExcel, parseContactsExcel } from "../lib/excel";
+import StreamerDetails from "./components/StreamerDetails";
 import StreamerModal from "./components/StreamerModal";
+import StreamerReferals from "./components/StreamerReferals";
 import StreamersFinder from "./components/StreamersFinder";
 import StreamersTable from "./components/StreamersTable";
 import useStreamer from "./hooks/useStreamer";
@@ -59,6 +61,10 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 		}
 	};
 
+	const handleOnSelect = (streamer: StreamerWithReferals) => {
+		setSelectedStreamer(streamer);
+	};
+
 	return (
 		<>
 			<ImportExcelModal open={importOpen} setOpen={setImportOpen} actionLoading={actionLoading} onSubmit={onSubmit} />
@@ -105,18 +111,23 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 								<CardContent>
 									<StreamersTable
 										streamers={streamers}
+										selectedStreamer={selectedStreamer}
 										onRefresh={handleOnRefresh}
 										onEdit={(streamer) => {
 											setSelectedStreamer(streamer);
 											setOpen(true);
 										}}
+										onSelect={handleOnSelect}
 									/>
 								</CardContent>
 							</Card>
 						</div>
 					</CardContent>
 				</Card>
-				<div className="flex flex-col gap-4 sm:w-1/4">Paneles</div>
+				<div className="flex flex-col gap-4 sm:w-1/4">
+					<StreamerDetails streamer={selectedStreamer} />
+					<StreamerReferals streamer={selectedStreamer} streamers={init} onRefresh={handleOnRefresh} />
+				</div>
 			</div>
 		</>
 	);

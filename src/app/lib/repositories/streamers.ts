@@ -4,13 +4,20 @@ import { prisma } from "../../lib/prisma";
 export const findAllStreamers = () =>
 	prisma.streamer.findMany({
 		orderBy: { name: "asc" },
-		include: { referals: true },
+		include: {
+			referals: {
+				include: {
+					streamer: true,
+					referred: true,
+				},
+			},
+		},
 	});
 
 export const findStreamerById = (id: string) =>
 	prisma.streamer.findUnique({
 		where: { id },
-		include: { referals: true },
+		include: { referals: { include: { streamer: true, referred: true } } },
 	});
 
 export const createStreamer = (data: { name: string; phoneNumber: string; bankAccount: string; wahaID: string; wahaName: string }) =>
@@ -51,7 +58,7 @@ export const findStreamersByCriteria = (criteria: {
 			...(criteria.wahaName && { wahaName: { contains: criteria.wahaName, mode: "insensitive" } }),
 		},
 		orderBy: { name: "asc" },
-		include: { referals: true },
+		include: { referals: { include: { streamer: true, referred: true } } },
 	});
 
 export async function bulkImportContactsEntries(data: ImportedContactsData[]) {
