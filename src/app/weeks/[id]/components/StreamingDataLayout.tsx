@@ -15,6 +15,7 @@ import StreamingDataFinder from "./StreamingDataFinder";
 import StreamingDataTable from "./StreamingDataTable";
 import StreamingWeekActions from "./StreamingWeekActions";
 import StreamingWeekDetails from "./StreamingWeekDetails";
+import StreamingWeekRoster from "./StreamingWeekRoster";
 
 interface StreamingDataLayoutProps {
 	week: WeekWithData;
@@ -83,6 +84,7 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 				</Card>
 				<div className="flex flex-col gap-4 sm:w-1/4">
 					<StreamingWeekDetails week={weekData} />
+					<StreamingWeekRoster week={weekData} />
 					<StreamingWeekActions week={weekData} onRefresh={handleOnRefresh} actionLoading={actionLoading} />
 				</div>
 			</div>

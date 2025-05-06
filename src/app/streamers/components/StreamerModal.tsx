@@ -62,11 +62,9 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 
 		if (!wahaName.trim()) return "El nombre de waha es obligatorio";
 
-		// if (!phoneNumber.trim()) return "El teléfono es obligatorio";
-		if (phoneNumber && !/^\d{8}$/.test(phoneNumber)) return "El teléfono debe tener exactamente 8 dígitos";
+		// if (phoneNumber?.trim() && !/^\d{8}$/.test(phoneNumber)) return "El teléfono debe tener exactamente 8 dígitos";
 
-		// if (!bankAccount.trim()) return "La cuenta bancaria es obligatoria";
-		if (bankAccount && !/^\d{16}$/.test(bankAccount)) return "La cuenta bancaria debe tener exactamente 16 dígitos";
+		// if (bankAccount?.trim() && !/^\d{16}$/.test(bankAccount)) return "La cuenta bancaria debe tener exactamente 16 dígitos";
 
 		return "";
 	};

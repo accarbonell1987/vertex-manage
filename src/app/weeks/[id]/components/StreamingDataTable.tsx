@@ -89,8 +89,18 @@ export const DEFAULT_COLUMNS = [
 		render: (data: StreamingDataWithStreamer) => data.numberOfDaysCompleted,
 	},
 	{ key: "numberOfDaysInMic", title: "Días en Mic", visible: false, render: (data: StreamingDataWithStreamer) => data.numberOfDaysInMic },
-	{ key: "streamerSalary", title: "Salario de Streamer", visible: true, render: (data: StreamingDataWithStreamer) => data.streamerSalary },
-	{ key: "agencySalary", title: "Salario de Agencia", visible: true, render: (data: StreamingDataWithStreamer) => data.agencySalary },
+	{
+		key: "streamerSalary",
+		title: "Streamer",
+		visible: true,
+		render: (data: StreamingDataWithStreamer) => `$ ${Number(data.streamerSalary).toFixed(2)}`,
+	},
+	{
+		key: "agencySalary",
+		title: "Agencia",
+		visible: true,
+		render: (data: StreamingDataWithStreamer) => `$ ${Number(data.agencySalary).toFixed(2)}`,
+	},
 ];
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
