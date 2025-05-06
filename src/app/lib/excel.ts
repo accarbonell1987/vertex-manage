@@ -70,13 +70,15 @@ export function parseStreamingExcel(file: File): Promise<ImportedStreamingData[]
 					points: Number(row[10]),
 					diamondsAndPoints: Number(row[11]),
 					diamondsPenalties: Number(row[12]),
-					diamondsComisions: Number(row[13]),
-					rewardOfPoints: Number(row[14]),
-					dailyBonusOfSuperStreamer: Number(row[15]),
-					roomBonus: Number(row[16]),
-					enchantingGoddessBonus: Number(row[17]),
-					streamerSalary: Number(row[19]),
-					agencySalary: Number(row[20]),
+					numberOfDaysCompleted: Number(row[13]),
+					numberOfDaysInMic: Number(row[14]),
+					diamondsComisions: Number(row[15]),
+					rewardOfPoints: Number(row[16]),
+					dailyBonusOfSuperStreamer: Number(row[17]),
+					roomBonus: Number(row[18]),
+					enchantingGoddessBonus: Number(row[19]),
+					streamerSalary: Number(row[21]),
+					agencySalary: Number(row[22]),
 				});
 			}
 

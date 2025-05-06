@@ -150,6 +150,8 @@ exports.Prisma.StreamingDataScalarFieldEnum = {
   diamondsTotal: 'diamondsTotal',
   diamondsAndPoints: 'diamondsAndPoints',
   diamondsPenalties: 'diamondsPenalties',
+  numberOfDaysCompleted: 'numberOfDaysCompleted',
+  numberOfDaysInMic: 'numberOfDaysInMic',
   diamondsComisions: 'diamondsComisions',
   rewardOfPoints: 'rewardOfPoints',
   dailyBonusOfSuperStreamer: 'dailyBonusOfSuperStreamer',

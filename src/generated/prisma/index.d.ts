@@ -3502,6 +3502,8 @@ export namespace Prisma {
     diamondsTotal: number | null
     diamondsAndPoints: number | null
     diamondsPenalties: number | null
+    numberOfDaysCompleted: number | null
+    numberOfDaysInMic: number | null
     diamondsComisions: number | null
     rewardOfPoints: number | null
     dailyBonusOfSuperStreamer: number | null
@@ -3519,6 +3521,8 @@ export namespace Prisma {
     diamondsTotal: number | null
     diamondsAndPoints: number | null
     diamondsPenalties: number | null
+    numberOfDaysCompleted: number | null
+    numberOfDaysInMic: number | null
     diamondsComisions: number | null
     rewardOfPoints: number | null
     dailyBonusOfSuperStreamer: number | null
@@ -3537,6 +3541,8 @@ export namespace Prisma {
     diamondsTotal: number | null
     diamondsAndPoints: number | null
     diamondsPenalties: number | null
+    numberOfDaysCompleted: number | null
+    numberOfDaysInMic: number | null
     diamondsComisions: number | null
     rewardOfPoints: number | null
     dailyBonusOfSuperStreamer: number | null
@@ -3557,6 +3563,8 @@ export namespace Prisma {
     diamondsTotal: number | null
     diamondsAndPoints: number | null
     diamondsPenalties: number | null
+    numberOfDaysCompleted: number | null
+    numberOfDaysInMic: number | null
     diamondsComisions: number | null
     rewardOfPoints: number | null
     dailyBonusOfSuperStreamer: number | null
@@ -3577,6 +3585,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -3598,6 +3608,8 @@ export namespace Prisma {
     diamondsTotal?: true
     diamondsAndPoints?: true
     diamondsPenalties?: true
+    numberOfDaysCompleted?: true
+    numberOfDaysInMic?: true
     diamondsComisions?: true
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
@@ -3615,6 +3627,8 @@ export namespace Prisma {
     diamondsTotal?: true
     diamondsAndPoints?: true
     diamondsPenalties?: true
+    numberOfDaysCompleted?: true
+    numberOfDaysInMic?: true
     diamondsComisions?: true
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
@@ -3633,6 +3647,8 @@ export namespace Prisma {
     diamondsTotal?: true
     diamondsAndPoints?: true
     diamondsPenalties?: true
+    numberOfDaysCompleted?: true
+    numberOfDaysInMic?: true
     diamondsComisions?: true
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
@@ -3653,6 +3669,8 @@ export namespace Prisma {
     diamondsTotal?: true
     diamondsAndPoints?: true
     diamondsPenalties?: true
+    numberOfDaysCompleted?: true
+    numberOfDaysInMic?: true
     diamondsComisions?: true
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
@@ -3673,6 +3691,8 @@ export namespace Prisma {
     diamondsTotal?: true
     diamondsAndPoints?: true
     diamondsPenalties?: true
+    numberOfDaysCompleted?: true
+    numberOfDaysInMic?: true
     diamondsComisions?: true
     rewardOfPoints?: true
     dailyBonusOfSuperStreamer?: true
@@ -3780,6 +3800,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -3819,6 +3841,8 @@ export namespace Prisma {
     diamondsTotal?: boolean
     diamondsAndPoints?: boolean
     diamondsPenalties?: boolean
+    numberOfDaysCompleted?: boolean
+    numberOfDaysInMic?: boolean
     diamondsComisions?: boolean
     rewardOfPoints?: boolean
     dailyBonusOfSuperStreamer?: boolean
@@ -3841,6 +3865,8 @@ export namespace Prisma {
     diamondsTotal?: boolean
     diamondsAndPoints?: boolean
     diamondsPenalties?: boolean
+    numberOfDaysCompleted?: boolean
+    numberOfDaysInMic?: boolean
     diamondsComisions?: boolean
     rewardOfPoints?: boolean
     dailyBonusOfSuperStreamer?: boolean
@@ -3863,6 +3889,8 @@ export namespace Prisma {
     diamondsTotal?: boolean
     diamondsAndPoints?: boolean
     diamondsPenalties?: boolean
+    numberOfDaysCompleted?: boolean
+    numberOfDaysInMic?: boolean
     diamondsComisions?: boolean
     rewardOfPoints?: boolean
     dailyBonusOfSuperStreamer?: boolean
@@ -3885,6 +3913,8 @@ export namespace Prisma {
     diamondsTotal?: boolean
     diamondsAndPoints?: boolean
     diamondsPenalties?: boolean
+    numberOfDaysCompleted?: boolean
+    numberOfDaysInMic?: boolean
     diamondsComisions?: boolean
     rewardOfPoints?: boolean
     dailyBonusOfSuperStreamer?: boolean
@@ -3896,7 +3926,7 @@ export namespace Prisma {
     weekId?: boolean
   }
 
-  export type StreamingDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baseSalaryIM" | "baseSalaryRoom" | "diamondsIM" | "diamondsRoom" | "diamondsTotal" | "diamondsAndPoints" | "diamondsPenalties" | "diamondsComisions" | "rewardOfPoints" | "dailyBonusOfSuperStreamer" | "roomBonus" | "enchantingGoddessBonus" | "streamerSalary" | "agencySalary" | "streamerId" | "weekId", ExtArgs["result"]["streamingData"]>
+  export type StreamingDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baseSalaryIM" | "baseSalaryRoom" | "diamondsIM" | "diamondsRoom" | "diamondsTotal" | "diamondsAndPoints" | "diamondsPenalties" | "numberOfDaysCompleted" | "numberOfDaysInMic" | "diamondsComisions" | "rewardOfPoints" | "dailyBonusOfSuperStreamer" | "roomBonus" | "enchantingGoddessBonus" | "streamerSalary" | "agencySalary" | "streamerId" | "weekId", ExtArgs["result"]["streamingData"]>
   export type StreamingDataInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     streamer?: boolean | StreamerDefaultArgs<ExtArgs>
     week?: boolean | WeekDefaultArgs<ExtArgs>
@@ -3925,6 +3955,8 @@ export namespace Prisma {
       diamondsTotal: number
       diamondsAndPoints: number
       diamondsPenalties: number
+      numberOfDaysCompleted: number
+      numberOfDaysInMic: number
       diamondsComisions: number
       rewardOfPoints: number
       dailyBonusOfSuperStreamer: number
@@ -4367,6 +4399,8 @@ export namespace Prisma {
     readonly diamondsTotal: FieldRef<"StreamingData", 'Int'>
     readonly diamondsAndPoints: FieldRef<"StreamingData", 'Int'>
     readonly diamondsPenalties: FieldRef<"StreamingData", 'Int'>
+    readonly numberOfDaysCompleted: FieldRef<"StreamingData", 'Int'>
+    readonly numberOfDaysInMic: FieldRef<"StreamingData", 'Int'>
     readonly diamondsComisions: FieldRef<"StreamingData", 'Float'>
     readonly rewardOfPoints: FieldRef<"StreamingData", 'Float'>
     readonly dailyBonusOfSuperStreamer: FieldRef<"StreamingData", 'Float'>
@@ -5893,6 +5927,8 @@ export namespace Prisma {
     diamondsTotal: 'diamondsTotal',
     diamondsAndPoints: 'diamondsAndPoints',
     diamondsPenalties: 'diamondsPenalties',
+    numberOfDaysCompleted: 'numberOfDaysCompleted',
+    numberOfDaysInMic: 'numberOfDaysInMic',
     diamondsComisions: 'diamondsComisions',
     rewardOfPoints: 'rewardOfPoints',
     dailyBonusOfSuperStreamer: 'dailyBonusOfSuperStreamer',
@@ -6165,6 +6201,8 @@ export namespace Prisma {
     diamondsTotal?: IntFilter<"StreamingData"> | number
     diamondsAndPoints?: IntFilter<"StreamingData"> | number
     diamondsPenalties?: IntFilter<"StreamingData"> | number
+    numberOfDaysCompleted?: IntFilter<"StreamingData"> | number
+    numberOfDaysInMic?: IntFilter<"StreamingData"> | number
     diamondsComisions?: FloatFilter<"StreamingData"> | number
     rewardOfPoints?: FloatFilter<"StreamingData"> | number
     dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
@@ -6187,6 +6225,8 @@ export namespace Prisma {
     diamondsTotal?: SortOrder
     diamondsAndPoints?: SortOrder
     diamondsPenalties?: SortOrder
+    numberOfDaysCompleted?: SortOrder
+    numberOfDaysInMic?: SortOrder
     diamondsComisions?: SortOrder
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
@@ -6212,6 +6252,8 @@ export namespace Prisma {
     diamondsTotal?: IntFilter<"StreamingData"> | number
     diamondsAndPoints?: IntFilter<"StreamingData"> | number
     diamondsPenalties?: IntFilter<"StreamingData"> | number
+    numberOfDaysCompleted?: IntFilter<"StreamingData"> | number
+    numberOfDaysInMic?: IntFilter<"StreamingData"> | number
     diamondsComisions?: FloatFilter<"StreamingData"> | number
     rewardOfPoints?: FloatFilter<"StreamingData"> | number
     dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
@@ -6234,6 +6276,8 @@ export namespace Prisma {
     diamondsTotal?: SortOrder
     diamondsAndPoints?: SortOrder
     diamondsPenalties?: SortOrder
+    numberOfDaysCompleted?: SortOrder
+    numberOfDaysInMic?: SortOrder
     diamondsComisions?: SortOrder
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
@@ -6262,6 +6306,8 @@ export namespace Prisma {
     diamondsTotal?: IntWithAggregatesFilter<"StreamingData"> | number
     diamondsAndPoints?: IntWithAggregatesFilter<"StreamingData"> | number
     diamondsPenalties?: IntWithAggregatesFilter<"StreamingData"> | number
+    numberOfDaysCompleted?: IntWithAggregatesFilter<"StreamingData"> | number
+    numberOfDaysInMic?: IntWithAggregatesFilter<"StreamingData"> | number
     diamondsComisions?: FloatWithAggregatesFilter<"StreamingData"> | number
     rewardOfPoints?: FloatWithAggregatesFilter<"StreamingData"> | number
     dailyBonusOfSuperStreamer?: FloatWithAggregatesFilter<"StreamingData"> | number
@@ -6498,6 +6544,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -6518,6 +6566,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -6538,6 +6588,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -6558,6 +6610,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -6578,6 +6632,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -6598,6 +6654,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -6616,6 +6674,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -6907,6 +6967,8 @@ export namespace Prisma {
     diamondsTotal?: SortOrder
     diamondsAndPoints?: SortOrder
     diamondsPenalties?: SortOrder
+    numberOfDaysCompleted?: SortOrder
+    numberOfDaysInMic?: SortOrder
     diamondsComisions?: SortOrder
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
@@ -6926,6 +6988,8 @@ export namespace Prisma {
     diamondsTotal?: SortOrder
     diamondsAndPoints?: SortOrder
     diamondsPenalties?: SortOrder
+    numberOfDaysCompleted?: SortOrder
+    numberOfDaysInMic?: SortOrder
     diamondsComisions?: SortOrder
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
@@ -6944,6 +7008,8 @@ export namespace Prisma {
     diamondsTotal?: SortOrder
     diamondsAndPoints?: SortOrder
     diamondsPenalties?: SortOrder
+    numberOfDaysCompleted?: SortOrder
+    numberOfDaysInMic?: SortOrder
     diamondsComisions?: SortOrder
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
@@ -6964,6 +7030,8 @@ export namespace Prisma {
     diamondsTotal?: SortOrder
     diamondsAndPoints?: SortOrder
     diamondsPenalties?: SortOrder
+    numberOfDaysCompleted?: SortOrder
+    numberOfDaysInMic?: SortOrder
     diamondsComisions?: SortOrder
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
@@ -6983,6 +7051,8 @@ export namespace Prisma {
     diamondsTotal?: SortOrder
     diamondsAndPoints?: SortOrder
     diamondsPenalties?: SortOrder
+    numberOfDaysCompleted?: SortOrder
+    numberOfDaysInMic?: SortOrder
     diamondsComisions?: SortOrder
     rewardOfPoints?: SortOrder
     dailyBonusOfSuperStreamer?: SortOrder
@@ -7519,6 +7589,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -7538,6 +7610,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -7628,6 +7702,8 @@ export namespace Prisma {
     diamondsTotal?: IntFilter<"StreamingData"> | number
     diamondsAndPoints?: IntFilter<"StreamingData"> | number
     diamondsPenalties?: IntFilter<"StreamingData"> | number
+    numberOfDaysCompleted?: IntFilter<"StreamingData"> | number
+    numberOfDaysInMic?: IntFilter<"StreamingData"> | number
     diamondsComisions?: FloatFilter<"StreamingData"> | number
     rewardOfPoints?: FloatFilter<"StreamingData"> | number
     dailyBonusOfSuperStreamer?: FloatFilter<"StreamingData"> | number
@@ -7648,6 +7724,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -7667,6 +7745,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -7984,6 +8064,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -8039,6 +8121,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -8058,6 +8142,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -8077,6 +8163,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -8096,6 +8184,8 @@ export namespace Prisma {
     diamondsTotal: number
     diamondsAndPoints: number
     diamondsPenalties: number
+    numberOfDaysCompleted: number
+    numberOfDaysInMic: number
     diamondsComisions: number
     rewardOfPoints: number
     dailyBonusOfSuperStreamer: number
@@ -8115,6 +8205,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -8134,6 +8226,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number
@@ -8153,6 +8247,8 @@ export namespace Prisma {
     diamondsTotal?: IntFieldUpdateOperationsInput | number
     diamondsAndPoints?: IntFieldUpdateOperationsInput | number
     diamondsPenalties?: IntFieldUpdateOperationsInput | number
+    numberOfDaysCompleted?: IntFieldUpdateOperationsInput | number
+    numberOfDaysInMic?: IntFieldUpdateOperationsInput | number
     diamondsComisions?: FloatFieldUpdateOperationsInput | number
     rewardOfPoints?: FloatFieldUpdateOperationsInput | number
     dailyBonusOfSuperStreamer?: FloatFieldUpdateOperationsInput | number

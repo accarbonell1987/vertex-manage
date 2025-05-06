@@ -50,6 +50,8 @@ model StreamingData {
   diamondsTotal             Int
   diamondsAndPoints         Int
   diamondsPenalties         Int
+  numberOfDaysCompleted     Int
+  numberOfDaysInMic         Int
   diamondsComisions         Float
   rewardOfPoints            Float
   dailyBonusOfSuperStreamer Float

@@ -82,6 +82,13 @@ export const DEFAULT_COLUMNS = [
 		visible: false,
 		render: (data: StreamingDataWithStreamer) => data.enchantingGoddessBonus,
 	},
+	{
+		key: "numberOfDaysCompleted",
+		title: "Días Completados",
+		visible: false,
+		render: (data: StreamingDataWithStreamer) => data.numberOfDaysCompleted,
+	},
+	{ key: "numberOfDaysInMic", title: "Días en Mic", visible: false, render: (data: StreamingDataWithStreamer) => data.numberOfDaysInMic },
 	{ key: "streamerSalary", title: "Salario de Streamer", visible: true, render: (data: StreamingDataWithStreamer) => data.streamerSalary },
 	{ key: "agencySalary", title: "Salario de Agencia", visible: true, render: (data: StreamingDataWithStreamer) => data.agencySalary },
 ];

@@ -25,6 +25,8 @@ export type ImportedStreamingData = {
 	points: number;
 	diamondsAndPoints: number;
 	diamondsPenalties: number;
+	numberOfDaysCompleted: number;
+	numberOfDaysInMic: number;
 	diamondsComisions: number;
 	rewardOfPoints: number;
 	dailyBonusOfSuperStreamer: number;
