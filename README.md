@@ -10,8 +10,25 @@ npx prisma migrate deploy
 
 docker run --name postgres-streamers -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres
 
+# ACESO A DOCKER
+
 docker exec -it postgres-streamers psql -U postgres
+
+# CREAR DB
+
 CREATE DATABASE streamers;
+
+# BACKUP DB
+
+- Comando para hacer el backup
+  docker exec -t postgres-streamers pg_dump -U postgres -d streamers -F c -f /tmp/backup.dump
+
+- Copiar el archivo a tu máquina local
+  docker cp postgres-streamers:/tmp/backup.dump ./streamers_backup.dump
+
+- Restaurar el backup
+  docker cp ./streamers_backup.dump postgres-streamers:/tmp/streamers_backup.dump
+  docker exec -t postgres-streamers pg_restore -U postgres -d streamers /tmp/streamers_backup.dump
 
 First, run the development server:
 
