@@ -26,6 +26,12 @@ export function NavBar() {
 				>
 					Solicitudes
 				</Link>
+				<Link
+					href="/configuration"
+					className={clsx("text-sm font-medium hover:underline", pathname === "/configuration" && "text-blue-600 underline")}
+				>
+					Configuración
+				</Link>
 			</div>
 		</nav>
 	);

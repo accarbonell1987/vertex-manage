@@ -14,8 +14,6 @@ const useStreamer = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 		const streamers = await getStreamersByCriteria(criteria);
 		if (!streamers) return;
 
-		console.log(streamers);
-
 		handleChangeStreamers(streamers);
 	};
 
@@ -23,6 +21,7 @@ const useStreamer = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 		const updatedStreamers = await getStreamers();
 		if (!updatedStreamers) return;
 
+		handleFindByCriteria({});
 		handleChangeStreamers(updatedStreamers);
 	};
 

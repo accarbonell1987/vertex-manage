@@ -23,6 +23,7 @@ const StreamerReferalsContent = ({ streamer, streamers, onRefresh }: Readonly<Pr
 
 	useEffect(() => {
 		setMyReferals(streamer?.referals ?? []);
+		setSelectedStreamer(null);
 	}, [streamer]);
 
 	const handleOnAdd = () => {
@@ -62,17 +63,21 @@ const StreamerReferalsContent = ({ streamer, streamers, onRefresh }: Readonly<Pr
 		if (!streamer) return;
 
 		try {
-			const serverReferals = await getReferalsByStreamerId(streamer.id);
+			const referalsOfStreamer = await getReferalsByStreamerId(streamer.id);
 
-			const currentIds = new Set(myReferals.map((r) => r.referredId));
-			const serverIds = new Set(serverReferals.map((r) => r.referredId));
+			const currentReferalsOfStreamerIds = new Set(myReferals.map((r) => r.referredId));
+			const lastReferalsOfStreamerIds = new Set(referalsOfStreamer.map((r) => r.referredId));
 
-			const deleted = serverReferals.filter((r) => !currentIds.has(r.referredId));
-			const created = myReferals.filter((r) => !serverIds.has(r.referredId));
+			const referalsToDelete = referalsOfStreamer.filter((r) => !currentReferalsOfStreamerIds.has(r.referredId));
+			const referalsToCreate = myReferals.filter((r) => !lastReferalsOfStreamerIds.has(r.referredId));
 
-			await Promise.all([...deleted.map((r) => deleteReferal(r.id)), ...created.map((r) => createReferal(streamer.id, r.referredId))]);
+			await Promise.all([
+				...referalsToDelete.map((r) => deleteReferal(r.id)),
+				...referalsToCreate.map((r) => createReferal(streamer.id, r.referredId)),
+			]);
 
 			setDoSomeChange(false);
+			setSelectedStreamer(null);
 			onRefresh();
 		} catch (error) {
 			console.error(error);
@@ -80,10 +85,12 @@ const StreamerReferalsContent = ({ streamer, streamers, onRefresh }: Readonly<Pr
 	};
 
 	const filteredStreamersIsNotAsMyReferal = streamers
-		.filter((s) => {
-			const isAlreadyMyReferal = myReferals.some((r) => r.referredId === s.id);
-			const isMe = s.id === streamer?.id;
-			const isAlreadyReferredBySomeone = streamers.some((other) => other.referals?.some((r) => r.referredId === s.id));
+		.filter((currentStreamer) => {
+			const isAlreadyMyReferal = myReferals.some((r) => r.referredId === currentStreamer.id);
+			const isMe = currentStreamer.id === streamer?.id;
+			const isAlreadyReferredBySomeone = streamers.some((current) =>
+				current.referals?.some((referal) => referal.id === currentStreamer.id)
+			);
 
 			return !isAlreadyMyReferal && !isMe && !isAlreadyReferredBySomeone;
 		})

@@ -41,6 +41,12 @@ const DEFAULT_COLUMNS = [
 		),
 	},
 	{
+		key: "createdAt",
+		title: "Fecha de Creación",
+		visible: false,
+		render: (s: StreamerWithReferals) => new Date(s.createdAt).toLocaleDateString(),
+	},
+	{
 		key: "referals",
 		title: "Referidos",
 		visible: true,
