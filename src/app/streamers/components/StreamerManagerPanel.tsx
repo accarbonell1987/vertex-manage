@@ -6,7 +6,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
-import { DialogDescription } from "@radix-ui/react-dialog";
 import { AlertCircle } from "lucide-react";
 import { useState } from "react";
 
@@ -21,21 +20,19 @@ const StreamerManagerPanel = ({ open, setOpen, onClose, onConfirm }: Props) => {
 	const [cleanAllReferrals, setCleanAllReferrals] = useState<boolean>(false);
 	const [applyPenaltiesToAll, setApplyPenaltiesToAll] = useState<boolean>(false);
 
-	const canApply = cleanAllReferrals || applyPenaltiesToAll;
-
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>Panel de Gestión de Streamers</DialogTitle>
-					<DialogDescription>
-						<p>Gestiona parametros globales de los streamers</p>
+					<div>
+						<p className="text-sm">Gestiona parametros globales de los streamers</p>
 						<Alert variant="destructive" className="mt-2">
 							<AlertCircle className="h-4 w-4" />
 							<AlertTitle>Atención</AlertTitle>
 							<AlertDescription>Esto afectará a todos los streamers.</AlertDescription>
 						</Alert>
-					</DialogDescription>
+					</div>
 				</DialogHeader>
 				<form className="space-y-4">
 					<Card>
@@ -63,7 +60,6 @@ const StreamerManagerPanel = ({ open, setOpen, onClose, onConfirm }: Props) => {
 						<Button
 							type="submit"
 							className="bg-red-500 hover:bg-red-600 cursor-pointer"
-							disabled={!canApply}
 							onClick={() => onConfirm(cleanAllReferrals, applyPenaltiesToAll)}
 						>
 							Aplicar

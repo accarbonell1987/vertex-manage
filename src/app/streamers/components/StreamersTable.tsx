@@ -43,6 +43,14 @@ const DEFAULT_COLUMNS = [
 		),
 	},
 	{
+		key: "applyPenalties",
+		title: "Aplica Penalizaciones",
+		visible: false,
+		render: (s: StreamerWithReferals) => (
+			<Badge className={s.applyPenalties ? "bg-green-600" : "bg-red-600"}>{s.applyPenalties ? "SÍ" : "NO"}</Badge>
+		),
+	},
+	{
 		key: "createdAt",
 		title: "Fecha de Creación",
 		visible: false,

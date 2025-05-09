@@ -73,9 +73,7 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 		if (cleanAllReferrals) {
 			deleteAllReferrals();
 		}
-		if (applyPenaltiesToAll) {
-			updateStreamerPenaltiesToAll({ applyPenaltiesToAll });
-		}
+		updateStreamerPenaltiesToAll({ applyPenaltiesToAll });
 		handleOnClose();
 	};
 
