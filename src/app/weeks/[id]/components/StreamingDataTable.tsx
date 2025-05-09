@@ -140,11 +140,11 @@ export const DEFAULT_COLUMNS = [
 	},
 ];
 
-const StreamingDataTable = ({ week, onRefresh }: Readonly<{ week: WeekWithData; onRefresh: () => void }>) => {
+const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
 	const { configuration } = useConfiguration();
 	const [visibleColumns, setVisibleColumns] = useState(DEFAULT_COLUMNS.filter((col) => col.visible).map((col) => col.key));
 
-	const [rowsPerPage, setRowsPerPage] = useState(50);
+	const [rowsPerPage, setRowsPerPage] = useState(30);
 	const [currentPage, setCurrentPage] = useState(1);
 	const totalPages = Math.ceil(week.data.length / rowsPerPage);
 

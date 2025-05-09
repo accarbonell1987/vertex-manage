@@ -60,25 +60,19 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 						<div className="flex items-center gap-2">
 							<h2 className="text-lg font-semibold">Datos de la semana</h2>
 							<ToolTip content="Importar desde Excel">
-								<Button
-									className="cursor-pointer bg-blue-200 hover:bg-blue-300 ml-auto"
-									variant="secondary"
-									size="icon"
-									disabled={week.closed || actionLoading}
-									onClick={() => setOpen(true)}
-								>
+								<Button className="cursor-pointer ml-auto" disabled={week.closed || actionLoading} onClick={() => setOpen(true)}>
 									<Upload />
 								</Button>
 							</ToolTip>
 							<ToolTip content="Exportar como Excel">
-								<Button className="cursor-pointer bg-indigo-400 hover:bg-indigo-500" onClick={() => {}}>
+								<Button className="cursor-pointer" onClick={() => {}}>
 									<Download />
 								</Button>
 							</ToolTip>
 						</div>
 						<div className="flex flex-col gap-4">
 							<StreamingDataFinder onFind={handleFindByCriteria} />
-							<StreamingDataTable week={weekData} onRefresh={handleOnRefresh} />
+							<StreamingDataTable week={weekData} />
 						</div>
 					</CardContent>
 				</Card>
