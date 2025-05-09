@@ -29,7 +29,7 @@ const CloseWeekAlert = ({ week, onRefresh, actionLoading }: Readonly<Props>) => 
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
-				<Button className="cursor-pointer flex-1" disabled={week.closed || actionLoading}>
+				<Button className="cursor-pointer" disabled={week.closed || actionLoading}>
 					<CircleX />
 				</Button>
 			</AlertDialogTrigger>

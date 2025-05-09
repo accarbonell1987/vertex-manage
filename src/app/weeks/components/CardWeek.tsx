@@ -37,12 +37,8 @@ export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 							<Eye />
 						</Button>
 					</ToolTip>
-					<ToolTip content="Cerrar">
-						<CloseWeekAlert week={week} onRefresh={onRefresh} />
-					</ToolTip>
-					<ToolTip content="Eliminar">
-						<DeleteWeekDialog week={week} onRefresh={onRefresh} />
-					</ToolTip>
+					<CloseWeekAlert week={week} onRefresh={onRefresh} />
+					<DeleteWeekDialog week={week} onRefresh={onRefresh} />
 				</div>
 			</CardHeader>
 			<CardContent className="flex flex-col gap-2 w-full">

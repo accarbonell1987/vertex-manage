@@ -20,12 +20,14 @@ const DeleteWeekDialog = ({ week, onRefresh, actionLoading }: Readonly<Props>) =
 		onRefresh?.();
 	};
 
+	console.log(week.closed);
+
 	return (
 		<DialogComponent
 			title="Eliminar semana"
 			description="¿Estás seguro de eliminar la semana?"
 			trigger={
-				<Button className="cursor-pointer bg-red-500 hover:bg-red-600 flex-1" disabled={week.closed}>
+				<Button className="cursor-pointer" disabled={!week.closed} variant="destructive">
 					<Trash2 />
 				</Button>
 			}

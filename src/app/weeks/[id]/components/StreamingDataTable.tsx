@@ -144,7 +144,7 @@ const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
 	const { configuration } = useConfiguration();
 	const [visibleColumns, setVisibleColumns] = useState(DEFAULT_COLUMNS.filter((col) => col.visible).map((col) => col.key));
 
-	const [rowsPerPage, setRowsPerPage] = useState(30);
+	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [currentPage, setCurrentPage] = useState(1);
 	const totalPages = Math.ceil(week.data.length / rowsPerPage);
 
@@ -190,7 +190,7 @@ const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
 							<SelectValue placeholder="Registros por página" />
 						</SelectTrigger>
 						<SelectContent>
-							{[10, 20, 50].map((num) => (
+							{[10, 20, 30, 50].map((num) => (
 								<SelectItem key={num} value={String(num)}>
 									{num} Registros
 								</SelectItem>
