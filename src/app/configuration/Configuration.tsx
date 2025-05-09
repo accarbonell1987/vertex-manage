@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { updateConfiguration } from "@/services/configuration";
 import { ConfigurationType } from "@/types/configuration.types";
 import { SaveAll } from "lucide-react";
 import { useEffect, useState } from "react";
-import { updateConfiguration } from "../lib/repositories/configuration";
-import { ToastSonner } from "../lib/sonner";
 
 const Configuration = ({ configuration }: { configuration: ConfigurationType }) => {
 	const [currentConfiguration, setCurrentConfiguration] = useState<ConfigurationType>(configuration);
@@ -17,10 +16,9 @@ const Configuration = ({ configuration }: { configuration: ConfigurationType }) 
 		setCurrentConfiguration(configuration);
 	}, [configuration]);
 
-	const handleOnChange = (name: string, value: string | number) => {
-		if (!value) return;
-
+	const handleOnChange = (name: keyof ConfigurationType, value: string | number) => {
 		const valueString = name === "agencyName" ? value.toString() : value;
+
 		const configurationValue = {
 			...currentConfiguration,
 			[name]: valueString,
@@ -38,16 +36,9 @@ const Configuration = ({ configuration }: { configuration: ConfigurationType }) 
 		if (!currentConfiguration) return;
 
 		try {
-			ToastSonner.showLoading("Guardando configuración");
-			const configurationValue = {
-				id: "1",
-				...currentConfiguration,
-			};
-			await updateConfiguration(configurationValue);
-			ToastSonner.showSuccess("Configuración guardada");
+			await updateConfiguration({ ...currentConfiguration, id: "1" });
 		} catch (error) {
 			console.error(error);
-			ToastSonner.showError("Error al guardar la configuración");
 		}
 	};
 
