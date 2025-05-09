@@ -28,7 +28,7 @@ const StreamerDeleteAlert = ({ streamer, onRefresh }: Readonly<Props>) => {
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
-				<Button className="cursor-pointer bg-red-600 hover:bg-red-700" variant="destructive" size="icon">
+				<Button className="cursor-pointer text-white bg-red-500 hover:bg-red-600" size="icon">
 					<Trash2 />
 				</Button>
 			</AlertDialogTrigger>

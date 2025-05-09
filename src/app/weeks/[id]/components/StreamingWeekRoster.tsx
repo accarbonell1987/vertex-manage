@@ -1,5 +1,5 @@
-import CopyToClipboard from "@/components/CopyToClipboard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { getStringNumber } from "@/lib/utils";
 import { WeekWithData } from "@/types/weeks.types";
 import { Gem, Landmark, Speech } from "lucide-react";
 import { useMemo } from "react";
@@ -16,9 +16,7 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
 	const dataWithDynamic = useMemo(() => getDynamicData(week?.data, configuration), [week?.data, configuration]);
 
 	const totalStreamersSalaryDiscounts = getPreRosterTotalsInWeekByColumn(dataWithDynamic, "streamerPenalizated");
-	console.log("🚀 ~ StreamingWeekRoster ~ totalStreamersSalaryDiscounts:", totalStreamersSalaryDiscounts);
 	const totalStreamersSalary = getPreRosterTotalsInWeekByColumn(dataWithDynamic, "streamerSalary");
-
 	const totalDiamondsAndPoints = getPreRosterTotalsInWeekByColumn(dataWithDynamic, "diamondsAndPoints");
 	const totalDiamondsAndPointsDiscounts = getPreRosterTotalsInWeekByColumn(dataWithDynamic, "diamondsPenalties");
 
@@ -31,15 +29,20 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
 			<CardContent>
 				<div className="flex items-center gap-2 text-yellow-600">
 					<Speech className="w-4 h-4" />
-					<b>Streamers:</b> <CopyToClipboard text={`$ ${totalStreamersSalary}`} />
+					<b>Streamers:</b> <p className="text-black">$ {getStringNumber(totalStreamersSalary)}</p>
 				</div>
 				<div className="flex items-center gap-2 text-blue-600">
 					<Gem className="w-4 h-4" />
-					<b>Diamantes y Puntos:</b> <CopyToClipboard text={`${totalDiamondsAndPoints}`} />
+					<b>Diamantes y Puntos:</b> <p className="text-black">{getStringNumber(totalDiamondsAndPoints)}</p>
 				</div>
 				<div className="flex items-center gap-2 text-red-600">
 					<Landmark className="w-4 h-4" />
-					<b>Penalizaciones:</b> <CopyToClipboard text={`${totalDiamondsAndPointsDiscounts}`} />
+					<b>Penalizaciones:</b> <p className="text-black">{getStringNumber(totalDiamondsAndPointsDiscounts)}</p>
+				</div>
+				<div className="flex items-center gap-2 text-red-600">
+					<Landmark className="w-4 h-4" />
+					<b>Salario Penalizado:</b>
+					<p className="text-black">$ {getStringNumber(totalStreamersSalaryDiscounts)}</p>
 				</div>
 			</CardContent>
 		</Card>

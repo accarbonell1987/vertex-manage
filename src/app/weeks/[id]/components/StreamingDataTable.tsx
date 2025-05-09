@@ -106,35 +106,37 @@ export const DEFAULT_COLUMNS = [
 	{ key: "numberOfDaysInMic", title: "Días en Mic", visible: false, render: (data: StreamingDataWithStreamer) => data.numberOfDaysInMic },
 	{
 		key: "streamerSalary",
-		title: "Streamer",
+		title: "Salario/Penalización",
 		visible: true,
-		render: (data: StreamingDataWithStreamer) => `$ ${Number(data.streamerSalary).toFixed(2)}`,
+		render: (data: StreamingDataWithStreamer) => {
+			const penalizated = !!data.streamerPenalizated;
+			return (
+				<span>
+					${Number(data.streamerSalary).toFixed(2)}
+					{penalizated ? <span className="text-red-500">{` (${Number(data.streamerPenalizated ?? 0).toFixed(2)})`}</span> : ""}
+				</span>
+			);
+		},
 	},
 	{
-		key: "streamerPenalizated",
-		title: "Penalizado",
+		key: "salary",
+		title: "Salario Final",
 		visible: true,
-		render: (data: StreamingDataWithStreamer) => (
-			<p className={`${data.streamerPenalizated ?? 0 ? "text-red-500" : "text-blue-500"}`}>{`$ ${Number(
-				data.streamerPenalizated ?? 0
-			).toFixed(2)}`}</p>
-		),
+		render: (data: StreamingDataWithStreamer) => {
+			const salary = data.streamerSalary - (data.streamerPenalizated ?? 0);
+			const textColor = salary > 0 ? "text-blue-500" : "text-black-500";
+
+			return <p className={`${data.streamerPenalizated ?? 0 ? "text-orange-500" : textColor}`}>{`$ ${Number(salary).toFixed(2)}`}</p>;
+		},
 	},
 	{
 		key: "agencySalary",
 		title: "Agencia",
 		visible: true,
-		render: (data: StreamingDataWithStreamer) => `$ ${Number(data.agencySalary).toFixed(2)}`,
-	},
-	{
-		key: "agencyBonus",
-		title: "Bonus Agencia",
-		visible: true,
-		render: (data: StreamingDataWithStreamer) => (
-			<p className={`${data.streamerPenalizated ?? 0 ? "text-green-500" : "text-blue-500"}`}>{`$ ${Number(data.agencyBonus ?? 0).toFixed(
-				2
-			)}`}</p>
-		),
+		render: (data: StreamingDataWithStreamer) => {
+			const penalizated = !!data.streamerPenalizated;
+			return <span className={`${penalizated ? "text-green-500" : "text-blue-500"}`}>{`$ ${Number(data.agencySalary).toFixed(2)}`}</span>;
+		},
 	},
 ];
 
@@ -208,7 +210,7 @@ const StreamingDataTable = ({ week, onRefresh }: Readonly<{ week: WeekWithData; 
 					</TableHeader>
 					<TableBody>
 						{dataWithDynamic.map((data) => (
-							<TableRow key={`${data.id}-${data.streamer.wahaID}`}>
+							<TableRow key={`${data.id}-${data.streamer.wahaID}`} className={data.streamerSalary > 0 ? "" : "bg-gray-100"}>
 								{filteredColumns.map((column) => (
 									<TableCell key={`${data.streamer.wahaID}-${column.key}`}>{column.render(data)}</TableCell>
 								))}

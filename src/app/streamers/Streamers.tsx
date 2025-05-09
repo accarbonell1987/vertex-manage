@@ -8,7 +8,7 @@ import { deleteAllReferrals } from "@/services/referals";
 import { bulkImportContactsEntries, getStreamers, updateStreamerPenaltiesToAll } from "@/services/streamers";
 import { FileType } from "@/types/common.types";
 import { StreamerWithReferals } from "@/types/streamers.types";
-import { Cog, Import, Plus, Sheet } from "lucide-react";
+import { Cog, Plus, Sheet, Upload } from "lucide-react";
 import { useState } from "react";
 import { exportStreamersToExcel, parseContactsExcel } from "../lib/excel";
 import StreamerDetails from "./components/StreamerDetails";
@@ -110,22 +110,17 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 											Streamers
 											<div className="flex items-center gap-2 ml-auto">
 												<ToolTip content="Importar Contactos">
-													<Button
-														className="cursor-pointer bg-blue-200 hover:bg-blue-300"
-														variant="secondary"
-														size="icon"
-														onClick={() => setImportOpen(true)}
-													>
-														<Import />
+													<Button className="cursor-pointer" size="icon" onClick={() => setImportOpen(true)}>
+														<Upload />
 													</Button>
 												</ToolTip>
 												<ToolTip content="Exportar como Excel">
-													<Button className="cursor-pointer bg-indigo-400 hover:bg-indigo-500" onClick={handleExport}>
+													<Button className="cursor-pointer" onClick={handleExport}>
 														<Sheet />
 													</Button>
 												</ToolTip>
 												<ToolTip content="Configuraciones Globales">
-													<Button className="cursor-pointer bg-orange-400 hover:bg-orange-500 ml-auto" onClick={() => setManagerOpen(true)}>
+													<Button className="cursor-pointer" onClick={() => setManagerOpen(true)}>
 														<Cog />
 													</Button>
 												</ToolTip>

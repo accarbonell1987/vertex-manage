@@ -153,11 +153,7 @@ const StreamersTable = ({
 										</Button>
 									</ToolTip> */}
 									<ToolTip content="Editar">
-										<Button
-											onClick={() => onEdit(streamer)}
-											className="cursor-pointer bg-orange-200 hover:bg-orange-300"
-											variant="secondary"
-										>
+										<Button onClick={() => onEdit(streamer)} className="cursor-pointe">
 											<Edit />
 										</Button>
 									</ToolTip>

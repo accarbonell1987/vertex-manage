@@ -2,7 +2,7 @@ import ToolTip from "@/components/ToolTip";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getFormatNumber } from "@/lib/utils";
+import { getStringNumber } from "@/lib/utils";
 import { Eye, Gem, Landmark, Speech, SquareDashedKanban } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { WeekWithData } from "../../../types/weeks.types";
@@ -22,22 +22,19 @@ export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 		router.push(`/weeks/${week.id}`);
 	};
 
-	const totalDiamondsAndPoints = getFormatNumber(getTotalDoneInWeekByColumn(week, "diamondsAndPoints"));
-	const totalAgencySalary = getTotalDoneInWeekByColumn(week, "agencySalary");
-	const totalStreamersSalary = getTotalDoneInWeekByColumn(week, "streamerSalary");
-	const totalDiamondsAndPointsDiscounts = getFormatNumber(getTotalDoneInWeekByColumn(week, "diamondsPenalties"));
+	const totalDiamondsAndPoints = getTotalDoneInWeekByColumn(week?.data, "diamondsAndPoints");
+	const totalAgencySalary = getTotalDoneInWeekByColumn(week?.data, "agencySalary");
+	const totalStreamersSalary = getTotalDoneInWeekByColumn(week?.data, "streamerSalary");
+	const totalDiamondsAndPointsDiscounts = getTotalDoneInWeekByColumn(week?.data, "diamondsPenalties");
 
 	return (
-		<Card
-			className={`flex flex-col gap-2 cursor-pointer hover:bg-gray-50 ${week.closed ? "bg-gray-100" : ""} w-full`}
-			onClick={handleOnClickOnDetails}
-		>
-			<CardHeader className="flex flex-col justify-between items-center gap-2">
+		<Card className={`flex flex-col gap-2 cursor-pointer hover:bg-gray-50 ${week.closed ? "bg-gray-100" : ""} w-full`}>
+			<CardHeader className="flex flex-col items-center sm:gap-2 sm:flex-row sm:justify-between ">
 				<CardTitle>{week.name}</CardTitle>
-				<div className="flex flex-col gap-2 sm:flex-row">
+				<div className="flex gap-2 flex-row">
 					<ToolTip content="Detalles">
-						<Button className="cursor-pointer bg-blue-200 hover:bg-blue-300" variant="secondary" onClick={handleOnClickOnDetails}>
-							<Eye /> Detalles
+						<Button className="cursor-pointer" onClick={handleOnClickOnDetails}>
+							<Eye />
 						</Button>
 					</ToolTip>
 					<ToolTip content="Cerrar">
@@ -66,17 +63,17 @@ export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 				<div className="flex flex-col gap-2 border p-2 rounded-lg sm:flex-row sm:justify-between">
 					<div className="flex items-center gap-1 text-sm text-blue-600">
 						<Gem className="w-4 h-4" />
-						{totalDiamondsAndPoints}
+						{getStringNumber(totalDiamondsAndPoints)}
 					</div>
 					<div className="flex items-center gap-1 text-sm text-red-600">
 						<SquareDashedKanban className="w-4 h-4" />
-						{totalDiamondsAndPointsDiscounts}
+						{getStringNumber(totalDiamondsAndPointsDiscounts)}
 					</div>
 					<div className="flex items-center gap-1 text-sm text-yellow-600">
-						<Speech className="w-4 h-4" />$ {totalStreamersSalary}
+						<Speech className="w-4 h-4" />$ {getStringNumber(totalStreamersSalary)}
 					</div>
 					<div className="flex items-center gap-1 text-sm text-green-600">
-						<Landmark className="w-4 h-4" />$ {totalAgencySalary}
+						<Landmark className="w-4 h-4" />$ {getStringNumber(totalAgencySalary)}
 					</div>
 				</div>
 			</CardContent>

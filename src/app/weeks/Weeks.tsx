@@ -14,15 +14,6 @@ export default function Weeks({ weeks }: Readonly<{ weeks: WeekWithData[] }>) {
 	const [open, setOpen] = useState(false);
 	const [weekList, setWeekList] = useState<WeekWithData[]>(weeks);
 
-	//! cargar semanas
-	// useEffect(() => {
-	// 	const fetchWeeks = async () => {
-	// 		const weeks = await getWeeks();
-	// 		setWeekList(getFormatedWeeks(weeks));
-	// 	};
-	// 	fetchWeeks();
-	// }, []);
-
 	const handleOnClose = async () => {
 		setOpen(false);
 		const updatedWeeks = await getWeeks();
