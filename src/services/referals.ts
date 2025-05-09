@@ -38,3 +38,15 @@ export async function deleteReferal(id: string): Promise<void> {
 		}
 	);
 }
+
+export async function deleteAllReferrals(): Promise<void> {
+	await doFetchWithToast<void>(
+		`/api/referals`,
+		{
+			method: "DELETE",
+		},
+		{
+			error: "No se pudieron eliminar los referidos.",
+		}
+	);
+}

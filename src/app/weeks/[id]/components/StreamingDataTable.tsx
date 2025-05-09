@@ -16,6 +16,8 @@ import {
 	PaginationNext,
 	PaginationPrevious,
 } from "@/components/ui/pagination";
+import useConfiguration from "../../hooks/useConfiguration";
+import { getDynamicData } from "../../utils/functions";
 
 export const DEFAULT_COLUMNS = [
 	{
@@ -33,7 +35,7 @@ export const DEFAULT_COLUMNS = [
 	{
 		key: "name",
 		title: "Nombre",
-		visible: true,
+		visible: false,
 		render: (data: StreamingDataWithStreamer) => <CopyToClipboard text={data.streamer.name} />,
 	},
 	{
@@ -109,21 +111,43 @@ export const DEFAULT_COLUMNS = [
 		render: (data: StreamingDataWithStreamer) => `$ ${Number(data.streamerSalary).toFixed(2)}`,
 	},
 	{
+		key: "streamerPenalizated",
+		title: "Penalizado",
+		visible: true,
+		render: (data: StreamingDataWithStreamer) => (
+			<p className={`${data.streamerPenalizated ?? 0 ? "text-red-500" : "text-blue-500"}`}>{`$ ${Number(
+				data.streamerPenalizated ?? 0
+			).toFixed(2)}`}</p>
+		),
+	},
+	{
 		key: "agencySalary",
 		title: "Agencia",
 		visible: true,
 		render: (data: StreamingDataWithStreamer) => `$ ${Number(data.agencySalary).toFixed(2)}`,
 	},
+	{
+		key: "agencyBonus",
+		title: "Bonus Agencia",
+		visible: true,
+		render: (data: StreamingDataWithStreamer) => (
+			<p className={`${data.streamerPenalizated ?? 0 ? "text-green-500" : "text-blue-500"}`}>{`$ ${Number(data.agencyBonus ?? 0).toFixed(
+				2
+			)}`}</p>
+		),
+	},
 ];
 
 const StreamingDataTable = ({ week, onRefresh }: Readonly<{ week: WeekWithData; onRefresh: () => void }>) => {
+	const { configuration } = useConfiguration();
 	const [visibleColumns, setVisibleColumns] = useState(DEFAULT_COLUMNS.filter((col) => col.visible).map((col) => col.key));
 
-	const [rowsPerPage, setRowsPerPage] = useState(10);
+	const [rowsPerPage, setRowsPerPage] = useState(50);
 	const [currentPage, setCurrentPage] = useState(1);
 	const totalPages = Math.ceil(week.data.length / rowsPerPage);
 
 	const paginatedData = week.data.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+	const dataWithDynamic = getDynamicData(paginatedData, configuration);
 
 	const toggleColumn = (key: string) => {
 		setVisibleColumns((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
@@ -183,7 +207,7 @@ const StreamingDataTable = ({ week, onRefresh }: Readonly<{ week: WeekWithData; 
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{paginatedData.map((data) => (
+						{dataWithDynamic.map((data) => (
 							<TableRow key={`${data.id}-${data.streamer.wahaID}`}>
 								{filteredColumns.map((column) => (
 									<TableCell key={`${data.streamer.wahaID}-${column.key}`}>{column.render(data)}</TableCell>
@@ -192,7 +216,6 @@ const StreamingDataTable = ({ week, onRefresh }: Readonly<{ week: WeekWithData; 
 						))}
 					</TableBody>
 				</Table>
-
 				<Pagination className="mt-4 justify-center sm:justify-end">
 					<PaginationContent>
 						<PaginationItem>

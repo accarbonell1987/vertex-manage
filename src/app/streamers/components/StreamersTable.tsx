@@ -1,5 +1,6 @@
 import CopyToClipboard from "@/components/CopyToClipboard";
 import ToolTip from "@/components/ToolTip";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import {
@@ -14,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StreamerWithReferals } from "@/types/streamers.types";
 import { Edit, Link } from "lucide-react";
+import { useState } from "react";
 import StreamerDeleteAlert from "./StreamerDeleteAlert";
 
 const DEFAULT_COLUMNS = [
@@ -58,9 +60,6 @@ const DEFAULT_COLUMNS = [
 		),
 	},
 ];
-
-import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
 
 const StreamersTable = ({
 	streamers,

@@ -113,3 +113,19 @@ export async function bulkImportContactsEntries(data: ImportedContactsData[]): P
 		}
 	);
 }
+
+export async function updateStreamerPenaltiesToAll(data: { applyPenaltiesToAll: boolean }): Promise<void> {
+	await doFetchWithToast<void>(
+		`/api/streamers`,
+		{
+			method: "PATCH",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(data),
+		},
+		{
+			success: "Penalizaciones aplicadas a todos los streamers",
+			loading: "Aplicando penalizaciones...",
+			error: "No se pudo aplicar las penalizaciones.",
+		}
+	);
+}

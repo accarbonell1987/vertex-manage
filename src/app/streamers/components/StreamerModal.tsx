@@ -30,6 +30,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [bankAccount, setBankAccount] = useState("");
 	const [allowInRoster, setAllowInRoster] = useState(true);
+	const [applyPenalties, setApplyPenalties] = useState(true);
 	const [error, setError] = useState("");
 
 	useEffect(() => {
@@ -41,6 +42,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 				setPhoneNumber(streamer.phoneNumber ?? "");
 				setBankAccount(streamer.bankAccount ?? "");
 				setAllowInRoster(streamer.allowInRoster ?? true);
+				setApplyPenalties(streamer.applyPenalties ?? true);
 			} else {
 				setName("");
 				setWahaID("");
@@ -48,6 +50,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 				setPhoneNumber("");
 				setBankAccount("");
 				setAllowInRoster(true);
+				setApplyPenalties(true);
 			}
 			setError("");
 		}
@@ -87,6 +90,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 					phoneNumber,
 					bankAccount,
 					allowInRoster,
+					applyPenalties,
 				});
 			} else {
 				await createStreamer({
@@ -96,6 +100,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 					phoneNumber,
 					bankAccount,
 					allowInRoster,
+					applyPenalties,
 				});
 			}
 			onClose();
@@ -140,6 +145,10 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 					<div className="flex flex-col gap-2">
 						<Label htmlFor="bankAccount">Cuenta Bancaria</Label>
 						<Input id="bankAccount" value={bankAccount} onChange={(e) => setBankAccount(e.target.value)} type="number" />
+					</div>
+					<div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+						<Switch id="applyPenalties" checked={applyPenalties} onCheckedChange={setApplyPenalties} />
+						<Label htmlFor="applyPenalties">Aplica multas</Label>
 					</div>
 					{error && <p className="text-sm text-red-500">{error}</p>}
 					<div className="flex justify-end gap-2 w-full">

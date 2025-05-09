@@ -1,6 +1,11 @@
 import { ImportedContactsData } from "@/types/streamers.types";
 import { NextResponse } from "next/server";
-import { bulkImportContactsEntries, createStreamer, findStreamersByCriteria } from "../../lib/repositories/streamers";
+import {
+	bulkImportContactsEntries,
+	createStreamer,
+	findStreamersByCriteria,
+	updateApplyPenaltiesToAll,
+} from "../../lib/repositories/streamers";
 
 export async function GET(req: Request) {
 	const { searchParams } = new URL(req.url);
@@ -40,5 +45,13 @@ export async function PUT(req: Request) {
 	}
 
 	await bulkImportContactsEntries(data);
+	return NextResponse.json({ ok: true });
+}
+
+export async function PATCH(req: Request) {
+	const body = await req.json();
+	const { applyPenaltiesToAll } = body as { applyPenaltiesToAll: boolean };
+
+	await updateApplyPenaltiesToAll(applyPenaltiesToAll);
 	return NextResponse.json({ ok: true });
 }

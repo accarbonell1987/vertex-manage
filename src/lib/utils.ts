@@ -46,9 +46,11 @@ export const CUSTOM_TEXTS = {
 	},
 };
 
-export function getFormatNumber(value: number): string {
-	return value.toLocaleString("de-DE", {
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 2,
-	});
+export function getFormatNumber(value: number): number {
+	return Number(
+		value.toLocaleString("de-DE", {
+			minimumFractionDigits: 0,
+			maximumFractionDigits: 2,
+		})
+	);
 }

@@ -100,3 +100,11 @@ export async function bulkImportContactsEntries(data: ImportedContactsData[]) {
 		}
 	}
 }
+
+export async function updateApplyPenaltiesToAll(applyPenalties: boolean) {
+	return prisma.streamer.updateMany({
+		data: {
+			applyPenalties: applyPenalties,
+		},
+	});
+}

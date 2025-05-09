@@ -1338,6 +1338,7 @@ export namespace Prisma {
     wahaName: string | null
     name: string | null
     allowInRoster: boolean | null
+    applyPenalties: boolean | null
     penalties: number | null
     phoneNumber: string | null
     bankAccount: string | null
@@ -1350,6 +1351,7 @@ export namespace Prisma {
     wahaName: string | null
     name: string | null
     allowInRoster: boolean | null
+    applyPenalties: boolean | null
     penalties: number | null
     phoneNumber: string | null
     bankAccount: string | null
@@ -1362,6 +1364,7 @@ export namespace Prisma {
     wahaName: number
     name: number
     allowInRoster: number
+    applyPenalties: number
     penalties: number
     phoneNumber: number
     bankAccount: number
@@ -1384,6 +1387,7 @@ export namespace Prisma {
     wahaName?: true
     name?: true
     allowInRoster?: true
+    applyPenalties?: true
     penalties?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1396,6 +1400,7 @@ export namespace Prisma {
     wahaName?: true
     name?: true
     allowInRoster?: true
+    applyPenalties?: true
     penalties?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1408,6 +1413,7 @@ export namespace Prisma {
     wahaName?: true
     name?: true
     allowInRoster?: true
+    applyPenalties?: true
     penalties?: true
     phoneNumber?: true
     bankAccount?: true
@@ -1507,6 +1513,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster: boolean
+    applyPenalties: boolean
     penalties: number
     phoneNumber: string | null
     bankAccount: string | null
@@ -1538,6 +1545,7 @@ export namespace Prisma {
     wahaName?: boolean
     name?: boolean
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1554,6 +1562,7 @@ export namespace Prisma {
     wahaName?: boolean
     name?: boolean
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1566,6 +1575,7 @@ export namespace Prisma {
     wahaName?: boolean
     name?: boolean
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
@@ -1578,13 +1588,14 @@ export namespace Prisma {
     wahaName?: boolean
     name?: boolean
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
     createdAt?: boolean
   }
 
-  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "wahaName" | "name" | "allowInRoster" | "penalties" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
+  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "wahaName" | "name" | "allowInRoster" | "applyPenalties" | "penalties" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
   export type StreamerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     referals?: boolean | Streamer$referalsArgs<ExtArgs>
     referredBy?: boolean | Streamer$referredByArgs<ExtArgs>
@@ -1607,6 +1618,7 @@ export namespace Prisma {
       wahaName: string
       name: string
       allowInRoster: boolean
+      applyPenalties: boolean
       penalties: number
       phoneNumber: string | null
       bankAccount: string | null
@@ -2042,6 +2054,7 @@ export namespace Prisma {
     readonly wahaName: FieldRef<"Streamer", 'String'>
     readonly name: FieldRef<"Streamer", 'String'>
     readonly allowInRoster: FieldRef<"Streamer", 'Boolean'>
+    readonly applyPenalties: FieldRef<"Streamer", 'Boolean'>
     readonly penalties: FieldRef<"Streamer", 'Int'>
     readonly phoneNumber: FieldRef<"Streamer", 'String'>
     readonly bankAccount: FieldRef<"Streamer", 'String'>
@@ -7081,6 +7094,7 @@ export namespace Prisma {
     wahaName: 'wahaName',
     name: 'name',
     allowInRoster: 'allowInRoster',
+    applyPenalties: 'applyPenalties',
     penalties: 'penalties',
     phoneNumber: 'phoneNumber',
     bankAccount: 'bankAccount',
@@ -7254,6 +7268,7 @@ export namespace Prisma {
     wahaName?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
     allowInRoster?: BoolFilter<"Streamer"> | boolean
+    applyPenalties?: BoolFilter<"Streamer"> | boolean
     penalties?: IntFilter<"Streamer"> | number
     phoneNumber?: StringNullableFilter<"Streamer"> | string | null
     bankAccount?: StringNullableFilter<"Streamer"> | string | null
@@ -7269,6 +7284,7 @@ export namespace Prisma {
     wahaName?: SortOrder
     name?: SortOrder
     allowInRoster?: SortOrder
+    applyPenalties?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     bankAccount?: SortOrderInput | SortOrder
@@ -7287,6 +7303,7 @@ export namespace Prisma {
     wahaName?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
     allowInRoster?: BoolFilter<"Streamer"> | boolean
+    applyPenalties?: BoolFilter<"Streamer"> | boolean
     penalties?: IntFilter<"Streamer"> | number
     phoneNumber?: StringNullableFilter<"Streamer"> | string | null
     bankAccount?: StringNullableFilter<"Streamer"> | string | null
@@ -7302,6 +7319,7 @@ export namespace Prisma {
     wahaName?: SortOrder
     name?: SortOrder
     allowInRoster?: SortOrder
+    applyPenalties?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     bankAccount?: SortOrderInput | SortOrder
@@ -7322,6 +7340,7 @@ export namespace Prisma {
     wahaName?: StringWithAggregatesFilter<"Streamer"> | string
     name?: StringWithAggregatesFilter<"Streamer"> | string
     allowInRoster?: BoolWithAggregatesFilter<"Streamer"> | boolean
+    applyPenalties?: BoolWithAggregatesFilter<"Streamer"> | boolean
     penalties?: IntWithAggregatesFilter<"Streamer"> | number
     phoneNumber?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
     bankAccount?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
@@ -7641,6 +7660,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -7656,6 +7676,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -7671,6 +7692,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7686,6 +7708,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7701,6 +7724,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -7713,6 +7737,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7725,6 +7750,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8155,6 +8181,7 @@ export namespace Prisma {
     wahaName?: SortOrder
     name?: SortOrder
     allowInRoster?: SortOrder
+    applyPenalties?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -8171,6 +8198,7 @@ export namespace Prisma {
     wahaName?: SortOrder
     name?: SortOrder
     allowInRoster?: SortOrder
+    applyPenalties?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -8183,6 +8211,7 @@ export namespace Prisma {
     wahaName?: SortOrder
     name?: SortOrder
     allowInRoster?: SortOrder
+    applyPenalties?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
@@ -9170,6 +9199,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -9184,6 +9214,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -9239,6 +9270,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9253,6 +9285,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9298,6 +9331,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -9312,6 +9346,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -9331,6 +9366,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -9345,6 +9381,7 @@ export namespace Prisma {
     wahaName: string
     name: string
     allowInRoster?: boolean
+    applyPenalties?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
@@ -9375,6 +9412,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9389,6 +9427,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9414,6 +9453,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9428,6 +9468,7 @@ export namespace Prisma {
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
+    applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null

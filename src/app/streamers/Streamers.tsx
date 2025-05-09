@@ -4,13 +4,15 @@ import ImportExcelModal from "@/components/ImportExcelModal";
 import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { bulkImportContactsEntries, getStreamers } from "@/services/streamers";
+import { deleteAllReferrals } from "@/services/referals";
+import { bulkImportContactsEntries, getStreamers, updateStreamerPenaltiesToAll } from "@/services/streamers";
 import { FileType } from "@/types/common.types";
 import { StreamerWithReferals } from "@/types/streamers.types";
-import { Import, Plus, Sheet } from "lucide-react";
+import { Cog, Import, Plus, Sheet } from "lucide-react";
 import { useState } from "react";
 import { exportStreamersToExcel, parseContactsExcel } from "../lib/excel";
 import StreamerDetails from "./components/StreamerDetails";
+import StreamerManagerPanel from "./components/StreamerManagerPanel";
 import StreamerModal from "./components/StreamerModal";
 import StreamerReferals from "./components/StreamerReferals";
 import StreamersFinder from "./components/StreamersFinder";
@@ -20,6 +22,7 @@ import useStreamer from "./hooks/useStreamer";
 const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 	const [open, setOpen] = useState(false);
 	const [importOpen, setImportOpen] = useState(false);
+	const [managerOpen, setManagerOpen] = useState(false);
 	const [selectedStreamer, setSelectedStreamer] = useState<StreamerWithReferals | null>(null);
 
 	const { streamers, handleFindByCriteria, handleChangeStreamers, handleOnRefresh, actionLoading, setActionLoading } = useStreamer({
@@ -29,6 +32,7 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 	const handleOnClose = async () => {
 		setOpen(false);
 		setImportOpen(false);
+		setManagerOpen(false);
 		setSelectedStreamer(null);
 		const updatedStreamers = await getStreamers();
 		if (!updatedStreamers) return;
@@ -65,10 +69,26 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 		setSelectedStreamer(streamer);
 	};
 
+	const handleOnConfirmApplyConfiguration = (cleanAllReferrals: boolean, applyPenaltiesToAll: boolean) => {
+		if (cleanAllReferrals) {
+			deleteAllReferrals();
+		}
+		if (applyPenaltiesToAll) {
+			updateStreamerPenaltiesToAll({ applyPenaltiesToAll });
+		}
+		handleOnClose();
+	};
+
 	return (
 		<>
 			<ImportExcelModal open={importOpen} setOpen={setImportOpen} actionLoading={actionLoading} onSubmit={onSubmit} />
 			<StreamerModal open={open} onClose={handleOnClose} setOpen={setOpen} streamer={selectedStreamer} />
+			<StreamerManagerPanel
+				open={managerOpen}
+				setOpen={setManagerOpen}
+				onClose={handleOnClose}
+				onConfirm={handleOnConfirmApplyConfiguration}
+			/>
 			<div className="flex flex-col gap-4 sm:flex-row">
 				<Card className="w-full sm:w-3/4">
 					<CardContent className="flex flex-col gap-4">
@@ -102,6 +122,11 @@ const Streamers = ({ init }: Readonly<{ init: StreamerWithReferals[] }>) => {
 												<ToolTip content="Exportar como Excel">
 													<Button className="cursor-pointer bg-indigo-400 hover:bg-indigo-500" onClick={handleExport}>
 														<Sheet />
+													</Button>
+												</ToolTip>
+												<ToolTip content="Configuraciones Globales">
+													<Button className="cursor-pointer bg-orange-400 hover:bg-orange-500 ml-auto" onClick={() => setManagerOpen(true)}>
+														<Cog />
 													</Button>
 												</ToolTip>
 											</div>

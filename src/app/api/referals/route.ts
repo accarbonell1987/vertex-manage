@@ -1,4 +1,4 @@
-import { createReferal } from "@/app/lib/repositories/referals";
+import { createReferal, deleteAllReferrals } from "@/app/lib/repositories/referals";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -14,5 +14,15 @@ export async function POST(req: NextRequest) {
 	} catch (error) {
 		console.error("POST /api/referals error:", error);
 		return NextResponse.json({ error: "Error creating referal" }, { status: 500 });
+	}
+}
+
+export async function DELETE() {
+	try {
+		await deleteAllReferrals();
+		return NextResponse.json({ message: "Referals deleted" });
+	} catch (error) {
+		console.error("DELETE /api/referals error:", error);
+		return NextResponse.json({ error: "Error deleting referals" }, { status: 500 });
 	}
 }

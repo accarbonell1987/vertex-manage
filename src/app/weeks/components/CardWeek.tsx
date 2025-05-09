@@ -29,34 +29,27 @@ export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 
 	return (
 		<Card
-			className={`flex flex-col gap-2 cursor-pointer hover:bg-gray-50 ${week.closed ? "bg-gray-100" : ""}`}
+			className={`flex flex-col gap-2 cursor-pointer hover:bg-gray-50 ${week.closed ? "bg-gray-100" : ""} w-full`}
 			onClick={handleOnClickOnDetails}
 		>
-			<CardHeader>
-				<div className="flex flex-col justify-between items-center gap-2 sm:flex-row">
-					<CardTitle>{week.name}</CardTitle>
-					<div className="flex gap-2">
-						<ToolTip content="Detalles">
-							<Button
-								className="cursor-pointer bg-blue-200 hover:bg-blue-300"
-								variant="secondary"
-								size="icon"
-								onClick={handleOnClickOnDetails}
-							>
-								<Eye />
-							</Button>
-						</ToolTip>
-						<ToolTip content="Cerrar">
-							<CloseWeekAlert week={week} onRefresh={onRefresh} />
-						</ToolTip>
-						<ToolTip content="Eliminar">
-							<DeleteWeekDialog week={week} onRefresh={onRefresh} />
-						</ToolTip>
-					</div>
+			<CardHeader className="flex flex-col justify-between items-center gap-2">
+				<CardTitle>{week.name}</CardTitle>
+				<div className="flex flex-col gap-2 sm:flex-row">
+					<ToolTip content="Detalles">
+						<Button className="cursor-pointer bg-blue-200 hover:bg-blue-300" variant="secondary" onClick={handleOnClickOnDetails}>
+							<Eye /> Detalles
+						</Button>
+					</ToolTip>
+					<ToolTip content="Cerrar">
+						<CloseWeekAlert week={week} onRefresh={onRefresh} />
+					</ToolTip>
+					<ToolTip content="Eliminar">
+						<DeleteWeekDialog week={week} onRefresh={onRefresh} />
+					</ToolTip>
 				</div>
 			</CardHeader>
-			<CardContent className="flex flex-col gap-2">
-				<div className="flex flex-col gap-2 border p-2 rounded-lg sm:flex-row">
+			<CardContent className="flex flex-col gap-2 w-full">
+				<div className="flex flex-col gap-2 border p-2 rounded-lg w-full sm:flex-row">
 					<span className="text-sm text-gray-600">
 						<b>Desde:</b> {week.formattedStart}
 					</span>
@@ -65,24 +58,24 @@ export function CardWeek({ week, onRefresh }: Readonly<Props>) {
 					</span>
 				</div>
 				<div className="flex flex-col gap-2 border p-2 rounded-lg sm:flex-row">
-					<span className="flex items-center gap-2 text-sm text-gray-600">
+					<span className="flex items-center gap-1 text-sm text-gray-600">
 						<b>Estado:</b>
 						<Badge className={week.closed ? "bg-gray-600" : "bg-green-600"}>{week.closed ? "CERRADA" : "ABIERTA"}</Badge>
 					</span>
 				</div>
 				<div className="flex flex-col gap-2 border p-2 rounded-lg sm:flex-row sm:justify-between">
-					<div className="flex items-center gap-2 text-sm text-blue-600">
+					<div className="flex items-center gap-1 text-sm text-blue-600">
 						<Gem className="w-4 h-4" />
 						{totalDiamondsAndPoints}
 					</div>
-					<div className="flex items-center gap-2 text-sm text-red-600">
+					<div className="flex items-center gap-1 text-sm text-red-600">
 						<SquareDashedKanban className="w-4 h-4" />
 						{totalDiamondsAndPointsDiscounts}
 					</div>
-					<div className="flex items-center gap-2 text-sm text-yellow-600">
+					<div className="flex items-center gap-1 text-sm text-yellow-600">
 						<Speech className="w-4 h-4" />$ {totalStreamersSalary}
 					</div>
-					<div className="flex items-center gap-2 text-sm text-green-600">
+					<div className="flex items-center gap-1 text-sm text-green-600">
 						<Landmark className="w-4 h-4" />$ {totalAgencySalary}
 					</div>
 				</div>

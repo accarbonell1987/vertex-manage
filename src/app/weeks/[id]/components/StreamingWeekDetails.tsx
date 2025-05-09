@@ -11,10 +11,10 @@ interface StreamingWeekDetailsProps {
 }
 
 const StreamingWeekDetails = ({ week }: StreamingWeekDetailsProps) => {
-	const totalAgencySalary = getTotalDoneInWeekByColumn(week, "agencySalary");
-	const totalStreamersSalary = getTotalDoneInWeekByColumn(week, "streamerSalary");
-	const totalDiamondsAndPoints = getFormatNumber(getTotalDoneInWeekByColumn(week, "diamondsAndPoints"));
-	const totalDiamondsAndPointsDiscounts = getFormatNumber(getTotalDoneInWeekByColumn(week, "diamondsPenalties"));
+	const totalAgencySalary = getTotalDoneInWeekByColumn(week.data, "agencySalary");
+	const totalStreamersSalary = getTotalDoneInWeekByColumn(week.data, "streamerSalary");
+	const totalDiamondsAndPoints = getFormatNumber(getTotalDoneInWeekByColumn(week.data, "diamondsAndPoints"));
+	const totalDiamondsAndPointsDiscounts = getFormatNumber(getTotalDoneInWeekByColumn(week.data, "diamondsPenalties"));
 
 	return (
 		<Card className={week.closed ? "bg-gray-100" : ""}>

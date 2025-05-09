@@ -35,3 +35,5 @@ export const removeReferrer = (id: string) =>
 	prisma.referal.delete({
 		where: { id },
 	});
+
+export const deleteAllReferrals = () => prisma.referal.deleteMany();
