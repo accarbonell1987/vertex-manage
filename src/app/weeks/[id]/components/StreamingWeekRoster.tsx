@@ -27,10 +27,6 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
 				<CardDescription>Información previa de la nómina a pagar</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<div className="flex items-center gap-2 text-yellow-600">
-					<Speech className="w-4 h-4" />
-					<b>Streamers:</b> <p className="text-black">$ {getStringNumber(totalStreamersSalary)}</p>
-				</div>
 				<div className="flex items-center gap-2 text-blue-600">
 					<Gem className="w-4 h-4" />
 					<b>Diamantes y Puntos:</b> <p className="text-black">{getStringNumber(totalDiamondsAndPoints)}</p>
@@ -39,10 +35,19 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
 					<Landmark className="w-4 h-4" />
 					<b>Penalizaciones:</b> <p className="text-black">{getStringNumber(totalDiamondsAndPointsDiscounts)}</p>
 				</div>
+				<div className="flex items-center gap-2 text-yellow-600">
+					<Speech className="w-4 h-4" />
+					<b>Streamers:</b> <p className="text-black">$ {getStringNumber(totalStreamersSalary)}</p>
+				</div>
 				<div className="flex items-center gap-2 text-red-600">
-					<Landmark className="w-4 h-4" />
+					<Speech className="w-4 h-4" />
 					<b>Salario Penalizado:</b>
 					<p className="text-black">$ {getStringNumber(totalStreamersSalaryDiscounts)}</p>
+				</div>
+				<div className="flex items-center gap-2 text-green-600">
+					<Speech className="w-4 h-4" />
+					<b>Salario a Pagar:</b>
+					<p className="text-black">$ {getStringNumber(totalStreamersSalary - totalStreamersSalaryDiscounts)}</p>
 				</div>
 			</CardContent>
 		</Card>

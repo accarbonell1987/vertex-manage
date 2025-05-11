@@ -45,11 +45,11 @@ const StreamingWeekDetails = ({ week }: StreamingWeekDetailsProps) => {
 					<b>Penalizaciones:</b> <p className="text-black">$ {getStringNumber(totalDiamondsAndPointsDiscounts)}</p>
 				</div>
 				<div className="flex items-center gap-2 text-yellow-600">
-					<Speech className="w-4 h-4" />
+					<Landmark className="w-4 h-4" />
 					<b>Agencia:</b> <p className="text-black">$ {getStringNumber(totalAgencySalary)}</p>
 				</div>
 				<div className="flex items-center gap-2 text-green-600">
-					<Landmark className="w-4 h-4" />
+					<Speech className="w-4 h-4" />
 					<b>Streamers:</b> <p className="text-black">$ {getStringNumber(totalStreamersSalary)}</p>
 				</div>
 				<div className="flex items-center gap-2 text-indigo-500">

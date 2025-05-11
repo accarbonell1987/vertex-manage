@@ -20,8 +20,6 @@ const DeleteWeekDialog = ({ week, onRefresh, actionLoading }: Readonly<Props>) =
 		onRefresh?.();
 	};
 
-	console.log(week.closed);
-
 	return (
 		<DialogComponent
 			title="Eliminar semana"
