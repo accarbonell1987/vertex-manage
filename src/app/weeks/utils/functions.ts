@@ -1,6 +1,6 @@
 import { ConfigurationType } from "@/types/configuration.types";
-import { StreamerWithReferals } from "@/types/streamers.types";
 import { StreamingDataWithStreamer } from "@/types/streamingData.types";
+import dayjs from "dayjs";
 
 export const getTotalDoneInWeekByColumn = (data: StreamingDataWithStreamer[], columnKey: string): number => {
 	if (!data?.length) return 0;
@@ -14,15 +14,16 @@ export const getPreRosterTotalsInWeekByColumn = (data: StreamingDataWithStreamer
 
 	const total =
 		data.reduce((total, data) => {
+			if (!data[columnKey as keyof StreamingDataWithStreamer]) return total;
 			return data.streamer.allowInRoster ? total + Number(data[columnKey as keyof StreamingDataWithStreamer]) : total;
 		}, 0) ?? 0;
+
 	return Number(total.toFixed(2));
 };
 
 export const getDynamicData = (data: StreamingDataWithStreamer[], configuration: ConfigurationType) => {
 	const penalizedData = getPenalizedData(data, configuration);
 	const referralData = getReferealData(penalizedData, configuration);
-	console.log("🚀 ~ getDynamicData ~ referralData:", referralData);
 
 	return referralData;
 };
@@ -56,43 +57,59 @@ const getReferealData = (data: StreamingDataWithStreamer[], configuration: Confi
 	if (!configuration.payAffiliateProgram) return data;
 
 	//! aqui ya filtro por los streamers que cobran
-	const streamers = data.filter((p) => p.streamerSalary > 0).map((data) => data.streamer);
+	const streamersAndData = data
+		.filter((p) => p.streamerSalary > 0)
+		.map((data) => {
+			return { ...data.streamer, streamerData: data };
+		});
 
-	data.forEach((streamerData: StreamingDataWithStreamer) => {
-		const referrals = streamerData.streamer.referals;
-		//! si tiene referidos y el streamer cobra en esta semana
-		if (referrals?.length > 0 && streamerData.streamerSalary > 0) {
-			//! obtenemos los streamers referidos
+	const streamersDataWithReferealAmount = streamersAndData
+		.map((streamer) => {
+			const referrals = streamer.referals;
+			//! si tiene referidos y el streamer cobra en esta semana
+			if (referrals?.length > 0 && streamer.streamerData.streamerSalary > 0) {
+				//! obtenemos los streamers referidos
+				const referralsOfStreamer: typeof streamersAndData = [];
+				//! recorremos los referidos y si esta en los streamers lo voy adicionando
+				referrals.forEach((referral) => {
+					const streamerOfReferral = streamersAndData.find((s) => s.id === referral.referredId);
+					if (!streamerOfReferral) return;
+					referralsOfStreamer.push(streamerOfReferral);
+				});
 
-			const referralsOfStreamer: StreamerWithReferals[] = [];
-			//! recorremos los referidos y si esta en los streamers lo voy adicionando
-			referrals.forEach((referral) => {
-				const streamer = streamers.find((streamer) => streamer.id === referral.referredId);
-				if (!streamer) return;
-				referralsOfStreamer.push(streamer);
-			});
-			//! si no tenemos ninguno devuelvo la data
-			if (!referralsOfStreamer.length) return streamerData;
+				//! si no tenemos ninguno devuelvo la data
+				if (!referralsOfStreamer.length) return;
 
-			const filteredReferrals = referralsOfStreamer.filter((streamer) => {
-				//! si cada streamer tiene más de dos semanas desde que entro en el campo createdAt se deshecha
-				const hasTwoWeeks = new Date().getTime() - streamer.createdAt.getTime() > 14 * 24 * 60 * 60 * 1000;
-				return hasTwoWeeks;
-			});
-			//! si no tenemos ninguno devuelvo la data
-			if (!filteredReferrals.length) return streamerData;
+				const filteredReferrals = referralsOfStreamer.filter((s) => {
+					//! si cada streamer tiene más de dos semanas desde que entro en el campo createdAt se deshecha
+					const hasTwoWeeks = dayjs().diff(s.createdAt, "week") < 2;
+					return hasTwoWeeks;
+				});
 
-			//! buscar la data de los referidos
-			const dataOfReferrals = filteredReferrals.map((streamer) => data.find((data) => data.streamerId === streamer.id));
-			const totalReferralSalary = dataOfReferrals.reduce((total, current) => total + Number(current?.streamerSalary ?? 0), 0);
+				//! si no tenemos ninguno devuelvo la data
+				if (!filteredReferrals.length) return;
 
-			return { ...data, referralSalary: totalReferralSalary };
-		}
+				//! buscar la data de los referidos
+				const totalReferralSalary = filteredReferrals.reduce(
+					(total: number, current: (typeof streamersAndData)[number]) => total + Number(current.streamerData.streamerSalary ?? 0),
+					0
+				);
 
-		return {
-			...data,
-		};
+				return { ...streamer.streamerData, referralSalary: totalReferralSalary * (configuration.payAffiliateProgramPercentage / 100) };
+			}
+
+			return {
+				...streamer.streamerData,
+				referralSalary: 0,
+			};
+		})
+		.filter((s) => !!s);
+
+	//! remplazar los streamers con datos de referidos en data
+	const returnedData = data.map((data) => {
+		const streamer = streamersDataWithReferealAmount.find((s) => s.id === data.id);
+		return { ...data, ...streamer };
 	});
 
-	return data;
+	return returnedData;
 };

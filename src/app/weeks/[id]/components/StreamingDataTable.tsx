@@ -1,21 +1,11 @@
 import CopyToClipboard from "@/components/CopyToClipboard";
-import ToolTip from "@/components/ToolTip";
-import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StreamingDataWithStreamer } from "@/types/streamingData.types";
 import { WeekWithData } from "@/types/weeks.types";
 import { useState } from "react";
 
-import {
-	Pagination,
-	PaginationContent,
-	PaginationItem,
-	PaginationLink,
-	PaginationNext,
-	PaginationPrevious,
-} from "@/components/ui/pagination";
+import FiltersInTable from "@/components/FiltersInTable";
+import PaginationInTable from "@/components/PaginationInTable";
 import useConfiguration from "../../hooks/useConfiguration";
 import { getDynamicData } from "../../utils/functions";
 
@@ -70,7 +60,9 @@ export const DEFAULT_COLUMNS = [
 		key: "diamondsPenalties",
 		title: "Penalizaciones",
 		visible: true,
-		render: (data: StreamingDataWithStreamer) => data.diamondsPenalties,
+		render: (data: StreamingDataWithStreamer) => {
+			return <span className={`${data.diamondsPenalties > 0 ? "text-red-500" : ""}`}>{data.diamondsPenalties}</span>;
+		},
 	},
 	{
 		key: "diamondsComisions",
@@ -106,14 +98,16 @@ export const DEFAULT_COLUMNS = [
 	{ key: "numberOfDaysInMic", title: "Días en Mic", visible: false, render: (data: StreamingDataWithStreamer) => data.numberOfDaysInMic },
 	{
 		key: "streamerSalary",
-		title: "Salario/Penalización",
+		title: "Salario/Penalización/Bono",
 		visible: true,
 		render: (data: StreamingDataWithStreamer) => {
 			const penalizated = !!data.streamerPenalizated;
+
 			return (
 				<span>
 					${Number(data.streamerSalary).toFixed(2)}
 					{penalizated ? <span className="text-red-500">{` (${Number(data.streamerPenalizated ?? 0).toFixed(2)})`}</span> : ""}
+					{data?.referralSalary ? <span className="text-green-500">{` (${Number(data.referralSalary).toFixed(2)})`}</span> : ""}
 				</span>
 			);
 		},
@@ -123,10 +117,10 @@ export const DEFAULT_COLUMNS = [
 		title: "Salario Final",
 		visible: true,
 		render: (data: StreamingDataWithStreamer) => {
-			const salary = data.streamerSalary - (data.streamerPenalizated ?? 0);
-			const textColor = salary > 0 ? "text-blue-500" : "text-black-500";
+			const salary = data.streamerSalary - (data.streamerPenalizated ?? 0) + (data?.referralSalary ?? 0);
+			const textColor = salary > data.streamerSalary ? "text-green-500" : "text-orange-500";
 
-			return <p className={`${data.streamerPenalizated ?? 0 ? "text-orange-500" : textColor}`}>{`$ ${Number(salary).toFixed(2)}`}</p>;
+			return <p className={`${salary === data.streamerSalary ? "text-black" : textColor}`}>{`$ ${Number(salary).toFixed(2)}`}</p>;
 		},
 	},
 	{
@@ -134,8 +128,10 @@ export const DEFAULT_COLUMNS = [
 		title: "Agencia",
 		visible: true,
 		render: (data: StreamingDataWithStreamer) => {
-			const penalizated = !!data.streamerPenalizated;
-			return <span className={`${penalizated ? "text-green-500" : "text-blue-500"}`}>{`$ ${Number(data.agencySalary).toFixed(2)}`}</span>;
+			const salary = data.agencySalary + (data.streamerPenalizated ?? 0) - (data?.referralSalary ?? 0);
+			const textColor = salary > data.agencySalary ? "text-green-500" : "text-orange-500";
+
+			return <span className={`${salary === data.agencySalary ? "text-black" : textColor}`}>{`$ ${Number(salary).toFixed(2)}`}</span>;
 		},
 	},
 ];
@@ -148,57 +144,21 @@ const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const totalPages = Math.ceil(week.data.length / rowsPerPage);
 
-	const paginatedData = week.data.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
-	const dataWithDynamic = getDynamicData(paginatedData, configuration);
-
-	const toggleColumn = (key: string) => {
-		setVisibleColumns((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
-	};
+	const dataWithDynamic = getDynamicData(week.data, configuration);
+	const paginatedData = dataWithDynamic.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
 
 	const filteredColumns = DEFAULT_COLUMNS.filter((col) => visibleColumns.includes(col.key));
 
 	return (
 		<div className="flex flex-col gap-4">
-			<div className="flex flex-col gap-4 sm:flex-row">
-				<ToolTip content="Columnas Visibles">
-					<DropdownMenu>
-						<DropdownMenuTrigger asChild>
-							<Button variant="outline">Columnas Visibles</Button>
-						</DropdownMenuTrigger>
-						<DropdownMenuContent>
-							{DEFAULT_COLUMNS.map((column) => (
-								<DropdownMenuCheckboxItem
-									key={column.key}
-									checked={visibleColumns.includes(column.key)}
-									onCheckedChange={() => toggleColumn(column.key)}
-								>
-									{column.title}
-								</DropdownMenuCheckboxItem>
-							))}
-						</DropdownMenuContent>
-					</DropdownMenu>
-				</ToolTip>
-				<div className="flex justify-end mb-2 sm:mb-0">
-					<Select
-						value={String(rowsPerPage)}
-						onValueChange={(value) => {
-							setRowsPerPage(Number(value));
-							setCurrentPage(1);
-						}}
-					>
-						<SelectTrigger className="w-full sm:w-36">
-							<SelectValue placeholder="Registros por página" />
-						</SelectTrigger>
-						<SelectContent>
-							{[10, 20, 30, 50].map((num) => (
-								<SelectItem key={num} value={String(num)}>
-									{num} Registros
-								</SelectItem>
-							))}
-						</SelectContent>
-					</Select>
-				</div>
-			</div>
+			<FiltersInTable
+				defaultColumns={DEFAULT_COLUMNS}
+				visibleColumns={visibleColumns}
+				rowsPerPage={rowsPerPage}
+				setVisibleColumns={setVisibleColumns}
+				setRowsPerPage={setRowsPerPage}
+				setCurrentPage={setCurrentPage}
+			/>
 			<div className="overflow-auto w-full">
 				<Table className="min-w-max">
 					<TableHeader>
@@ -209,7 +169,7 @@ const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{dataWithDynamic.map((data) => (
+						{paginatedData.map((data) => (
 							<TableRow key={`${data.id}-${data.streamer.wahaID}`} className={data.streamerSalary > 0 ? "" : "bg-gray-100"}>
 								{filteredColumns.map((column) => (
 									<TableCell key={`${data.streamer.wahaID}-${column.key}`}>{column.render(data)}</TableCell>
@@ -218,35 +178,7 @@ const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
 						))}
 					</TableBody>
 				</Table>
-				<Pagination className="mt-4 justify-center sm:justify-end">
-					<PaginationContent>
-						<PaginationItem>
-							<PaginationPrevious
-								onClick={() => setCurrentPage((p) => p - 1)}
-								className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
-							/>
-						</PaginationItem>
-
-						{(() => {
-							const startPage = Math.max(1, Math.min(currentPage - 1, totalPages - 2));
-							const pagesToShow = Array.from({ length: Math.min(3, totalPages) }, (_, i) => startPage + i);
-							return pagesToShow.map((page) => (
-								<PaginationItem key={page}>
-									<PaginationLink isActive={currentPage === page} onClick={() => setCurrentPage(page)}>
-										{page}
-									</PaginationLink>
-								</PaginationItem>
-							));
-						})()}
-
-						<PaginationItem>
-							<PaginationNext
-								onClick={() => setCurrentPage((p) => p + 1)}
-								className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
-							/>
-						</PaginationItem>
-					</PaginationContent>
-				</Pagination>
+				<PaginationInTable currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
 			</div>
 		</div>
 	);

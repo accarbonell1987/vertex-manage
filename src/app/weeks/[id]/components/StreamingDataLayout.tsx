@@ -5,12 +5,14 @@ import ImportExcelModal from "@/components/ImportExcelModal";
 import ToolTip from "@/components/ToolTip";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import useStoreConfiguration from "@/context/useStoreConfiguration";
 import { bulkImportStreamingEntries } from "@/services/streamingData";
 import { FileType } from "@/types/common.types";
 import { WeekWithData } from "@/types/weeks.types";
 import { Download, Upload } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import useStreamingData from "../../hooks/useStreamingData";
+import { getDynamicData } from "../../utils/functions";
 import StreamingDataFinder from "./StreamingDataFinder";
 import StreamingDataTable from "./StreamingDataTable";
 import StreamingWeekActions from "./StreamingWeekActions";
@@ -22,6 +24,7 @@ interface StreamingDataLayoutProps {
 }
 
 const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
+	const { configuration } = useStoreConfiguration();
 	const { weekData, handleOnRefresh, actionLoading, setActionLoading, handleFindByCriteria } = useStreamingData({ init: week });
 	const [open, setOpen] = useState(false);
 
@@ -51,6 +54,12 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 		}
 	};
 
+	const dataWithDynamic = useMemo(() => getDynamicData(weekData.data, configuration), [weekData.data, configuration]);
+	const weekWithDynamic = {
+		...weekData,
+		data: dataWithDynamic,
+	};
+
 	return (
 		<>
 			<ImportExcelModal open={open} setOpen={setOpen} actionLoading={actionLoading} onSubmit={onSubmit} />
@@ -72,14 +81,14 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 						</div>
 						<div className="flex flex-col gap-4">
 							<StreamingDataFinder onFind={handleFindByCriteria} />
-							<StreamingDataTable week={weekData} />
+							<StreamingDataTable week={weekWithDynamic} />
 						</div>
 					</CardContent>
 				</Card>
 				<div className="flex flex-col gap-4 sm:w-1/4">
-					<StreamingWeekDetails week={weekData} />
-					<StreamingWeekRoster week={weekData} />
-					<StreamingWeekActions week={weekData} onRefresh={handleOnRefresh} actionLoading={actionLoading} />
+					<StreamingWeekDetails week={weekWithDynamic} />
+					<StreamingWeekRoster week={weekWithDynamic} />
+					<StreamingWeekActions week={weekWithDynamic} onRefresh={handleOnRefresh} actionLoading={actionLoading} />
 				</div>
 			</div>
 		</>

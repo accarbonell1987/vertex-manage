@@ -2,23 +2,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getStringNumber } from "@/lib/utils";
 import { WeekWithData } from "@/types/weeks.types";
 import { Gem, Landmark, Speech } from "lucide-react";
-import { useMemo } from "react";
-import useConfiguration from "../../hooks/useConfiguration";
-import { getDynamicData, getPreRosterTotalsInWeekByColumn } from "../../utils/functions";
+import { getPreRosterTotalsInWeekByColumn } from "../../utils/functions";
 
 interface StreamingWeekRosterProps {
 	week: WeekWithData;
 }
 
 const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
-	const { configuration } = useConfiguration();
-
-	const dataWithDynamic = useMemo(() => getDynamicData(week?.data, configuration), [week?.data, configuration]);
-
-	const totalStreamersSalaryDiscounts = getPreRosterTotalsInWeekByColumn(dataWithDynamic, "streamerPenalizated");
-	const totalStreamersSalary = getPreRosterTotalsInWeekByColumn(dataWithDynamic, "streamerSalary");
-	const totalDiamondsAndPoints = getPreRosterTotalsInWeekByColumn(dataWithDynamic, "diamondsAndPoints");
-	const totalDiamondsAndPointsDiscounts = getPreRosterTotalsInWeekByColumn(dataWithDynamic, "diamondsPenalties");
+	const totalStreamersSalaryDiscounts = getPreRosterTotalsInWeekByColumn(week.data, "streamerPenalizated");
+	const totalStreamersSalaryBonus = getPreRosterTotalsInWeekByColumn(week.data, "referralSalary");
+	const totalStreamersSalary = getPreRosterTotalsInWeekByColumn(week.data, "streamerSalary");
+	const totalDiamondsAndPoints = getPreRosterTotalsInWeekByColumn(week.data, "diamondsAndPoints");
+	const totalDiamondsAndPointsDiscounts = getPreRosterTotalsInWeekByColumn(week.data, "diamondsPenalties");
 
 	return (
 		<Card className={week.closed ? "bg-gray-100" : ""}>
@@ -44,10 +39,17 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
 					<b>Salario Penalizado:</b>
 					<p className="text-black">$ {getStringNumber(totalStreamersSalaryDiscounts)}</p>
 				</div>
+				<div className="flex items-center gap-2 text-violet-600">
+					<Speech className="w-4 h-4" />
+					<b>Salarios por Referidos:</b>
+					<p className="text-black">$ {getStringNumber(totalStreamersSalaryBonus)}</p>
+				</div>
 				<div className="flex items-center gap-2 text-green-600">
 					<Speech className="w-4 h-4" />
 					<b>Salario a Pagar:</b>
-					<p className="text-black">$ {getStringNumber(totalStreamersSalary - totalStreamersSalaryDiscounts)}</p>
+					<p className="text-black">
+						$ {getStringNumber(totalStreamersSalary - totalStreamersSalaryDiscounts + totalStreamersSalaryBonus)}
+					</p>
 				</div>
 			</CardContent>
 		</Card>
