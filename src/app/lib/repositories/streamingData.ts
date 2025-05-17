@@ -23,8 +23,12 @@ export async function bulkImportStreamingData(weekId: string, data: ImportedStre
 				streamer = newStreamer;
 			}
 
-			console.log("🚀 ~ bulkImportStreamingData ~ streamer:", streamer);
-			console.log("🚀 ~ bulkImportStreamingData ~ entry:", entry);
+			await prisma.streamer.update({
+				where: { id: streamer.id },
+				data: {
+					wahaName: entry.wahaName,
+				},
+			});
 
 			await prisma.streamingData.create({
 				data: {

@@ -25,7 +25,7 @@ export const getDynamicData = (data: StreamingDataWithStreamer[], configuration:
 	const penalizedData = getPenalizedData(data, configuration);
 	const referralData = getReferealData(penalizedData, configuration);
 
-	return referralData;
+	return referralData.toSorted((a, b) => (b.streamerSalary > a.streamerSalary ? 1 : -1));
 };
 
 const getPenalizedData = (data: StreamingDataWithStreamer[], configuration: ConfigurationType): StreamingDataWithStreamer[] => {

@@ -30,7 +30,6 @@ const StreamerReferalsContent = ({ streamer, streamers, onRefresh }: Readonly<Pr
 		if (!selectedStreamer) return;
 
 		const uniqueId = cuid();
-		console.log(streamer);
 
 		setMyReferals([
 			...myReferals,
@@ -101,7 +100,7 @@ const StreamerReferalsContent = ({ streamer, streamers, onRefresh }: Readonly<Pr
 			<div className="flex flex-col gap-2 w-full">
 				<Label htmlFor="selector">Seleccionar Referido:</Label>
 				<div className="flex flex-col items-center gap-2 xl:flex-row">
-					<Select onValueChange={handleOnSelect}>
+					<Select value={selectedStreamer?.id ?? ""} onValueChange={handleOnSelect}>
 						<SelectTrigger className="w-full">
 							<SelectValue placeholder="Seleccionar Referido" />
 						</SelectTrigger>
