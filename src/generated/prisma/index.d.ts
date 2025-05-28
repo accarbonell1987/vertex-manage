@@ -6043,11 +6043,13 @@ export namespace Prisma {
   export type ConfigurationAvgAggregateOutputType = {
     payAffiliateProgramPercentage: number | null
     penaltyPercentage: number | null
+    mlcChangeRate: number | null
   }
 
   export type ConfigurationSumAggregateOutputType = {
     payAffiliateProgramPercentage: number | null
     penaltyPercentage: number | null
+    mlcChangeRate: number | null
   }
 
   export type ConfigurationMinAggregateOutputType = {
@@ -6057,6 +6059,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage: number | null
     applyPenalties: boolean | null
     penaltyPercentage: number | null
+    mlcChangeRate: number | null
   }
 
   export type ConfigurationMaxAggregateOutputType = {
@@ -6066,6 +6069,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage: number | null
     applyPenalties: boolean | null
     penaltyPercentage: number | null
+    mlcChangeRate: number | null
   }
 
   export type ConfigurationCountAggregateOutputType = {
@@ -6075,6 +6079,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage: number
     applyPenalties: number
     penaltyPercentage: number
+    mlcChangeRate: number
     _all: number
   }
 
@@ -6082,11 +6087,13 @@ export namespace Prisma {
   export type ConfigurationAvgAggregateInputType = {
     payAffiliateProgramPercentage?: true
     penaltyPercentage?: true
+    mlcChangeRate?: true
   }
 
   export type ConfigurationSumAggregateInputType = {
     payAffiliateProgramPercentage?: true
     penaltyPercentage?: true
+    mlcChangeRate?: true
   }
 
   export type ConfigurationMinAggregateInputType = {
@@ -6096,6 +6103,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: true
     applyPenalties?: true
     penaltyPercentage?: true
+    mlcChangeRate?: true
   }
 
   export type ConfigurationMaxAggregateInputType = {
@@ -6105,6 +6113,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: true
     applyPenalties?: true
     penaltyPercentage?: true
+    mlcChangeRate?: true
   }
 
   export type ConfigurationCountAggregateInputType = {
@@ -6114,6 +6123,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: true
     applyPenalties?: true
     penaltyPercentage?: true
+    mlcChangeRate?: true
     _all?: true
   }
 
@@ -6210,6 +6220,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage: number
     applyPenalties: boolean
     penaltyPercentage: number
+    mlcChangeRate: number
     _count: ConfigurationCountAggregateOutputType | null
     _avg: ConfigurationAvgAggregateOutputType | null
     _sum: ConfigurationSumAggregateOutputType | null
@@ -6238,6 +6249,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: boolean
     applyPenalties?: boolean
     penaltyPercentage?: boolean
+    mlcChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6247,6 +6259,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: boolean
     applyPenalties?: boolean
     penaltyPercentage?: boolean
+    mlcChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6256,6 +6269,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: boolean
     applyPenalties?: boolean
     penaltyPercentage?: boolean
+    mlcChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectScalar = {
@@ -6265,9 +6279,10 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: boolean
     applyPenalties?: boolean
     penaltyPercentage?: boolean
+    mlcChangeRate?: boolean
   }
 
-  export type ConfigurationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "agencyName" | "payAffiliateProgram" | "payAffiliateProgramPercentage" | "applyPenalties" | "penaltyPercentage", ExtArgs["result"]["configuration"]>
+  export type ConfigurationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "agencyName" | "payAffiliateProgram" | "payAffiliateProgramPercentage" | "applyPenalties" | "penaltyPercentage" | "mlcChangeRate", ExtArgs["result"]["configuration"]>
 
   export type $ConfigurationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Configuration"
@@ -6279,6 +6294,7 @@ export namespace Prisma {
       payAffiliateProgramPercentage: number
       applyPenalties: boolean
       penaltyPercentage: number
+      mlcChangeRate: number
     }, ExtArgs["result"]["configuration"]>
     composites: {}
   }
@@ -6708,6 +6724,7 @@ export namespace Prisma {
     readonly payAffiliateProgramPercentage: FieldRef<"Configuration", 'Float'>
     readonly applyPenalties: FieldRef<"Configuration", 'Boolean'>
     readonly penaltyPercentage: FieldRef<"Configuration", 'Float'>
+    readonly mlcChangeRate: FieldRef<"Configuration", 'Float'>
   }
     
 
@@ -7158,7 +7175,8 @@ export namespace Prisma {
     payAffiliateProgram: 'payAffiliateProgram',
     payAffiliateProgramPercentage: 'payAffiliateProgramPercentage',
     applyPenalties: 'applyPenalties',
-    penaltyPercentage: 'penaltyPercentage'
+    penaltyPercentage: 'penaltyPercentage',
+    mlcChangeRate: 'mlcChangeRate'
   };
 
   export type ConfigurationScalarFieldEnum = (typeof ConfigurationScalarFieldEnum)[keyof typeof ConfigurationScalarFieldEnum]
@@ -7605,6 +7623,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: FloatFilter<"Configuration"> | number
     applyPenalties?: BoolFilter<"Configuration"> | boolean
     penaltyPercentage?: FloatFilter<"Configuration"> | number
+    mlcChangeRate?: FloatFilter<"Configuration"> | number
   }
 
   export type ConfigurationOrderByWithRelationInput = {
@@ -7614,6 +7633,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: SortOrder
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
+    mlcChangeRate?: SortOrder
   }
 
   export type ConfigurationWhereUniqueInput = Prisma.AtLeast<{
@@ -7626,6 +7646,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: FloatFilter<"Configuration"> | number
     applyPenalties?: BoolFilter<"Configuration"> | boolean
     penaltyPercentage?: FloatFilter<"Configuration"> | number
+    mlcChangeRate?: FloatFilter<"Configuration"> | number
   }, "id">
 
   export type ConfigurationOrderByWithAggregationInput = {
@@ -7635,6 +7656,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: SortOrder
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
+    mlcChangeRate?: SortOrder
     _count?: ConfigurationCountOrderByAggregateInput
     _avg?: ConfigurationAvgOrderByAggregateInput
     _max?: ConfigurationMaxOrderByAggregateInput
@@ -7652,6 +7674,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: FloatWithAggregatesFilter<"Configuration"> | number
     applyPenalties?: BoolWithAggregatesFilter<"Configuration"> | boolean
     penaltyPercentage?: FloatWithAggregatesFilter<"Configuration"> | number
+    mlcChangeRate?: FloatWithAggregatesFilter<"Configuration"> | number
   }
 
   export type StreamerCreateInput = {
@@ -8037,6 +8060,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage: number
     applyPenalties: boolean
     penaltyPercentage: number
+    mlcChangeRate: number
   }
 
   export type ConfigurationUncheckedCreateInput = {
@@ -8046,6 +8070,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage: number
     applyPenalties: boolean
     penaltyPercentage: number
+    mlcChangeRate: number
   }
 
   export type ConfigurationUpdateInput = {
@@ -8055,6 +8080,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: FloatFieldUpdateOperationsInput | number
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    mlcChangeRate?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ConfigurationUncheckedUpdateInput = {
@@ -8064,6 +8090,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: FloatFieldUpdateOperationsInput | number
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    mlcChangeRate?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ConfigurationCreateManyInput = {
@@ -8073,6 +8100,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage: number
     applyPenalties: boolean
     penaltyPercentage: number
+    mlcChangeRate: number
   }
 
   export type ConfigurationUpdateManyMutationInput = {
@@ -8082,6 +8110,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: FloatFieldUpdateOperationsInput | number
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    mlcChangeRate?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ConfigurationUncheckedUpdateManyInput = {
@@ -8091,6 +8120,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: FloatFieldUpdateOperationsInput | number
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    mlcChangeRate?: FloatFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8495,11 +8525,13 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: SortOrder
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
+    mlcChangeRate?: SortOrder
   }
 
   export type ConfigurationAvgOrderByAggregateInput = {
     payAffiliateProgramPercentage?: SortOrder
     penaltyPercentage?: SortOrder
+    mlcChangeRate?: SortOrder
   }
 
   export type ConfigurationMaxOrderByAggregateInput = {
@@ -8509,6 +8541,7 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: SortOrder
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
+    mlcChangeRate?: SortOrder
   }
 
   export type ConfigurationMinOrderByAggregateInput = {
@@ -8518,11 +8551,13 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: SortOrder
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
+    mlcChangeRate?: SortOrder
   }
 
   export type ConfigurationSumOrderByAggregateInput = {
     payAffiliateProgramPercentage?: SortOrder
     penaltyPercentage?: SortOrder
+    mlcChangeRate?: SortOrder
   }
 
   export type ReferalCreateNestedManyWithoutStreamerInput = {

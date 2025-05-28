@@ -87,4 +87,5 @@ model Configuration {
   payAffiliateProgramPercentage Float
   applyPenalties Boolean
   penaltyPercentage Float
+  mlcChangeRate Float
 }

@@ -178,7 +178,8 @@ exports.Prisma.ConfigurationScalarFieldEnum = {
   payAffiliateProgram: 'payAffiliateProgram',
   payAffiliateProgramPercentage: 'payAffiliateProgramPercentage',
   applyPenalties: 'applyPenalties',
-  penaltyPercentage: 'penaltyPercentage'
+  penaltyPercentage: 'penaltyPercentage',
+  mlcChangeRate: 'mlcChangeRate'
 };
 
 exports.Prisma.SortOrder = {
