@@ -40,8 +40,9 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
   const totalCTOSalary = Number((totalGainMLC / 3).toFixed(2));
   const totalCEOSalary = Number((totalGainMLC - totalCTOSalary).toFixed(2));
 
-  const totalToSendMLC = Number((totalCTOSalary + prize + expenses + streamerFinalSalary).toFixed(2));
+  const totalToSendMLC = Number((prize + streamerFinalSalary).toFixed(2));
   const totalToSendUSDT = Number((totalToSendMLC / configuration.mlcChangeRate).toFixed(2));
+  const totalToFidelMLC = Number((totalCTOSalary + expenses).toFixed(2));
 
   return (
     <Card className={week.closed ? 'bg-gray-100' : ''}>
@@ -121,6 +122,13 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
             <CircleDollarSign className="w-4 h-4" />
             <b>USDT:</b>
             <p className="text-black">$ {getStringNumber(totalToSendUSDT)}</p>
+          </div>
+          <div className="flex items-center gap-2 text-blue-600">
+            <CircleDollarSign className="w-4 h-4" />
+            <b>Fidel (MLC/USDT):</b>
+            <p className="text-black">
+              $ {getStringNumber(totalToFidelMLC)} / $ {getStringNumber(totalToFidelMLC / configuration.mlcChangeRate)}
+            </p>
           </div>
         </article>
       </CardContent>
