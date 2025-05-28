@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { WeekWithData } from '@/types/weeks.types';
 import { BanknoteArrowDown } from 'lucide-react';
+import { useState } from 'react';
 
 interface Props {
   week: WeekWithData;
@@ -12,6 +13,11 @@ interface Props {
 
 const ExpensesWeekDialog = ({ week }: Readonly<Props>) => {
   const { expenses, changeExpenses } = useStoreConfiguration();
+  const [currentExpenses, setCurrentExpenses] = useState(expenses);
+
+  const handleSetExpenses = () => {
+    changeExpenses(Number(currentExpenses));
+  };
 
   return (
     <DialogComponent
@@ -24,11 +30,7 @@ const ExpensesWeekDialog = ({ week }: Readonly<Props>) => {
       }
       actionButton={
         <DialogClose asChild>
-          <Button
-            className="cursor-pointer bg-red-500 hover:bg-red-600"
-            disabled={expenses >= 0}
-            onClick={() => changeExpenses(Number(expenses))}
-          >
+          <Button className="cursor-pointer bg-red-500 hover:bg-red-600" disabled={currentExpenses < 0} onClick={handleSetExpenses}>
             <BanknoteArrowDown /> Establecer
           </Button>
         </DialogClose>
@@ -39,7 +41,12 @@ const ExpensesWeekDialog = ({ week }: Readonly<Props>) => {
           <span>
             Para establecer el gasto, ingresa el gasto de la semana <b className="text-red-600">{week.name}</b>
           </span>
-          <Input id="expenses" placeholder={week.name} value={expenses} onChange={(e) => changeExpenses(Number(e.target.value))} />
+          <Input
+            id="expenses"
+            placeholder={week.name}
+            value={currentExpenses}
+            onChange={(e) => setCurrentExpenses(Number(e.target.value))}
+          />
         </div>
       </div>
     </DialogComponent>

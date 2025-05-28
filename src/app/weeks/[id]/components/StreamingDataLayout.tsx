@@ -9,7 +9,7 @@ import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { bulkImportStreamingEntries } from '@/services/streamingData';
 import { FileType } from '@/types/common.types';
 import { WeekWithData } from '@/types/weeks.types';
-import { Upload } from 'lucide-react';
+import { ShieldUser, Upload } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import ExpensesWeekDialog from '../../components/ExpensesWeekDialog';
 import PrizeWeekDialog from '../../components/PrizeWeekDialog';
@@ -73,18 +73,26 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
           <CardContent className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-semibold">Datos de la semana</h2>
-              <PrizeWeekDialog week={week} />
-              <ExpensesWeekDialog week={week} />
-              <ToolTip content="Importar desde Excel">
-                <Button
-                  className="cursor-pointer"
-                  variant={'destructive'}
-                  disabled={week.closed || actionLoading}
-                  onClick={() => setOpen(true)}
-                >
-                  <Upload />
-                </Button>
-              </ToolTip>
+              <div className="flex flex-row gap-2 ml-auto">
+                <PrizeWeekDialog week={week} />
+                <ExpensesWeekDialog week={week} />
+                <ToolTip content="Exportar Datos a Excel para Administración">
+                  <Button className="cursor-pointer" onClick={handleOnExportToAdmin}>
+                    <ShieldUser />
+                  </Button>
+                </ToolTip>
+                <ToolTip content="Importar Datos desde Excel">
+                  <Button
+                    className="cursor-pointer"
+                    variant={'destructive'}
+                    disabled={week.closed || actionLoading}
+                    onClick={() => setOpen(true)}
+                  >
+                    <Upload />
+                  </Button>
+                </ToolTip>
+              </div>
+
               {/* <ToolTip content="Exportar como Excel">
                 <Button className="cursor-pointer" onClick={() => {}}>
                   <Download />
@@ -100,12 +108,7 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
         <div className="flex flex-col gap-4 sm:w-1/4">
           <StreamingWeekDetails week={weekWithDynamic} />
           <StreamingWeekRoster week={weekWithDynamic} />
-          <StreamingWeekActions
-            week={weekWithDynamic}
-            onRefresh={handleOnRefresh}
-            actionLoading={actionLoading}
-            handleOnExportToAdmin={handleOnExportToAdmin}
-          />
+          <StreamingWeekActions week={weekWithDynamic} onRefresh={handleOnRefresh} actionLoading={actionLoading} />
         </div>
       </div>
     </>
