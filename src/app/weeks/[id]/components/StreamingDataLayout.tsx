@@ -9,8 +9,10 @@ import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { bulkImportStreamingEntries } from '@/services/streamingData';
 import { FileType } from '@/types/common.types';
 import { WeekWithData } from '@/types/weeks.types';
-import { Download, Upload } from 'lucide-react';
+import { Upload } from 'lucide-react';
 import { useMemo, useState } from 'react';
+import ExpensesWeekDialog from '../../components/ExpensesWeekDialog';
+import PrizeWeekDialog from '../../components/PrizeWeekDialog';
 import useStreamingData from '../../hooks/useStreamingData';
 import { getDynamicData } from '../../utils/functions';
 import StreamingDataFinder from './StreamingDataFinder';
@@ -71,16 +73,23 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
           <CardContent className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-semibold">Datos de la semana</h2>
+              <PrizeWeekDialog week={week} />
+              <ExpensesWeekDialog week={week} />
               <ToolTip content="Importar desde Excel">
-                <Button className="cursor-pointer ml-auto" disabled={week.closed || actionLoading} onClick={() => setOpen(true)}>
+                <Button
+                  className="cursor-pointer"
+                  variant={'destructive'}
+                  disabled={week.closed || actionLoading}
+                  onClick={() => setOpen(true)}
+                >
                   <Upload />
                 </Button>
               </ToolTip>
-              <ToolTip content="Exportar como Excel">
+              {/* <ToolTip content="Exportar como Excel">
                 <Button className="cursor-pointer" onClick={() => {}}>
                   <Download />
                 </Button>
-              </ToolTip>
+              </ToolTip> */}
             </div>
             <div className="flex flex-col gap-4">
               <StreamingDataFinder onFind={handleFindByCriteria} />
