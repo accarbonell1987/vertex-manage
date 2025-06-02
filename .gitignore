@@ -44,3 +44,4 @@ node_modules
 .next
 .env
 *.log
+package-lock.json
