@@ -39,7 +39,6 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
   const handleOnClose = async () => {
     setOpen(false);
   };
-
   const onSubmit = async (e: React.FormEvent, files: FileType[]) => {
     e.preventDefault();
 
@@ -54,11 +53,11 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
       setActionLoading(true);
       await bulkImportStreamingEntries(week.id, parsedFileAsExcel);
       handleOnClose();
-      handleOnRefresh();
     } catch (error) {
       console.error(error);
     } finally {
       setActionLoading(false);
+      handleOnRefresh();
     }
   };
   const handleOnExportToAdmin = () => {

@@ -1,6 +1,6 @@
-export type ColumnTableType = {
-	key: string;
-	title: string;
-	visible: boolean;
-	render?: (data: any) => React.ReactNode;
+export type ColumnTableType<T = unknown> = {
+  key: string;
+  title: string;
+  visible: boolean;
+  render?: (data: T) => React.ReactNode;
 };

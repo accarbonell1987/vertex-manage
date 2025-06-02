@@ -20,7 +20,6 @@ export async function PATCH(req: NextRequest) {
     penaltyPercentage: Number(penaltyPercentage),
     mlcChangeRate: Number(mlcChangeRate),
   };
-  console.log('🚀 ~ PATCH ~ configuration:', configuration);
 
   const updated = await updateConfiguration(configuration);
   return NextResponse.json(updated);

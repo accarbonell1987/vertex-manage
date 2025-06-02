@@ -1,37 +1,37 @@
-import { deleteReferal, findReferalsByStreamerId } from "@/app/lib/repositories/referals";
-import { NextRequest, NextResponse } from "next/server";
+import { deleteReferal, findReferalsByStreamerId } from '@/app/lib/repositories/referals';
+import { NextRequest, NextResponse } from 'next/server';
 
 type Params = {
-	params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export async function GET(_: NextRequest, { params }: Params) {
-	const streamerId = params.id;
+  const streamerId = (await params).id;
 
-	if (!streamerId) {
-		return NextResponse.json({ error: "Missing streamerId" }, { status: 400 });
-	}
+  if (!streamerId) {
+    return NextResponse.json({ error: 'Missing streamerId' }, { status: 400 });
+  }
 
-	try {
-		const referals = await findReferalsByStreamerId(streamerId);
-		return NextResponse.json(referals);
-	} catch (error) {
-		console.error("GET /api/referals error:", error);
-		return NextResponse.json({ error: "Error fetching referals" }, { status: 500 });
-	}
+  try {
+    const referals = await findReferalsByStreamerId(streamerId);
+    return NextResponse.json(referals);
+  } catch (error) {
+    console.error('GET /api/referals error:', error);
+    return NextResponse.json({ error: 'Error fetching referals' }, { status: 500 });
+  }
 }
 export async function DELETE(_: NextRequest, { params }: Params) {
-	try {
-		const id = params.id;
+  try {
+    const id = (await params).id;
 
-		if (!id) {
-			return NextResponse.json({ error: "Missing referal id" }, { status: 400 });
-		}
+    if (!id) {
+      return NextResponse.json({ error: 'Missing referal id' }, { status: 400 });
+    }
 
-		await deleteReferal(id);
-		return NextResponse.json({ message: "Referal deleted" });
-	} catch (error) {
-		console.error("DELETE /api/referals error:", error);
-		return NextResponse.json({ error: "Error deleting referal" }, { status: 500 });
-	}
+    await deleteReferal(id);
+    return NextResponse.json({ message: 'Referal deleted' });
+  } catch (error) {
+    console.error('DELETE /api/referals error:', error);
+    return NextResponse.json({ error: 'Error deleting referal' }, { status: 500 });
+  }
 }
