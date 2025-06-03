@@ -10,7 +10,7 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "preinstall": "npx npm-force-resolutions",
-    "vercel-build": "next build"
+    "vercel-build": "npm install --legacy-peer-deps && next build"
   },
   "dependencies": {
     "@prisma/client": "^6.7.0",
@@ -28,6 +28,9 @@
     "@radix-ui/react-tooltip": "^1.2.4",
     "@tailwindcss/postcss": "^4.1.8",
     "@tanstack/react-table": "^8.21.3",
+    "typescript": "^5.0.0",
+    "@types/react": "^19.0.0",
+    "@types/node": "^20.0.0",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
