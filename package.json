@@ -10,7 +10,7 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "preinstall": "npx npm-force-resolutions",
-    "vercel-build": "npm install --legacy-peer-deps && next build"
+    "vercel-build": "prisma generate && npm install --legacy-peer-deps && next build"
   },
   "dependencies": {
     "@prisma/client": "^6.7.0",
