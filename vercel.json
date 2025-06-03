@@ -1,7 +1,9 @@
 {
   "build": {
     "env": {
-      "NODE_ENV": "development"
+      "NODE_ENV": "development",
+      "VERCEL_FORCE_NO_BUILD_CACHE": "1",
+      "TURBO_FORCE": "true"
     }
   }
 }
