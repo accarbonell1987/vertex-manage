@@ -5,10 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Week } from '@/generated/prisma';
 import { createWeek } from '@/services/weeks';
-import dayjs from 'dayjs';
-import isoWeek from 'dayjs/plugin/isoWeek';
+import { endOfWeek, startOfWeek } from 'date-fns';
 import { useEffect, useState } from 'react';
-dayjs.extend(isoWeek);
 
 interface Props {
   weeks: Week[];
@@ -18,8 +16,9 @@ interface Props {
 }
 
 const AddWeekModal = ({ weeks, open, onClose, setOpen }: Props) => {
-  const defaultStartDate = dayjs().startOf('isoWeek').toDate();
-  const defaultEndDate = dayjs().endOf('isoWeek').toDate();
+  const today = new Date();
+  const defaultStartDate = startOfWeek(today, { weekStartsOn: 1 });
+  const defaultEndDate = endOfWeek(today, { weekStartsOn: 1 });
 
   const [startDate, setStartDate] = useState<Date | undefined>(defaultStartDate);
   const [endDate, setEndDate] = useState<Date | undefined>(defaultEndDate);
@@ -29,8 +28,9 @@ const AddWeekModal = ({ weeks, open, onClose, setOpen }: Props) => {
 
   useEffect(() => {
     if (open) {
-      setStartDate(dayjs().startOf('isoWeek').toDate());
-      setEndDate(dayjs().endOf('isoWeek').toDate());
+      const now = new Date();
+      setStartDate(startOfWeek(now, { weekStartsOn: 1 }));
+      setEndDate(endOfWeek(now, { weekStartsOn: 1 }));
       setName(`Semana No: ${weeks.length + 1}`);
       setNotes('');
       setError('');
