@@ -51,6 +51,28 @@ export function exportDataForAdminToExcel(dataToExport: StreamingDataWithStreame
   saveAs(blob, `week-${new Date().toISOString().slice(0, 10)}.xlsx`);
 }
 
+export function exportDataForAgencyToExcel(dataToExport: StreamingDataWithStreamer[]) {
+  const data = dataToExport
+    .map((s) => ({
+      WahaID: s.streamer.wahaID,
+      WahaName: s.streamer.wahaName,
+      DiamantesTotal: s.diamondsTotal,
+      Salario: getFormatedNumberToTwoDecimal(s.streamerSalary),
+      Penalizaciones: getFormatedNumberToTwoDecimal(s.streamerPenalizated ?? 0),
+      SalarioFinal: getFormatedNumberToTwoDecimal(s.streamerSalary - (s.streamerPenalizated ?? 0) + (s?.referralSalary ?? 0)),
+    }))
+    .filter((s) => s.SalarioFinal > 0);
+
+  const worksheet = XLSX.utils.json_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Semana');
+
+  const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+  const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+
+  saveAs(blob, `week-${new Date().toISOString().slice(0, 10)}.xlsx`);
+}
+
 export function parseStreamingExcel(file: File): Promise<ImportedStreamingData[]> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

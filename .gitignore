@@ -45,3 +45,5 @@ node_modules
 .env
 *.log
 package-lock.json
+*bun.lockb
+*bun.lockb*

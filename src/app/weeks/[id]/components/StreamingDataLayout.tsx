@@ -1,6 +1,6 @@
 'use client';
 
-import { exportDataForAdminToExcel, parseStreamingExcel } from '@/app/lib/excel';
+import { exportDataForAdminToExcel, exportDataForAgencyToExcel, parseStreamingExcel } from '@/app/lib/excel';
 import ImportExcelModal from '@/components/ImportExcelModal';
 import ToolTip from '@/components/ToolTip';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,7 @@ import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { bulkImportStreamingEntries } from '@/services/streamingData';
 import { FileType } from '@/types/common.types';
 import { WeekWithData } from '@/types/weeks.types';
-import { ShieldUser, Upload } from 'lucide-react';
+import { ShieldUser, Upload, UserRound } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import ExpensesWeekDialog from '../../components/ExpensesWeekDialog';
 import PrizeWeekDialog from '../../components/PrizeWeekDialog';
@@ -63,6 +63,9 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
   const handleOnExportToAdmin = () => {
     exportDataForAdminToExcel(dataWithDynamic);
   };
+  const handleOnExportToAgency = () => {
+    exportDataForAgencyToExcel(dataWithDynamic);
+  };
 
   return (
     <>
@@ -78,6 +81,11 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
                 <ToolTip content="Exportar Datos a Excel para Administración">
                   <Button className="cursor-pointer" onClick={handleOnExportToAdmin}>
                     <ShieldUser />
+                  </Button>
+                </ToolTip>
+                <ToolTip content="Exportar Datos a Excel para Streamers">
+                  <Button className="cursor-pointer" onClick={handleOnExportToAgency}>
+                    <UserRound />
                   </Button>
                 </ToolTip>
                 <ToolTip content="Importar Datos desde Excel">
