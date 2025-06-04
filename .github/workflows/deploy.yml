@@ -22,17 +22,19 @@ jobs:
       - name: Deploy to VPS via SSH
         run: |
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 20625 root@alberto.endrino.com << 'EOF'
-            # Limpia si ya existe
+            # Elimina el repo anterior si existe
             rm -rf ~/vertex-manage || true
 
-            # Clona el repo
-            git clone git@github.com:accarbonell1987/vertex-manage.git ~/vertex-manage
+            # Instala git si no está disponible
+            command -v git >/dev/null 2>&1 || apt-get update && apt-get install -y git
+
+            # Clona el repo usando HTTPS
+            git clone https://github.com/accarbonell1987/vertex-manage.git ~/vertex-manage
 
             cd ~/vertex-manage
 
-            # Carga entorno y exporta PATH
-            source ~/.bashrc || true
-            source ~/.profile || true
+            # Instala Bun
+            curl -fsSL https://bun.sh/install | bash
             export PATH="$HOME/.bun/bin:$PATH"
 
             # Instala dependencias y construye
@@ -40,5 +42,6 @@ jobs:
             bun run build
 
             # Arranca con pm2 (o reinicia si ya está corriendo)
+            command -v pm2 >/dev/null 2>&1 || npm install -g pm2
             pm2 restart vertex-manage || pm2 start bun --name vertex-manage -- run start
           EOF
