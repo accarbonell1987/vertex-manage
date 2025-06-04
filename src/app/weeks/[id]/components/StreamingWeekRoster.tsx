@@ -4,6 +4,7 @@ import { getStringNumber } from '@/lib/utils';
 import { WeekWithData } from '@/types/weeks.types';
 import {
   BanknoteArrowUp,
+  Church,
   CircleDollarSign,
   CirclePercent,
   ContactRound,
@@ -36,9 +37,12 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
   const streamerFinalSalary = totalStreamersSalary - totalStreamersSalaryDiscounts + totalStreamersSalaryBonus;
 
   const totalSalaryMLC = Number(((totalStreamersSalary + totalAgencySalary) * configuration.mlcChangeRate).toFixed(2));
-  const totalGainMLC = Number((totalSalaryMLC - streamerFinalSalary - prize - expenses).toFixed(2));
-  const totalCTOSalary = Number((totalGainMLC / 3).toFixed(2));
-  const totalCEOSalary = Number((totalGainMLC - totalCTOSalary).toFixed(2));
+  const totalGainMLC = Number((totalSalaryMLC - streamerFinalSalary).toFixed(2));
+
+  const divisionByThree = Number((totalGainMLC / 3).toFixed(2));
+  const totalCTOSalary = divisionByThree;
+  const totalCEOSalary = divisionByThree;
+  const totalAgencyFounds = divisionByThree - prize - expenses;
 
   const totalToSendMLC = Number((prize + streamerFinalSalary).toFixed(2));
   const totalToSendUSDT = Number((totalToSendMLC / configuration.mlcChangeRate).toFixed(2));
@@ -88,6 +92,10 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
           <div className="flex items-center gap-2 text-blue-600">
             <ContactRound className="w-4 h-4" />
             <b>CTO:</b> <p className="text-black">$ {getStringNumber(totalCTOSalary || 0)}</p>
+          </div>
+          <div className="flex items-center gap-2 text-blue-600">
+            <Church className="w-4 h-4" />
+            <b>Fondo de Agencia:</b> <p className="text-black">$ {getStringNumber(totalAgencyFounds || 0)}</p>
           </div>
 
           <div className="flex items-center gap-2 text-gray-600">

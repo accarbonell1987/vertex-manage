@@ -1,3 +1,4 @@
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -58,7 +59,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
 
   const validateForm = () => {
     if (!name.trim()) return 'El nombre es obligatorio';
-    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(name)) return 'El nombre solo puede contener letras';
+    // if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(name)) return 'El nombre solo puede contener letras';
 
     if (!wahaID.trim()) return 'El waha ID es obligatorio';
     if (!/^\d+$/.test(wahaID)) return 'El waha ID debe contener solo números';
@@ -90,6 +91,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
           phoneNumber,
           bankAccount,
           allowInRoster,
+          applyPenalties,
         });
       } else {
         await createStreamer({
@@ -99,6 +101,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
           phoneNumber,
           bankAccount,
           allowInRoster,
+          applyPenalties,
         });
       }
       onClose();
@@ -117,16 +120,13 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
           </DialogDescription>
         </DialogHeader>
         <form className="space-y-4" onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="wahaID">
               Waha ID <b className="text-red-500">*</b>
             </Label>
             <Input id="wahaID" value={wahaID} onChange={(e) => setWahaID(e.target.value)} />
-            {/* <Input id="allowInRoster" value={allowInRoster} onChange={(e) => setAllowInRoster(e.target.value)} /> */}
-            <Switch id="allowInRoster" checked={allowInRoster} onCheckedChange={setAllowInRoster} />
-            <Label htmlFor="allowInRoster">Cotiza en Nómina</Label>
           </div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="wahaName">
               Waha Nick <b className="text-red-500">*</b>
             </Label>
@@ -142,11 +142,26 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
           </div>
           <div className="flex flex-col gap-2">
             <Label htmlFor="bankAccount">Cuenta Bancaria</Label>
-            <Input id="bankAccount" value={bankAccount} onChange={(e) => setBankAccount(e.target.value)} type="number" />
+            <Input id="bankAccount" value={bankAccount} onChange={(e) => setBankAccount(e.target.value)} />
           </div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-            <Switch id="applyPenalties" checked={applyPenalties} onCheckedChange={setApplyPenalties} />
-            <Label htmlFor="applyPenalties">Aplica multas</Label>
+
+          <div className="flex flex-row justify-around">
+            <div className="flex flex-col gap-2">
+              <Label>Cotiza en Nómina:</Label>
+              <div className="flex flex-row items-center gap-2">
+                <Badge className={'bg-red-600'}>{'NO'}</Badge>
+                <Switch id="allowInRoster" checked={allowInRoster} onCheckedChange={setAllowInRoster} />
+                <Badge className={'bg-green-600'}>{'SÍ'}</Badge>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label>Recibe Penalizaciones:</Label>
+              <div className="flex flex-row items-center gap-2">
+                <Badge className={'bg-red-600'}>{'NO'}</Badge>
+                <Switch id="applyPenalties" checked={applyPenalties} onCheckedChange={setApplyPenalties} />
+                <Badge className={'bg-green-600'}>{'SÍ'}</Badge>
+              </div>
+            </div>
           </div>
           {error && <p className="text-sm text-red-500">{error}</p>}
           <div className="flex justify-end gap-2 w-full">
