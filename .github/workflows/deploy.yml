@@ -21,7 +21,7 @@ jobs:
 
       - name: Deploy to VPS via SSH
         run: |
-          ssh -o StrictHostKeyChecking=no -p 20625 root@alberto.endrino.com << 'EOF'
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 20625 root@alberto.endrino.com << 'EOF'
             # Limpia si ya existe
             rm -rf ~/vertex-manage || true
 
@@ -29,6 +29,11 @@ jobs:
             git clone git@github.com:accarbonell1987/vertex-manage.git ~/vertex-manage
 
             cd ~/vertex-manage
+
+            # Carga entorno y exporta PATH
+            source ~/.bashrc || true
+            source ~/.profile || true
+            export PATH="$HOME/.bun/bin:$PATH"
 
             # Instala dependencias y construye
             bun install
