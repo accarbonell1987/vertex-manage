@@ -26,6 +26,9 @@ jobs:
             git fetch origin develop
             git reset --hard origin/develop
 
+            echo "🧪 Generando archivo .env"
+            cat <<EOT > .env DATABASE_URL=${{ secrets.DATABASE_URL }} EOT
+
             echo "🐳 Construyendo imagen Docker"
             docker build -t vertex-manage .
 
