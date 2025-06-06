@@ -32,8 +32,10 @@ jobs:
           ssh-private-key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
 
       - name: SSH and deploy to VPS
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          ssh -o StrictHostKeyChecking=no -p 20625 root@alberto.endrino.com << 'EOF'
+          ssh -o StrictHostKeyChecking=no -p 20625 root@alberto.endrino.com << EOF
             echo "📦 Clonando o actualizando el repo"
             if [ ! -d ~/vertex-manage ]; then
               git clone https://github.com/accarbonell1987/vertex-manage.git
@@ -43,7 +45,7 @@ jobs:
             git reset --hard origin/develop
 
             echo "🧪 Generando archivo .env"
-            cat <<EOT > .env DATABASE_URL=${{ secrets.DATABASE_URL }} EOT
+            echo "DATABASE_URL=$DATABASE_URL" > .env
 
             echo "🐳 Construyendo imagen Docker"
             docker build -t vertex-manage .
