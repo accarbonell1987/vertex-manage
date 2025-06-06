@@ -1,36 +1,19 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:15
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: streamers
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - '5432:5432'
-    networks:
-      - vertex-network
-
   web:
     build:
       context: .
       dockerfile: dockerfile
-    depends_on:
-      - postgres
     ports:
       - '3000:3000'
     environment:
-      DATABASE_URL: postgres://postgres:admin@postgres:5432/streamers
+      DATABASE_URL: postgresql://neondb_owner:npg_8oFNVLmjn1CU@ep-delicate-snowflake-ac7c8wwt-pooler.sa-east-1.aws.neon.tech/vertexdb?sslmode=require
     # Si querés usar .env.docker también dentro del contenedor en tiempo de ejecución:
     env_file:
       - .env.docker
     networks:
       - vertex-network
-
 volumes:
   pgdata:
 

@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: Deploy develop to VPS
 
 on:
   push:
@@ -10,26 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
 
-      - name: Deploy to VPS via SSH
+      - name: SSH and deploy to VPS
         run: |
-          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 20625 root@alberto.endrino.com << 'EOF'
-            rm -rf ~/vertex-manage || true
-            command -v git >/dev/null 2>&1 || apt-get update && apt-get install -y git
-            command -v unzip >/dev/null 2>&1 || apt-get install -y unzip
-            git clone https://github.com/accarbonell1987/vertex-manage.git ~/vertex-manage
+          ssh -o StrictHostKeyChecking=no -p 20625 root@alberto.endrino.com << 'EOF'
+            echo "📦 Clonando o actualizando el repo"
+            if [ ! -d ~/vertex-manage ]; then
+              git clone https://github.com/accarbonell1987/vertex-manage.git
+            fi
             cd ~/vertex-manage
-            curl -fsSL https://bun.sh/install | bash
-            export PATH="$HOME/.bun/bin:$PATH"
-            bun install
-            bun run build
-            command -v pm2 >/dev/null 2>&1 || npm install -g pm2
-            pm2 restart vertex-manage || pm2 start bun --name vertex-manage -- run start
+            git fetch origin develop
+            git reset --hard origin/develop
+
+            echo "🐳 Construyendo imagen Docker"
+            docker build -t vertex-manage .
+
+            echo "🛑 Parando contenedor anterior si existe"
+            docker stop vertex-manage || true
+            docker rm vertex-manage || true
+
+            echo "🚀 Levantando nuevo contenedor"
+            docker run -d --name vertex-manage -p 80:3000 --env-file .env vertex-manage
           EOF
