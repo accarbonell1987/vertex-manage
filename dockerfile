@@ -2,7 +2,7 @@ FROM oven/bun:1.1
 
 WORKDIR /app
 COPY . .
-COPY .env.docker .env
+COPY docker.env .env
 
 RUN bun install
 RUN bun run build
