@@ -6,7 +6,23 @@ on:
       - develop
 
 jobs:
+  check-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check required secrets
+        run: |
+          if [ -z "${{ secrets.VPS_SSH_PRIVATE_KEY }}" ]; then
+            echo "❌ VPS_SSH_PRIVATE_KEY is not set"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DATABASE_URL }}" ]; then
+            echo "❌ DATABASE_URL is not set"
+            exit 1
+          fi
+          echo "✅ All required secrets are set"
+
   deploy:
+    needs: check-secrets
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +43,9 @@ jobs:
             git reset --hard origin/develop
 
             echo "🧪 Generando archivo .env"
-            cat <<EOT > .env DATABASE_URL=${{ secrets.DATABASE_URL }} EOT
+            cat <<EOT > .env
+DATABASE_URL=${{ secrets.DATABASE_URL }}
+EOT
 
             echo "🐳 Construyendo imagen Docker"
             docker build -t vertex-manage .
