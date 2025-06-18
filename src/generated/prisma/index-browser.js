@@ -127,6 +127,7 @@ exports.Prisma.StreamerScalarFieldEnum = {
   name: 'name',
   allowInRoster: 'allowInRoster',
   applyPenalties: 'applyPenalties',
+  penalized: 'penalized',
   penalties: 'penalties',
   phoneNumber: 'phoneNumber',
   bankAccount: 'bankAccount',

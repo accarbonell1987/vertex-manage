@@ -69,6 +69,7 @@ export async function updateStreamer(
     wahaName?: string;
     allowInRoster?: boolean;
     applyPenalties?: boolean;
+    penalized?: boolean;
   }
 ): Promise<void> {
   await doFetchWithToast<void>(
@@ -122,7 +123,7 @@ export async function bulkImportContactsEntries(data: ImportedContactsData[]): P
   );
 }
 
-export async function updateStreamerPenaltiesToAll(data: { applyPenaltiesToAll: boolean }): Promise<void> {
+export async function updateStreamerPenaltiesToAll(data: { applyPenaltiesToAll: boolean; penalizedToAll: boolean }): Promise<void> {
   await doFetchWithToast<void>(
     `/api/streamers`,
     {

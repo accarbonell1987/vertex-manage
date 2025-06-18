@@ -31,6 +31,7 @@ export async function DELETE(_: Request, { params }: Params) {
 export async function PATCH(_: Request, { params }: Params) {
   try {
     const body = await _.json();
+    console.log('🚀 ~ PATCH ~ body:', body);
     await updateStreamer((await params).id, body);
     return NextResponse.json({ message: 'Streamer actualizado' });
   } catch (error) {

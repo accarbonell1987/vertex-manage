@@ -21,6 +21,7 @@ model Streamer {
   name         String
   allowInRoster Boolean      @default(true)
   applyPenalties Boolean      @default(true)
+  penalized    Boolean      @default(false)
   penalties    Int          @default(0)
   phoneNumber  String?
   bankAccount  String?

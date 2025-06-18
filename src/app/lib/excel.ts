@@ -136,17 +136,15 @@ export function parseContactsExcel(file: File): Promise<ImportedContactsData[]> 
 
       const parsed: ImportedContactsData[] = [];
 
-      for (let i = 1; i < rows.length; i++) {
-        const row = rows[i];
-        const wahaID = String(row[3])?.trim();
+      for (const row of rows) {
+        const wahaID = String(row[1])?.trim();
 
         if (!wahaID || isNaN(Number(wahaID))) continue;
 
         parsed.push({
           wahaID,
-          name: String(row[1])?.trim(),
-          phoneNumber: String(row[2])?.trim(),
-          bankAccount: String(row[4])?.trim(),
+          phoneNumber: String(row[0])?.trim(),
+          bankAccount: String(row[2])?.trim(),
         });
       }
 

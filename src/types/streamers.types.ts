@@ -9,6 +9,7 @@ export interface CreateStreamerPayload {
   bankAccount?: string;
   allowInRoster?: boolean;
   applyPenalties?: boolean;
+  penalized?: boolean;
 }
 
 export type StreamerWithReferals = Streamer & {

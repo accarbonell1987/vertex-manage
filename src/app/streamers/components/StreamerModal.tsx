@@ -32,6 +32,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
   const [bankAccount, setBankAccount] = useState('');
   const [allowInRoster, setAllowInRoster] = useState(true);
   const [applyPenalties, setApplyPenalties] = useState(true);
+  const [penalized, setPenalized] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -44,6 +45,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
         setBankAccount(streamer.bankAccount ?? '');
         setAllowInRoster(streamer.allowInRoster ?? true);
         setApplyPenalties(streamer.applyPenalties ?? true);
+        setPenalized(streamer.penalized ?? true);
       } else {
         setName('');
         setWahaID('');
@@ -52,6 +54,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
         setBankAccount('');
         setAllowInRoster(true);
         setApplyPenalties(true);
+        setPenalized(true);
       }
       setError('');
     }
@@ -92,6 +95,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
           bankAccount,
           allowInRoster,
           applyPenalties,
+          penalized,
         });
       } else {
         await createStreamer({
@@ -102,6 +106,7 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
           bankAccount,
           allowInRoster,
           applyPenalties,
+          penalized,
         });
       }
       onClose();
@@ -159,6 +164,14 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
               <div className="flex flex-row items-center gap-2">
                 <Badge className={'bg-red-600'}>{'NO'}</Badge>
                 <Switch id="applyPenalties" checked={applyPenalties} onCheckedChange={setApplyPenalties} />
+                <Badge className={'bg-green-600'}>{'SÍ'}</Badge>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label>Penalizada:</Label>
+              <div className="flex flex-row items-center gap-2">
+                <Badge className={'bg-red-600'}>{'NO'}</Badge>
+                <Switch id="penalized" checked={penalized} onCheckedChange={setPenalized} />
                 <Badge className={'bg-green-600'}>{'SÍ'}</Badge>
               </div>
             </div>
