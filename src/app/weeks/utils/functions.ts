@@ -1,3 +1,4 @@
+import { PaymentType } from '@/types/common.types';
 import { ConfigurationType } from '@/types/configuration.types';
 import { StreamingDataWithStreamer } from '@/types/streamingData.types';
 import dayjs from 'dayjs';
@@ -138,6 +139,33 @@ export const getPreRosterTotalsSalary = (data: StreamingDataWithStreamer[], conf
         data.streamer?.paymentMethod === 'MLC' ? Number(salary / configuration.mlcChangeRate) : Number((salary * changeTypeAmount) / 385);
 
       return data.streamer.allowInRoster ? total + salaryInUSDT : total;
+    }, 0) ?? 0;
+
+  return Number(total.toFixed(2));
+};
+
+export const getPreRosterTotalsInChangeType = (
+  data: StreamingDataWithStreamer[],
+  configuration: ConfigurationType,
+  changeType: PaymentType
+): number => {
+  if (!data?.length) return 0;
+
+  const paymentTypes = {
+    cupTransfer: configuration.cupCardChangeRate,
+    cupCash: configuration.cupEffectiveChangeRate,
+    MLC: configuration.mlcChangeRate,
+  };
+
+  const total =
+    data.reduce((total, data) => {
+      if (!data.streamerSalary || data.streamer?.paymentMethod !== changeType) return total;
+
+      const salary = data.streamerSalary - (data.streamerPenalizated ?? 0) + (data?.referralSalary ?? 0);
+      const changeTypeAmount = Number(paymentTypes?.[changeType] || 0);
+      const salaryInCUPTransfer = changeType === 'MLC' ? Number(salary) : Number(salary * changeTypeAmount);
+
+      return data.streamer.allowInRoster ? total + salaryInCUPTransfer : total;
     }, 0) ?? 0;
 
   return Number(total.toFixed(2));

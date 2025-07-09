@@ -38,22 +38,20 @@ export const DEFAULT_COLUMNS = (configuration: ConfigurationType) => [
   {
     key: 'phoneNumber',
     title: 'Telefono',
-    visible: false,
+    visible: true,
     render: (data: StreamingDataWithStreamer) => <CopyToClipboard text={data.streamer.phoneNumber || '-'} />,
   },
   {
     key: 'bankAccount',
     title: 'Cuenta Bancaria',
-    visible: false,
+    visible: true,
     render: (data: StreamingDataWithStreamer) => {
       let bankAccountNumber = '-';
 
       if (data.streamer?.paymentMethod === 'MLC') bankAccountNumber = data.streamer.bankAccount || '-';
       if (data.streamer?.paymentMethod === 'cupTransfer') bankAccountNumber = data.streamer.bankAccountCUP || '-';
 
-      const textColor = bankAccountNumber !== 'Sin Cuenta' ? 'text-black-500' : 'text-red-500';
-
-      return <p className={textColor}>{bankAccountNumber}</p>;
+      return <CopyToClipboard text={bankAccountNumber} />;
     },
   },
   { key: 'baseSalaryIM', title: 'Salario Base (IM)', visible: false, render: (data: StreamingDataWithStreamer) => data.baseSalaryIM },
@@ -180,7 +178,8 @@ export const DEFAULT_COLUMNS = (configuration: ConfigurationType) => [
       };
 
       const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
-      const salaryInCUP = data.streamer?.paymentMethod === 'MLC' ? `` : `$ ${Number(salary * changeTypeAmount).toFixed(2)}`;
+      const salaryInCUP =
+        data.streamer?.paymentMethod === 'MLC' ? `$ ${Number(salary).toFixed(2)}` : `$ ${Number(salary * changeTypeAmount).toFixed(2)}`;
 
       const textColor = salary > data.streamerSalary ? 'text-green-500' : 'text-orange-500';
 

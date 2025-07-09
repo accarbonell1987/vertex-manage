@@ -1,3 +1,4 @@
+import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { getStringNumber } from '@/lib/utils';
@@ -16,7 +17,13 @@ import {
   Trophy,
 } from 'lucide-react';
 import useConfiguration from '../../hooks/useConfiguration';
-import { getPreRosterTotalsInWeekByColumn, getPreRosterTotalsSalary, getTotalDoneInWeekByColumn } from '../../utils/functions';
+import {
+  getPreRosterTotalsInChangeType,
+  getPreRosterTotalsInWeekByColumn,
+  getPreRosterTotalsSalary,
+  getTotalDoneInWeekByColumn,
+} from '../../utils/functions';
+import { PaymentTypeMapping } from '../../utils/statics';
 
 interface StreamingWeekRosterProps {
   week: WeekWithData;
@@ -47,6 +54,9 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
   const totalAgencyFounds = divisionByThree - prize - expenses;
 
   const totalToSendUSDT = Number((prize + streamerFinalSalary + expenses + totalCTOSalary).toFixed(2));
+  const totalCUPTransfer = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.CUP_TRANSFER);
+  const totalCUPCash = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.CUP_EFFECTIVE);
+  const totalMLC = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.MLC);
 
   return (
     <Card className={week.closed ? 'bg-gray-100' : ''}>
@@ -133,6 +143,22 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
           <div className="flex items-center gap-2 text-blue-600">
             <Church className="w-4 h-4" />
             <b>Fondo de Agencia:</b> <p className="text-black">$ {getStringNumber(totalAgencyFounds || 0)}</p>
+          </div>
+        </article>
+        <br />
+        <article className="flex flex-col gap-1">
+          <b>Balance:</b>
+          <div className="flex items-center gap-2 text-green-600">
+            <Badge className="bg-green-600">T</Badge>
+            <p className="text-black">$ {getStringNumber(totalCUPTransfer)}</p>
+          </div>
+          <div className="flex items-center gap-2 text-green-600">
+            <Badge className="bg-blue-600">E</Badge>
+            <p className="text-black">$ {getStringNumber(totalCUPCash)}</p>
+          </div>
+          <div className="flex items-center gap-2 text-green-600">
+            <Badge className="bg-red-600">MLC</Badge>
+            <p className="text-black">$ {getStringNumber(totalMLC)}</p>
           </div>
         </article>
         <br />
