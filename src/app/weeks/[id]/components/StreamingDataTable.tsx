@@ -9,6 +9,7 @@ import PaginationInTable from '@/components/PaginationInTable';
 import ToolTip from '@/components/ToolTip';
 import { Edit } from 'lucide-react';
 
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ConfigurationType } from '@/types/configuration.types';
 import { StreamerWithReferals } from '@/types/streamers.types';
@@ -44,7 +45,16 @@ export const DEFAULT_COLUMNS = (configuration: ConfigurationType) => [
     key: 'bankAccount',
     title: 'Cuenta Bancaria',
     visible: false,
-    render: (data: StreamingDataWithStreamer) => <CopyToClipboard text={data.streamer.bankAccount || '-'} />,
+    render: (data: StreamingDataWithStreamer) => {
+      let bankAccountNumber = '-';
+
+      if (data.streamer?.paymentMethod === 'MLC') bankAccountNumber = data.streamer.bankAccount || '-';
+      if (data.streamer?.paymentMethod === 'cupTransfer') bankAccountNumber = data.streamer.bankAccountCUP || '-';
+
+      const textColor = bankAccountNumber !== 'Sin Cuenta' ? 'text-black-500' : 'text-red-500';
+
+      return <p className={textColor}>{bankAccountNumber}</p>;
+    },
   },
   { key: 'baseSalaryIM', title: 'Salario Base (IM)', visible: false, render: (data: StreamingDataWithStreamer) => data.baseSalaryIM },
   {
@@ -163,14 +173,23 @@ export const DEFAULT_COLUMNS = (configuration: ConfigurationType) => [
         cupCash: configuration.cupEffectiveChangeRate,
         MLC: configuration.mlcChangeRate,
       };
+      const paymentMethodType = {
+        cupTransfer: { text: 'T', color: 'bg-green-500' },
+        cupCash: { text: 'E', color: 'bg-blue-500' },
+        MLC: { text: 'MLC', color: 'bg-red-500' },
+      };
+
       const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
-      const salaryInCUP = data.streamer?.paymentMethod === 'MLC' ? `-` : `$ ${Number(salary * changeTypeAmount).toFixed(2)}`;
-      const typeOfPayment = salaryInCUP !== '-' ? (data.streamer?.paymentMethod === 'cupTransfer' ? 'T' : 'E') : '';
+      const salaryInCUP = data.streamer?.paymentMethod === 'MLC' ? `` : `$ ${Number(salary * changeTypeAmount).toFixed(2)}`;
+
       const textColor = salary > data.streamerSalary ? 'text-green-500' : 'text-orange-500';
 
       return (
         <p className={`${salary === data.streamerSalary ? 'text-black' : textColor}`}>
-          {typeOfPayment} {salaryInCUP}
+          <Badge className={paymentMethodType[data.streamer?.paymentMethod ?? 'MLC'].color}>
+            {paymentMethodType[data.streamer?.paymentMethod ?? 'MLC'].text}
+          </Badge>
+          {` ${salaryInCUP}`}
         </p>
       );
     },
