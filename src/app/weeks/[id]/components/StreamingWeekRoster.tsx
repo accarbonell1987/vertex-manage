@@ -3,7 +3,6 @@ import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { getStringNumber } from '@/lib/utils';
 import { WeekWithData } from '@/types/weeks.types';
 import {
-  BanknoteArrowUp,
   Church,
   CircleDollarSign,
   CirclePercent,
@@ -17,7 +16,7 @@ import {
   Trophy,
 } from 'lucide-react';
 import useConfiguration from '../../hooks/useConfiguration';
-import { getPreRosterTotalsInWeekByColumn, getTotalDoneInWeekByColumn } from '../../utils/functions';
+import { getPreRosterTotalsInWeekByColumn, getPreRosterTotalsSalary, getTotalDoneInWeekByColumn } from '../../utils/functions';
 
 interface StreamingWeekRosterProps {
   week: WeekWithData;
@@ -30,23 +29,24 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
   const totalStreamersSalaryDiscounts = getPreRosterTotalsInWeekByColumn(week.data, 'streamerPenalizated');
   const totalStreamersSalaryBonus = getPreRosterTotalsInWeekByColumn(week.data, 'referralSalary');
   const totalStreamersSalary = getPreRosterTotalsInWeekByColumn(week.data, 'streamerSalary');
+  const totalStreamersSalaryUSDT = getPreRosterTotalsSalary(week.data, configuration);
+
   const totalDiamondsAndPoints = getPreRosterTotalsInWeekByColumn(week.data, 'diamondsAndPoints');
   const totalDiamondsAndPointsDiscounts = getPreRosterTotalsInWeekByColumn(week.data, 'diamondsPenalties');
 
   const totalAgencySalary = getTotalDoneInWeekByColumn(week.data, 'agencySalary');
 
-  const streamerFinalSalary = totalStreamersSalary - totalStreamersSalaryDiscounts + totalStreamersSalaryBonus;
+  const streamerFinalSalary = totalStreamersSalaryUSDT;
 
-  const totalSalaryMLC = Number(((totalStreamersSalary + totalAgencySalary) * configuration.mlcChangeRate).toFixed(2));
-  const totalGainMLC = Number((totalSalaryMLC - streamerFinalSalary).toFixed(2));
+  const totalSalary = Number((totalStreamersSalary + totalAgencySalary).toFixed(2));
+  const totalGain = Number((totalSalary - streamerFinalSalary).toFixed(2));
 
-  const divisionByThree = Number((totalGainMLC / 3).toFixed(2));
+  const divisionByThree = Number((totalGain / 3).toFixed(2));
   const totalCTOSalary = divisionByThree;
   const totalCEOSalary = divisionByThree;
   const totalAgencyFounds = divisionByThree - prize - expenses;
 
-  const totalToSendMLC = Number((prize + streamerFinalSalary + expenses + totalCTOSalary).toFixed(2));
-  const totalToSendUSDT = Number((totalToSendMLC / configuration.mlcChangeRate).toFixed(2));
+  const totalToSendUSDT = Number((prize + streamerFinalSalary + expenses + totalCTOSalary).toFixed(2));
 
   return (
     <Card className={week.closed ? 'bg-gray-100' : ''}>
@@ -68,16 +68,48 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
         </article>
         <br />
         <article className="flex flex-col gap-1">
-          <b>MLC:</b>
-          <div className="flex items-center gap-2 text-orange-600">
+          <b>Tasas de Cambio:</b>
+          <div className="flex items-center gap-2 text-blue-600">
             <DollarSign className="w-4 h-4" />
-            <b>Tasa de Cambio:</b>
+            <b>MLC:</b>
             <p className="text-black">$ {configuration.mlcChangeRate}</p>
           </div>
           <div className="flex items-center gap-2 text-blue-600">
-            <Speech className="w-4 h-4" />
-            <b>Total Generado:</b> <p className="text-black">$ {getStringNumber(totalSalaryMLC)}</p>
+            <DollarSign className="w-4 h-4" />
+            <b>CUP (Efectivo):</b>
+            <p className="text-black">$ {configuration.cupEffectiveChangeRate}</p>
           </div>
+          <div className="flex items-center gap-2 text-blue-600">
+            <DollarSign className="w-4 h-4" />
+            <b>CUP (Transferencia):</b>
+            <p className="text-black">$ {configuration.cupCardChangeRate}</p>
+          </div>
+        </article>
+        <br />
+
+        <article className="flex flex-col gap-1">
+          <b>USDT:</b>
+          <div className="flex items-center gap-2 text-blue-600">
+            <Speech className="w-4 h-4" />
+            <b>Total Generado:</b> <p className="text-black">$ {getStringNumber(totalSalary)}</p>
+          </div>
+
+          <div className="flex items-center gap-2 text-red-600">
+            <Speech className="w-4 h-4" />
+            <b>Salario Penalizado:</b>
+            <p className="text-black">$ {getStringNumber(totalStreamersSalaryDiscounts)}</p>
+          </div>
+          <div className="flex items-center gap-2 text-blue-600">
+            <Speech className="w-4 h-4" />
+            <b>Salarios por Referidos:</b>
+            <p className="text-black">$ {getStringNumber(totalStreamersSalaryBonus)}</p>
+          </div>
+          <div className="flex items-center gap-2 text-gray-600">
+            <Speech className="w-4 h-4" />
+            <b>Streamers:</b> <p className="text-black">$ {getStringNumber(totalStreamersSalaryUSDT)}</p>
+          </div>
+
+          <br />
           <div className="flex items-center gap-2 text-red-600">
             <Trophy className="w-4 h-4" />
             <b>Premio a Pagar:</b> <p className="text-black">$ {getStringNumber(prize || 0)}</p>
@@ -88,7 +120,7 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
           </div>
           <div className="flex items-center gap-2 text-blue-600">
             <CirclePercent className="w-4 h-4" />
-            <b>Ganancia:</b> <p className="text-black">$ {getStringNumber(totalGainMLC || 0)}</p>
+            <b>Ganancia:</b> <p className="text-black">$ {getStringNumber(totalGain || 0)}</p>
           </div>
           <div className="flex items-center gap-2 text-blue-600">
             <ShieldUser className="w-4 h-4" />
@@ -102,36 +134,10 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
             <Church className="w-4 h-4" />
             <b>Fondo de Agencia:</b> <p className="text-black">$ {getStringNumber(totalAgencyFounds || 0)}</p>
           </div>
-
-          <div className="flex items-center gap-2 text-gray-600">
-            <Speech className="w-4 h-4" />
-            <b>Streamers:</b> <p className="text-black">$ {getStringNumber(totalStreamersSalary)}</p>
-          </div>
-          <div className="flex items-center gap-2 text-red-600">
-            <Speech className="w-4 h-4" />
-            <b>Salario Penalizado:</b>
-            <p className="text-black">$ {getStringNumber(totalStreamersSalaryDiscounts)}</p>
-          </div>
-          <div className="flex items-center gap-2 text-blue-600">
-            <Speech className="w-4 h-4" />
-            <b>Salarios por Referidos:</b>
-            <p className="text-black">$ {getStringNumber(totalStreamersSalaryBonus)}</p>
-          </div>
-          <div className="flex items-center gap-2 text-green-600">
-            <Speech className="w-4 h-4" />
-            <b>Salario a Pagar:</b>
-            <p className="text-black">$ {getStringNumber(streamerFinalSalary)}</p>
-          </div>
         </article>
         <br />
         <article className="flex flex-col gap-1">
           <b>Dinero a Enviar:</b>
-
-          <div className="flex items-center gap-2 text-red-600">
-            <BanknoteArrowUp className="w-4 h-4" />
-            <b>MLC:</b>
-            <p className="text-black">$ {getStringNumber(totalToSendMLC)}</p>
-          </div>
           <div className="flex items-center gap-2 text-green-600">
             <CircleDollarSign className="w-4 h-4" />
             <b>USDT:</b>

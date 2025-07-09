@@ -119,3 +119,26 @@ const getReferealData = (data: StreamingDataWithStreamer[], configuration: Confi
 
   return returnedData;
 };
+
+export const getPreRosterTotalsSalary = (data: StreamingDataWithStreamer[], configuration: ConfigurationType): number => {
+  if (!data?.length) return 0;
+
+  const paymentTypes = {
+    cupTransfer: configuration.cupCardChangeRate,
+    cupCash: configuration.cupEffectiveChangeRate,
+    MLC: configuration.mlcChangeRate,
+  };
+
+  const total =
+    data.reduce((total, data) => {
+      if (!data.streamerSalary) return total;
+      const salary = data.streamerSalary - (data.streamerPenalizated ?? 0) + (data?.referralSalary ?? 0);
+      const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
+      const salaryInUSDT =
+        data.streamer?.paymentMethod === 'MLC' ? Number(salary / configuration.mlcChangeRate) : Number((salary * changeTypeAmount) / 385);
+
+      return data.streamer.allowInRoster ? total + salaryInUSDT : total;
+    }, 0) ?? 0;
+
+  return Number(total.toFixed(2));
+};

@@ -36,6 +36,7 @@ export function exportDataForAdminToExcel(dataToExport: StreamingDataWithStreame
       Salario: getFormatedNumberToTwoDecimal(s.streamerSalary),
       Penalizaciones: getFormatedNumberToTwoDecimal(s.streamerPenalizated ?? 0),
       SalarioFinal: getFormatedNumberToTwoDecimal(s.streamerSalary - (s.streamerPenalizated ?? 0) + (s?.referralSalary ?? 0)),
+
       Agencia: getFormatedNumberToTwoDecimal(s.agencySalary + (s.streamerPenalizated ?? 0) - (s?.referralSalary ?? 0)),
       BonosAgencia: getFormatedNumberToTwoDecimal(s.agencyBonus ?? 0),
     }))

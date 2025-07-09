@@ -10,11 +10,12 @@ import ToolTip from '@/components/ToolTip';
 import { Edit } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { ConfigurationType } from '@/types/configuration.types';
 import { StreamerWithReferals } from '@/types/streamers.types';
 import useConfiguration from '../../hooks/useConfiguration';
 import { getDynamicData } from '../../utils/functions';
 
-export const DEFAULT_COLUMNS = [
+export const DEFAULT_COLUMNS = (configuration: ConfigurationType) => [
   {
     key: 'wahaID',
     title: 'ID de Waha',
@@ -58,13 +59,13 @@ export const DEFAULT_COLUMNS = [
   {
     key: 'diamondsAndPoints',
     title: 'Diamantes + Puntos',
-    visible: true,
+    visible: false,
     render: (data: StreamingDataWithStreamer) => data.diamondsAndPoints,
   },
   {
     key: 'diamondsPenalties',
     title: 'Penalizaciones',
-    visible: true,
+    visible: false,
     render: (data: StreamingDataWithStreamer) => {
       return <span className={`${data.diamondsPenalties > 0 ? 'text-red-500' : ''}`}>{data.diamondsPenalties}</span>;
     },
@@ -129,6 +130,52 @@ export const DEFAULT_COLUMNS = [
     },
   },
   {
+    key: 'salaryInUSDT',
+    title: 'USDT',
+    visible: true,
+    render: (data: StreamingDataWithStreamer) => {
+      const salary = data.streamerSalary - (data.streamerPenalizated ?? 0) + (data?.referralSalary ?? 0);
+
+      const paymentTypes = {
+        cupTransfer: configuration.cupCardChangeRate,
+        cupCash: configuration.cupEffectiveChangeRate,
+        MLC: configuration.mlcChangeRate,
+      };
+      const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
+      const salaryInUSDT =
+        data.streamer?.paymentMethod === 'MLC'
+          ? `$ ${Number(salary / configuration.mlcChangeRate).toFixed(2)}`
+          : `$ ${Number((salary * changeTypeAmount) / 385).toFixed(2)}`;
+
+      const textColor = salary > data.streamerSalary ? 'text-green-500' : 'text-orange-500';
+      return <p className={`${salary === data.streamerSalary ? 'text-black' : textColor}`}>{salaryInUSDT}</p>;
+    },
+  },
+  {
+    key: 'salaryInCUP',
+    title: 'CUP',
+    visible: true,
+    render: (data: StreamingDataWithStreamer) => {
+      const salary = data.streamerSalary - (data.streamerPenalizated ?? 0) + (data?.referralSalary ?? 0);
+
+      const paymentTypes = {
+        cupTransfer: configuration.cupCardChangeRate,
+        cupCash: configuration.cupEffectiveChangeRate,
+        MLC: configuration.mlcChangeRate,
+      };
+      const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
+      const salaryInCUP = data.streamer?.paymentMethod === 'MLC' ? `-` : `$ ${Number(salary * changeTypeAmount).toFixed(2)}`;
+      const typeOfPayment = salaryInCUP !== '-' ? (data.streamer?.paymentMethod === 'cupTransfer' ? 'T' : 'E') : '';
+      const textColor = salary > data.streamerSalary ? 'text-green-500' : 'text-orange-500';
+
+      return (
+        <p className={`${salary === data.streamerSalary ? 'text-black' : textColor}`}>
+          {typeOfPayment} {salaryInCUP}
+        </p>
+      );
+    },
+  },
+  {
     key: 'agencySalary',
     title: 'Agencia',
     visible: true,
@@ -143,7 +190,9 @@ export const DEFAULT_COLUMNS = [
 
 const StreamingDataTable = ({ week, onEdit }: Readonly<{ week: WeekWithData; onEdit: (streamer: StreamerWithReferals) => void }>) => {
   const { configuration } = useConfiguration();
-  const [visibleColumns, setVisibleColumns] = useState(DEFAULT_COLUMNS.filter((col) => col.visible).map((col) => col.key));
+  const columnsConfiguration = DEFAULT_COLUMNS(configuration);
+
+  const [visibleColumns, setVisibleColumns] = useState(columnsConfiguration.filter((col) => col.visible).map((col) => col.key));
 
   const [rowsPerPage, setRowsPerPage] = useState(30);
   const [currentPage, setCurrentPage] = useState(1);
@@ -152,12 +201,12 @@ const StreamingDataTable = ({ week, onEdit }: Readonly<{ week: WeekWithData; onE
   const dataWithDynamic = getDynamicData(week.data, configuration);
   const paginatedData = dataWithDynamic.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
 
-  const filteredColumns = DEFAULT_COLUMNS.filter((col) => visibleColumns.includes(col.key));
+  const filteredColumns = columnsConfiguration.filter((col) => visibleColumns.includes(col.key));
 
   return (
     <div className="flex flex-col gap-4">
       <FiltersInTable
-        defaultColumns={DEFAULT_COLUMNS}
+        defaultColumns={columnsConfiguration}
         visibleColumns={visibleColumns}
         rowsPerPage={rowsPerPage}
         setVisibleColumns={setVisibleColumns}
