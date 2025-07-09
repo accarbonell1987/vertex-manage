@@ -3,7 +3,7 @@ name: Deploy develop to VPS
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   check-secrets:
