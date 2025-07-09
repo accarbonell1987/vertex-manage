@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { getStringNumber } from '@/lib/utils';
+import { PaymentType } from '@/types/common.types';
 import { WeekWithData } from '@/types/weeks.types';
 import {
   Church,
@@ -54,9 +55,9 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
   const totalAgencyFounds = divisionByThree - prize - expenses;
 
   const totalToSendUSDT = Number((prize + streamerFinalSalary + expenses + totalCTOSalary).toFixed(2));
-  const totalCUPTransfer = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.CUP_TRANSFER);
-  const totalCUPCash = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.CUP_EFFECTIVE);
-  const totalMLC = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.MLC);
+  const totalCUPTransfer = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.CUP_TRANSFER as PaymentType);
+  const totalCUPCash = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.CUP_EFFECTIVE as PaymentType);
+  const totalMLC = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.MLC as PaymentType);
 
   return (
     <Card className={week.closed ? 'bg-gray-100' : ''}>
