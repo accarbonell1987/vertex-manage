@@ -9,7 +9,16 @@ export async function GET() {
 export async function PATCH(req: NextRequest) {
   const body = await req.json();
 
-  const { agencyName, payAffiliateProgram, payAffiliateProgramPercentage, applyPenalties, penaltyPercentage, mlcChangeRate } = body;
+  const {
+    agencyName,
+    payAffiliateProgram,
+    payAffiliateProgramPercentage,
+    applyPenalties,
+    penaltyPercentage,
+    mlcChangeRate,
+    cupEffectiveChangeRate,
+    cupCardChangeRate,
+  } = body;
 
   const configuration = {
     id: '1',
@@ -19,6 +28,8 @@ export async function PATCH(req: NextRequest) {
     applyPenalties,
     penaltyPercentage: Number(penaltyPercentage),
     mlcChangeRate: Number(mlcChangeRate),
+    cupEffectiveChangeRate: Number(cupEffectiveChangeRate),
+    cupCardChangeRate: Number(cupCardChangeRate),
   };
 
   const updated = await updateConfiguration(configuration);

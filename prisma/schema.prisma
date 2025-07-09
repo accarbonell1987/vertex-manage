@@ -19,12 +19,14 @@ model Streamer {
   wahaID       String       @unique
   wahaName     String
   name         String
+  paymentMethod String? @default("MLC")
   allowInRoster Boolean      @default(true)
   applyPenalties Boolean      @default(true)
   penalized    Boolean      @default(false)
   penalties    Int          @default(0)
   phoneNumber  String?
   bankAccount  String?
+  bankAccountCUP String?
   createdAt    DateTime     @default(now())
 
   referals     Referal[]   @relation("StreamerReferals")
@@ -89,4 +91,6 @@ model Configuration {
   applyPenalties Boolean
   penaltyPercentage Float
   mlcChangeRate Float
+  cupEffectiveChangeRate Float?
+  cupCardChangeRate Float?
 }

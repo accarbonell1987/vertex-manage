@@ -18,6 +18,8 @@ export const createSupportDataSlice: StateCreator<TSupportDataSlice, [['zustand/
     applyPenalties: false,
     penaltyPercentage: 0,
     mlcChangeRate: 0,
+    cupEffectiveChangeRate: 0,
+    cupCardChangeRate: 0,
   },
   prize: 0,
   expenses: 0,

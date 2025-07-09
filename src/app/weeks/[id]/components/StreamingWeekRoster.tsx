@@ -8,6 +8,7 @@ import {
   CircleDollarSign,
   CirclePercent,
   ContactRound,
+  DollarSign,
   Gem,
   Landmark,
   ShieldUser,
@@ -68,6 +69,11 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
         <br />
         <article className="flex flex-col gap-1">
           <b>MLC:</b>
+          <div className="flex items-center gap-2 text-orange-600">
+            <DollarSign className="w-4 h-4" />
+            <b>Tasa de Cambio:</b>
+            <p className="text-black">$ {configuration.mlcChangeRate}</p>
+          </div>
           <div className="flex items-center gap-2 text-blue-600">
             <Speech className="w-4 h-4" />
             <b>Total Generado:</b> <p className="text-black">$ {getStringNumber(totalSalaryMLC)}</p>
@@ -120,6 +126,7 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
         <br />
         <article className="flex flex-col gap-1">
           <b>Dinero a Enviar:</b>
+
           <div className="flex items-center gap-2 text-red-600">
             <BanknoteArrowUp className="w-4 h-4" />
             <b>MLC:</b>

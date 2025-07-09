@@ -125,12 +125,14 @@ exports.Prisma.StreamerScalarFieldEnum = {
   wahaID: 'wahaID',
   wahaName: 'wahaName',
   name: 'name',
+  paymentMethod: 'paymentMethod',
   allowInRoster: 'allowInRoster',
   applyPenalties: 'applyPenalties',
   penalized: 'penalized',
   penalties: 'penalties',
   phoneNumber: 'phoneNumber',
   bankAccount: 'bankAccount',
+  bankAccountCUP: 'bankAccountCUP',
   createdAt: 'createdAt'
 };
 
@@ -180,7 +182,9 @@ exports.Prisma.ConfigurationScalarFieldEnum = {
   payAffiliateProgramPercentage: 'payAffiliateProgramPercentage',
   applyPenalties: 'applyPenalties',
   penaltyPercentage: 'penaltyPercentage',
-  mlcChangeRate: 'mlcChangeRate'
+  mlcChangeRate: 'mlcChangeRate',
+  cupEffectiveChangeRate: 'cupEffectiveChangeRate',
+  cupCardChangeRate: 'cupCardChangeRate'
 };
 
 exports.Prisma.SortOrder = {

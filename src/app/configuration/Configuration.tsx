@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { updateConfiguration } from '@/services/configuration';
 import { ConfigurationType } from '@/types/configuration.types';
 import { SaveAll } from 'lucide-react';
@@ -11,6 +12,7 @@ import { useEffect, useState } from 'react';
 
 const Configuration = ({ configuration }: { configuration: ConfigurationType }) => {
   const [currentConfiguration, setCurrentConfiguration] = useState<ConfigurationType>(configuration);
+  const { changeConfiguration } = useStoreConfiguration();
 
   useEffect(() => {
     setCurrentConfiguration(configuration);
@@ -37,6 +39,8 @@ const Configuration = ({ configuration }: { configuration: ConfigurationType }) 
 
     try {
       await updateConfiguration({ ...currentConfiguration, id: '1' });
+      changeConfiguration({ ...currentConfiguration });
+      localStorage.setItem('configuration', JSON.stringify(currentConfiguration));
     } catch (error) {
       console.error(error);
     }
@@ -61,6 +65,24 @@ const Configuration = ({ configuration }: { configuration: ConfigurationType }) 
             name="mlcChangeRate"
             value={currentConfiguration?.mlcChangeRate ?? '0'}
             onChange={(e) => handleOnChange('mlcChangeRate', e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col gap-2 w-[20%]">
+          <Label htmlFor="cupEffectiveChangeRate">Tasa de CUP Efectivo</Label>
+          <Input
+            id="cupEffectiveChangeRate"
+            name="cupEffectiveChangeRate"
+            value={currentConfiguration?.cupEffectiveChangeRate ?? '0'}
+            onChange={(e) => handleOnChange('cupEffectiveChangeRate', e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col gap-2 w-[20%]">
+          <Label htmlFor="cupCardChangeRate">Tasa de CUP Tarjeta</Label>
+          <Input
+            id="cupCardChangeRate"
+            name="cupCardChangeRate"
+            value={currentConfiguration?.cupCardChangeRate ?? '0'}
+            onChange={(e) => handleOnChange('cupCardChangeRate', e.target.value)}
           />
         </div>
       </div>

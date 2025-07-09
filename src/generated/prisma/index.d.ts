@@ -1337,12 +1337,14 @@ export namespace Prisma {
     wahaID: string | null
     wahaName: string | null
     name: string | null
+    paymentMethod: string | null
     allowInRoster: boolean | null
     applyPenalties: boolean | null
     penalized: boolean | null
     penalties: number | null
     phoneNumber: string | null
     bankAccount: string | null
+    bankAccountCUP: string | null
     createdAt: Date | null
   }
 
@@ -1351,12 +1353,14 @@ export namespace Prisma {
     wahaID: string | null
     wahaName: string | null
     name: string | null
+    paymentMethod: string | null
     allowInRoster: boolean | null
     applyPenalties: boolean | null
     penalized: boolean | null
     penalties: number | null
     phoneNumber: string | null
     bankAccount: string | null
+    bankAccountCUP: string | null
     createdAt: Date | null
   }
 
@@ -1365,12 +1369,14 @@ export namespace Prisma {
     wahaID: number
     wahaName: number
     name: number
+    paymentMethod: number
     allowInRoster: number
     applyPenalties: number
     penalized: number
     penalties: number
     phoneNumber: number
     bankAccount: number
+    bankAccountCUP: number
     createdAt: number
     _all: number
   }
@@ -1389,12 +1395,14 @@ export namespace Prisma {
     wahaID?: true
     wahaName?: true
     name?: true
+    paymentMethod?: true
     allowInRoster?: true
     applyPenalties?: true
     penalized?: true
     penalties?: true
     phoneNumber?: true
     bankAccount?: true
+    bankAccountCUP?: true
     createdAt?: true
   }
 
@@ -1403,12 +1411,14 @@ export namespace Prisma {
     wahaID?: true
     wahaName?: true
     name?: true
+    paymentMethod?: true
     allowInRoster?: true
     applyPenalties?: true
     penalized?: true
     penalties?: true
     phoneNumber?: true
     bankAccount?: true
+    bankAccountCUP?: true
     createdAt?: true
   }
 
@@ -1417,12 +1427,14 @@ export namespace Prisma {
     wahaID?: true
     wahaName?: true
     name?: true
+    paymentMethod?: true
     allowInRoster?: true
     applyPenalties?: true
     penalized?: true
     penalties?: true
     phoneNumber?: true
     bankAccount?: true
+    bankAccountCUP?: true
     createdAt?: true
     _all?: true
   }
@@ -1518,12 +1530,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod: string | null
     allowInRoster: boolean
     applyPenalties: boolean
     penalized: boolean
     penalties: number
     phoneNumber: string | null
     bankAccount: string | null
+    bankAccountCUP: string | null
     createdAt: Date
     _count: StreamerCountAggregateOutputType | null
     _avg: StreamerAvgAggregateOutputType | null
@@ -1551,12 +1565,14 @@ export namespace Prisma {
     wahaID?: boolean
     wahaName?: boolean
     name?: boolean
+    paymentMethod?: boolean
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
+    bankAccountCUP?: boolean
     createdAt?: boolean
     referals?: boolean | Streamer$referalsArgs<ExtArgs>
     referredBy?: boolean | Streamer$referredByArgs<ExtArgs>
@@ -1569,12 +1585,14 @@ export namespace Prisma {
     wahaID?: boolean
     wahaName?: boolean
     name?: boolean
+    paymentMethod?: boolean
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
+    bankAccountCUP?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["streamer"]>
 
@@ -1583,12 +1601,14 @@ export namespace Prisma {
     wahaID?: boolean
     wahaName?: boolean
     name?: boolean
+    paymentMethod?: boolean
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
+    bankAccountCUP?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["streamer"]>
 
@@ -1597,16 +1617,18 @@ export namespace Prisma {
     wahaID?: boolean
     wahaName?: boolean
     name?: boolean
+    paymentMethod?: boolean
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: boolean
     phoneNumber?: boolean
     bankAccount?: boolean
+    bankAccountCUP?: boolean
     createdAt?: boolean
   }
 
-  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "wahaName" | "name" | "allowInRoster" | "applyPenalties" | "penalized" | "penalties" | "phoneNumber" | "bankAccount" | "createdAt", ExtArgs["result"]["streamer"]>
+  export type StreamerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wahaID" | "wahaName" | "name" | "paymentMethod" | "allowInRoster" | "applyPenalties" | "penalized" | "penalties" | "phoneNumber" | "bankAccount" | "bankAccountCUP" | "createdAt", ExtArgs["result"]["streamer"]>
   export type StreamerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     referals?: boolean | Streamer$referalsArgs<ExtArgs>
     referredBy?: boolean | Streamer$referredByArgs<ExtArgs>
@@ -1628,12 +1650,14 @@ export namespace Prisma {
       wahaID: string
       wahaName: string
       name: string
+      paymentMethod: string | null
       allowInRoster: boolean
       applyPenalties: boolean
       penalized: boolean
       penalties: number
       phoneNumber: string | null
       bankAccount: string | null
+      bankAccountCUP: string | null
       createdAt: Date
     }, ExtArgs["result"]["streamer"]>
     composites: {}
@@ -2065,12 +2089,14 @@ export namespace Prisma {
     readonly wahaID: FieldRef<"Streamer", 'String'>
     readonly wahaName: FieldRef<"Streamer", 'String'>
     readonly name: FieldRef<"Streamer", 'String'>
+    readonly paymentMethod: FieldRef<"Streamer", 'String'>
     readonly allowInRoster: FieldRef<"Streamer", 'Boolean'>
     readonly applyPenalties: FieldRef<"Streamer", 'Boolean'>
     readonly penalized: FieldRef<"Streamer", 'Boolean'>
     readonly penalties: FieldRef<"Streamer", 'Int'>
     readonly phoneNumber: FieldRef<"Streamer", 'String'>
     readonly bankAccount: FieldRef<"Streamer", 'String'>
+    readonly bankAccountCUP: FieldRef<"Streamer", 'String'>
     readonly createdAt: FieldRef<"Streamer", 'DateTime'>
   }
     
@@ -6057,12 +6083,16 @@ export namespace Prisma {
     payAffiliateProgramPercentage: number | null
     penaltyPercentage: number | null
     mlcChangeRate: number | null
+    cupEffectiveChangeRate: number | null
+    cupCardChangeRate: number | null
   }
 
   export type ConfigurationSumAggregateOutputType = {
     payAffiliateProgramPercentage: number | null
     penaltyPercentage: number | null
     mlcChangeRate: number | null
+    cupEffectiveChangeRate: number | null
+    cupCardChangeRate: number | null
   }
 
   export type ConfigurationMinAggregateOutputType = {
@@ -6073,6 +6103,8 @@ export namespace Prisma {
     applyPenalties: boolean | null
     penaltyPercentage: number | null
     mlcChangeRate: number | null
+    cupEffectiveChangeRate: number | null
+    cupCardChangeRate: number | null
   }
 
   export type ConfigurationMaxAggregateOutputType = {
@@ -6083,6 +6115,8 @@ export namespace Prisma {
     applyPenalties: boolean | null
     penaltyPercentage: number | null
     mlcChangeRate: number | null
+    cupEffectiveChangeRate: number | null
+    cupCardChangeRate: number | null
   }
 
   export type ConfigurationCountAggregateOutputType = {
@@ -6093,6 +6127,8 @@ export namespace Prisma {
     applyPenalties: number
     penaltyPercentage: number
     mlcChangeRate: number
+    cupEffectiveChangeRate: number
+    cupCardChangeRate: number
     _all: number
   }
 
@@ -6101,12 +6137,16 @@ export namespace Prisma {
     payAffiliateProgramPercentage?: true
     penaltyPercentage?: true
     mlcChangeRate?: true
+    cupEffectiveChangeRate?: true
+    cupCardChangeRate?: true
   }
 
   export type ConfigurationSumAggregateInputType = {
     payAffiliateProgramPercentage?: true
     penaltyPercentage?: true
     mlcChangeRate?: true
+    cupEffectiveChangeRate?: true
+    cupCardChangeRate?: true
   }
 
   export type ConfigurationMinAggregateInputType = {
@@ -6117,6 +6157,8 @@ export namespace Prisma {
     applyPenalties?: true
     penaltyPercentage?: true
     mlcChangeRate?: true
+    cupEffectiveChangeRate?: true
+    cupCardChangeRate?: true
   }
 
   export type ConfigurationMaxAggregateInputType = {
@@ -6127,6 +6169,8 @@ export namespace Prisma {
     applyPenalties?: true
     penaltyPercentage?: true
     mlcChangeRate?: true
+    cupEffectiveChangeRate?: true
+    cupCardChangeRate?: true
   }
 
   export type ConfigurationCountAggregateInputType = {
@@ -6137,6 +6181,8 @@ export namespace Prisma {
     applyPenalties?: true
     penaltyPercentage?: true
     mlcChangeRate?: true
+    cupEffectiveChangeRate?: true
+    cupCardChangeRate?: true
     _all?: true
   }
 
@@ -6234,6 +6280,8 @@ export namespace Prisma {
     applyPenalties: boolean
     penaltyPercentage: number
     mlcChangeRate: number
+    cupEffectiveChangeRate: number | null
+    cupCardChangeRate: number | null
     _count: ConfigurationCountAggregateOutputType | null
     _avg: ConfigurationAvgAggregateOutputType | null
     _sum: ConfigurationSumAggregateOutputType | null
@@ -6263,6 +6311,8 @@ export namespace Prisma {
     applyPenalties?: boolean
     penaltyPercentage?: boolean
     mlcChangeRate?: boolean
+    cupEffectiveChangeRate?: boolean
+    cupCardChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6273,6 +6323,8 @@ export namespace Prisma {
     applyPenalties?: boolean
     penaltyPercentage?: boolean
     mlcChangeRate?: boolean
+    cupEffectiveChangeRate?: boolean
+    cupCardChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6283,6 +6335,8 @@ export namespace Prisma {
     applyPenalties?: boolean
     penaltyPercentage?: boolean
     mlcChangeRate?: boolean
+    cupEffectiveChangeRate?: boolean
+    cupCardChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectScalar = {
@@ -6293,9 +6347,11 @@ export namespace Prisma {
     applyPenalties?: boolean
     penaltyPercentage?: boolean
     mlcChangeRate?: boolean
+    cupEffectiveChangeRate?: boolean
+    cupCardChangeRate?: boolean
   }
 
-  export type ConfigurationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "agencyName" | "payAffiliateProgram" | "payAffiliateProgramPercentage" | "applyPenalties" | "penaltyPercentage" | "mlcChangeRate", ExtArgs["result"]["configuration"]>
+  export type ConfigurationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "agencyName" | "payAffiliateProgram" | "payAffiliateProgramPercentage" | "applyPenalties" | "penaltyPercentage" | "mlcChangeRate" | "cupEffectiveChangeRate" | "cupCardChangeRate", ExtArgs["result"]["configuration"]>
 
   export type $ConfigurationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Configuration"
@@ -6308,6 +6364,8 @@ export namespace Prisma {
       applyPenalties: boolean
       penaltyPercentage: number
       mlcChangeRate: number
+      cupEffectiveChangeRate: number | null
+      cupCardChangeRate: number | null
     }, ExtArgs["result"]["configuration"]>
     composites: {}
   }
@@ -6738,6 +6796,8 @@ export namespace Prisma {
     readonly applyPenalties: FieldRef<"Configuration", 'Boolean'>
     readonly penaltyPercentage: FieldRef<"Configuration", 'Float'>
     readonly mlcChangeRate: FieldRef<"Configuration", 'Float'>
+    readonly cupEffectiveChangeRate: FieldRef<"Configuration", 'Float'>
+    readonly cupCardChangeRate: FieldRef<"Configuration", 'Float'>
   }
     
 
@@ -7123,12 +7183,14 @@ export namespace Prisma {
     wahaID: 'wahaID',
     wahaName: 'wahaName',
     name: 'name',
+    paymentMethod: 'paymentMethod',
     allowInRoster: 'allowInRoster',
     applyPenalties: 'applyPenalties',
     penalized: 'penalized',
     penalties: 'penalties',
     phoneNumber: 'phoneNumber',
     bankAccount: 'bankAccount',
+    bankAccountCUP: 'bankAccountCUP',
     createdAt: 'createdAt'
   };
 
@@ -7190,7 +7252,9 @@ export namespace Prisma {
     payAffiliateProgramPercentage: 'payAffiliateProgramPercentage',
     applyPenalties: 'applyPenalties',
     penaltyPercentage: 'penaltyPercentage',
-    mlcChangeRate: 'mlcChangeRate'
+    mlcChangeRate: 'mlcChangeRate',
+    cupEffectiveChangeRate: 'cupEffectiveChangeRate',
+    cupCardChangeRate: 'cupCardChangeRate'
   };
 
   export type ConfigurationScalarFieldEnum = (typeof ConfigurationScalarFieldEnum)[keyof typeof ConfigurationScalarFieldEnum]
@@ -7299,12 +7363,14 @@ export namespace Prisma {
     wahaID?: StringFilter<"Streamer"> | string
     wahaName?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
+    paymentMethod?: StringNullableFilter<"Streamer"> | string | null
     allowInRoster?: BoolFilter<"Streamer"> | boolean
     applyPenalties?: BoolFilter<"Streamer"> | boolean
     penalized?: BoolFilter<"Streamer"> | boolean
     penalties?: IntFilter<"Streamer"> | number
     phoneNumber?: StringNullableFilter<"Streamer"> | string | null
     bankAccount?: StringNullableFilter<"Streamer"> | string | null
+    bankAccountCUP?: StringNullableFilter<"Streamer"> | string | null
     createdAt?: DateTimeFilter<"Streamer"> | Date | string
     referals?: ReferalListRelationFilter
     referredBy?: ReferalListRelationFilter
@@ -7316,12 +7382,14 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    paymentMethod?: SortOrderInput | SortOrder
     allowInRoster?: SortOrder
     applyPenalties?: SortOrder
     penalized?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     bankAccount?: SortOrderInput | SortOrder
+    bankAccountCUP?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     referals?: ReferalOrderByRelationAggregateInput
     referredBy?: ReferalOrderByRelationAggregateInput
@@ -7336,12 +7404,14 @@ export namespace Prisma {
     NOT?: StreamerWhereInput | StreamerWhereInput[]
     wahaName?: StringFilter<"Streamer"> | string
     name?: StringFilter<"Streamer"> | string
+    paymentMethod?: StringNullableFilter<"Streamer"> | string | null
     allowInRoster?: BoolFilter<"Streamer"> | boolean
     applyPenalties?: BoolFilter<"Streamer"> | boolean
     penalized?: BoolFilter<"Streamer"> | boolean
     penalties?: IntFilter<"Streamer"> | number
     phoneNumber?: StringNullableFilter<"Streamer"> | string | null
     bankAccount?: StringNullableFilter<"Streamer"> | string | null
+    bankAccountCUP?: StringNullableFilter<"Streamer"> | string | null
     createdAt?: DateTimeFilter<"Streamer"> | Date | string
     referals?: ReferalListRelationFilter
     referredBy?: ReferalListRelationFilter
@@ -7353,12 +7423,14 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    paymentMethod?: SortOrderInput | SortOrder
     allowInRoster?: SortOrder
     applyPenalties?: SortOrder
     penalized?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     bankAccount?: SortOrderInput | SortOrder
+    bankAccountCUP?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: StreamerCountOrderByAggregateInput
     _avg?: StreamerAvgOrderByAggregateInput
@@ -7375,12 +7447,14 @@ export namespace Prisma {
     wahaID?: StringWithAggregatesFilter<"Streamer"> | string
     wahaName?: StringWithAggregatesFilter<"Streamer"> | string
     name?: StringWithAggregatesFilter<"Streamer"> | string
+    paymentMethod?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
     allowInRoster?: BoolWithAggregatesFilter<"Streamer"> | boolean
     applyPenalties?: BoolWithAggregatesFilter<"Streamer"> | boolean
     penalized?: BoolWithAggregatesFilter<"Streamer"> | boolean
     penalties?: IntWithAggregatesFilter<"Streamer"> | number
     phoneNumber?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
     bankAccount?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
+    bankAccountCUP?: StringNullableWithAggregatesFilter<"Streamer"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Streamer"> | Date | string
   }
 
@@ -7643,6 +7717,8 @@ export namespace Prisma {
     applyPenalties?: BoolFilter<"Configuration"> | boolean
     penaltyPercentage?: FloatFilter<"Configuration"> | number
     mlcChangeRate?: FloatFilter<"Configuration"> | number
+    cupEffectiveChangeRate?: FloatNullableFilter<"Configuration"> | number | null
+    cupCardChangeRate?: FloatNullableFilter<"Configuration"> | number | null
   }
 
   export type ConfigurationOrderByWithRelationInput = {
@@ -7653,6 +7729,8 @@ export namespace Prisma {
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
     mlcChangeRate?: SortOrder
+    cupEffectiveChangeRate?: SortOrderInput | SortOrder
+    cupCardChangeRate?: SortOrderInput | SortOrder
   }
 
   export type ConfigurationWhereUniqueInput = Prisma.AtLeast<{
@@ -7666,6 +7744,8 @@ export namespace Prisma {
     applyPenalties?: BoolFilter<"Configuration"> | boolean
     penaltyPercentage?: FloatFilter<"Configuration"> | number
     mlcChangeRate?: FloatFilter<"Configuration"> | number
+    cupEffectiveChangeRate?: FloatNullableFilter<"Configuration"> | number | null
+    cupCardChangeRate?: FloatNullableFilter<"Configuration"> | number | null
   }, "id">
 
   export type ConfigurationOrderByWithAggregationInput = {
@@ -7676,6 +7756,8 @@ export namespace Prisma {
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
     mlcChangeRate?: SortOrder
+    cupEffectiveChangeRate?: SortOrderInput | SortOrder
+    cupCardChangeRate?: SortOrderInput | SortOrder
     _count?: ConfigurationCountOrderByAggregateInput
     _avg?: ConfigurationAvgOrderByAggregateInput
     _max?: ConfigurationMaxOrderByAggregateInput
@@ -7694,6 +7776,8 @@ export namespace Prisma {
     applyPenalties?: BoolWithAggregatesFilter<"Configuration"> | boolean
     penaltyPercentage?: FloatWithAggregatesFilter<"Configuration"> | number
     mlcChangeRate?: FloatWithAggregatesFilter<"Configuration"> | number
+    cupEffectiveChangeRate?: FloatNullableWithAggregatesFilter<"Configuration"> | number | null
+    cupCardChangeRate?: FloatNullableWithAggregatesFilter<"Configuration"> | number | null
   }
 
   export type StreamerCreateInput = {
@@ -7701,12 +7785,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
     referals?: ReferalCreateNestedManyWithoutStreamerInput
     referredBy?: ReferalCreateNestedManyWithoutReferredInput
@@ -7718,12 +7804,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
     referals?: ReferalUncheckedCreateNestedManyWithoutStreamerInput
     referredBy?: ReferalUncheckedCreateNestedManyWithoutReferredInput
@@ -7735,12 +7823,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUpdateManyWithoutStreamerNestedInput
     referredBy?: ReferalUpdateManyWithoutReferredNestedInput
@@ -7752,12 +7842,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUncheckedUpdateManyWithoutStreamerNestedInput
     referredBy?: ReferalUncheckedUpdateManyWithoutReferredNestedInput
@@ -7769,12 +7861,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
   }
 
@@ -7783,12 +7877,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7797,12 +7893,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8087,6 +8185,8 @@ export namespace Prisma {
     applyPenalties: boolean
     penaltyPercentage: number
     mlcChangeRate: number
+    cupEffectiveChangeRate?: number | null
+    cupCardChangeRate?: number | null
   }
 
   export type ConfigurationUncheckedCreateInput = {
@@ -8097,6 +8197,8 @@ export namespace Prisma {
     applyPenalties: boolean
     penaltyPercentage: number
     mlcChangeRate: number
+    cupEffectiveChangeRate?: number | null
+    cupCardChangeRate?: number | null
   }
 
   export type ConfigurationUpdateInput = {
@@ -8107,6 +8209,8 @@ export namespace Prisma {
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penaltyPercentage?: FloatFieldUpdateOperationsInput | number
     mlcChangeRate?: FloatFieldUpdateOperationsInput | number
+    cupEffectiveChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    cupCardChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ConfigurationUncheckedUpdateInput = {
@@ -8117,6 +8221,8 @@ export namespace Prisma {
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penaltyPercentage?: FloatFieldUpdateOperationsInput | number
     mlcChangeRate?: FloatFieldUpdateOperationsInput | number
+    cupEffectiveChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    cupCardChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ConfigurationCreateManyInput = {
@@ -8127,6 +8233,8 @@ export namespace Prisma {
     applyPenalties: boolean
     penaltyPercentage: number
     mlcChangeRate: number
+    cupEffectiveChangeRate?: number | null
+    cupCardChangeRate?: number | null
   }
 
   export type ConfigurationUpdateManyMutationInput = {
@@ -8137,6 +8245,8 @@ export namespace Prisma {
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penaltyPercentage?: FloatFieldUpdateOperationsInput | number
     mlcChangeRate?: FloatFieldUpdateOperationsInput | number
+    cupEffectiveChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    cupCardChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ConfigurationUncheckedUpdateManyInput = {
@@ -8147,6 +8257,8 @@ export namespace Prisma {
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penaltyPercentage?: FloatFieldUpdateOperationsInput | number
     mlcChangeRate?: FloatFieldUpdateOperationsInput | number
+    cupEffectiveChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    cupCardChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8164,6 +8276,21 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -8178,21 +8305,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -8236,12 +8348,14 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    paymentMethod?: SortOrder
     allowInRoster?: SortOrder
     applyPenalties?: SortOrder
     penalized?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
+    bankAccountCUP?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -8254,12 +8368,14 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    paymentMethod?: SortOrder
     allowInRoster?: SortOrder
     applyPenalties?: SortOrder
     penalized?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
+    bankAccountCUP?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -8268,12 +8384,14 @@ export namespace Prisma {
     wahaID?: SortOrder
     wahaName?: SortOrder
     name?: SortOrder
+    paymentMethod?: SortOrder
     allowInRoster?: SortOrder
     applyPenalties?: SortOrder
     penalized?: SortOrder
     penalties?: SortOrder
     phoneNumber?: SortOrder
     bankAccount?: SortOrder
+    bankAccountCUP?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -8299,6 +8417,24 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -8321,24 +8457,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -8547,6 +8665,17 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type ConfigurationCountOrderByAggregateInput = {
     id?: SortOrder
     agencyName?: SortOrder
@@ -8555,12 +8684,16 @@ export namespace Prisma {
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
     mlcChangeRate?: SortOrder
+    cupEffectiveChangeRate?: SortOrder
+    cupCardChangeRate?: SortOrder
   }
 
   export type ConfigurationAvgOrderByAggregateInput = {
     payAffiliateProgramPercentage?: SortOrder
     penaltyPercentage?: SortOrder
     mlcChangeRate?: SortOrder
+    cupEffectiveChangeRate?: SortOrder
+    cupCardChangeRate?: SortOrder
   }
 
   export type ConfigurationMaxOrderByAggregateInput = {
@@ -8571,6 +8704,8 @@ export namespace Prisma {
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
     mlcChangeRate?: SortOrder
+    cupEffectiveChangeRate?: SortOrder
+    cupCardChangeRate?: SortOrder
   }
 
   export type ConfigurationMinOrderByAggregateInput = {
@@ -8581,12 +8716,32 @@ export namespace Prisma {
     applyPenalties?: SortOrder
     penaltyPercentage?: SortOrder
     mlcChangeRate?: SortOrder
+    cupEffectiveChangeRate?: SortOrder
+    cupCardChangeRate?: SortOrder
   }
 
   export type ConfigurationSumOrderByAggregateInput = {
     payAffiliateProgramPercentage?: SortOrder
     penaltyPercentage?: SortOrder
     mlcChangeRate?: SortOrder
+    cupEffectiveChangeRate?: SortOrder
+    cupCardChangeRate?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type ReferalCreateNestedManyWithoutStreamerInput = {
@@ -8635,6 +8790,10 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -8645,10 +8804,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -8845,6 +9000,14 @@ export namespace Prisma {
     update?: XOR<XOR<StreamerUpdateToOneWithWhereWithoutReferredByInput, StreamerUpdateWithoutReferredByInput>, StreamerUncheckedUpdateWithoutReferredByInput>
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -8857,6 +9020,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -8873,20 +9050,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -8915,6 +9078,34 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -8952,34 +9143,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -9008,6 +9171,33 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type ReferalCreateWithoutStreamerInput = {
@@ -9262,12 +9452,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
     referals?: ReferalCreateNestedManyWithoutStreamerInput
     referredBy?: ReferalCreateNestedManyWithoutReferredInput
@@ -9278,12 +9470,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
     referals?: ReferalUncheckedCreateNestedManyWithoutStreamerInput
     referredBy?: ReferalUncheckedCreateNestedManyWithoutReferredInput
@@ -9335,12 +9529,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUpdateManyWithoutStreamerNestedInput
     referredBy?: ReferalUpdateManyWithoutReferredNestedInput
@@ -9351,12 +9547,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUncheckedUpdateManyWithoutStreamerNestedInput
     referredBy?: ReferalUncheckedUpdateManyWithoutReferredNestedInput
@@ -9398,12 +9596,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
     referredBy?: ReferalCreateNestedManyWithoutReferredInput
     streamingData?: StreamingDataCreateNestedManyWithoutStreamerInput
@@ -9414,12 +9614,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
     referredBy?: ReferalUncheckedCreateNestedManyWithoutReferredInput
     streamingData?: StreamingDataUncheckedCreateNestedManyWithoutStreamerInput
@@ -9435,12 +9637,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
     referals?: ReferalCreateNestedManyWithoutStreamerInput
     streamingData?: StreamingDataCreateNestedManyWithoutStreamerInput
@@ -9451,12 +9655,14 @@ export namespace Prisma {
     wahaID: string
     wahaName: string
     name: string
+    paymentMethod?: string | null
     allowInRoster?: boolean
     applyPenalties?: boolean
     penalized?: boolean
     penalties?: number
     phoneNumber?: string | null
     bankAccount?: string | null
+    bankAccountCUP?: string | null
     createdAt?: Date | string
     referals?: ReferalUncheckedCreateNestedManyWithoutStreamerInput
     streamingData?: StreamingDataUncheckedCreateNestedManyWithoutStreamerInput
@@ -9483,12 +9689,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referredBy?: ReferalUpdateManyWithoutReferredNestedInput
     streamingData?: StreamingDataUpdateManyWithoutStreamerNestedInput
@@ -9499,12 +9707,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referredBy?: ReferalUncheckedUpdateManyWithoutReferredNestedInput
     streamingData?: StreamingDataUncheckedUpdateManyWithoutStreamerNestedInput
@@ -9526,12 +9736,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUpdateManyWithoutStreamerNestedInput
     streamingData?: StreamingDataUpdateManyWithoutStreamerNestedInput
@@ -9542,12 +9754,14 @@ export namespace Prisma {
     wahaID?: StringFieldUpdateOperationsInput | string
     wahaName?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     allowInRoster?: BoolFieldUpdateOperationsInput | boolean
     applyPenalties?: BoolFieldUpdateOperationsInput | boolean
     penalized?: BoolFieldUpdateOperationsInput | boolean
     penalties?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     bankAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    bankAccountCUP?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     referals?: ReferalUncheckedUpdateManyWithoutStreamerNestedInput
     streamingData?: StreamingDataUncheckedUpdateManyWithoutStreamerNestedInput

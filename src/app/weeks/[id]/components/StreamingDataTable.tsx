@@ -6,6 +6,10 @@ import { useState } from 'react';
 
 import FiltersInTable from '@/components/FiltersInTable';
 import PaginationInTable from '@/components/PaginationInTable';
+import ToolTip from '@/components/ToolTip';
+import { Edit } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
 import useConfiguration from '../../hooks/useConfiguration';
 import { getDynamicData } from '../../utils/functions';
 
@@ -166,6 +170,7 @@ const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
               {filteredColumns.map((column) => (
                 <TableHead key={column.key}>{column.title}</TableHead>
               ))}
+              <TableHead className="text-center">Acciones</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -174,6 +179,13 @@ const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
                 {filteredColumns.map((column) => (
                   <TableCell key={`${data.streamer.wahaID}-${column.key}`}>{column.render(data)}</TableCell>
                 ))}
+                <TableCell className="flex gap-2 justify-center">
+                  <ToolTip content="Editar">
+                    <Button onClick={() => {}} className="cursor-pointer">
+                      <Edit />
+                    </Button>
+                  </ToolTip>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
