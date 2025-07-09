@@ -1,6 +1,7 @@
 'use client';
 
 import { exportDataForAdminToExcel, exportDataForAgencyToExcel, parseStreamingExcel } from '@/app/lib/excel';
+import StreamerModal from '@/app/streamers/components/StreamerModal';
 import ImportExcelModal from '@/components/ImportExcelModal';
 import ToolTip from '@/components/ToolTip';
 import { Button } from '@/components/ui/button';
@@ -8,6 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import useStoreConfiguration from '@/context/useStoreConfiguration';
 import { bulkImportStreamingEntries } from '@/services/streamingData';
 import { FileType } from '@/types/common.types';
+import { StreamerWithReferals } from '@/types/streamers.types';
 import { WeekWithData } from '@/types/weeks.types';
 import { ShieldUser, Upload, UserRound } from 'lucide-react';
 import { useMemo, useState } from 'react';
@@ -29,6 +31,8 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
   const { configuration } = useStoreConfiguration();
   const { weekData, handleOnRefresh, actionLoading, setActionLoading, handleFindByCriteria } = useStreamingData({ init: week });
   const [open, setOpen] = useState(false);
+  const [streamerConfigurationOpen, setStreamerConfigurationOpen] = useState(false);
+  const [selectedStreamer, setSelectedStreamer] = useState<StreamerWithReferals | null>(null);
 
   const dataWithDynamic = useMemo(() => getDynamicData(weekData.data, configuration), [weekData.data, configuration]);
   const weekWithDynamic = {
@@ -38,6 +42,8 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
 
   const handleOnClose = async () => {
     setOpen(false);
+    setStreamerConfigurationOpen(false);
+    handleOnRefresh();
   };
   const onSubmit = async (e: React.FormEvent, files: FileType[]) => {
     e.preventDefault();
@@ -52,12 +58,11 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
     try {
       setActionLoading(true);
       await bulkImportStreamingEntries(week.id, parsedFileAsExcel);
-      handleOnClose();
     } catch (error) {
       console.error(error);
     } finally {
       setActionLoading(false);
-      handleOnRefresh();
+      handleOnClose();
     }
   };
   const handleOnExportToAdmin = () => {
@@ -70,6 +75,12 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
   return (
     <>
       <ImportExcelModal open={open} setOpen={setOpen} actionLoading={actionLoading} onSubmit={onSubmit} />
+      <StreamerModal
+        open={streamerConfigurationOpen}
+        onClose={handleOnClose}
+        setOpen={setStreamerConfigurationOpen}
+        streamer={selectedStreamer}
+      />
       <div className="flex flex-col gap-4 sm:flex-row">
         <Card className="w-full sm:w-3/4">
           <CardContent className="flex flex-col gap-4">
@@ -108,7 +119,13 @@ const StreamingDataLayout = ({ week }: StreamingDataLayoutProps) => {
             </div>
             <div className="flex flex-col gap-4">
               <StreamingDataFinder onFind={handleFindByCriteria} />
-              <StreamingDataTable week={weekWithDynamic} />
+              <StreamingDataTable
+                week={weekWithDynamic}
+                onEdit={(streamer) => {
+                  setSelectedStreamer(streamer);
+                  setStreamerConfigurationOpen(true);
+                }}
+              />
             </div>
           </CardContent>
         </Card>

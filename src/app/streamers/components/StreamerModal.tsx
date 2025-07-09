@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Switch } from '@/components/ui/switch';
 
 import { createStreamer, updateStreamer } from '@/services/streamers';
@@ -30,9 +31,11 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
   const [wahaName, setWahaName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [bankAccount, setBankAccount] = useState('');
+  const [bankAccountCUP, setBankAccountCUP] = useState('');
   const [allowInRoster, setAllowInRoster] = useState(true);
   const [applyPenalties, setApplyPenalties] = useState(true);
   const [penalized, setPenalized] = useState(true);
+  const [paymentMethod, setPaymentMethod] = useState('mlc');
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -43,15 +46,19 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
         setWahaName(streamer.wahaName ?? '');
         setPhoneNumber(streamer.phoneNumber ?? '');
         setBankAccount(streamer.bankAccount ?? '');
+        setBankAccountCUP(streamer.bankAccountCUP ?? '');
         setAllowInRoster(streamer.allowInRoster ?? true);
         setApplyPenalties(streamer.applyPenalties ?? true);
         setPenalized(streamer.penalized ?? true);
+        setPaymentMethod(streamer.paymentMethod ?? 'mlc');
       } else {
         setName('');
         setWahaID('');
         setWahaName('');
         setPhoneNumber('');
         setBankAccount('');
+        setBankAccountCUP('');
+        setPaymentMethod('mlc');
         setAllowInRoster(true);
         setApplyPenalties(true);
         setPenalized(true);
@@ -93,9 +100,11 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
           wahaName,
           phoneNumber,
           bankAccount,
+          bankAccountCUP,
           allowInRoster,
           applyPenalties,
           penalized,
+          paymentMethod,
         });
       } else {
         await createStreamer({
@@ -104,9 +113,11 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
           wahaName,
           phoneNumber,
           bankAccount,
+          bankAccountCUP,
           allowInRoster,
           applyPenalties,
           penalized,
+          paymentMethod,
         });
       }
       onClose();
@@ -146,8 +157,13 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
             <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="flex flex-col gap-2">
-            <Label htmlFor="bankAccount">Cuenta Bancaria</Label>
-            <Input id="bankAccount" value={bankAccount} onChange={(e) => setBankAccount(e.target.value)} />
+            <Label>Cuenta Bancaria</Label>
+            <div className="flex flex-row items-center gap-2 p-2 border rounded">
+              <Label htmlFor="bankAccount">MLC:</Label>
+              <Input id="bankAccount" value={bankAccount} onChange={(e) => setBankAccount(e.target.value)} />
+              <Label htmlFor="bankAccountCUP">CUP:</Label>
+              <Input id="bankAccountCUP" value={bankAccountCUP} onChange={(e) => setBankAccountCUP(e.target.value)} />
+            </div>
           </div>
 
           <div className="flex flex-row justify-around">
@@ -176,6 +192,27 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
               </div>
             </div>
           </div>
+
+          <div className="flex flex-col justify-around gap-2">
+            <Label htmlFor="paymentMethod">Método de Pago:</Label>
+            <div className="flex flex-row items-center gap-2 p-2 border rounded">
+              <RadioGroup value={paymentMethod} id="paymentMethod" onValueChange={setPaymentMethod}>
+                <div className="flex items-center gap-3">
+                  <RadioGroupItem value="MLC" id="r1" />
+                  <Label htmlFor="r1">MLC</Label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <RadioGroupItem value="cupTransfer" id="r2" />
+                  <Label htmlFor="r2">CUP (Transferencia)</Label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <RadioGroupItem value="cupCash" id="r3" />
+                  <Label htmlFor="r3">CUP (Efectivo)</Label>
+                </div>
+              </RadioGroup>
+            </div>
+          </div>
+
           {error && <p className="text-sm text-red-500">{error}</p>}
           <div className="flex justify-end gap-2 w-full">
             <Button type="button" variant="secondary" onClick={() => setOpen(false)}>

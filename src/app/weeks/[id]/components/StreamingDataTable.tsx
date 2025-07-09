@@ -10,6 +10,7 @@ import ToolTip from '@/components/ToolTip';
 import { Edit } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { StreamerWithReferals } from '@/types/streamers.types';
 import useConfiguration from '../../hooks/useConfiguration';
 import { getDynamicData } from '../../utils/functions';
 
@@ -140,7 +141,7 @@ export const DEFAULT_COLUMNS = [
   },
 ];
 
-const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
+const StreamingDataTable = ({ week, onEdit }: Readonly<{ week: WeekWithData; onEdit: (streamer: StreamerWithReferals) => void }>) => {
   const { configuration } = useConfiguration();
   const [visibleColumns, setVisibleColumns] = useState(DEFAULT_COLUMNS.filter((col) => col.visible).map((col) => col.key));
 
@@ -181,7 +182,7 @@ const StreamingDataTable = ({ week }: Readonly<{ week: WeekWithData }>) => {
                 ))}
                 <TableCell className="flex gap-2 justify-center">
                   <ToolTip content="Editar">
-                    <Button onClick={() => {}} className="cursor-pointer">
+                    <Button onClick={() => onEdit(data.streamer)} className="cursor-pointer">
                       <Edit />
                     </Button>
                   </ToolTip>

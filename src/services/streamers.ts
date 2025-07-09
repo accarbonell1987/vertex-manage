@@ -65,11 +65,13 @@ export async function updateStreamer(
     name: string;
     phoneNumber?: string;
     bankAccount?: string;
+    bankAccountCUP?: string;
     wahaID?: string;
     wahaName?: string;
     allowInRoster?: boolean;
     applyPenalties?: boolean;
     penalized?: boolean;
+    paymentMethod?: string;
   }
 ): Promise<void> {
   await doFetchWithToast<void>(
