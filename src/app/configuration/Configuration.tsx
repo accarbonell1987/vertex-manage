@@ -85,6 +85,15 @@ const Configuration = ({ configuration }: { configuration: ConfigurationType }) 
             onChange={(e) => handleOnChange('cupCardChangeRate', e.target.value)}
           />
         </div>
+        <div className="flex flex-col gap-2 w-[20%]">
+          <Label htmlFor="usdChangeRate">Tasa de Cambio USD</Label>
+          <Input
+            id="usdChangeRate"
+            name="usdChangeRate"
+            value={currentConfiguration?.usdChangeRate ?? '0'}
+            onChange={(e) => handleOnChange('usdChangeRate', e.target.value)}
+          />
+        </div>
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-4 sm:flex-row">

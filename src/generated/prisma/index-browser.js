@@ -184,7 +184,8 @@ exports.Prisma.ConfigurationScalarFieldEnum = {
   penaltyPercentage: 'penaltyPercentage',
   mlcChangeRate: 'mlcChangeRate',
   cupEffectiveChangeRate: 'cupEffectiveChangeRate',
-  cupCardChangeRate: 'cupCardChangeRate'
+  cupCardChangeRate: 'cupCardChangeRate',
+  usdChangeRate: 'usdChangeRate'
 };
 
 exports.Prisma.SortOrder = {

@@ -6085,6 +6085,7 @@ export namespace Prisma {
     mlcChangeRate: number | null
     cupEffectiveChangeRate: number | null
     cupCardChangeRate: number | null
+    usdChangeRate: number | null
   }
 
   export type ConfigurationSumAggregateOutputType = {
@@ -6093,6 +6094,7 @@ export namespace Prisma {
     mlcChangeRate: number | null
     cupEffectiveChangeRate: number | null
     cupCardChangeRate: number | null
+    usdChangeRate: number | null
   }
 
   export type ConfigurationMinAggregateOutputType = {
@@ -6105,6 +6107,7 @@ export namespace Prisma {
     mlcChangeRate: number | null
     cupEffectiveChangeRate: number | null
     cupCardChangeRate: number | null
+    usdChangeRate: number | null
   }
 
   export type ConfigurationMaxAggregateOutputType = {
@@ -6117,6 +6120,7 @@ export namespace Prisma {
     mlcChangeRate: number | null
     cupEffectiveChangeRate: number | null
     cupCardChangeRate: number | null
+    usdChangeRate: number | null
   }
 
   export type ConfigurationCountAggregateOutputType = {
@@ -6129,6 +6133,7 @@ export namespace Prisma {
     mlcChangeRate: number
     cupEffectiveChangeRate: number
     cupCardChangeRate: number
+    usdChangeRate: number
     _all: number
   }
 
@@ -6139,6 +6144,7 @@ export namespace Prisma {
     mlcChangeRate?: true
     cupEffectiveChangeRate?: true
     cupCardChangeRate?: true
+    usdChangeRate?: true
   }
 
   export type ConfigurationSumAggregateInputType = {
@@ -6147,6 +6153,7 @@ export namespace Prisma {
     mlcChangeRate?: true
     cupEffectiveChangeRate?: true
     cupCardChangeRate?: true
+    usdChangeRate?: true
   }
 
   export type ConfigurationMinAggregateInputType = {
@@ -6159,6 +6166,7 @@ export namespace Prisma {
     mlcChangeRate?: true
     cupEffectiveChangeRate?: true
     cupCardChangeRate?: true
+    usdChangeRate?: true
   }
 
   export type ConfigurationMaxAggregateInputType = {
@@ -6171,6 +6179,7 @@ export namespace Prisma {
     mlcChangeRate?: true
     cupEffectiveChangeRate?: true
     cupCardChangeRate?: true
+    usdChangeRate?: true
   }
 
   export type ConfigurationCountAggregateInputType = {
@@ -6183,6 +6192,7 @@ export namespace Prisma {
     mlcChangeRate?: true
     cupEffectiveChangeRate?: true
     cupCardChangeRate?: true
+    usdChangeRate?: true
     _all?: true
   }
 
@@ -6282,6 +6292,7 @@ export namespace Prisma {
     mlcChangeRate: number
     cupEffectiveChangeRate: number | null
     cupCardChangeRate: number | null
+    usdChangeRate: number | null
     _count: ConfigurationCountAggregateOutputType | null
     _avg: ConfigurationAvgAggregateOutputType | null
     _sum: ConfigurationSumAggregateOutputType | null
@@ -6313,6 +6324,7 @@ export namespace Prisma {
     mlcChangeRate?: boolean
     cupEffectiveChangeRate?: boolean
     cupCardChangeRate?: boolean
+    usdChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6325,6 +6337,7 @@ export namespace Prisma {
     mlcChangeRate?: boolean
     cupEffectiveChangeRate?: boolean
     cupCardChangeRate?: boolean
+    usdChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6337,6 +6350,7 @@ export namespace Prisma {
     mlcChangeRate?: boolean
     cupEffectiveChangeRate?: boolean
     cupCardChangeRate?: boolean
+    usdChangeRate?: boolean
   }, ExtArgs["result"]["configuration"]>
 
   export type ConfigurationSelectScalar = {
@@ -6349,9 +6363,10 @@ export namespace Prisma {
     mlcChangeRate?: boolean
     cupEffectiveChangeRate?: boolean
     cupCardChangeRate?: boolean
+    usdChangeRate?: boolean
   }
 
-  export type ConfigurationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "agencyName" | "payAffiliateProgram" | "payAffiliateProgramPercentage" | "applyPenalties" | "penaltyPercentage" | "mlcChangeRate" | "cupEffectiveChangeRate" | "cupCardChangeRate", ExtArgs["result"]["configuration"]>
+  export type ConfigurationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "agencyName" | "payAffiliateProgram" | "payAffiliateProgramPercentage" | "applyPenalties" | "penaltyPercentage" | "mlcChangeRate" | "cupEffectiveChangeRate" | "cupCardChangeRate" | "usdChangeRate", ExtArgs["result"]["configuration"]>
 
   export type $ConfigurationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Configuration"
@@ -6366,6 +6381,7 @@ export namespace Prisma {
       mlcChangeRate: number
       cupEffectiveChangeRate: number | null
       cupCardChangeRate: number | null
+      usdChangeRate: number | null
     }, ExtArgs["result"]["configuration"]>
     composites: {}
   }
@@ -6798,6 +6814,7 @@ export namespace Prisma {
     readonly mlcChangeRate: FieldRef<"Configuration", 'Float'>
     readonly cupEffectiveChangeRate: FieldRef<"Configuration", 'Float'>
     readonly cupCardChangeRate: FieldRef<"Configuration", 'Float'>
+    readonly usdChangeRate: FieldRef<"Configuration", 'Float'>
   }
     
 
@@ -7254,7 +7271,8 @@ export namespace Prisma {
     penaltyPercentage: 'penaltyPercentage',
     mlcChangeRate: 'mlcChangeRate',
     cupEffectiveChangeRate: 'cupEffectiveChangeRate',
-    cupCardChangeRate: 'cupCardChangeRate'
+    cupCardChangeRate: 'cupCardChangeRate',
+    usdChangeRate: 'usdChangeRate'
   };
 
   export type ConfigurationScalarFieldEnum = (typeof ConfigurationScalarFieldEnum)[keyof typeof ConfigurationScalarFieldEnum]
@@ -7719,6 +7737,7 @@ export namespace Prisma {
     mlcChangeRate?: FloatFilter<"Configuration"> | number
     cupEffectiveChangeRate?: FloatNullableFilter<"Configuration"> | number | null
     cupCardChangeRate?: FloatNullableFilter<"Configuration"> | number | null
+    usdChangeRate?: FloatNullableFilter<"Configuration"> | number | null
   }
 
   export type ConfigurationOrderByWithRelationInput = {
@@ -7731,6 +7750,7 @@ export namespace Prisma {
     mlcChangeRate?: SortOrder
     cupEffectiveChangeRate?: SortOrderInput | SortOrder
     cupCardChangeRate?: SortOrderInput | SortOrder
+    usdChangeRate?: SortOrderInput | SortOrder
   }
 
   export type ConfigurationWhereUniqueInput = Prisma.AtLeast<{
@@ -7746,6 +7766,7 @@ export namespace Prisma {
     mlcChangeRate?: FloatFilter<"Configuration"> | number
     cupEffectiveChangeRate?: FloatNullableFilter<"Configuration"> | number | null
     cupCardChangeRate?: FloatNullableFilter<"Configuration"> | number | null
+    usdChangeRate?: FloatNullableFilter<"Configuration"> | number | null
   }, "id">
 
   export type ConfigurationOrderByWithAggregationInput = {
@@ -7758,6 +7779,7 @@ export namespace Prisma {
     mlcChangeRate?: SortOrder
     cupEffectiveChangeRate?: SortOrderInput | SortOrder
     cupCardChangeRate?: SortOrderInput | SortOrder
+    usdChangeRate?: SortOrderInput | SortOrder
     _count?: ConfigurationCountOrderByAggregateInput
     _avg?: ConfigurationAvgOrderByAggregateInput
     _max?: ConfigurationMaxOrderByAggregateInput
@@ -7778,6 +7800,7 @@ export namespace Prisma {
     mlcChangeRate?: FloatWithAggregatesFilter<"Configuration"> | number
     cupEffectiveChangeRate?: FloatNullableWithAggregatesFilter<"Configuration"> | number | null
     cupCardChangeRate?: FloatNullableWithAggregatesFilter<"Configuration"> | number | null
+    usdChangeRate?: FloatNullableWithAggregatesFilter<"Configuration"> | number | null
   }
 
   export type StreamerCreateInput = {
@@ -8187,6 +8210,7 @@ export namespace Prisma {
     mlcChangeRate: number
     cupEffectiveChangeRate?: number | null
     cupCardChangeRate?: number | null
+    usdChangeRate?: number | null
   }
 
   export type ConfigurationUncheckedCreateInput = {
@@ -8199,6 +8223,7 @@ export namespace Prisma {
     mlcChangeRate: number
     cupEffectiveChangeRate?: number | null
     cupCardChangeRate?: number | null
+    usdChangeRate?: number | null
   }
 
   export type ConfigurationUpdateInput = {
@@ -8211,6 +8236,7 @@ export namespace Prisma {
     mlcChangeRate?: FloatFieldUpdateOperationsInput | number
     cupEffectiveChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
     cupCardChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    usdChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ConfigurationUncheckedUpdateInput = {
@@ -8223,6 +8249,7 @@ export namespace Prisma {
     mlcChangeRate?: FloatFieldUpdateOperationsInput | number
     cupEffectiveChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
     cupCardChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    usdChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ConfigurationCreateManyInput = {
@@ -8235,6 +8262,7 @@ export namespace Prisma {
     mlcChangeRate: number
     cupEffectiveChangeRate?: number | null
     cupCardChangeRate?: number | null
+    usdChangeRate?: number | null
   }
 
   export type ConfigurationUpdateManyMutationInput = {
@@ -8247,6 +8275,7 @@ export namespace Prisma {
     mlcChangeRate?: FloatFieldUpdateOperationsInput | number
     cupEffectiveChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
     cupCardChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    usdChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ConfigurationUncheckedUpdateManyInput = {
@@ -8259,6 +8288,7 @@ export namespace Prisma {
     mlcChangeRate?: FloatFieldUpdateOperationsInput | number
     cupEffectiveChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
     cupCardChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    usdChangeRate?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8686,6 +8716,7 @@ export namespace Prisma {
     mlcChangeRate?: SortOrder
     cupEffectiveChangeRate?: SortOrder
     cupCardChangeRate?: SortOrder
+    usdChangeRate?: SortOrder
   }
 
   export type ConfigurationAvgOrderByAggregateInput = {
@@ -8694,6 +8725,7 @@ export namespace Prisma {
     mlcChangeRate?: SortOrder
     cupEffectiveChangeRate?: SortOrder
     cupCardChangeRate?: SortOrder
+    usdChangeRate?: SortOrder
   }
 
   export type ConfigurationMaxOrderByAggregateInput = {
@@ -8706,6 +8738,7 @@ export namespace Prisma {
     mlcChangeRate?: SortOrder
     cupEffectiveChangeRate?: SortOrder
     cupCardChangeRate?: SortOrder
+    usdChangeRate?: SortOrder
   }
 
   export type ConfigurationMinOrderByAggregateInput = {
@@ -8718,6 +8751,7 @@ export namespace Prisma {
     mlcChangeRate?: SortOrder
     cupEffectiveChangeRate?: SortOrder
     cupCardChangeRate?: SortOrder
+    usdChangeRate?: SortOrder
   }
 
   export type ConfigurationSumOrderByAggregateInput = {
@@ -8726,6 +8760,7 @@ export namespace Prisma {
     mlcChangeRate?: SortOrder
     cupEffectiveChangeRate?: SortOrder
     cupCardChangeRate?: SortOrder
+    usdChangeRate?: SortOrder
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {

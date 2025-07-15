@@ -18,6 +18,7 @@ export async function PATCH(req: NextRequest) {
     mlcChangeRate,
     cupEffectiveChangeRate,
     cupCardChangeRate,
+    usdChangeRate,
   } = body;
 
   const configuration = {
@@ -30,6 +31,7 @@ export async function PATCH(req: NextRequest) {
     mlcChangeRate: Number(mlcChangeRate),
     cupEffectiveChangeRate: Number(cupEffectiveChangeRate),
     cupCardChangeRate: Number(cupCardChangeRate),
+    usdChangeRate: Number(usdChangeRate),
   };
 
   const updated = await updateConfiguration(configuration);

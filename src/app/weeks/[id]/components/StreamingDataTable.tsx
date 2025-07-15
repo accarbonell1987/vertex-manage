@@ -153,7 +153,7 @@ export const DEFAULT_COLUMNS = (configuration: ConfigurationType) => [
       const salaryInUSDT =
         data.streamer?.paymentMethod === 'MLC'
           ? `$ ${Number(salary / configuration.mlcChangeRate).toFixed(2)}`
-          : `$ ${Number((salary * changeTypeAmount) / 385).toFixed(2)}`;
+          : `$ ${Number((salary * changeTypeAmount) / (configuration.usdChangeRate ?? 0)).toFixed(2)}`;
 
       const textColor = salary > data.streamerSalary ? 'text-green-500' : 'text-orange-500';
       return <p className={`${salary === data.streamerSalary ? 'text-black' : textColor}`}>{salaryInUSDT}</p>;

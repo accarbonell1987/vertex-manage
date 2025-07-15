@@ -93,4 +93,5 @@ model Configuration {
   mlcChangeRate Float
   cupEffectiveChangeRate Float?
   cupCardChangeRate Float?
+  usdChangeRate Float?
 }

@@ -136,7 +136,9 @@ export const getPreRosterTotalsSalary = (data: StreamingDataWithStreamer[], conf
       const salary = data.streamerSalary - (data.streamerPenalizated ?? 0) + (data?.referralSalary ?? 0);
       const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
       const salaryInUSDT =
-        data.streamer?.paymentMethod === 'MLC' ? Number(salary / configuration.mlcChangeRate) : Number((salary * changeTypeAmount) / 385);
+        data.streamer?.paymentMethod === 'MLC'
+          ? Number(salary / configuration.mlcChangeRate)
+          : Number((salary * changeTypeAmount) / (configuration.usdChangeRate ?? 0));
 
       return data.streamer.allowInRoster ? total + salaryInUSDT : total;
     }, 0) ?? 0;
