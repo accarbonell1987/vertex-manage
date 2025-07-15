@@ -10,4 +10,4 @@ export type FileType = {
   data?: string;
 };
 
-export type PaymentType = 'MLC' | 'cupCash' | 'cupTransfer';
+export type PaymentType = 'MLC' | 'cupCash' | 'cupTransfer' | 'USDT';

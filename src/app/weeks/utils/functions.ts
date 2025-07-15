@@ -128,17 +128,25 @@ export const getPreRosterTotalsSalary = (data: StreamingDataWithStreamer[], conf
     cupTransfer: configuration.cupCardChangeRate,
     cupCash: configuration.cupEffectiveChangeRate,
     MLC: configuration.mlcChangeRate,
+    USDT: configuration.usdChangeRate,
   };
 
   const total =
     data.reduce((total, data) => {
       if (!data.streamerSalary) return total;
       const salary = data.streamerSalary - (data.streamerPenalizated ?? 0) + (data?.referralSalary ?? 0);
-      const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
-      const salaryInUSDT =
-        data.streamer?.paymentMethod === 'MLC'
-          ? Number(salary / configuration.mlcChangeRate)
-          : Number((salary * changeTypeAmount) / (configuration.usdChangeRate ?? 0));
+
+      const streamerPaymentMethod = data.streamer?.paymentMethod as PaymentType;
+      const changeTypeAmount = Number(paymentTypes?.[streamerPaymentMethod ?? 'MLC'] ?? 0);
+
+      const salaryByMethod = {
+        MLC: Number(salary / configuration.mlcChangeRate).toFixed(2),
+        cupTransfer: Number((salary * changeTypeAmount) / (configuration.usdChangeRate ?? 0)).toFixed(2),
+        cupCash: Number((salary * changeTypeAmount) / (configuration.usdChangeRate ?? 0)).toFixed(2),
+        USDT: Number(salary).toFixed(2),
+      };
+
+      const salaryInUSDT = Number(salaryByMethod[streamerPaymentMethod]);
 
       return data.streamer.allowInRoster ? total + salaryInUSDT : total;
     }, 0) ?? 0;
@@ -157,6 +165,7 @@ export const getPreRosterTotalsInChangeType = (
     cupTransfer: configuration.cupCardChangeRate,
     cupCash: configuration.cupEffectiveChangeRate,
     MLC: configuration.mlcChangeRate,
+    USDT: configuration.usdChangeRate,
   };
 
   const total =
@@ -165,7 +174,15 @@ export const getPreRosterTotalsInChangeType = (
 
       const salary = data.streamerSalary - (data.streamerPenalizated ?? 0) + (data?.referralSalary ?? 0);
       const changeTypeAmount = Number(paymentTypes?.[changeType] || 0);
-      const salaryInCUPTransfer = changeType === 'MLC' ? Number(salary) : Number(salary * changeTypeAmount);
+
+      const salaryByMethod = {
+        MLC: Number(salary).toFixed(2),
+        cupTransfer: Number(salary * changeTypeAmount).toFixed(2),
+        cupCash: Number(salary * changeTypeAmount).toFixed(2),
+        USDT: Number(salary).toFixed(2),
+      };
+
+      const salaryInCUPTransfer = Number(salaryByMethod[changeType]);
 
       return data.streamer.allowInRoster ? total + salaryInCUPTransfer : total;
     }, 0) ?? 0;

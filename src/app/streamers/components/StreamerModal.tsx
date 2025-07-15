@@ -198,15 +198,23 @@ const StreamerModal = ({ open, onClose, setOpen, streamer }: Props) => {
             <div className="flex flex-row items-center gap-2 p-2 border rounded">
               <RadioGroup value={paymentMethod} id="paymentMethod" onValueChange={setPaymentMethod}>
                 <div className="flex items-center gap-3">
+                  <RadioGroupItem value="USDT" id="r1" />
+                  <Badge className="bg-purple-600">USDT</Badge>
+                  <Label htmlFor="r1">USD₮ (Tether USD)</Label>
+                </div>
+                <div className="flex items-center gap-3">
                   <RadioGroupItem value="MLC" id="r1" />
-                  <Label htmlFor="r1">MLC</Label>
+                  <Badge className="bg-red-600">MLC</Badge>
+                  <Label htmlFor="r1">Moneda Libremente Convertible</Label>
                 </div>
                 <div className="flex items-center gap-3">
                   <RadioGroupItem value="cupTransfer" id="r2" />
+                  <Badge className="bg-green-600">T</Badge>
                   <Label htmlFor="r2">CUP (Transferencia)</Label>
                 </div>
                 <div className="flex items-center gap-3">
                   <RadioGroupItem value="cupCash" id="r3" />
+                  <Badge className="bg-blue-600">E</Badge>
                   <Label htmlFor="r3">CUP (Efectivo)</Label>
                 </div>
               </RadioGroup>

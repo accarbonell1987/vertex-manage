@@ -58,6 +58,7 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
   const totalCUPTransfer = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.CUP_TRANSFER as PaymentType);
   const totalCUPCash = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.CUP_EFFECTIVE as PaymentType);
   const totalMLC = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.MLC as PaymentType);
+  const totalUSDT = getPreRosterTotalsInChangeType(week.data, configuration, PaymentTypeMapping.USDT as PaymentType);
 
   return (
     <Card className={week.closed ? 'bg-gray-100' : ''}>
@@ -94,6 +95,11 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
             <DollarSign className="w-4 h-4" />
             <b>CUP (Transferencia):</b>
             <p className="text-black">$ {configuration.cupCardChangeRate}</p>
+          </div>
+          <div className="flex items-center gap-2 text-blue-600">
+            <DollarSign className="w-4 h-4" />
+            <b>USDT:</b>
+            <p className="text-black">$ {configuration.usdChangeRate}</p>
           </div>
         </article>
         <br />
@@ -160,6 +166,10 @@ const StreamingWeekRoster = ({ week }: StreamingWeekRosterProps) => {
           <div className="flex items-center gap-2 text-green-600">
             <Badge className="bg-red-600">MLC</Badge>
             <p className="text-black">$ {getStringNumber(totalMLC)}</p>
+          </div>
+          <div className="flex items-center gap-2 text-green-600">
+            <Badge className="bg-purple-600">USDT</Badge>
+            <p className="text-black">$ {getStringNumber(totalUSDT)}</p>
           </div>
         </article>
         <br />

@@ -11,6 +11,7 @@ import { Edit } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { PaymentType } from '@/types/common.types';
 import { ConfigurationType } from '@/types/configuration.types';
 import { StreamerWithReferals } from '@/types/streamers.types';
 import useConfiguration from '../../hooks/useConfiguration';
@@ -148,12 +149,20 @@ export const DEFAULT_COLUMNS = (configuration: ConfigurationType) => [
         cupTransfer: configuration.cupCardChangeRate,
         cupCash: configuration.cupEffectiveChangeRate,
         MLC: configuration.mlcChangeRate,
+        USDT: configuration.usdChangeRate,
       };
-      const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
-      const salaryInUSDT =
-        data.streamer?.paymentMethod === 'MLC'
-          ? `$ ${Number(salary / configuration.mlcChangeRate).toFixed(2)}`
-          : `$ ${Number((salary * changeTypeAmount) / (configuration.usdChangeRate ?? 0)).toFixed(2)}`;
+
+      const streamerPaymentMethod = data.streamer?.paymentMethod as PaymentType;
+      const changeTypeAmount = Number(paymentTypes?.[streamerPaymentMethod] ?? 0);
+
+      const salaryByMethod = {
+        MLC: Number(salary / configuration.mlcChangeRate).toFixed(2),
+        cupTransfer: Number((salary * changeTypeAmount) / (configuration.usdChangeRate ?? 0)).toFixed(2),
+        cupCash: Number((salary * changeTypeAmount) / (configuration.usdChangeRate ?? 0)).toFixed(2),
+        USDT: Number(salary).toFixed(2),
+      };
+
+      const salaryInUSDT = salaryByMethod[streamerPaymentMethod];
 
       const textColor = salary > data.streamerSalary ? 'text-green-500' : 'text-orange-500';
       return <p className={`${salary === data.streamerSalary ? 'text-black' : textColor}`}>{salaryInUSDT}</p>;
@@ -170,24 +179,31 @@ export const DEFAULT_COLUMNS = (configuration: ConfigurationType) => [
         cupTransfer: configuration.cupCardChangeRate,
         cupCash: configuration.cupEffectiveChangeRate,
         MLC: configuration.mlcChangeRate,
+        USDT: configuration.usdChangeRate,
       };
       const paymentMethodType = {
         cupTransfer: { text: 'T', color: 'bg-green-500' },
         cupCash: { text: 'E', color: 'bg-blue-500' },
         MLC: { text: 'MLC', color: 'bg-red-500' },
+        USDT: { text: 'USDT', color: 'bg-purple-500' },
       };
 
-      const changeTypeAmount = Number(paymentTypes?.[data.streamer?.paymentMethod ?? 'MLC'] ?? 0);
-      const salaryInCUP =
-        data.streamer?.paymentMethod === 'MLC' ? `$ ${Number(salary).toFixed(2)}` : `$ ${Number(salary * changeTypeAmount).toFixed(2)}`;
+      const streamerPaymentMethod = data.streamer?.paymentMethod as PaymentType;
+      const changeTypeAmount = Number(paymentTypes?.[streamerPaymentMethod] ?? 0);
 
+      const salaryByMethod = {
+        MLC: `$ ${Number(salary).toFixed(2)}`,
+        cupTransfer: `$ ${Number(salary * changeTypeAmount).toFixed(2)}`,
+        cupCash: `$ ${Number(salary * changeTypeAmount).toFixed(2)}`,
+        USDT: `$ ${Number(salary).toFixed(2)}`,
+      };
+
+      const salaryInCUP = salaryByMethod[streamerPaymentMethod];
       const textColor = salary > data.streamerSalary ? 'text-green-500' : 'text-orange-500';
 
       return (
         <p className={`${salary === data.streamerSalary ? 'text-black' : textColor}`}>
-          <Badge className={paymentMethodType[data.streamer?.paymentMethod ?? 'MLC'].color}>
-            {paymentMethodType[data.streamer?.paymentMethod ?? 'MLC'].text}
-          </Badge>
+          <Badge className={paymentMethodType[streamerPaymentMethod].color}>{paymentMethodType[streamerPaymentMethod].text}</Badge>
           {` ${salaryInCUP}`}
         </p>
       );

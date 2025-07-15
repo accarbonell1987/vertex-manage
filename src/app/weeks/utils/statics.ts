@@ -13,4 +13,5 @@ export const PaymentTypeMapping = {
   MLC: 'MLC',
   CUP_EFFECTIVE: 'cupCash',
   CUP_TRANSFER: 'cupTransfer',
+  USDT: 'USDT',
 };
