@@ -1,17 +1,21 @@
 import { getFormatedNumberToTwoDecimal } from '@/lib/utils';
-import { ImportedContactsData, ImportedStreamingData, StreamerWithReferals } from '@/types/streamers.types';
+import {
+  ImportedContactsData,
+  ImportedStreamingData,
+  StreamerWithReferals
+} from '@/types/streamers.types';
 import { StreamingDataWithStreamer } from '@/types/streamingData.types';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
 export function exportStreamersToExcel(streamers: StreamerWithReferals[]) {
-  const data = streamers.map((s) => ({
+  const data = streamers.map(s => ({
     WahaID: s.wahaID,
     WahaName: s.wahaName,
     Nombre: s.name,
     Teléfono: s.phoneNumber ?? '',
     CuentaBancaria: s.bankAccount ?? '',
-    Referidos: s.referals?.length ?? 0,
+    Referidos: s.referals?.length ?? 0
   }));
 
   const worksheet = XLSX.utils.json_to_sheet(data);
@@ -26,7 +30,7 @@ export function exportStreamersToExcel(streamers: StreamerWithReferals[]) {
 
 export function exportDataForAdminToExcel(dataToExport: StreamingDataWithStreamer[]) {
   const data = dataToExport
-    .map((s) => ({
+    .map(s => ({
       WahaID: s.streamer.wahaID,
       WahaName: s.streamer.wahaName,
       Teléfono: s.streamer.phoneNumber ?? '',
@@ -35,12 +39,16 @@ export function exportDataForAdminToExcel(dataToExport: StreamingDataWithStreame
       DiamantesComisiones: s.diamondsComisions,
       Salario: getFormatedNumberToTwoDecimal(s.streamerSalary),
       Penalizaciones: getFormatedNumberToTwoDecimal(s.streamerPenalizated ?? 0),
-      SalarioFinal: getFormatedNumberToTwoDecimal(s.streamerSalary - (s.streamerPenalizated ?? 0) + (s?.referralSalary ?? 0)),
+      SalarioFinal: getFormatedNumberToTwoDecimal(
+        s.streamerSalary - (s.streamerPenalizated ?? 0) + (s?.referralSalary ?? 0)
+      ),
 
-      Agencia: getFormatedNumberToTwoDecimal(s.agencySalary + (s.streamerPenalizated ?? 0) - (s?.referralSalary ?? 0)),
-      BonosAgencia: getFormatedNumberToTwoDecimal(s.agencyBonus ?? 0),
+      Agencia: getFormatedNumberToTwoDecimal(
+        s.agencySalary + (s.streamerPenalizated ?? 0) - (s?.referralSalary ?? 0)
+      ),
+      BonosAgencia: getFormatedNumberToTwoDecimal(s.agencyBonus ?? 0)
     }))
-    .filter((s) => s.SalarioFinal > 0);
+    .filter(s => s.SalarioFinal > 0);
 
   const worksheet = XLSX.utils.json_to_sheet(data);
   const workbook = XLSX.utils.book_new();
@@ -54,15 +62,17 @@ export function exportDataForAdminToExcel(dataToExport: StreamingDataWithStreame
 
 export function exportDataForAgencyToExcel(dataToExport: StreamingDataWithStreamer[]) {
   const data = dataToExport
-    .map((s) => ({
+    .map(s => ({
       WahaID: s.streamer.wahaID,
       WahaName: s.streamer.wahaName,
       DiamantesTotal: s.diamondsTotal,
       Salario: getFormatedNumberToTwoDecimal(s.streamerSalary),
       Penalizaciones: getFormatedNumberToTwoDecimal(s.streamerPenalizated ?? 0),
-      SalarioFinal: getFormatedNumberToTwoDecimal(s.streamerSalary - (s.streamerPenalizated ?? 0) + (s?.referralSalary ?? 0)),
+      SalarioFinal: getFormatedNumberToTwoDecimal(
+        s.streamerSalary - (s.streamerPenalizated ?? 0) + (s?.referralSalary ?? 0)
+      )
     }))
-    .filter((s) => s.SalarioFinal > 0);
+    .filter(s => s.SalarioFinal > 0);
 
   const worksheet = XLSX.utils.json_to_sheet(data);
   const workbook = XLSX.utils.book_new();
@@ -78,7 +88,7 @@ export function parseStreamingExcel(file: File): Promise<ImportedStreamingData[]
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
-    reader.onload = (event) => {
+    reader.onload = event => {
       const data = new Uint8Array(event.target?.result as ArrayBuffer);
       const workbook = XLSX.read(data, { type: 'array' });
       const sheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -97,22 +107,22 @@ export function parseStreamingExcel(file: File): Promise<ImportedStreamingData[]
           wahaID,
           wahaName: String(row[3])?.trim(),
           baseSalaryIM: Number(row[5]),
-          baseSalaryRoom: Number(row[6]),
-          diamondsIM: Number(row[7]),
-          diamondsRoom: Number(row[8]),
-          diamondsTotal: Number(row[9]),
-          points: Number(row[10]),
-          diamondsAndPoints: Number(row[11]),
-          diamondsPenalties: Number(row[12]),
-          numberOfDaysCompleted: Number(row[13]),
-          numberOfDaysInMic: Number(row[14]),
-          diamondsComisions: Number(row[15]),
-          rewardOfPoints: Number(row[16]),
-          dailyBonusOfSuperStreamer: Number(row[17]),
-          roomBonus: Number(row[18]),
-          enchantingGoddessBonus: Number(row[19]),
-          streamerSalary: Number(row[21]),
-          agencySalary: Number(row[22]),
+          baseSalaryRoom: 0,
+          diamondsIM: Number(row[6]),
+          diamondsRoom: Number(row[7]),
+          diamondsTotal: Number(row[8]),
+          points: Number(row[9]),
+          diamondsAndPoints: Number(row[10]),
+          diamondsPenalties: Number(row[11]),
+          numberOfDaysCompleted: Number(row[12]),
+          numberOfDaysInMic: 0,
+          diamondsComisions: Number(row[13]),
+          rewardOfPoints: Number(row[14]),
+          dailyBonusOfSuperStreamer: Number(row[15]),
+          roomBonus: Number(row[17]),
+          enchantingGoddessBonus: Number(row[16]),
+          streamerSalary: Number(row[20]),
+          agencySalary: Number(row[21])
         });
       }
 
@@ -129,7 +139,7 @@ export function parseContactsExcel(file: File): Promise<ImportedContactsData[]> 
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
-    reader.onload = (event) => {
+    reader.onload = event => {
       const data = new Uint8Array(event.target?.result as ArrayBuffer);
       const workbook = XLSX.read(data, { type: 'array' });
       const sheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -145,7 +155,7 @@ export function parseContactsExcel(file: File): Promise<ImportedContactsData[]> 
         parsed.push({
           wahaID,
           phoneNumber: String(row[0])?.trim(),
-          bankAccount: String(row[2])?.trim(),
+          bankAccount: String(row[2])?.trim()
         });
       }
 
